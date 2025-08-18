@@ -1,0 +1,437 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Vertex Algebras}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/vertex-algebras}
+{github.com/danimalabares/vertex-algebras}
+
+\tableofcontents
+
+\section{Kac-Moody algebras}
+\label{section-Kac-Moody-algebras}
+
+Kac-Moody algebras are Lie algebras, whose definition is motivated by the
+structure of finite-dimensional simple Lie algebras over $\mathbb{C}$.
+
+Let $\mathfrak{g}$ be a finite-dimensional semisimple Lie algebra over
+$\mathbb{C}$. Then $\mathfrak{g}$ has a {\it Cartan subalgebra} 
+$\mathfrak{h}\subset \mathfrak{g}$ (abelian + …). 
+Fixing $\mathfrak{h}\subset\mathfrak{g}$ gives a 
+{\it root space decomposition} 
+$$
+\mathfrak{g}=\mathfrak{h}\oplus \bigoplus_{\alpha \in \Delta}\mathfrak{g}_\alpha
+$$
+where $\Delta \subset \mathfrak{h}^*$ linear dual, and, by definition
+$$
+\mathfrak{g}_\alpha=\{X \in \mathfrak{g}|
+[H,X]=\alpha(H)X\; \forall H \in \mathfrak{h}\}
+$$
+Turns out the $\mathfrak{g}_\alpha$ are all 1-dimensional, 
+though this property is lost when we go to Kad-Moody algebras.
+$$
+[\mathfrak{g}_\alpha,\mathfrak{g}_\beta] \subset \mathfrak{g}_{\alpha+\beta}
+$$
+The Killing form  $\kappa:\mathfrak{g} \times \mathfrak{g} \to \mathbb{C}$,
+ $\kappa(x,y)=\text{Tr}_\mathfrak{g}\text{ad}(x)\text{ad}(y)$ is nondegenerate. 
+``This is kind of the definition of semisimple.'' 
+(Think of $\mathfrak{h}$ as $\mathfrak{g}_0$, btw.)
+
+$\kappa |_{\mathfrak{g}_\alpha \times \mathfrak{g}_\beta}\neq 0$ only when 
+$\beta=-\alpha$. $\kappa |_{\mathfrak{h}\times \mathfrak{h}}$ is non-degenerate. 
+ This gives a linear isomorphism 
+$\mathfrak{h} \xrightarrow{\nu} \mathfrak{h}$ via 
+$\nu(H)(H') = \kappa(H,H')$.
+
+\medskip\noindent
+So, $\mathfrak{h}^*$ comes with a non-degenerate bilinear form.
+
+The {\it reflection} $r_\alpha:\mathfrak{h}\to \mathfrak{h}^*$ in 
+$\alpha \in \mathfrak{h}^*$ (usually a root) is 
+$r_\alpha(\lambda)=\lambda- 2\frac{(\lambda,\alpha)}{(\alpha,\alpha)}
+\cdot \alpha.$
+
+``Classify root systems […] classify semisimple Lie algebras'' 
+It is a fact that $r_\alpha (\Delta)=\Delta$ for all $\alpha \in \Delta$, 
+which motivates the definition of {\it root system} and permits classification.
+
+\begin{example}
+\label{example-root-system-sl2}
+$\mathfrak{g}=\mathfrak{sl}_2$, $\mathfrak{h}=$ diagonal matrices
+$$
+\begin{pmatrix}
+1&&\\ 
+&-1&\\
+& & 0
+\end{pmatrix}
+\qquad 
+\begin{pmatrix}
+0&&\\ 
+&1&\\
+& & -1
+\end{pmatrix}
+$$
+is a basis of $\mathfrak{h}$. There are 6 roots vectors
+$$
+E_{12}=
+\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+$$
+$E_{23},E_{13}$, etc.
+\end{example}
+
+\begin{exercise}
+\label{exercise-basis-of-h}
+$[H_1,E_{12}]=2E_{12}$, $[H_2,E_{12}]=-E_{12}$, $\alpha_{12}=(2,-1)$.
+\end{exercise}
+
+[Drawing of roots]
+
+Notions of {\it positive roots} and {\it simple roots} 
+(set of $\text{rank}\mathfrak{g}g$ simple roots has $\ell$ elements,
+ where $\ell=\dim(\mathfrak{h}^*)$. 
+This will also fail for Kac-Moody algebras more generally). 
+Next write the Cartan matrix
+$$
+A=(a_{ij}),\qquad  a_{ij}=2\frac{)\alpha_i,\alpha_j)}{(\alpha_i,\alpha_j)}
+$$
+for $1\leq i,j \leq \ell$.
+
+\begin{example}
+\label{example-Cartan-matrix-sl3}
+$\mathfrak{sl}_3$. [Picture, hexagonal pattern]. 
+$(\alpha_1,\alpha_1)=(\alpha_2,\alpha_2)=2,(\alpha_1,\alpha_2)=-1$, so
+$$
+A=\begin{pmatrix}
+2&-1\\ 
+-1&2
+\end{pmatrix}
+$$
+\end{example}
+
+\begin{example}
+\label{example-Cartan-matrix-sl5}
+$\mathfrak{sl}_5$. [Picture, square pattern]. $|\alpha_2|=1$, $|\alpha_1|=2$,
+$(\alpha_1,\alpha_2)=-2$, so
+$$
+A=\begin{pmatrix}
+2&-1\\ 
+-2&2
+\end{pmatrix}
+$$
+\end{example}
+
+\begin{remark}
+\label{remark-}
+Since $\mathfrak{g}_\alpha$ is 1-dimensional, set
+$\mathfrak{g}_\alpha=\mathbb{C}E_\alpha$ and 
+$E_i=E_{\alpha_i}$, $i=1,2,\ldots,\ell$ (simple root vectors). 
+It turns out that 
+$$
+\text{ad}(E_i)^{1-a_{ij}}E_j=0.
+$$
+This is called a {\it Serre relation}.
+\end{remark}
+
+\section{Some infinite dimensional Lie algebras}
+\label{section-some-infinite-dimensional-Lie-algebras}
+Let $\mathfrak{g}$ be a finite-dimensional semisimple Lie algebra, and define
+the {\it loop algebra} 
+\begin{align*}
+L\mathfrak{g}&=\mathfrak{g}[t,t^{-1}],\text{ (with basis 
+$at^m|\substack{\text{$a \in $ a basis of $\mathfrak{g}$} \\ m \in \mathbb{Z}}$
+)}\\
+&=\mathfrak{g} \otimes _{\mathbb{C}}\mathbb{C}[t,t^{-1}]
+\end{align*}
+with the Lie bracket
+$$
+[at^m,bt^n]=[a,b]t^{m+n}.
+$$
+``This construction is absurdely general --- we don't need $\mathfrak{g}$ to be
+semisimple […]''
+
+\medskip\noindent
+Take $\mathfrak{g}=\mathfrak{sl}_2$. Recall that
+$$
+E=\begin{pmatrix}
+0&1\\ 
+0&0
+\end{pmatrix},\quad 
+H=\begin{pmatrix}
+1&0\\ 
+0&-1
+\end{pmatrix},\quad 
+F=\begin{pmatrix}
+0&0\\ 
+1&0
+\end{pmatrix}
+$$
+[Picture with $F,H,E,Ft,Ht,Et,Et^2$…]
+$E$ was a root vector, corresponding to the unique root in $\mathfrak{sl}_2$,
+call it $\alpha_1$. We seem to have a second simple root $\alpha_0$,
+ corresponding to $Ft$.
+
+This looks like it wants to have a Cartan matrix
+ $$
+A=\begin{pmatrix}
+2&-2\\ 
+-2&2
+\end{pmatrix}
+$$
+We will indeed recover (a variant of) $L\mathfrak{g}$ as a Lie algebra 
+``built from'' $A=\begin{pmatrix}
+2&-2\\ 
+-2&2
+\end{pmatrix}$,
+ a Kac-Moody algebra. 
+But note first, $\mathfrak{h}=\mathbb{C}H$ is too small.
+``Problem with $\alpha_0$ and $\alpha_1$ being linearly independent  …''
+
+We can consider $L\mathfrak{g}\oplus\mathbb{C}d$, and set 
+$[d,at^m]=mat^n$ 
+
+\begin{exercise}
+\label{exercise-this-defines-a-Lie-algebra}
+Check this defines a Lie algebra.
+\end{exercise}
+
+The Kac-Moody algebra turns out to be, not quite this, but slightly larger
+still.
+
+\medskip\noindent
+\begin{definition}
+\label{definition-}
+Given $\mathfrak{g}$ simple, with 
+$(\cdot,\cdot):\mathfrak{g} \times \mathfrak{g} \to \mathbb{C}$ 
+invariant bilinear form, there is a Lie algebra 
+$$
+\hat{\mathfrak{g}}=L\mathfrak{g} \oplus \mathbb{C}K,
+$$
+with $[K,\hat{\mathfrak{g}}]=0$, and 
+$[at^m,bt^n]=[a,b]t^{m+n}+m(a,b)\delta_{m_1}-nK$.
+$[K,\hat{g}]=0$, $K$: central.
+
+``For the construction to work it doesn't actually have to be nondegenerate.''
+
+This is called an {\it affine Lie algebra}. We also have
+$\tilde{\mathfrak{g}}=L\mathfrak{g} \oplus \mathbb{C}K \oplus \mathbb{C}d$, 
+{\it extended affine Lie algebra}, $[d,at^m]=m a t^m$ as before, and 
+$[K,d]=0$.
+\end{definition}
+
+The extended affine Lie algebra is an example of a Kac-Moody algebra.
+
+\section{Kac-Moody algebras}
+\label{section-Kac-Moody-algebras-again}
+
+Recall the notion of the free Lie algebra on a 
+vector space $V$ of generators 
+(or a set $X$, think of $V$ as a vector space with basis $X$):
+
+\begin{definition}
+\label{definition-free-Lie-algebra}
+The {\it free Lie algebra} on $V$ is characterized by the universal property
+$$
+\xymatrix{
+V\ar[rr]^f\ar[dr]^i&&\mathfrak{g}\\
+& F(V)\ar[ur]_{\exists !\tilde{f}}
+}
+$$
+That is, for all linear map $f:V \to \mathfrak{g}$ with $\mathfrak{g}$ Lie
+algebra, there exists a unique $\tilde{f}$ homomorphism of Lie algebras 
+$F(V)\to \mathfrak{g}$ such that $\tilde{f} \circ i=f$.
+$$
+\Hom_{\text{Lie}}(F(V),\mathfrak{g})=\Hom_{\text{Vec}}(V,\mathfrak{g})
+$$
+naturally
+\end{definition}
+
+That is, $F$ and the 
+forgetful functor $G:\underline{\text{Lie}}\to \underline{\text{Vec}}$
+are adjoint:
+$$
+\Hom_{\underline{\text{Lie}}}(F(V),\mathfrak{g})
+\xrightarrow{\simeq }
+\Hom_{\underline{\text{Vec}}}(V,G(\mathfrak{g}))
+$$
+
+\medskip\noindent
+{\bf A realisation of $F(V)$.} Let 
+$$
+T(V)=\mathbb{C} \oplus V \oplus V^{\otimes 2}\oplus V^{\otimes 3}\oplus\ldots
+$$
+be the tensor algebra of $V$. 
+
+Then inside $T(V)$ consider $F(V)$ the span of iterated commutators of elements
+of  $V$.
+
+\begin{proposition}
+\label{proposition-this-realises-the-free-Lie-algebra}
+This realises the free Lie algebra.
+\end{proposition}
+
+\begin{proof}
+In online notes.
+\end{proof}
+
+\medskip\noindent
+In the finite dimensional simple case, we had
+$$
+a_{ij}=\frac{2(\alpha_i,\alpha_j)}{(\alpha_i,\alpha_i},
+$$
+which we think also as $\alpha_i,\alpha_j \in \mathfrak{h}^*$, 
+and $\alpha_i^\vee=\frac{2}{(\alpha_i,\alpha_i)}\nu^{-1}(\alpha_i) 
+\in \mathfrak{h}.$
+
+Clearly, $\alpha_{ii}=2$ for all $i$. 
+$a_{ij}$ misht not equal $a_{ji}$, but certainly $a_{ij}=0 \iff a_{ji}=0$. 
+And $\forall  i \neq j$, $a_{ij} \leq 0$.
+
+\medskip\noindent
+{\bf One further property.} Set
+$$
+\varepsilon_i=\frac{2}{(\alpha_i,\alpha_i)},\quad \text{and}\quad 
+D=\substack{\text{diagonal matrix} \\ \text{with entries }\varepsilon_i}
+$$
+Then $A=DB$, where $B=((\alpha_i,\alpha_j))$ is symmetric. 
+If a matrix $A$ is equal to $(\text{diag})(\text{symm})$, we call it
+ {\it symmetrizable}.
+
+\begin{definition}
+\label{definition-generalized-Cartan-matrix}
+A {\it generalized Cartan matrix} is an integer matrix $A=(a_{ij})$ 
+which is
+\begin{itemize}
+\item symmetrizable,
+\item $a_{ii}=2$ for all $i$,
+\item $a_{ij}=0 \iff a_{ji}=0$,
+\item $a_{ij}\leq 0$ for $i \neq j$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+\label{definition-realisation}
+A {\it realisation} of a generalized Cartan matrix is a complex vector space
+ $\mathfrak{h}$, and two sets
+\begin{align*}
+\Pi^\vee&=\{\alpha_1^\vee, \alpha_2^\vee,\ldots,\alpha_n^\vee\},\quad
+\text{and},\\
+\Pi&=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}
+\end{align*}
+such that $\left<\alpha_i^\vee,\alpha_j\right>=a_{ij}$, $1\leq i,j\leq n$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-realisation}
+$\dim(\mathfrak{h})\geq 2n-\text{rank}(A)$.
+\end{exercise}
+
+\begin{proof}
+For $A=\begin{pmatrix}
+2&-2\\ 
+-2&2
+\end{pmatrix}$, a realisation is given by
+$$
+\Pi^\vee=\{H_1,H_0\},\qquad \Pi=\{\alpha_0,\alpha_1\}
+$$
+\begin{align*}
+\mathfrak{h}&=\mathbb{C}H,\mathbb{C}d,\mathbb{C}K,\\
+\mathfrak{h}^*&=\mathbb{C}\alpha_1+\mathbb{C}\delta+\mathbb{C}\Lambda_0
+\end{align*}
+(Canonical dual, $\left<\alpha_1,H\right>=2$, 
+$\left<\delta,d\right>=1=\left<\Lambda_0,K\right>$, every other pairing $0$.)
+
+Then
+$$
+\begin{cases}
+\alpha_1=\alpha_1\\
+\alpha_0=\delta-\alpha_1
+\end{cases}\qquad 
+\begin{cases}
+\alpha_1^\vee=H \\
+\alpha_0^\vee = K-H
+\end{cases}
+$$
+So we obtain
+\begin{align*}
+\left<\alpha_0^\vee,\alpha_1\right>&=\left<K-H,\alpha_1\right>=2\\
+\left<\alpha_1^\vee,\alpha_0\right>&=\left<H,\delta-\alpha_1\right>=-2\\
+\left<\alpha_0^\vee,\alpha_0\right>&=\left<K-H,\delta-\alpha_1\right>=+2
+\end{align*}
+
+\end{proof}
+
+\medskip\noindent
+Finally let's define Kac-Moody algebras.
+
+Let $A$ be a generalized Cartan matrix. Let 
+$$
+\tilde{\mathfrak{n}}_+=F(e_1,\ldots,e_n),
+$$ 
+free Lie algebra on $n$ generators, and similarly
+$$
+\tilde{\mathfrak{n}}_-=F(f_1,\ldots,f_n)
+$$
+Let $\mathfrak{h}$ be a realisation of $A$. 
+Set $\tilde{\mathfrak{g}}(A)
+=\tilde{\mathfrak{n}}_- \oplus \mathfrak{h} \oplus \tilde{\mathfrak{n}}_+$.
+
+Make $\tilde{\mathfrak{g}}(A)$ a Lie algebra by defining
+\begin{itemize}
+\item $[\mathfrak{h},\mathfrak{h}]=0$,
+\item $\forall  H \in \mathfrak{h}$, $[H,e_i]=\left<\alpha_i,H\right>e_i
+=\alpha_i(H)e_i$. And similarly, $[H,f_i]=-\alpha_i(H)f_i$.
+\item $[e_i,f_j]=\delta_{ij}\alpha_i^\vee$.
+\end{itemize}
+Then $\tilde{\mathfrak{g}}(A)$ is a Lie algebra (though not yet the Kac-Moody
+algebra). See Kac, \cite[Thm 1.2]{IDLA}.
+
+\begin{remark}
+\label{remark-lattice}
+In $\mathfrak{h}$ we have a lattice
+\begin{align*}
+Q^\vee&=\mathbb{Z}\alpha_1^\vee+\ldots+\mathbb{Z}\alpha_n^\vee,\quad
+\text{and}\\
+Q&=\mathbb{Z}\alpha_1+\ldots+\mathbb{Z}\alpha_n\text{ in }\mathfrak{h}^*
+\end{align*}
+(root and coroot lattices). $\tilde{\mathfrak{g}}(A)$ is naturally $Q$-graded,
+with $\tilde{\mathfrak{g}}(A)_\beta=\text{span}\{
+\text{commutators of $e_i$ with $\sum \alpha_i=\beta$}\}$.
+$\tilde{g}(A)=\mathfrak{h}$.
+
+\begin{theorem}[Gabber-Kac]
+\label{theorem-Gabber-Kac}
+Denote by $I \subset \tilde{\mathfrak{g}}(A)$ the maximal $Q$-graded ideal, such
+that $I \cap\mathfrak{h}=\{0\}$. 
+Then $I$ is generated by the Serre relations 
+$$
+\text{ad}(e_i)^{1-a_{ij}}e_j\qquad \text{and}\qquad 
+\text{ad}(f_i)^{1-a_{ij}}f_j,\; i\neq j.
+$$
+\end{theorem}
+
+\begin{proof}
+\cite[Theorem 9.11]{IDLA}.
+\end{proof}
+
+\begin{definition}
+\label{definition-Kac-Moody-algebra}
+The {\it Kac-Moody algebra} $\mathfrak{g}(A)$ is $\tilde{\mathfrak{g}}(A)/I$.
+\end{definition}
+
+\end{remark}
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
