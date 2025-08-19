@@ -13,17 +13,18 @@
 
 \tableofcontents
 
-\section{Kac-Moody algebras}
-\label{section-Kac-Moody-algebras}
+\section{Cartan subalgebra, Cartan matrix and Serre relations}
+\label{section-Cartan-subalgebra}
 
 Kac-Moody algebras are Lie algebras, whose definition is motivated by the
 structure of finite-dimensional simple Lie algebras over $\mathbb{C}$.
 
 Let $\mathfrak{g}$ be a finite-dimensional semisimple Lie algebra over
 $\mathbb{C}$. Then $\mathfrak{g}$ has a {\it Cartan subalgebra} 
-$\mathfrak{h}\subset \mathfrak{g}$ (abelian + …). 
+$\mathfrak{h}\subset \mathfrak{g}$ (abelian + …) 
+(see \cite[Definition 8.2]{KLAL}). 
 Fixing $\mathfrak{h}\subset\mathfrak{g}$ gives a 
-{\it root space decomposition} 
+{\it root space decomposition} (see \cite[Proposition 8.5]{KLAL})
 $$
 \mathfrak{g}=\mathfrak{h}\oplus \bigoplus_{\alpha \in \Delta}\mathfrak{g}_\alpha
 $$
@@ -33,7 +34,7 @@ $$
 [H,X]=\alpha(H)X\; \forall H \in \mathfrak{h}\}
 $$
 Turns out the $\mathfrak{g}_\alpha$ are all 1-dimensional, 
-though this property is lost when we go to Kad-Moody algebras.
+though this property is lost when we go to Kac-Moody algebras.
 $$
 [\mathfrak{g}_\alpha,\mathfrak{g}_\beta] \subset \mathfrak{g}_{\alpha+\beta}
 $$
@@ -58,7 +59,10 @@ $r_\alpha(\lambda)=\lambda- 2\frac{(\lambda,\alpha)}{(\alpha,\alpha)}
 
 ``Classify root systems […] classify semisimple Lie algebras'' 
 It is a fact that $r_\alpha (\Delta)=\Delta$ for all $\alpha \in \Delta$, 
-which motivates the definition of {\it root system} and permits classification.
+which motivates the definition of {\it root system} 
+(see \cite[Definition 15.1]{KLAL}) 
+and permits classification. (See \cite[Lecture 17]{KLAL} for comments on
+correspondence of root systems and semisimple Lie algebras.)
 
 \begin{example}
 \label{example-root-system-sl2}
@@ -96,12 +100,12 @@ $[H_1,E_{12}]=2E_{12}$, $[H_2,E_{12}]=-E_{12}$, $\alpha_{12}=(2,-1)$.
 [Drawing of roots]
 
 Notions of {\it positive roots} and {\it simple roots} 
-(set of $\text{rank}\mathfrak{g}g$ simple roots has $\ell$ elements,
- where $\ell=\dim(\mathfrak{h}^*)$. 
+(set of $\text{rank}\mathfrak{g}$ simple roots has $\ell$ elements,
+ where $\ell=\dim(\mathfrak{h}^*)$.  (See \cite[Definition 17.1]{KLAL}.)
 This will also fail for Kac-Moody algebras more generally). 
-Next write the Cartan matrix
+Next write the {\it Cartan matrix} (see \cite[Definition 17.2]{KLAL})
 $$
-A=(a_{ij}),\qquad  a_{ij}=2\frac{)\alpha_i,\alpha_j)}{(\alpha_i,\alpha_j)}
+A=(a_{ij}),\qquad  a_{ij}=2\frac{(\alpha_i,\alpha_j)}{(\alpha_i,\alpha_i)}
 $$
 for $1\leq i,j \leq \ell$.
 
@@ -241,17 +245,17 @@ vector space $V$ of generators
 The {\it free Lie algebra} on $V$ is characterized by the universal property
 $$
 \xymatrix{
-V\ar[rr]^f\ar[dr]^i&&\mathfrak{g}\\
+V\ar[rr]^f\ar[dr]_i&&\mathfrak{g}\\
 & F(V)\ar[ur]_{\exists !\tilde{f}}
 }
 $$
-That is, for all linear map $f:V \to \mathfrak{g}$ with $\mathfrak{g}$ Lie
+That is, for any linear map $f:V \to \mathfrak{g}$ with $\mathfrak{g}$ Lie
 algebra, there exists a unique $\tilde{f}$ homomorphism of Lie algebras 
 $F(V)\to \mathfrak{g}$ such that $\tilde{f} \circ i=f$.
 $$
 \Hom_{\text{Lie}}(F(V),\mathfrak{g})=\Hom_{\text{Vec}}(V,\mathfrak{g})
 $$
-naturally
+naturally.
 \end{definition}
 
 That is, $F$ and the 
@@ -285,7 +289,7 @@ In online notes.
 \medskip\noindent
 In the finite dimensional simple case, we had
 $$
-a_{ij}=\frac{2(\alpha_i,\alpha_j)}{(\alpha_i,\alpha_i},
+a_{ij}=\frac{2(\alpha_i,\alpha_j)}{(\alpha_i,\alpha_i)},
 $$
 which we think also as $\alpha_i,\alpha_j \in \mathfrak{h}^*$, 
 and $\alpha_i^\vee=\frac{2}{(\alpha_i,\alpha_i)}\nu^{-1}(\alpha_i) 
@@ -376,9 +380,9 @@ Let $A$ be a generalized Cartan matrix. Let
 $$
 \tilde{\mathfrak{n}}_+=F(e_1,\ldots,e_n),
 $$ 
-free Lie algebra on $n$ generators, and similarly
+the free Lie algebra on $n$ generators, and similarly
 $$
-\tilde{\mathfrak{n}}_-=F(f_1,\ldots,f_n)
+\tilde{\mathfrak{n}}_-=F(f_1,\ldots,f_n).
 $$
 Let $\mathfrak{h}$ be a realisation of $A$. 
 Set $\tilde{\mathfrak{g}}(A)
@@ -392,7 +396,7 @@ Make $\tilde{\mathfrak{g}}(A)$ a Lie algebra by defining
 \item $[e_i,f_j]=\delta_{ij}\alpha_i^\vee$.
 \end{itemize}
 Then $\tilde{\mathfrak{g}}(A)$ is a Lie algebra (though not yet the Kac-Moody
-algebra). See Kac, \cite[Thm 1.2]{IDLA}.
+algebra). See Kac, \cite[Thorem 1.2]{IDLA}.
 
 \begin{remark}
 \label{remark-lattice}
@@ -403,8 +407,11 @@ Q^\vee&=\mathbb{Z}\alpha_1^\vee+\ldots+\mathbb{Z}\alpha_n^\vee,\quad
 Q&=\mathbb{Z}\alpha_1+\ldots+\mathbb{Z}\alpha_n\text{ in }\mathfrak{h}^*
 \end{align*}
 (root and coroot lattices). $\tilde{\mathfrak{g}}(A)$ is naturally $Q$-graded,
-with $\tilde{\mathfrak{g}}(A)_\beta=\text{span}\{
-\text{commutators of $e_i$ with $\sum \alpha_i=\beta$}\}$.
+with 
+$$
+\tilde{\mathfrak{g}}(A)_\beta=\text{span}\{
+\text{commutators of $e_i$ with $\sum \alpha_i=\beta$}\}.
+$$
 $\tilde{g}(A)=\mathfrak{h}$.
 
 \begin{theorem}[Gabber-Kac]
@@ -421,6 +428,10 @@ $$
 \begin{proof}
 \cite[Theorem 9.11]{IDLA}.
 \end{proof}
+
+(The existence of the ideal $I$ does not need the theorem; 
+it's importance is providing an
+expression for the generators.)
 
 \begin{definition}
 \label{definition-Kac-Moody-algebra}
