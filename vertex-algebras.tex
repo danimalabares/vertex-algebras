@@ -440,6 +440,304 @@ The {\it Kac-Moody algebra} $\mathfrak{g}(A)$ is $\tilde{\mathfrak{g}}(A)/I$.
 
 \end{remark}
 
+\section{Affine Kac-Moody algebras}
+\label{section-affine-Kac-Moody-algebras}
+
+Let $\mathfrak{g}$ be a finite-dimensional simple Lie algebra, 
+with $(\cdot,\cdot):\mathfrak{g} \times \mathfrak{g} \to \mathbb{C}$ 
+invariant bilinear form,
+$$
+([x,y],z)=(z,[y,z])\qquad \forall x,y,z \in \mathfrak{g}
+$$
+(Eg. the Killing form  
+$\kappa(x,y)=\text{Tr}_\mathfrak{g}\text{ad}(x)\text{ad}(y)$ is invariant.)
+
+Typically we normalise $(\cdot,\cdot)$ so that $(\alpha,\alpha)=2$ for the long
+roots of $\mathfrak{g}$.
+
+Then $\hat{\mathfrak{g}}=\mathfrak{g}[t,t^{-1}]\oplus\mathbb{C}K$ 
+(affine Lie algebra),
+$$
+[at^m,bt^n]=[a,b]t^{m+n}+m\delta_{m,-n}(a,b)K,\qquad [K,\hat{\mathfrak{g}}]=0
+$$
+and $\tilde{\mathfrak{g}}=\hat{\mathfrak{g}}\oplus\mathbb{C}d$, 
+$[d,K]=0$,  $[d,at^m]=mat^m$, 
+(affine Kac-Moody algebra or ``extended affine Lie algebra'')
+
+\begin{theorem}
+\label{theorem-gtilde-is-a-Kac-Moody-algebra}
+$\tilde{\mathfrak{g}}$ is a Kac-Moody algebra.
+\end{theorem}
+
+Let $\mathfrak{g}=\mathfrak{h}\oplus \bigoplus_{\alpha \in
+\Delta}\mathfrak{g}_\alpha$, ($\mathfrak{g}_\alpha=\mathbb{C}E_\alpha$.)
+
+{\bf The simple roots and coroots.}
+$\tilde{\mathfrak{h}}=\mathfrak{h}\oplus\mathbb{C}K\oplus\mathbb{C}d$. 
+We identify $\tilde{\mathfrak{h}}^*$ with 
+ $\mathfrak{h}^*\oplus\mathbb{C}\Lambda_0\oplus\mathbb{C}\delta$ where
+\begin{align*}
+\Lambda_0(\mathfrak{h})&=\delta(\mathfrak{h})=0\\
+\Lambda_0(d)&=\delta(K)=0\\
+\Lambda_0(K)&=\delta(d)=1
+\end{align*}
+The {\it real coroots} are
+$$
+\hat{\Delta}^{V,re}=\{E_\alpha t^m|\alpha \in \Delta, m \in \mathbb{Z}\}
+$$
+and there are also imaginary roots and coroots
+$$
+\hat{\Delta}^{V,im}=\{Ht^m|H \in \mathfrak{h}, m \in \mathbb{Z}\setminus\{0\}\}
+$$
+Roots:
+\begin{align*}
+\hat{\Delta}^{re}&=\{\alpha+m\delta|\alpha \in \Delta, m \in \mathbb{Z}\}\\
+\hat{\Delta}^{im}&=\{m\delta|m \neq 0\}
+\end{align*}
+$Xt^m$:
+\begin{align*}
+[H,Xt^m]&=[H,x]t^m,\qquad H \in \mathfrak{h}\\
+[K,xt^m]&=0\\
+[d,xt^m]&=m x t^m
+\end{align*}
+so it $x \in \mathfrak{g}_\alpha$, $x t^m \in 
+\tilde{\mathfrak{g}}_{\alpha+m\delta}$.
+
+\medskip\noindent
+The invariant bilinear form $(\cdot,\cdot)$ from $\mathfrak{g} \times
+\mathfrak{g}$ extends uniquely to
+$(\cdot,\cdot):\tilde{\mathfrak{g}}\times\tilde{\mathfrak{g}}\to \mathbb{C}$.
+
+$(d,d)=(K,K)=0$, $(d,K)=1$ and $(d,\mathfrak{h})=(K,\mathfrak{h})=0$.
+
+\medskip\noindent
+So, in $\tilde{\mathfrak{h}}^*$:
+\begin{align*}
+(\Lambda_0,\Lambda_0)&=(\delta,\delta)=0\\
+(\Lambda_0,\mathfrak{h}^*)&=(\delta,\mathfrak{h}^*)=0\\
+(\Lambda_0,\delta)&=1.
+\end{align*}
+Hence, $|\alpha+m \delta|^2=|\alpha|^2$, $|m \delta|^2=0$.
+
+\begin{example}
+\label{example-sl2hat}
+$\widetilde{\mathfrak{sl}_2}, \tilde{\mathfrak{h}}^*
+=\text{span}\{\alpha,\Lambda_0,\delta\}$ with Gram matrix …
+\end{example}
+
+We can make a choice of positive roots,
+$$
+\hat{\Delta}_+=\{\alpha+m \delta |\alpha \in \Delta, m>0\}
+\cup \{m \delta|m>0\} \cup \Delta_+
+$$
+Obviously, if $\alpha \in \Delta_+$ is simple, 
+$\alpha \in \hat{\Delta}_+$ is simple.
+
+\medskip\noindent
+{\bf Notation.} Let $\theta \in \Delta_+$ be a the highest root. ($\not \exists
+\alpha \in \Delta_+$ such that $\alpha-\theta \in \mathbb{Z}_+ \Delta_+$.) and
+ $\alpha=\delta-\theta$.
+
+Then $\alpha_0 \in \hat{\Delta}_+$ is simple and the set of simple roots is
+$\hat{\Pi}=\{\alpha_0,\underbrace{\alpha_1,\ldots,\alpha_\ell}_{\text{
+the finite simple roots}}\}.$
+where $\ell=\text{rank}(\mathfrak{g})$.
+
+The coroot corresponding to $\alpha_0$ is 
+$$
+\alpha^\vee_0=K-\theta^\vee, \qquad
+\theta^\vee=\frac{2}{(\theta,\theta)}\nu^{-1}(\theta) \in \mathfrak{h} 
+$$
+$$
+\text{ and }\qquad E_{\alpha_0}=E_{-\theta}t.
+$$
+
+\medskip\noindent
+Now, in any Kac-Moody algebra, we have
+\begin{align*}
+\text{roots }\Pi&=\{\alpha_1,\ldots,\alpha_\ell\}\subset\mathfrak{h}^* \\
+\text{coroots} \Pi^\vee&=\{\alpha_1^\vee,\ldots,\alpha_\ell^\vee\}\subset
+\mathfrak{h},
+\end{align*}
+and {\it reflections}
+$$
+r_i \in \text{GL}(\mathfrak{h}^*),
+$$
+defined by $r_i(\lambda)=\lambda-\left<\lambda,\alpha_i^\vee\right>\alpha_i$.
+
+One can check that
+$$
+(r_i\lambda,r_i\mu)=(\lambda,\mu)\qquad \forall \lambda,\mu \in \mathfrak{h}^*
+$$
+The {\it Weyl group} $W$ is $\left<r_i|i=1,\ldots,\ell\right>\subset 
+\text{GL}(\mathfrak{h}^*)$.
+
+\begin{example}
+\label{example-Weyl-group-sl2tilde}
+For $\tilde{\mathfrak{sl}_2}$, $r_1$ is easy,
+\begin{align*}
+r_1(\alpha)&=-\alpha \qquad \text{(as in $\mathfrak{sl}_2$)}\\
+r_1(\delta)&=\delta,\qquad r_1(\Lambda_0)=\Lambda_0.
+\end{align*}
+To compute $r_0$ take an arbitrary element $m \alpha_1+k\Lambda_0+f\delta$ and
+do:
+\begin{align*}
+r_0(m \alpha_1+k\Lambda_0+f\delta)&=m\alpha_1+k\Lambda_0+f\delta
+-\left<\alpha_0^\vee,m\alpha_1+k\Lambda_0+f\delta\right>\alpha_0\\
+\alpha_0=\delta-\alpha_1,\qquad & \alpha_0^\vee=K-\alpha^\vee
+\end{align*}
+so we obtain
+$$
+=m\alpha_1+k\Lambda_0+f\delta-(k-2m)(\delta-\alpha_1)
+$$
+$$
+(k-m)\alpha_1+k\Lambda_0+(f-k+2m)\delta.
+$$
+Relative to basis $\{\alpha_1,\Lambda_0,\delta\}$.
+$$
+r_1=\begin{pmatrix}
+-1&0&0\\
+0&1&0\\
+0&0&1
+\end{pmatrix},
+r_0=\begin{pmatrix}
+-1&1&0\\
+0&1&0\\
+2&-1&1
+\end{pmatrix}
+\begin{pmatrix}
+m\\
+k\\
+f
+\end{pmatrix}
+$$
+$$
+t=r_1r_0=\begin{pmatrix}
+1&-1&0\\
+0&1&0\\
+2&-1&1
+\end{pmatrix}
+$$
+Notice that $\delta$ is fixed by all $r_i$. Also 
+$m \alpha+k \Lambda_0 +f\delta$, the {\bf coefficient} of $\Lambda_0$ is fixed
+by all $r_i$.
+
+Then
+\begin{align*}
+t(m\alpha_1+&k\Lambda_0+f\delta)=\\
+&=(m-k)\alpha_1+k\Lambda_0+(f-k+2m)\delta
+\end{align*}
+Think of $t$ as a translation.
+
+The number $k$ in 
+ $$
+\mathfrak{h}^* \ni \hat{\lambda}=\lambda+k\Lambda_0+f\delta
+$$
+is called the {\it level} of $\hat{\lambda}$.
+
+$\hat{\mathfrak{h}}=$ union of (hyper)planes of constant level which are stable
+under $W$. The roots $\alpha$ are all of level $0$.
+
+[Picture] 
+``$r_1$ changes the sign of the finite path''. And $t=r_1r_0$ is a sort of
+translation. Indeed, in general we can consider 
+$t_{\alpha_i}=r_{\alpha_i}\circ r_0 \in W$,
+
+$$
+t_\alpha(\beta+m\delta)=\beta+(m+(\beta,\alpha_i))\delta
+$$
+\end{example}
+One can describe the action of $t_\alpha$ on $\hat{\lambda}$ in general 
+(e.g. see \cite[Chapter 6]{IDLA})
+
+\begin{proposition}
+\label{proposition-Weyl-group-of-affine-Kac-Moody-algebra}
+For the affine Kac-Moody algebra $\hat{\mathfrak{g}}$
+ with $\hat{W}=\left<r_0,r_1,\ldots,r_\ell\right>$ its Weyl group 
+(and $W=\left<r_1,\ldots,r_\ell\right>\subset \hat{W}$ the Weyl group of
+$\mathfrak{g}$), then $\hat{W} \simeq W\times t_{Q^\vee}$ (where it should be
+semidirect product instead of $\times$…) where $Q^\vee$ is the
+coroot lattice of $\mathfrak{g}$.
+\end{proposition}
+
+\begin{remark}
+\label{remark-Weyl-groups-are-large-for-other-Kac-Moody-algebras}
+For general Kac-Moody algebras, the Weyl groups are much larger, hyperbolic
+reflection groups.
+\end{remark}
+
+In the affine case, $\hat{W}$ fixes level $k$, and $|\hat{\lambda}|$. One gets,
+in the intersection, paraboloids [Picture of section of hyperboloid that is a
+parabola].
+
+\section{Weyl character formula}
+\label{section-Weyl-character-formula}
+Highest weight representations of Kac-Moody algebras. 
+Let $\lambda \in \mathfrak{h}^*$, wheere
+$\mathfrak{g}(A)=\mathfrak{n}_-\oplus\mathfrak{h}\oplus \mathfrak{n}_+$ 
+is a Kac-Moody algebra. We define a {\it Verma module} 
+$$
+M(\Lambda)
+=U(\mathfrak{g}) \otimes_{U(\mathfrak{h}+\mathfrak{n}_+}\mathbb{C}v_\Lambda
+$$
+where $\mathfrak{h}+\mathfrak{n}_+$ acts on $V_\Lambda$ by:
+\begin{align*}
+Xv_\Lambda&=0,\qquad \forall x \in \mathfrak{n}_+,
+Hv_\Lambda&=\Lambda(H)v_\Lambda,\qquad \forall H \in \mathfrak{h}
+\end{align*}
+So $\mathbb{C} v_\Lambda$ is a $U(\mathfrak{h}+\mathfrak{n}_+)$-module,
+$$
+\xymatrix{
+U(\mathfrak{h}+\mathfrak{n}_+)\\ar[d]\\
+U(\mathfrak{g})
+}
+$$
+By the PBW theorem, $M(\Lambda)$ has a linear $\mathbb{C}$-basis.
+
+Let $\{F_{\alpha,i}:i = 1,\ldots, \dim \mathfrak{g}_\alpha\}$ be a basis of
+$\mathfrak{g}_{-\alpha}$, $\forall \alpha \in \Delta_+$. 
+Also choose a total order on $\Delta_+$. (Some sort of lexicographical order
+that takes longer to write than to say.)
+$$
+F_{\alpha_1,i_1},F_{\alpha_2,i_2},\ldots,F_{\alpha_s,i_s},v_\Lambda
+$$
+$$
+\alpha_1\leq \alpha_2\leq \ldots \leq \alpha_2\text{ and if }
+\alpha_p=\alpha_{p+1}, i_p \leq  i_{p+1}
+$$
+We have $M(\Lambda)_\lambda=\{m|Hm=\lambda(H)m\}$ weight spaces.
+$$
+M(\Lambda)=\bigoplus_{\lambda \in \mathfrak{h}^*}M(\Lambda)_\lambda
+$$
+The vector $v_{\Lambda}$ is in $M(\Lambda)_\Lambda$ by definition,
+\begin{align*}
+F_{\alpha,i}V_\Lambda &\in M(\Lambda)_{\Lambda-\alpha}\\
+H(Fv_\Lambda)&=\underbrace{[H,F]v_\Lambda+}_{=-\alpha(H)Fv_\Lambda}
+\underbrace{FHv_\Lambda}_{=\Lambda(H)FV_\Lambda}
+\end{align*}
+So $\chi_{M(\Lambda)}=\sum_{\lambda \in \mathfrak{h}^*}\dim M(\Lambda)_\lambda
+e^{\lambda}$
+is computed by counting monomials $y$ with fixed $\sum_{i}\alpha_i$.
+
+$$
+\chi_{M(\Lambda)}=e^{\Lambda}\prod_{\alpha \in \Delta_+}
+\frac{1}{(1-e^{-\alpha})^{\dim \mathfrak{g}_\alpha}}.
+$$
+\begin{exercise}
+\label{exercise-convince-yourself}
+Convince yourself of this.
+\end{exercise}
+
+For example, $\mathfrak{g}=\mathfrak{sl}_2$,
+\begin{align*}
+\chi_{M(\Lambda)}&=e^{\Lambda}+e^{\Lambda-\alpha}+e^{\Lambda-2\alpha}+\ldots\\
+&=e^{\Lambda}(1+e^{-\alpha}+e^{-2\alpha}+\ldots\\
+&=e^{\Lambda}\frac{1}{1-e^{-\alpha}}.
+\end{align*}
+
+Next week: the Weyl character formula.
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
