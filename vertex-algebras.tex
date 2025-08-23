@@ -199,42 +199,197 @@ We will indeed recover (a variant of) $L\mathfrak{g}$ as a Lie algebra
 But note first, $\mathfrak{h}=\mathbb{C}H$ is too small.
 ``Problem with $\alpha_0$ and $\alpha_1$ being linearly independent  …''
 
-We can consider $L\mathfrak{g}\oplus\mathbb{C}d$, and set 
-$[d,at^m]=mat^n$ 
-
 \begin{exercise}
-\label{exercise-this-defines-a-Lie-algebra}
-Check this defines a Lie algebra.
+\label{exercise-Lie-algebra-d}
+Consider $L\mathfrak{g}\oplus\mathbb{C}d$, and set 
+$[d,at^m]=mat^m$, $[d,d]=0$. Check this defines a Lie algebra.
 \end{exercise}
+
+\begin{proof}
+Skew-commutativity, i.e. for all $x \in L\mathfrak{g}\oplus\mathbb{C}d$,
+\begin{equation}
+\label{equation-skew-commutativity}
+[x,x]=0,
+\end{equation}
+is immediate from 
+skew commutativity in $L\mathfrak{g}$ and 
+the hypothesis that $[d,d]=0$.
+
+To confirm Jacobi identity, i.e. that for all 
+$x,y,z \in L\mathfrak{g}\oplus\mathbb{C}d$
+\begin{equation}
+\label{equation-Jacobi-algebra-d-identity}
+[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0,
+\end{equation}
+notice that since this is a cyclic sum on $x,y,z$ 
+we only need to consider three elements in
+$L\mathfrak{g} \oplus \mathbb{C}d$ up to cyclic permutation.
+The cases in which the three elements are either in $L\mathfrak{g}$ or in
+$\mathbb{C}d$ are obvious, so that there
+are only two interesting possibilities:
+\begin{align}
+x=d,\qquad y&=at^m,\qquad z=bt^n
+\label{equation-Jacobi-algebra-d-case-1}\\
+x=d,\qquad y&=d,\qquad z=at^n
+\label{equation-Jacobi-algebra-d-case-2}
+\end{align}
+Case \ref{equation-Jacobi-algebra-d-case-1} gives
+\begin{align*}
+& [d,[at^m,bt^n]]+[at^m,[bt^n,d]]+[bt^n,[d,at^m]]\\
+&=[d,[a,b]t^{m+n}]+[at^m,-nbt^n]+[bt^n,mat^m]\\
+&=(m+n)[a,b]t^{m+n}-n[a,b]t^{m+n}+m[b,a]t^{m+n}\\
+&=(m+n)[a,b]t^{m+n}-n[a,b]t^{m+n}-m[a,b]t^{m+n}\\
+&=(m+n)[a,b]t^{m+n}-(m+n)[a,b]t^{m+n}=0.
+\end{align*}
+Case \ref{equation-Jacobi-algebra-d-case-2} gives
+\begin{align*}
+&[d,[d,at^m]]+[d,[at^m,d]]+[at^m,[d,d]]\\
+&=[d,mat^m]+[d,-mat^m]=0.
+\end{align*}
+
+\end{proof}
 
 The Kac-Moody algebra turns out to be, not quite this, but slightly larger
 still.
 
-\medskip\noindent
+Recall that an {\it invariant bilinear form} $(\cdot,\cdot)$ on a Lie algebra
+$\mathfrak{g}$ is a bilinear form such that
+\begin{equation}
+\label{equation-invariant-bilinear-form}
+([a,b],c)=(a,[b,c])\qquad \forall a,b,c \in \mathfrak{g}.
+\end{equation}
+
 \begin{definition}
-\label{definition-}
+\label{definition-affine-Lie-algebra}
 Given $\mathfrak{g}$ simple, with 
 $(\cdot,\cdot):\mathfrak{g} \times \mathfrak{g} \to \mathbb{C}$ 
-invariant bilinear form, there is a Lie algebra 
+invariant bilinear form, the {\it affine Lie algebra} is 
 $$
 \hat{\mathfrak{g}}=L\mathfrak{g} \oplus \mathbb{C}K,
 $$
 with $[K,\hat{\mathfrak{g}}]=0$, and 
-$[at^m,bt^n]=[a,b]t^{m+n}+m(a,b)\delta_{m_1}-nK$.
-$[K,\hat{g}]=0$, $K$: central.
+$[at^m,bt^n]=[a,b]t^{m+n}+m(a,b)\delta_{m,-n}K$.
+\end{definition}
 
 ``For the construction to work it doesn't actually have to be nondegenerate.''
 
-This is called an {\it affine Lie algebra}. We also have
-$\tilde{\mathfrak{g}}=L\mathfrak{g} \oplus \mathbb{C}K \oplus \mathbb{C}d$, 
-{\it extended affine Lie algebra}, $[d,at^m]=m a t^m$ as before, and 
+\begin{exercise}
+\label{exercise-affine-Lie-algebra-is-Lie-algebra}
+Check that the affine Lie algebra $\hat{\mathfrak{g}}$ is a Lie algebra.
+\end{exercise}
+
+\begin{proof}
+(Skew-commutativity.) 
+Since $[K,\hat{\mathfrak{g}}]=0$ and $K \in \hat{\mathfrak{g}}$, 
+it is immediate that $[K,K]=0$. 
+For the case of an element in $L\mathfrak{g}$, we see that
+$[at^m,at^m]=0$ by skew-commutativity of the bracket in $\mathfrak{g}$ 
+and the Kronecker delta.
+ 
+(Jacobi identity.) As in Exercise \ref{exercise-Lie-algebra-d}, 
+any choice of $x,y,z$ involving $K$ is immediate by $[K,\hat{\mathfrak{g}}]=0$.
+Thus the only interesting case is
+for Jacobi identity consider the cases
+\begin{align*}
+& [at^m,[bt^n,ct^\ell]]+[bt^n,[ct^\ell,at^m]]+[ct^\ell,[at^m,bt^n]]\\
+&=[at^m,[b,c]t^{n+\ell}+n(b,c)\delta_{n,-\ell}K]\\
+&+[bt^n,[c,a]t^{\ell+m}+\ell(c,a)\delta_{\ell,-m}K]\\
+&+[ct^\ell,[a,b]t^{m+n}+m(a,b)\delta_{m,-n}K]\\
+&=[at^m,[b,c]t^{n+\ell}]+[at^m,n(b,c)\delta_{n,-\ell}K]\\
+&+[bt^n,[c,a]t^{\ell+m}]+[bt^n,\ell(c,a)\delta_{\ell,-m}K]\\
+&+[ct^\ell,[a,b]t^{m+n}]+[ct^\ell,m(a,b)\delta_{m,-n}K]\\
+&=[a,[b,c]]t^{m+(n+\ell)}+m(a,[b,c])\delta_{m,-(n+\ell)}K\\
+&+[b,[c,a]]t^{n+(\ell+m)}+n(b,[c,a])\delta_{n,-(\ell+m)}K\\
+&+[c,[a,b]]t^{\ell+(m+n)}+\ell(c,[a,b])\delta_{\ell,-(m+n)}K=0
+\end{align*}
+It is clear that we obtain a Jacobi equation on $\mathfrak{g}$. To see that the
+remaining terms vanish, notice that the condition on
+the Kronecker delta in its three appearances is the same,
+namely, $m+n+\ell=0$. In this case, we only need to check
+that $(a,[b,c])=(b,[c,a])=(c,[a,b])$ to conclude.
+This follows from the invariance of $(\cdot,\cdot)$
+(and using that invariance implies it is symmetric).
+\end{proof}
+
+We also have
+\begin{definition}
+\label{definition-extended-affine-Lie-algebra}
+The {\it extended affine Lie algebra} is 
+$$
+\tilde{\mathfrak{g}}=L\mathfrak{g} \oplus \mathbb{C}K \oplus \mathbb{C}d,
+$$ 
+with $[d,at^m]=m a t^m$ as before, and 
 $[K,d]=0$.
 \end{definition}
 
 The extended affine Lie algebra is an example of a Kac-Moody algebra.
 
+\begin{exercise}[For those who like geometry]
+\label{exercise-for-those-who-like-geometry}
+Let $R=\mathbb{C}[t,t^{-1}]$. 
+If $D \in \text{Der}(R)$, then
+$L\mathfrak{g} \oplus \mathbb{C}d$ is a Lie algebra with 
+$[d,a \otimes r]=a\otimes D(r)$. 
+Is $(\mathfrak{g}\otimes R)\oplus \text{Der}(R)$ a Lie algebra? (The Lie alegra
+$L\mathfrak{g} \oplus \mathbb{C}d$ from Exercise \ref{exercise-Lie-algebra-d} is
+a particular case, for $D=t\frac{d}{dt}$.)
+\end{exercise}
+
+\begin{proof}
+It is. Checking that $L\mathfrak{g} \oplus \mathbb{C}d$ is a Lie algebra with 
+$[d,a\otimes r]=a \otimes D(r)$ is similar to Exercise
+\ref{exercise-Lie-algebra-d}: skew-commutativity is immediate from
+skew-commutativity in each of the components, while 
+Jacobi identity is verified in two cases. For $x=y=d$ and $z=a \otimes r$ 
+we quickly obtain
+\begin{align*}
+&[x,[y,z]]+[y,[z,x]]+[z,[x,y]]\\
+&=[d,[d,a \otimes r]]+[d,[a \otimes r,d]]+[a \otimes r,[d,d]]\\
+&=[d,a \otimes D(r)]+[d,-a \otimes D(r)]\\
+&=a \otimes D(D(r))-a \otimes D(D(r))=0
+\end{align*}
+
+And for $x=d$, $y=a \otimes r$ and $z=b \otimes s$, we get
+\begin{equation}
+\label{equation-Jacobi-derivation}
+\begin{aligned}
+&[x,[y,z]]+[y,[z,x]]+[z,[x,y]]\\
+&=[d,[a\otimes r,b \otimes s]]+[a\otimes r,[b \otimes s,d]]
++[b \otimes s,[d,a\otimes r]]\\
+&=[d,[a,b]\otimes rs]+[a\otimes r,-b\otimes D(s)]
++[b\otimes s,a\otimes D(r)]\\
+&=[a,b]\otimes D(rs)-[a,b]\otimes rD(s)+[b,a]\otimes sD(r)=0.
+\end{aligned}
+\end{equation}
+
+\medskip\noindent
+To check that $(\mathfrak{g}\otimes R)\oplus\text{Der}(R)$ is a Lie algebra 
+first put the Lie bracket on $\text{Der}(R)$ as
+$[D,D_1]=DD_1-D_1D$. It is clear that this bracket is skew-commutative. 
+Jacobi identity reads
+\begin{align*}
+&[D,[D_1,D_2]]+[D_1,[D_2,D]]+[D_2,[D,D_1]]\\
+&=[D,D_1D_2-D_2D_1]+[D_1,D_2D-DD_2]+[D_2,DD_1-D_1D]\\
+&=D(D_1D_2-D_2D_1)-(D_1D_2-D_2D_1)D+D_1(D_2D-DD_2)\\
+&-(D_2D-DD_2)D_1+D_2(DD_1-D_1D)-(DD_1-D_1D)D_2\\
+&=DD_1D_2-DD_2D_1-D_1D_2D+D_2D_1D+D_1D_2D-D_1DD_2\\
+&-D_2DD_1+DD_2D_1+D_2DD_1-D_2D_1D-DD_1D_2+D_1DD_2=0.
+\end{align*}
+Now put the bracket on $(\mathfrak{g} \otimes  R)\oplus\text{Der}(R)$ as
+$[D,a \otimes  r]=a \otimes D(r)$. Skew-commutativity is immediate. 
+Jacobi identity for $x=D,y=a\otimes r$ and $z=b\otimes s$ is identical to the
+computation \ref{equation-Jacobi-derivation}. In the case
+$x=D$, $y=D_1$ and $z=a\otimes r$, we get
+\begin{align*}
+&[D,[D_1,a\otimes r]]+[D_1,[a\otimes r,D]]+[a\otimes r,[D,D_1]]\\
+&=[D,a\otimes D_1(r)]+[D_1,-a\otimes D(r)]+[a\otimes r,[D,D_1]]\\
+&=a\otimes DD_1(r)-a\otimes D_1D(r)+a\otimes [D,D_1](r)=0.
+\end{align*}
+
+\end{proof}
+
 \section{Kac-Moody algebras}
-\label{section-Kac-Moody-algebras-again}
+\label{section-Kac-Moody-algebras}
 
 Recall the notion of the free Lie algebra on a 
 vector space $V$ of generators 
@@ -430,7 +585,7 @@ $$
 \end{proof}
 
 (The existence of the ideal $I$ does not need the theorem; 
-it's importance is providing an
+the importance of the theorem is providing an
 expression for the generators.)
 
 \begin{definition}
@@ -555,15 +710,15 @@ $$
 \medskip\noindent
 Now, in any Kac-Moody algebra, we have
 \begin{align*}
-\text{roots }\Pi&=\{\alpha_1,\ldots,\alpha_\ell\}\subset\mathfrak{h}^* \\
-\text{coroots} \Pi^\vee&=\{\alpha_1^\vee,\ldots,\alpha_\ell^\vee\}\subset
+\text{roots }\qquad \Pi&=\{\alpha_1,\ldots,\alpha_\ell\}\subset\mathfrak{h}^* \\
+\text{coroots}\qquad  \Pi^\vee&=\{\alpha_1^\vee,\ldots,\alpha_\ell^\vee\}\subset
 \mathfrak{h},
 \end{align*}
-and {\it reflections}
+and {\it reflections} $r_i \in \text{GL}(\mathfrak{h}^*)$,
+defined by 
 $$
-r_i \in \text{GL}(\mathfrak{h}^*),
+r_i(\lambda)=\lambda-\left<\lambda,\alpha_i^\vee\right>\alpha_i.
 $$
-defined by $r_i(\lambda)=\lambda-\left<\lambda,\alpha_i^\vee\right>\alpha_i$.
 
 One can check that
 $$
@@ -574,7 +729,7 @@ The {\it Weyl group} $W$ is $\left<r_i|i=1,\ldots,\ell\right>\subset
 
 \begin{example}
 \label{example-Weyl-group-sl2tilde}
-For $\tilde{\mathfrak{sl}_2}$, $r_1$ is easy,
+For $\widetilde{\mathfrak{sl}_2}$, $r_1$ is easy,
 \begin{align*}
 r_1(\alpha)&=-\alpha \qquad \text{(as in $\mathfrak{sl}_2$)}\\
 r_1(\delta)&=\delta,\qquad r_1(\Lambda_0)=\Lambda_0.
@@ -688,7 +843,7 @@ Hv_\Lambda&=\Lambda(H)v_\Lambda,\qquad \forall H \in \mathfrak{h}
 So $\mathbb{C} v_\Lambda$ is a $U(\mathfrak{h}+\mathfrak{n}_+)$-module,
 $$
 \xymatrix{
-U(\mathfrak{h}+\mathfrak{n}_+)\\ar[d]\\
+U(\mathfrak{h}+\mathfrak{n}_+)\ar[d]\\
 U(\mathfrak{g})
 }
 $$
