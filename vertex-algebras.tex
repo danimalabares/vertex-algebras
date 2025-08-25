@@ -259,6 +259,24 @@ $\mathfrak{g}$ is a bilinear form such that
 ([a,b],c)=(a,[b,c])\qquad \forall a,b,c \in \mathfrak{g}.
 \end{equation}
 
+\begin{exercise}
+\label{exercise-invariant-bilinear-form-on-simple-Lie-algebra-is-symmetric}
+Prove that an invariant bilinear form on a simple Lie algebra must in fact be
+symmetric.
+\end{exercise}
+
+\begin{proof}
+It's enough to show that $\mathfrak{g}$ is
+{\it perfect}, i.e. that $[\mathfrak{g},\mathfrak{g}]=\mathfrak{g}$. In this
+case, let $a,b \in \mathfrak{g}$ and suppose that $b=[x,y]$. Then
+\begin{align*}
+(a,b)&=(a,[x,y])=(a,-[y,x])=(-[a,y],x)=([y,a],x)\\
+&=(y,[a,x])=(y,-[x,a])=(-[y,x],a)=([x,y],a)=(b,a)
+\end{align*}
+To confirm that $\mathfrak{g}$ is perfect just observe that
+$[\mathfrak{g},\mathfrak{g}]$ is a nontrivial ideal of $\mathfrak{g}$.
+\end{proof}
+
 \begin{definition}
 \label{definition-affine-Lie-algebra}
 Given $\mathfrak{g}$ simple, with 
@@ -308,7 +326,8 @@ the Kronecker delta in its three appearances is the same,
 namely, $m+n+\ell=0$. In this case, we only need to check
 that $(a,[b,c])=(b,[c,a])=(c,[a,b])$ to conclude.
 This follows from the invariance of $(\cdot,\cdot)$
-(and using that invariance implies it is symmetric).
+and the fact that $\mathfrak{g}$ simple using Exercise 
+\ref{exercise-invariant-bilinear-form-on-simple-Lie-algebra-is-symmetric}.
 \end{proof}
 
 We also have
@@ -336,7 +355,7 @@ a particular case, for $D=t\frac{d}{dt}$.)
 \end{exercise}
 
 \begin{proof}
-It is. Checking that $L\mathfrak{g} \oplus \mathbb{C}d$ is a Lie algebra with 
+Checking that $L\mathfrak{g} \oplus \mathbb{C}d$ is a Lie algebra with 
 $[d,a\otimes r]=a \otimes D(r)$ is similar to Exercise
 \ref{exercise-Lie-algebra-d}: skew-commutativity is immediate from
 skew-commutativity in each of the components, while 
@@ -345,8 +364,7 @@ we quickly obtain
 \begin{align*}
 &[x,[y,z]]+[y,[z,x]]+[z,[x,y]]\\
 &=[d,[d,a \otimes r]]+[d,[a \otimes r,d]]+[a \otimes r,[d,d]]\\
-&=[d,a \otimes D(r)]+[d,-a \otimes D(r)]\\
-&=a \otimes D(D(r))-a \otimes D(D(r))=0
+&=[d,a \otimes D(r)]+[d,-a \otimes D(r)]=0.
 \end{align*}
 
 And for $x=d$, $y=a \otimes r$ and $z=b \otimes s$, we get
@@ -363,7 +381,7 @@ And for $x=d$, $y=a \otimes r$ and $z=b \otimes s$, we get
 \end{equation}
 
 \medskip\noindent
-To check that $(\mathfrak{g}\otimes R)\oplus\text{Der}(R)$ is a Lie algebra 
+To check whether $(\mathfrak{g}\otimes R)\oplus\text{Der}(R)$ is a Lie algebra 
 first put the Lie bracket on $\text{Der}(R)$ as
 $[D,D_1]=DD_1-D_1D$. It is clear that this bracket is skew-commutative. 
 Jacobi identity reads
@@ -383,9 +401,8 @@ $x=D$, $y=D_1$ and $z=a\otimes r$, we get
 \begin{align*}
 &[D,[D_1,a\otimes r]]+[D_1,[a\otimes r,D]]+[a\otimes r,[D,D_1]]\\
 &=[D,a\otimes D_1(r)]+[D_1,-a\otimes D(r)]+[a\otimes r,[D,D_1]]\\
-&=a\otimes DD_1(r)-a\otimes D_1D(r)+a\otimes [D,D_1](r)=0.
+&=a\otimes DD_1(r)-a\otimes D_1D(r)-a\otimes [D,D_1](r)=0
 \end{align*}
-
 \end{proof}
 
 \section{Kac-Moody algebras}
@@ -451,7 +468,7 @@ and $\alpha_i^\vee=\frac{2}{(\alpha_i,\alpha_i)}\nu^{-1}(\alpha_i)
 \in \mathfrak{h}.$
 
 Clearly, $\alpha_{ii}=2$ for all $i$. 
-$a_{ij}$ misht not equal $a_{ji}$, but certainly $a_{ij}=0 \iff a_{ji}=0$. 
+$a_{ij}$ might not equal $a_{ji}$, but certainly $a_{ij}=0 \iff a_{ji}=0$. 
 And $\forall  i \neq j$, $a_{ij} \leq 0$.
 
 \medskip\noindent
@@ -694,8 +711,8 @@ $\alpha \in \hat{\Delta}_+$ is simple.
  $\alpha=\delta-\theta$.
 
 Then $\alpha_0 \in \hat{\Delta}_+$ is simple and the set of simple roots is
-$\hat{\Pi}=\{\alpha_0,\underbrace{\alpha_1,\ldots,\alpha_\ell}_{\text{
-the finite simple roots}}\}.$
+$\hat{\Pi}=\{\alpha_0,\underbrace{\alpha_1,\ldots,\alpha_\ell}
+_{\substack{\text{the finite} \\ \text{simple roots}}} \}.$
 where $\ell=\text{rank}(\mathfrak{g})$.
 
 The coroot corresponding to $\alpha_0$ is 
@@ -774,13 +791,12 @@ t=r_1r_0=\begin{pmatrix}
 \end{pmatrix}
 $$
 Notice that $\delta$ is fixed by all $r_i$. Also 
-$m \alpha+k \Lambda_0 +f\delta$, the {\bf coefficient} of $\Lambda_0$ is fixed
+$m \alpha+k \Lambda_0 +f\delta$, the {\it coefficient} of $\Lambda_0$ is fixed
 by all $r_i$.
 
 Then
 \begin{align*}
-t(m\alpha_1+&k\Lambda_0+f\delta)=\\
-&=(m-k)\alpha_1+k\Lambda_0+(f-k+2m)\delta
+t(m\alpha_1+&k\Lambda_0+f\delta)=(m-k)\alpha_1+k\Lambda_0+(f-k+2m)\delta.
 \end{align*}
 Think of $t$ as a translation.
 
@@ -828,7 +844,7 @@ parabola].
 \section{Weyl character formula}
 \label{section-Weyl-character-formula}
 Highest weight representations of Kac-Moody algebras. 
-Let $\lambda \in \mathfrak{h}^*$, wheere
+Let $\lambda \in \mathfrak{h}^*$, where
 $\mathfrak{g}(A)=\mathfrak{n}_-\oplus\mathfrak{h}\oplus \mathfrak{n}_+$ 
 is a Kac-Moody algebra. We define a {\it Verma module} 
 $$
@@ -867,31 +883,346 @@ $$
 The vector $v_{\Lambda}$ is in $M(\Lambda)_\Lambda$ by definition,
 \begin{align*}
 F_{\alpha,i}V_\Lambda &\in M(\Lambda)_{\Lambda-\alpha}\\
-H(Fv_\Lambda)&=\underbrace{[H,F]v_\Lambda+}_{=-\alpha(H)Fv_\Lambda}
-\underbrace{FHv_\Lambda}_{=\Lambda(H)FV_\Lambda}
+H(Fv_\Lambda)&=\underbrace{[H,F]v_\Lambda}_{=-\alpha(H)Fv_\Lambda}
++\underbrace{FHv_\Lambda}_{=\Lambda(H)FV_\Lambda}
 \end{align*}
 So $\chi_{M(\Lambda)}=\sum_{\lambda \in \mathfrak{h}^*}\dim M(\Lambda)_\lambda
 e^{\lambda}$
 is computed by counting monomials $y$ with fixed $\sum_{i}\alpha_i$.
 
-$$
+\begin{equation}
+\label{equation-character-of-Verma-module}
 \chi_{M(\Lambda)}=e^{\Lambda}\prod_{\alpha \in \Delta_+}
 \frac{1}{(1-e^{-\alpha})^{\dim \mathfrak{g}_\alpha}}.
-$$
+\end{equation}
+The product on Eq. \ref{equation-character-of-Verma-module} is called 
+{\it Weyl denominator}.
 \begin{exercise}
 \label{exercise-convince-yourself}
 Convince yourself of this.
 \end{exercise}
 
-For example, $\mathfrak{g}=\mathfrak{sl}_2$,
+\begin{example}
+\label{example-sl2-character}
+$\mathfrak{g}=\mathfrak{sl}_2$, [Picture]
 \begin{align*}
 \chi_{M(\Lambda)}&=e^{\Lambda}+e^{\Lambda-\alpha}+e^{\Lambda-2\alpha}+\ldots\\
 &=e^{\Lambda}(1+e^{-\alpha}+e^{-2\alpha}+\ldots\\
 &=e^{\Lambda}\frac{1}{1-e^{-\alpha}}.
 \end{align*}
+\end{example}
 
-Next week: the Weyl character formula.
+\medskip\noindent
+For certain $\Lambda$, $M(\Lambda)$ is {\it reducible} (i.e. there exists
+a submodule $0 \neq N \subseteq M(\Lambda)$ (with proper contention).
 
+\begin{lemma}
+\label{lemma-}
+For any submodule $N$,
+$$
+N=\bigoplus_{\mu \in \mathfrak{h}^*}N \cap M(\Lambda)_\mu.
+$$
+\end{lemma}
+
+{\bf Corollary.} The sum of all  \underline{proper} submodules 
+of  $M(\Lambda)$ is proper, in particular
+there is a maximal proper submodule.
+
+{\bf Notation.} $L(\Lambda)=M(\Lambda)\Big/\left(\substack{
+\text{max. proper} \\ \text{submodule}}\right)$
+
+\begin{example}
+\label{example-}
+$\mathfrak{sl}_2$. $\Lambda=3\omega$ ($\omega$: fundamental weight,
+$\alpha=2\omega$.) 
+$L(3\omega)=\mathbb{C}\left<e^{3\omega},e^{-\omega},e^{-3\omega}\right>$.
+
+[Picture]
+\end{example}
+
+\begin{definition}
+\label{definition-integrable-g-module}
+A $\mathfrak{g}$-module is {\it integrable} if
+\begin{itemize}
+\item $V=\bigoplus_{\mu \in \mathfrak{h}^*}V_\mu$ (weight module).
+\item For all simple roots $\alpha_i$; $e_i$ and $f_i$ are
+locally nilpotent on $V$ (i.e. for all $v \in V$
+there exists $N$ such that
+$e_i^Nv=f_i^Nv=0$.)
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+\label{remark-integrability}
+\begin{itemize}
+\item Vermas are not integrable.
+\item $\dim V< \infty \implies V$ integrable.
+\item $\mathfrak{g}$ itself (Kac-Moody) is integrable.
+\end{itemize}
+\end{remark}
+
+\medskip\noindent
+{\bf Dominant integrable weights.} 
+Let $\{\alpha_1^\vee,\ldots,\alpha_\ell^\vee\}\subset\mathfrak{h}$ be the simple
+coroots.
+
+\begin{definition}
+\label{definition-dominant-integral-weights}
+The {\it dominant integral weights} are the weights that pair with the coroots
+to give integers:
+$$
+P_+=\{\lambda \in \mathfrak{h}^* :
+\left<\lambda,\alpha_i^\vee\right>\in\mathbb{Z}_{\geq 0,1},
+i=1,\ldots,\ell\}.
+$$
+\end{definition}
+
+For $L(\Lambda)$ to be integrable, it is necessary that $\Lambda \in P_+$.
+
+Indeed, suppose $L(\Lambda)$ is integrable.
+Then $f_i^Nv_\Lambda=0$ in $L(\Lambda)$,
+or rather 
+$$
+\underbrace{e_if_i^{N+1}v_\Lambda}
+_{Kf_i^N=0} \in M(\Lambda),
+$$
+and $K$ can only be zero if $\left<\Lambda,\alpha_i^\vee\right>
+\in \mathbb{Z}_{\geq 0}$. Applying for all $i$, we find
+$\Lambda \in P_+$ is necessary.
+
+\begin{proposition}
+\label{proposition-integrable-iff-dominant-integral-weight}
+$L(\Lambda)$ is integrable if and only if $\Lambda \in P_+$.
+\end{proposition}
+
+\begin{proof}
+For the converse, use induction and Serre relations 
+(we know the result for the highest weight, and want
+to prove for others).
+\end{proof}
+
+\begin{example}
+\label{example-sl3-integrability}
+$\mathfrak{sl}_3$. [Picture]
+\end{example}
+
+\begin{example}
+\label{example-sl_2hat-integrability}
+$\widehat{\mathfrak{sl}_2}$. [Picture, $P_+$ looks like diagonal lines.]
+$$
+\alpha_0^\vee=K-H,\qquad \alpha_1^\vee=H\in\mathfrak{sl}_2,
+\qquad \left<\delta,\alpha_i^\vee\right>=0,\quad i=0,1
+$$
+\end{example}
+
+\begin{remark}
+\label{remark-Verma-for-affine-Kac-Moody-algebras-
+the-coefficient-of-K-is-super-important}
+For affine Kac-Moody algebras, almost nothing about the structure of 
+$M(\Lambda)$ depends on the coefficient of $\delta$ in $\Lambda$. 
+So it's common to consider
+$$
+M(\Lambda)=M_k(\lambda)=M(k\Lambda_0+\lambda),\qquad \lambda \in \mathfrak{h}^*
+$$
+where $k$, the level of $\Lambda$, is super important.
+\end{remark}
+
+Then
+$$
+\underbrace{\hat{P}_+}_{
+\substack{\delta\text{-coef.} \\ =0}}
+=\bigcup_{k \in \mathbb{Z}_{\geq 0}}
+\{k\Lambda_0+\lambda|\lambda \in P_+^k\}
+\{k\Lambda_0+\lambda|\lambda \in P_+^k\}.
+$$
+$$
+P_+^k=\{\lambda \in P_+|
+\left<\lambda,\theta\right>\leq k\}\subset P_+ \text{ for }\mathfrak{g}.
+$$
+
+\medskip\noindent
+Consider $V= \bigoplus_{\mu \in \mathfrak{h}^*}V_\mu$ integrable,
+and $V_\lambda \neq 0$.
+Let $i \in \{1,\ldots,\ell\}$.
+Consider $U=\bigoplus_{n \in \mathbb{Z}}V_{\lambda+n\alpha_i}\subset V$,
+and the action of $e_i,f_i$ and $h_i=[e_i,f_i]$.
+
+$\mathfrak{sl}_2\mathbb{y}U$, locally integrable. By structure of
+$\mathfrak{sl}_2$-represenations, $U$ must be finite-dimensional
+with ``symmetrical'' weight space multiplicities, i.e.,
+\begin{align*}
+\{\lambda+n\alpha_i|n\in\mathbb{Z}\}\cap \{\text{weights of }V\}
+&=\{\lambda+n\alpha_i|-p\leq n\leq q\}.
+\end{align*}
+and
+$$
+\left<\lambda-p\alpha_i,h_i\right>=-\left<\lambda+q\alpha_i,h_i\right>.
+$$
+\medskip\noindent
+Consequently, the reflection
+$r_i(\lambda):=\lambda-\left<\lambda,\alpha_i^\vee\right>\alpha_i$
+has the same multiplicity as $\lambda$.
+
+[Picture]
+
+Now consider $M(\lambda)$ and $L(\Lambda)$ for 
+$\Lambda \in P_+$.
+Actually, for general $\Lambda$, $M(\Lambda)$, while not
+necessarilly irreducible, has an
+($\Omega$-)composition series$^*$ by 
+irreducibles $L(\lambda)$.
+$$
+M(\Lambda)=V_0 \supset V_1 \supset V_2 \supset \ldots \supset V_n=0,
+$$
+such that $V_i/V_{i+1}$ is $\simeq L(\lambda_i)$ (i.e. an irreducible highest
+weight module) for some $\lambda_i=\Lambda-\beta_i$, $\beta_i \in Q$. For
+Kac-Moody algebras we also consider the case that $(V_i/V_{i+1})=0$ for all
+$\mu \in \Omega + Q_+$, (which is the $\Omega$-composition series).
+
+[Picture.]
+
+For an $\Omega$-composition series, as above, we have
+$$
+\text{ch}_{M(\Lambda)}-\sum_{\lambda \geq \Omega}
+\underbrace{[M(\Lambda):L(\lambda)]}
+_{\substack{\text{\# of times $L(\lambda)$} \\ \text{
+appears in the compos. series}}}
+\text{ch}_{L(\lambda)}
+\in \left<e^{\mu}:\mu \not \geq \Omega\right>
+$$
+Sending  ``$\Omega \to -\infty$'', the identity
+$$
+\text{ch}_{M(\Lambda)}=\sum_{\lambda \leq  \Lambda}
+[M(\Lambda):L(\lambda)]\text{ch}_{L(\lambda)}
+$$
+makes sense.
+
+{\bf Notation.} $b_{\Lambda,\lambda}=[M(\Lambda):L(\lambda)]$.
+
+\begin{remark}
+\label{remark-total-order-on-hstar}
+Recall the partial order on weights that $\lambda \leq \Lambda$ if 
+$\Lambda-\lambda \in Q= \sum \mathbb{Z}_+\alpha_i$.
+$b_{\Lambda,\lambda}=1$ if $\lambda = \Lambda$ and 
+$b_{\Lambda,\lambda}=0$ if not ($\lambda \leq  \Lambda$).
+
+If we choose a total order on $\mathfrak{h}^*$, compatible with $\leq$.
+Then $\{b_{\Lambda,\lambda}\}$ is a lower triangular matrix with 1 
+on the diagonal.
+We an define $\{m_{\Lambda,\lambda}\}$ the {\it inverse matrix}.
+It's again lower triangular, 1 on the diagonal, and all
+$m_{\Lambda,\lambda}$ are \underline{integers} (maybe negative now). 
+And we have
+\begin{equation}
+\label{equation-character}
+\text{ch}_{L(\Lambda)}=\sum_{\lambda \leq  \Lambda}m_{\Lambda,\lambda}
+\text{ch}_{M(\lambda)}.
+\end{equation}
+\end{remark}
+
+\begin{example}
+\label{example-sl2-characters}
+$\mathfrak{sl}_2$. $M(3)\underset{L(3)}{\supset}M(-5)
+\underset{L(-5)}{\supset}0$. Since $M(-5)$ is already irreducible.
+[Missing…]
+\end{example}
+
+We want to discover $m_{\Lambda,\lambda}$. 
+In general massively difficult.
+For $\Lambda \in P_+$, $m_{\Lambda,\lambda}$ easy.
+Multiply Eq. \ref{equation-character} by  $R$
+\begin{align*}
+R\text{ch}_{L(\Lambda)}&=\sum_{\lambda \geq  \Lambda} m_{\Lambda,\lambda}
+e^{\lambda}.
+e^{\rho}R\text{ch}_{L(\Lambda)}=\sum_{\lambda \leq  \Lambda}
+m_{\Lambda,\lambda}e^{\lambda+\rho}.
+\end{align*}
+What's $\rho$? It's $\rho \in \mathfrak{h}^*$ chosen so that
+$\left<\rho,\alpha_i^\vee\right>=1$, and it's called 
+the {\it Weyl vector}.
+
+\begin{remark}
+\label{remark-finite-dimension}
+For $\mathfrak{g}$ finite-dimensional, $\rho=\sum_{i=1}^\ell \omega_i$ 
+necessarily. (And equals $\frac{1}{2}\sum_{\alpha \in \Delta_+}\alpha$.
+
+For $\mathfrak{g}$ finite dimensional and the affine $\hat{\mathfrak{g}}$,
+$\hat{\rho}=h^\vee\Lambda_0+\rho$ works.
+\end{remark}
+
+For $w \in W=\left<r_i|i=1,\ldots,\ell\right>$,
+define $w(\text{ch}_V)=\sum \dim V_\mu e^{W(\mu)}$.
+We saw $w(\text{ch}_V)=\text{ch}_V$ if $V$ integrable.
+In particular $w(\text{ch}_{L(\Lambda)}=\text{ch}_{L(\Lambda)}$,
+$\Lambda \in P_+$.
+
+\begin{lemma}
+\label{lemma-for-Weyl-formula}
+$m_{\Lambda,\lambda}=0$ unless
+$\lambda+\rho=w(\Lambda+\rho)$ for some $w \in W$
+\end{lemma}
+
+\medskip\noindent
+{\bf Claim.} $r_i(e^{\rho} R)=-e^\rho R$. 
+So $w(e^\rho R)=\det(w)e^\rho R$ for all $w \in W$.
+
+\begin{proof}
+$$
+R=\prod_{\alpha \in \Delta_+}(1-e^{-\alpha})^{\text{mult}(\alpha)}.
+$$
+Note that
+\begin{enumerate}
+\item $\text{mult}(r_i(\alpha))=\text{mult}(\alpha)$ 
+for all $\alpha \in \Delta$. (Since $\mathfrak{g}$ is integrable!)
+\item $r_i(\Delta_+)=\{-\alpha_i\}\cup (\Delta_+\setminus\{\alpha_i\}$.
+\end{enumerate}
+Any $\alpha \in \Delta_+$ is of the form
+$\alpha = \sum_{i=1}^\ell k_i \alpha_i$.
+If $\alpha \neq \alpha_i$, some $k_{j_0}\neq 0$, $j_0 \neq  i$ and
+\begin{align*}
+r_i(\alpha)&=\sum_{j}k_j \alpha_j
+\left<\alpha,\alpha_i^\vee\right>\alpha_i\\
+&=\sum k_j' \alpha_j\\
+&=e^\rho(e^{-\alpha_i}-1)
+\left(\prod_{\alpha \in \Delta_+ \setminus \alpha_i}\right)\\
+&=-e^\rho R.
+\end{align*}
+for $k_{j_0}'=k_{j_0}>0$. Can't have a mixture of signs,
+so $r_i(\alpha) \in \Delta_{\perp}$.
+
+So
+\begin{align*}
+r_i(e^\rho R)&=\prod_{\alpha \in \Delta_+\setminus \alpha_i}
+(1-e^{-\alpha})^{\text{mult}(\alpha)}
+\cdot (1-e^{t \alpha_i}\cdot e^{\rho-\alpha_i}
+\end{align*}
+$$
+r_i=\rho-\left<\alpha_i^\vee,\rho\right>\alpha_i=\rho-\alpha_i
+$$
+Hence
+$$
+\sum_{\lambda \leq  \Lambda}m_{\Lambda,\lambda}e^{\lambda+\rho}
+$$
+is $W$-skew-invariant. (Lemma \ref{lemma-for-Weyl-formula}.)
+
+Hence
+$$
+\sum_{\lambda \leq  \Lambda}m_{\Lambda,\lambda}e^{\lambda+\rho}
+=\sum_{w \in W}\det(w)\cdot e^{w(\Lambda+\rho)}
+$$
+In conclusion, the {\it Weyl character formula} 
+$$
+\text{ch}_{L(\Lambda)}=\sum_{w \in W}\det(w)
+\cdot \frac{e^{w(\Lambda+\rho)-\rho}}{R}
+$$
+\end{proof}
+
+\medskip\noindent
+{\bf Corollary (Weyl denominator formula).}
+$$
+e^{\rho}R=\sum_{w \in W}\det(w)e^{w(\rho)}.
+$$
+Next time: Affine case, $\theta$-functions. Modular forms (Poisson summation.)
 
 
 \bibliography{my}
