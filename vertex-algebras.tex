@@ -724,8 +724,15 @@ $$
 \text{ and }\qquad E_{\alpha_0}=E_{-\theta}t.
 $$
 
+\section{Weyl group}
+\label{section-Weyl-group}
+
 \medskip\noindent
-Now, in any Kac-Moody algebra, we have
+{\bf Upshot.} The Weyl group is a semidirect product of 
+pseudoreflections and translations.
+
+\medskip\noindent
+In any Kac-Moody algebra, we have
 \begin{align*}
 \text{roots }\qquad \Pi&=\{\alpha_1,\ldots,\alpha_\ell\}\subset\mathfrak{h}^* \\
 \text{coroots}\qquad  \Pi^\vee&=\{\alpha_1^\vee,\ldots,\alpha_\ell^\vee\}\subset
@@ -1224,9 +1231,286 @@ e^{\rho}R=\sum_{w \in W}\det(w)e^{w(\rho)}.
 $$
 Next time: Affine case, $\theta$-functions. Modular forms (Poisson summation.)
 
+\section{Characters of integrable highest weight for affine Kac-Moody algebras}
+\label{section-characters-of-integrable-highest-weight-
+for-affine-Kac-Moody-algebras}
+
+Can be calculated using the Weyl character formula.
+
+Recall: $\hat{\mathfrak{g}}=\mathfrak{g}[t,t^{-1}] \oplus \mathbb{C}K
+\oplus \mathbb{C}d$.
+
+Dual Cartan $\hat{\mathfrak{h}}^*=\mathfrak{h}^*\oplus\mathbb{C}\Lambda_0
+\oplus\mathbb{C}\delta$.
+
+We consider wights $\Lambda=k\Lambda_0+\lambda$, $\lambda \in \mathfrak{h}^*$,
+$k \in \mathbb{Z}_+$, $\lambda \in P_+^k$.
+
+Simple roots: $\alpha_0=\delta-\theta$, $\{\alpha_1,\ldots,\alpha_\ell\}
+\subset \mathfrak{h}^*$.
+
+The affine Weyl group is (the {\it semidirect} product!)
+$$
+\widehat{W}=\left<r_0,\ldots,r_\ell\right> \cong W \times T
+$$
+where $T=\{t_\alpha | \alpha \in Q\}$, where
+$t_\alpha$ is the translation
+$$
+t_\alpha(\Lambda)=\Lambda+k\alpha-\left((\lambda,a)+k
+\frac{|\alpha|^2}{2}\right)\delta
+$$
+$\Lambda=k\Lambda_0+la$
+
+\medskip\noindent
+Let's compute $\chi_{L(\Lambda_0)}$ using the Weyl character formula
+$$
+\chi_{L(\Lambda)}=\frac{\sum_{w \in \tilde{W}}\varepsilon(w)
+e^{W(\Lambda+\rho)-\rho}}{R}
+$$
+Firstly $R=\prod_{\alpha \in \hat{\Delta}}+(1-e^{-\alpha})
+^{\text{mult}(\alpha)}$
+
+Recall
+\begin{align*}
+\hat{\Delta}_+&=\{m\delta | m \in \mathbb{Z}_{\geq 1}\}\\
+&\cup \{\alpha_1+m\delta|m \in \mathbb{Z}_{\geq 0}\}\\
+&\cup \{-\alpha_1+m \delta |m \in \mathbb{Z}_{\geq 1}\}
+\end{align*}
+So let's write $e^{m \delta}=q^m$ (i.e. $q = e^{-\delta}$, is a symbol)
+and $y=e^{\alpha_1}$.
+
+So
+$$
+R=\prod_{n=1}^{\infty}\underbrace{(1-y^{-1}q^{n-1})
+}_{\alpha+(n-1)\delta
+}\underbrace{(1-q^n)
+}_{n\delta}\underbrace{(1-yq^n)
+}_{-\alpha+n\delta}
+$$
+Now let's express numerator also in terms of $q$ and $y$
+
+$$
+\hat{\rho}=h^\vee\Lambda_0+\rho
+$$
+$h^\vee$ dual Coxeter number for $\mathfrak{g}$. 
+For $\mathfrak{g}=\mathfrak{sl}_2$, $h^\vee=2$.
+(For $\mathfrak{g}=\mathfrak{sl}_n$, $h^\vee=n$ and $\mathfrak{g}=E_8$,
+$h^\vee=30$.)
+
+For $\mathfrak{sl}_2$, $\rho=\frac{1}{2}\alpha_1=\omega_1$.
+
+$\Lambda=\Lambda_0$, $\Lambda+\rho=3\Lambda_0+\omega_1$.
+
+Using the formula, we find
+\begin{align*}
+&t_{m \alpha_1}(3\Lambda_0+\omega_1)-(\Lambda_0+\omega_1)=\\
+&\ldots,\Lambda_0-3\alpha,-2\delta,\Lambda_0,\Lambda_0+3\alpha_1-4\delta,\ldots
+\end{align*}
+
+[Picture]
+
+\medskip\noindent
+{\bf Notation.} $w(\Lambda+\rho):=w \circ \Lambda.$
+
+One finds
+\begin{align*}
+\sum_{w \in \widehat{W}}\varepsilon(w)e^{w \circ \Lambda_0}&=
+e^{\Lambda_0}\left(
+\underbrace{1+y^3q^4+y^{-3}q^2+\ldots}_{\text{+ signs because $w \in T$}}
+\underbrace{-y^{-1}-y^2q^2-\ldots}_{\text{$-$ signs because $w \in T_\sigma$}}
+\right)
+\end{align*}
+
+We find explicitly
+\begin{align*}
+\chi_{L(\Lambda_0)}&=e^{\Lambda_0}
+\frac{\sum_{m \in \mathbb{Z}}
+y^{3m}q^{3m^2+m}-\sum_{m \in \mathbb{Z}}
+y^{3m-1}q^{3m^2-m}}
+{\prod_{n=1}^\infty(1-y^{-1}q^{n-1}(1-q^n)(1-yq^n)}
+\end{align*}
+
+\begin{exercise}
+\label{exercise-mathematica}
+Put this formula in mathematica and confirm that [Picture]
+\begin{align*}
+\chi_{L(\Lambda_0)}&=e^{\Lambda_0}
+\left(1+q(y^{-1}+1+y)+q^2(y^{-1}+2+y)
++(q^3(2y^{-1}+3+2y)+\ldots\right)
+\end{align*}
+\end{exercise}
+
+Appears that the central column here are {\it partitions}, i.e. 
+$p(n)=$ \# of partitions of $n$. To see why recall the generating function
+$\sum_{n=0}^\infty q^np(n)=\prod_{k=1}^\infty\frac{1}{1-q^k}$, and expand.
+
+It would appear that
+$$
+\chi_{L(\Lambda_0)}=\left(\prod_{k=1}^\infty
+\frac{1}{1-q^k}\cdot \sum_{m \in \mathbb{Z}}y^mq^{m^2}\right)
+$$
+This identity is true, and we will see it has a vertex-algebra interpretation.
+
+\begin{remark}
+\label{remark-Jacobi-triple-product-identity}
+If we compute $L(0)=1$ using the formula, we obtain
+\begin{align*}
+\prod_{n=1}^\infty&=(1-yq^{n-1})(1-q^n)(1-y^{-1}q^n)\\
+&=\sum(\text{exercise})
+\end{align*}
+This identity is called the {\it Jacobi triple product identity}.
+\end{remark}
+
+These functions
+$$
+\sum_{n \in \mathbb{Z}}q^{n^2}, \sum_{n \in \mathbb{Z}}y^n q^{n^2},
+\sum_{n \in \mathbb{Z}}y^{3n}q^{3n^2+n},\text{ etc…}
+$$
+are all examples of {\it $\theta$-functions}.
+
+\begin{remark}
+\label{remark-}
+In the formula for $\chi_{L(\Lambda_0)}(y,q)$, 
+we could put $y=1$ to get
+\begin{align*}
+\chi_{L(\Lambda_0)}(q)&=1+3q+4q^2+7q^3+\ldots\\
+&=\prod\frac{1}{1-q^k}\cdot \sum_{m \in \mathbb{Z}}q^{m^2}
+\end{align*}
+If one looks at $L(\Lambda_0+\omega_1)$ (the other $\Lambda \in P_+^1$),
+$$
+\chi_{L(\Lambda+\omega_1)}=\prod \frac{1}{1-q^k}
+\sum_{m \in \mathbb{Z}}q^{(m+1/2)^2-1/4}
+$$
+\end{remark}
+
+\section{$\theta$-functions}
+\label{section-theta-functions}
+Let's consider
+$$
+\theta(\tau)=\sum_{n \in \mathbb{Z}}q^{n^2/2},\qquad q=e^{2\pi i \tau}
+$$
+This converges (absolutely on compact regions in) 
+the comain $\text{Im}(\tau)>0$.
+
+Consider the Fourier transform
+$$
+\hat{g}(y)=\int_{-\infty}^\infty g(x)e^{2\pi ixy}dx
+$$
+
+\begin{theorem}[Poisson summation]
+\label{theorem-Poisson-summation}
+ $$
+\sum_{n \in \mathbb{Z}}g(n)=\sum_{n \in \mathbb{Z}}\hat{g}(n)
+$$
+\end{theorem}
+
+Let's take $g(x,t)=e^{-\pi tx^2}$.
+Then $\theta(it)=\sum_{n\in \mathbb{Z}}g(n,t)$.
+
+In this case
+$$
+\hat{g}(y)=\sqrt{t}e^{-\pi y^2/t}
+$$
+(integral of Gaussian).
+
+So we conclude that
+$$
+\theta\left(-\frac{1}{\tau}\right)=\sqrt{\frac{\tau}{i}}\theta(\tau)
+$$
+Note also that
+$$
+\theta(\tau+2)=\theta(\tau)
+$$
+because $q^{\frac{1}{2}}=e^{\pi i\tau}$.
+
+So $\theta(\tau)$ is an example of a modular for.
+
+\medskip\noindent
+What is a modular form? Let 
+$$
+\text{SL}_2(\mathbb{Z})=\left\{ 
+\begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}|a,b,c,d \in \mathbb{Z}, \det =1 \right\}, 
+$$
+which acts on $\mathbb{H}=\{\tau \in \mathbb{C}|\text{Im}(\tau)>0\}$ by
+ $$
+\begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}\cdot\tau=\frac{a\tau+b}{c\tau+d}.
+$$
+\begin{definition}
+\label{definition-weak-modular-form}
+Let $\Gamma=\text{SL}_2(\mathbb{Z})$ or some subgroup.
+A {\it (weak) modular form (of weight $k$)} is $f:\mathbb{H}\to \mathbb{C}$ 
+holomorphic such that
+\begin{equation}
+\label{equation-weak-modular-form}
+f\left(\frac{a\tau+b}{c\tau+d}\right)=(c\tau+d)^kf(\tau).
+\end{equation}
+If we demand that $\Gamma$
+ contains $\begin{pmatrix}
+1&N\\ 
+0&1
+\end{pmatrix}$ for some $N\geq 1$,
+(so $f(\tau+N)=f(\tau)$, and so $f(\tau)
+=\sum_{n=-\infty}^\infty a(n)q^{2\pi in/2}$), for $f:\mathbb{H}\to
+\mathbb{C}$ satisfying Eq. \ref{equation-weak-modular-form} and such that
+ $f(\tau)$ is ``meromorphic at cusps'', i.e.
+$f(\tau)=\sum_{n \geq N_0}a(n)q^{n/N}$, etc.
+
+Finally we would add a factor
+$$
+f\left(\frac{a\tau+b}{c\tau+d}\right)=
+\varepsilon(A)(c\tau+d)^kf(\tau).
+$$
+\end{definition}
+
+So in particular a weight-0 modular form is a modular function.
+
+Denote $S=\begin{pmatrix}
+0&-1\\ 
+1&0
+\end{pmatrix}$. So $S\tau=-\frac{1}{\tau}$, and denote 
+$T=\begin{pmatrix}
+1&1\\ 
+0&1
+\end{pmatrix}$, so $T\tau = \tau+1$.
+
+Then $\Gamma=\left<S,T^2\right>\subset \text{SL}_2(\mathbb{Z})$.
+
+We saw
+\begin{align*}
+\theta(T^2\tau)&=\theta(\tau)\\
+\theta(S\tau)&=\sqrt{\frac{\tau}{i}}\theta(\tau)=i^{-1/2}
+(c\tau+d)^{1/2}\theta(\tau).
+\end{align*}
+So $\theta(\tau)$ is a modular form of weight $1/2$, for the group
+$\Gamma=\left<S,T^2\right>$ with multiplier
+system $\varepsilon:\Gamma \to \mathbb{C}^\times$ defined by
+\begin{align*}
+\varepsilon(S)&=i^{-1/2}\\
+\varepsilon(T^2)&=1
+\end{align*}
+
+\begin{theorem}
+\label{theorem-Dedekind-eta-function}
+The {\it Dedekind eta function} 
+$$
+\eta(\tau)=q^{1/24}\prod_{n=1}^\infty (1-q^n),\qquad q=e^{2\pi i \tau}
+$$
+is also a modular form of weight $1/2$ for
+$\text{SL}_2(\mathbb{Z})=\left<S,T\right>$.
+\begin{align*}
+\eta\left(-\frac{1}{\tau}\right)&=\sqrt{\frac{\tau}{i}}\eta(\tau)\\
+\eta(T\tau)&=e^{2\pi i/24}\eta(\tau).
+\end{align*}
+
+\end{theorem}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
 \end{document}
-
