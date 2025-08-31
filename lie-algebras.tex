@@ -192,8 +192,8 @@ A Lie algebra $\mathfrak{g}$ is
 \end{itemize}
 \end{definition}
 
-\section{Weight spaces and Lie's theorem}
-\label{section-weight-spaces-and-Lie-theorem}
+\section{Lie's theorem}
+\label{section-Lie-theorem}
 
 Lie's theorem says that solvable Lie algebras over closed fields of
 characterstic not zero have weights.
@@ -584,6 +584,106 @@ $K|_{\mathfrak{a}\times\mathfrak{a}}$,
 is also nondegenerate and coincides with the Killing form of $\mathfrak{a}$.
 \end{theorem}
 
+
+\section{$\mathfrak{g}$-modules}
+\label{section-g-modules}
+
+\begin{definition}
+\label{definition-g-module}
+Let $\mathfrak{g}$ be a Lie algebra. A {\it $\mathfrak{g}$-module}
+(also called a {\it representation of $\mathfrak{g}$}
+is a vector space $V$ and a homomorphism
+$$
+\rho:\mathfrak{g}\to \text{End}(V)
+$$
+of Lie algebras, i.e.,
+$$
+\rho([x,y])=\rho(x)\rho(y)-\rho(y)\rho(x).
+$$
+A vector space $W \subset V$ such that $vW\subset W$ for all
+$x \in \mathfrak{g}$ is called a
+ {\it $\mathfrak{g}$-submodule}.
+\end{definition}
+
+\begin{definition}
+\label{definition-irreducible-g-module}
+An {\it irreducible $\mathfrak{g}$-module} is one that has
+no $\mathfrak{g}$-submodules other than the
+trivial ones (namely, 0 and $V$ itself).
+\end{definition}
+
+It is possible to classify and describe the 
+irreducible finite-dimensional
+$\mathfrak{g}$-modules. This is in contrast
+with all the modules of a Lie algebra $\mathfrak{g}$,
+which is ``impossible in general''.
+
+\section{Verma module}
+\label{section-Verma-module}
+
+Let $M$ be a $\mathfrak{g}$-module. Recalling 
+Definition \ref{definition-weight-space}, we have
+that a weight space in $M$ is a nonzero subspace
+$M_\lambda \subset M$ such that
+$$
+hv=\lambda(h)v \qquad \forall h \in \mathfrak{h}\subset\mathfrak{g}
+\text{ and }v \in M,
+$$
+and in this case we call $\lambda$ a weight.
+If $M$ is a direct sum of weight spaces, we
+call it a {\it weight module}.
+
+The {\it support} of a weight module $M$ is
+\begin{equation}
+\label{equation-support-of-weight-module}
+\text{supp}(M):=\{\lambda \in \mathfrak{h}^*:M_\lambda\neq 0\}
+\end{equation}
+We call elements of $M_\lambda$ {\it vectors
+of weight $\lambda$}.
+
+\begin{definition}
+\label{definition-highest-root}
+$\Lambda \in \mathfrak{h}^*$ is a 
+{\it highest weight} of $M$ 
+if $\Lambda \in \text{supp}(M)$
+and for all positive roots $\alpha \in \Delta_+$
+we have that $\Lambda+\alpha \not\in\text{supp}(M)$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-highest-weight-of-an-irreducible-g-module-is-unique}
+The highest weight of an irreducible $\mathfrak{g}$-module
+is unique.
+\end{exercise}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{definition}
+\label{definition-Verma-module}
+\begin{reference}
+\cite[Definition 4.1]{jethro-rt}
+\end{reference}
+Let $\Lambda \in \mathfrak{h}^*$
+(a highest weight, I suppose).
+The {\it Verma module} $M(\Lambda)$
+of highest weight $\Lambda$ is
+$$
+M(\Lambda)=U(\mathfrak{g})\otimes_{U(\mathfrak{h}\oplus \mathfrak{n}_+}
+\mathbb{C}_\Lambda,
+$$
+where $\mathbb{C}_\Lambda=\mathbb{C}v_\Lambda$
+is the $1$-dimensional $(\mathfrak{h} \oplus \mathfrak{n}_+)$-module
+defined by $\mathfrak{n}_+v_\Lambda=0$
+and $hv_\Lambda=\left<\Lambda,h\right>v_\Lambda$
+for all $h \in \mathfrak{h}$.
+\end{definition}
+
+Long story short, by the PBW Theorem we
+have an isomorphism $U(\mathfrak{n}_-) \to M(\Lambda)$
+of $U(\mathfrak{n}_-)$ modules.
+
 \section{Weyl character formula}
 \label{section-Weyl-character-formula}
 
@@ -599,6 +699,10 @@ for some $\lambda$,
 etc.
 \end{exercise}
 
+\begin{proof}
+I would start by finding the determinant 
+of the Weyl reflections…
+\end{proof}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
