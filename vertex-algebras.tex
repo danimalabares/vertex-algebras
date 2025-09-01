@@ -1509,6 +1509,369 @@ $\text{SL}_2(\mathbb{Z})=\left<S,T\right>$.
 
 \end{theorem}
 
+\section{Vertex algebras}
+\label{section-vertex-algebras}
+
+\begin{enumerate}
+\item Recall $\hat{\mathfrak{a}}=\mathbb{C}K\oplus 
+\bigoplus_{n \in \mathbb{Z}}\mathbb{C}h_n$ the Heisenberg Lie algebra,
+or {\it oscillator Lie algebra},
+$$
+[h_m,h_n]=m\delta_{m,-n}K,\qquad [K,\hat{\mathfrak{a}}]=0.
+$$
+\begin{remark}
+\label{remark-Heisenberg-is-affine}
+``It's the simplest case of an affine Lie algebra: a 1-dimensional
+Lie algebra with a bilinear form''. It's an example of the affine
+Lie algebra construction
+$\mathfrak{g} \rightsquigarrow \hat{\mathfrak{g}}$,
+where now $\mathfrak{a}=\mathbb{C}$,
+and
+ \begin{align*}
+(\cdot,\cdot): \mathfrak{a}\times\mathfrak{a} &\longrightarrow \mathbb{C} \\
+(1,1) &\longmapsto 1
+\end{align*}
+\end{remark}
+
+\item Witt Lie algebra
+$$
+W=\bigoplus_{n \in \mathbb{Z}}\mathbb{C}D_n,
+$$
+$$
+[D_m,D_n]=(m-n)D_{m+n}.
+$$
+\end{enumerate}
+
+\medskip\noindent
+The oscillator algebra $\hat{\mathfrak{a}}$ 
+has a representation which we have seen already:
+$$
+H=\mathbb{C}[x_1,x_2,\ldots]
+$$
+$$
+h_n\mapsto \begin{cases}
+n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0, \substack{
+h_0\mapsto 0 \\
+k \mapsto \text{Id} } \\
+x_{-n}\qquad &\text{if }n<0.
+\end{cases}
+$$
+A picture of $H$ [Picture].
+
+Here I am introducing a \underline{grading} of $H$:
+$$
+H=\bigoplus_{n \in \mathbb{Z}_{\geq 0}}H_n,
+\qquad H_n=\text{span}\{x_{n_1},\ldots,x_{m_s}|
+\sum m_s=n\}.
+$$
+
+\begin{remark}
+\label{remark-dimensions-are-number-of-partitions}
+$\dim(H_n)=$\# $\{\text{integer partitions of }n\}=p(n)$ 
+and $\sum_{n=0}^\infty \dim(H_n)q^n=\prod_{k=1}^\infty \frac{1}{1-q^k}$.
+\end{remark}
+
+\begin{remark}
+\label{remark-Verma-module-style}
+$H$ can be presented alternatively as
+$$
+H=U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+}\mathbb{C}1
+$$
+where $\mathbb{C}1$ is a 1-dimensional representation of
+ $$
+\hat{\mathfrak{a}}_+=\bigoplus_{n \geq 0}\mathbb{C}h_n \oplus\mathbb{C}K.
+$$
+$$
+h_n \cdot 1=0\qquad \forall n \geq 0,\qquad K\cdot 1=1
+$$
+\end{remark}
+
+\begin{exercise}
+\label{exercise-H-is-irreducible}
+$H$ is irreducible.
+\end{exercise}
+
+\noindent
+{\bf Notation.} Instead of $1$ let's write $|0\rangle$.
+
+\begin{remark}
+\label{remark-generalise-H}
+We can easily generalise $H$ to
+$$
+H^\mu=U(\hat{\mathfrak{a}}) \otimes_{U(\hat{\mathfrak{a}}_+)} \mathbb{C}
+|\mu\rangle,
+$$
+($\mu \in \mathbb{C}$), where $\hat{\mathfrak{a}}_+$ is the same, but now
+\begin{align*}
+h_n |\mu\rangle&=\begin{cases}
+0\qquad &\text{if }n>0 \\
+\mu \cdot|\mu\rangle\qquad \text{if }n=0&
+\end{cases}
+K|\mu\rangle&=|\mu\rangle.
+\end{align*}
+$H^\mu$ is again a (irreducible) $\hat{\mathfrak{a}}$-module.
+\end{remark}
+
+\medskip\noindent
+Generalise even more: Let $\mathfrak{h}$ be a finite-dimensional
+vector space, and 
+$(\cdot,\cdot): \mathfrak{h} \times \mathfrak{h} \to \mathbb{C}$
+a symmetric bilinear form.
+$\hat{\mathfrak{h}}=\mathfrak{h}[t,t^{-1}]\oplus \mathbb{C}K$,
+$$
+[at^m,bt^n]=m(a,b)\delta_{m,-n}K,\qquad [K,\hat{\mathfrak{h}}]=0.
+$$
+Let $\mu\in \mathfrak{h}$. Define
+$H^\mu=U(\hat{\mathfrak{h}})\otimes_{U(\hat{\mathfrak{h}}}\mathbb{C}|\mu\rangle$ 
+, $\hat{\mathfrak{h}}_+=\mathfrak{h}[t]\oplus\mathbb{C}K$, and
+$$
+at^m\cdot |\mu\rangle=\begin{cases}
+(\mu,a)|\mu\rangle\qquad &\text{if } m=0\\
+0\qquad &\text{if }m>0.
+\end{cases}
+$$ 
+
+\medskip\noindent
+{\bf Returning to $\hat{\mathfrak{a}}\mathbb{y}H=H^\circ$.} Introduce
+$$
+L_m=\frac{1}{2}\sum_{k \in \mathbb{Z}}h_{m-k}h_k.
+$$
+If $m \neq 0$, this sum is well-defined in $\text{End}(H)$.
+
+Indeed, $h_{m-k}$ and $h_k$ commute ($m \neq 0$), and 
+$\forall  p(\underline{x})\in H$, there exists $N$ 
+such that $p(\underline{x})=p(x_1,\ldots,x_{N-1})$,
+then $h_k\cdot p(x)=0$ $\forall  k \geq N$,
+and $h_{m-k}\cdot p(x)=0$ $\forall m-k \geq N$.
+
+So $(\sum h_{m-k}h)k)p(\underline{x})$ is a \underline{finite} sum.
+Of course, the number of terms in the sum depends on $p(x)$ and can be
+arbitrarily large.
+
+\begin{exercise}
+\label{exercise-hard}
+If  $m,n$ and $m+n$ are not zero, then
+$$
+[L_m,L_n]=(m-n)L_{m+n}
+$$
+holds in $\text{End}(H)$.
+
+(Trying to be a representation of $W$
+ $$
+D_n \mapsto L_n \in \text{End}(H).)
+$$
+\end{exercise}
+
+But $\sum_{k \in \mathbb{Z}}h_{-k}h_k$ is not well-defined.
+Indeed,
+\begin{align*}
+\left(\sum_{k \in \mathbb{Z}}h_{-k}h_k\right)1&=
+\sum_{k \geq 1}k\frac{\partial }{\partial x_k}(x_k 1)\\
+&=(1+2+3+4+\ldots)1
+\end{align*}
+!
+
+\medskip\noindent
+{\bf Normal ordering idea (``that physicist do'').} Let's cheat
+and redefine the product as
+$$
+:h_{-k}h_k:=\begin{cases}
+h_{-k}h_k\qquad & \text{if }k\geq 0\\
+h_k h_{-k}\qquad &\text{if }k<0.
+\end{cases}
+$$
+Now $\sum_{k \in \mathbb{Z}}:h_{-k}h_k:$ is well-defined! 
+
+\medskip\noindent
+{\bf Notation.} Let us consider series of the form
+$$
+a(z)=\sum_{n \in \mathbb{Z}}a_{(n)}z^{-n-1},\qquad a_{(n)}\in \text{End}(V),
+$$
+where $V$ is a vector space.
+
+\begin{definition}[Most important in the course]
+\label{definition-quantum-field}
+We say $a(z)$ is a {\it quantum field} on $V$ if,
+for every $v \in V$ there exists $N \in \mathbb{Z}$ 
+such that $a_{(n)}v=0$ $\forall  n\geq N$.
+\end{definition}
+
+\begin{example}
+\label{example-quantum-field}
+$V=H=\mathbb{C}[x_1,x_2,\ldots]$,
+$$
+a(z)=h(z)=\sum_{n \in \mathbb{Z}}h_n z^{-n-1}.
+$$
+$$
+h(z)=\ldots+3z^{-4}\frac{\partial }{\partial x_3}
++2z^{-3}\frac{\partial }{\partial x_1}+x_1
++x_2z+x_3z^2+\ldots
+$$
+Any fixed $v \in H$ is $v=p(x_1,\ldots,x_{N-1})$ for some $N$.
+Then $h_Nv=N \frac{\partial }{\partial x_N}v=0$.
+
+So $h(z) \mathbb{y} H$ is a quantum field.
+\end{example}
+
+\begin{definition}
+\label{definition-creating-annihilating-operators}
+For a quantum field
+(or any series in fact) $a(z)=\sum_{ n \in \mathbb{Z}}a_{(n)}z^{-n-1}$,
+define the {\it creation} and {\it annihilating operators}
+$$
+a(z)_+=\sum_{n \leq -1}a_{(n)}z^{-n-1},\qquad 
+a(z)_-=\sum_{n \geq 0}a_{(n)}z^{-n-1}.
+$$
+\end{definition}
+
+The quantum field condition solves the problem of the infinite series…
+
+The normally order product of quantum fields 
+$a(z)=\sum_{n \in \mathbb{Z}}a_{(n)}z^{-n-1}$, and
+$b(z)=\sum_{n \in \mathbb{Z}}b_{(n)}z^{-n-1}$ is.
+$$
+:a(z)b(z):=a(z)_+b(z)+b(z)a(z)_-.
+$$
+
+\begin{exercise}[Most important of the course]
+\label{exercise-most-important}
+Show that if $a(z)$ and $b(z)$ are quantum fields,
+then $:a(z)b(z):$ is well-defined, and is a quantum field.
+\end{exercise}
+
+\medskip\noindent
+Next idea: in our example of $h(z) \mathbb{y} H$,
+the coefficients $h_n$ were coming from a Lie algebra,
+so we had relations
+ $[h_m,h_n]=(\ldots)$.
+(Indeed, $[h_m,h_n]=m \delta_{m,-n}\text{Id}_H$ in this case.)
+We sould like to interpret such relations at the level of $h(z)$.
+
+\begin{align*}
+[h(z),h(z)]&=\sum_{m,n \in \mathbb{Z}}&=\sum_{m,n}z^{-(m+n)-2}\\
+&=\sum z^{-p-2}\left(\underbrace{\sum_{m+n=2}p[h_m,h_n}_{\text{infinite?}}
+\right)
+\end{align*}
+which is a bad idea, since that sum can be infinite.
+Better idea: change a variable:
+$$
+[h(z),h(w)]=\sum_{m,n \in \mathbb{Z}}[h_m,h_n]z^{-m-1}w^{-n-1}.
+$$
+In this example,
+\begin{align*}
+[h(z),h(w)&=\sum_{m,n \in \mathbb{Z}}m \delta_{m,-n}z^{-m-1}
+w^{-n-1}I_H\\
+&=\sum_{m \in \mathbb{Z}}z^{-m-1}w^{m-1}I_H.
+\end{align*}
+
+Observe (geometric series):
+\begin{align*}
+\frac{1}{z-w}&=\sum_{k \geq 0}z^{-k-1}w^k\qquad 
+\text{(convergent for $|z|>|w|$)}\\
+\frac{1}{z-w}&=-\sum_{k \geq 0}w^{-k-1}z^k\\
+&=-\sum_{k<0}z^{-k-1}w^k\qquad \text{(convergent for $|z|<|w|$)}
+\end{align*}
+So, in a sense
+$$
+\sum_{k \in \mathbb{Z}}z^{-k-1}w^k\text{``$=$''}\frac{1}{z-w}
+-\frac{1}{z-w}.
+$$
+This motivates us to introduce the expression
+\begin{definition}
+\label{definition-delta-function}
+The {\it formal delta function} is
+$$
+\delta(z,w)=\sum_{k \in \mathbb{Z}}z^{-k-1}w^k \in 
+\mathbb{C}[\![z,z^{-1},w,w^{-1}]\!].
+$$
+\end{definition}
+Why (Dirac) delta function? Recall that $\delta(x)$ is the 
+{\it distribution} on $\mathbb{R}$ defined by
+$\delta[f(x)]=f(0)$ for all test functions $f(x)$.
+Every function $k(x)$ gives a distribution $D_k$.
+$$
+D_k[f]=\int_{-\infty}^\infty k(x)f(x)dx,
+$$
+$f \in C_c^\infty(\mathbb{R})$.
+
+If $\delta$ were of the form $D_k$ (it's not)
+it would have to look like 
+[Picture, positive part of $y$ axis, all $x$ axis.
+
+One can show that (it's a theorem by Plamelj)
+$$
+\delta(x)=\frac{1}{2\pi i}\lim_{\varepsilon \to 0_+} 
+\left(\frac{1}{x-i \varepsilon}-\frac{1}{x-i \varepsilon}\right)
+$$
+as distributions (i.e. limit taken in ``distributional sense''.)
+
+(So that's why we called the delta function that way.)
+
+Denote by $i_{z,w}$ the ``expansion in positive powers of $w$''.
+E.g. 
+$$
+i_{z,w}\frac{1}{z-w}=\sum_{k\geq 0}z^{-k-1}w^k,
+$$
+similarly,
+$$
+i_{z,w}\frac{1}{(z-w)^2}=\sum_{k \geq 0}kz^{-k-1}w^{k-1},
+$$
+$$
+i_{z,w}(w^{-2})=w^{-2}.
+$$
+\begin{exercise}
+\label{exercise-derivative-wrt-w}
+So, in fact,
+\begin{align*}
+[h(z),h(w)]&=i_{z,w}\frac{1}{(z-w)^2}-i_{w,z}\frac{1}{(z-w)^2}
+&=\partial_w \delta(z,w).
+\end{align*}
+\end{exercise}
+
+What exactly is $i_{z,w}$?
+
+\medskip\noindent
+{\bf Notation.}
+\begin{align*}
+\mathbb{C}[z]&\qquad \text{ring of polynomials}\\
+\mathbb{C}[z,z^{-1}]&\qquad \text{ring of Laurent polynomials}\\
+\mathbb{C}[\![z ]\!]&\qquad \text{ring of power series}\\
+\mathbb{C}[\![z,z^{-1}]\!]&  \qquad \text{vector space (not ring!) of formal
+distributions}\\
+\mathbb{C}(\!(z)\!)&\qquad \text{field of Laurent series}
+\end{align*}
+where the last is $\sum_{n \geq N}fa_n z^n$ for some $N$.
+
+Since $\mathbb{C}(\!(z)\!)$ is a field, $\mathbb{C}(\!(z)\!)(\!(w)\!)$ is
+also a field.
+
+There are natural inclusions
+$$
+\mathbb{C}[z,w] \to \mathbb{C}(\!(z)\!)(\!(w)\!) \to
+\mathbb{C}[\![z^{\pm1},w^{\pm 1}]\!].
+$$
+Let $\mathbb{C}(z,w)$ denote the fraction field
+of the domain $\mathbb{C}[z,w]$.
+By the property of $\mathbb{C}(z,w)$, there exists an embedding
+$$
+\xymatrix{
+\mathbb{C}[z,w]\ar[rr]\ar[dr]&  &  \mathbb{C}(\!(z)\!)(\!(w)\!)\\
+&\mathbb{C}(z,w)\ar[ur]^{i_{z,w}}
+}
+$$
+The following diagram does not commute: [diagram]
+
+We computed
+$$
+[h(z),h(w)]=\partial_w \delta(z,w)
+$$
+We can similarly compute
+\begin{align*}
+h(z)h(w)&=:h(z)h(w):+i_{z,w}\frac{1}{(z-w)^2}\\
+h(w)h(z)&=:h(z)h(w):+i_{w,z}\frac{1}{(z-w)^2}.
+\end{align*}
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
