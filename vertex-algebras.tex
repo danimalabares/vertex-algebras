@@ -1242,7 +1242,7 @@ Recall: $\hat{\mathfrak{g}}=\mathfrak{g}[t,t^{-1}] \oplus \mathbb{C}K
 Dual Cartan $\hat{\mathfrak{h}}^*=\mathfrak{h}^*\oplus\mathbb{C}\Lambda_0
 \oplus\mathbb{C}\delta$.
 
-We consider wights $\Lambda=k\Lambda_0+\lambda$, $\lambda \in \mathfrak{h}^*$,
+We consider weights $\Lambda=k\Lambda_0+\lambda$, $\lambda \in \mathfrak{h}^*$,
 $k \in \mathbb{Z}_+$, $\lambda \in P_+^k$.
 
 Simple roots: $\alpha_0=\delta-\theta$, $\{\alpha_1,\ldots,\alpha_\ell\}
@@ -1258,7 +1258,7 @@ $$
 t_\alpha(\Lambda)=\Lambda+k\alpha-\left((\lambda,a)+k
 \frac{|\alpha|^2}{2}\right)\delta
 $$
-$\Lambda=k\Lambda_0+la$
+$\Lambda=k\Lambda_0+\lambda$.
 
 \medskip\noindent
 Let's compute $\chi_{L(\Lambda_0)}$ using the Weyl character formula
@@ -1870,6 +1870,273 @@ We can similarly compute
 h(z)h(w)&=:h(z)h(w):+i_{z,w}\frac{1}{(z-w)^2}\\
 h(w)h(z)&=:h(z)h(w):+i_{w,z}\frac{1}{(z-w)^2}.
 \end{align*}
+
+\medskip\noindent
+{\bf Notation.} We write $\partial_w=\frac{\partial }{\partial w}$ and
+$\partial^{(j)}_w=\frac{1}{j!}\partial^j_w$.
+
+\begin{lemma}
+\label{lemma-elementary}
+\begin{enumerate}
+\item If we multiply the delta function with $(z-w)$ we get zero, that is,
+$$
+(z-w)\delta(z,w)=0.
+$$
+\item 
+$$
+i_{z,w}\frac{1}{(z-w)^{j+1}}-i_{w,z}\frac{1}{(z-w)^{j+1}}
+=\partial_w^{(j)}\delta(z,w).
+$$
+\item $\forall j\geq 0$,
+$$
+(z-w)^{j+1}\partial_w^{(j)}\delta(z,w)=0.
+$$
+\item Whenever $m \leq j$,
+$$
+(z-w)^m\partial^{(j)}(z,w)=\partial_w^{(j-m)}\delta(z,w).
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{remark}
+\label{remark-like-usual-Dirac-delta}
+All this is completely parallel
+to the Dirac $\delta$-distribution $\delta(x)$.
+$$
+x\delta(x)=0,\qquad x\delta'(x)=\delta(x),\text{ etc.}, x^2\delta'(x)=0.
+$$
+\end{remark}
+
+\section{The residue pairing}
+\label{section-residue-pairing}
+
+Let $f(z) \in \mathbb{C}[z,z^{-1}]$, which is a vector space
+with basis $\{z^n:n\in\mathbb{Z}\}$.
+
+An element of the dual vector space is a formal linear combination
+$$
+\sum_{n \in \mathbb{Z}}c_n\varphi_n,\qquad \text{where }
+\varphi_n(z^k)=\begin{cases}
+0\qquad &\text{if }k \neq n \\
+1\qquad &\text{if }k=n
+\end{cases}
+$$
+(no restriction on the $c_n \in \mathbb{C}$).
+
+Identify $\sum c_n \varphi_n$ with 
+$$
+c(z)=\sum c_nz^{-n-1}\in \mathbb{C}[z^{\pm 1}
+$$
+so that $\varphi$ acts on $f(z)=\sum f_nz^n \in \mathbb{C}[z^{\pm 1}]$,
+as 
+$$
+\varphi(f)=\sum_{n}c_nf_n=\text{Res}_zc(z)f(z)dz,
+$$
+where
+\begin{definition}
+\label{definition-residue}
+If  $U$ is a vector space and $a(z)=\sum_{n}a_nz^n \in U[\![z^{\pm 1}]\!]$,
+$$
+\text{Res}_za(z)dz=a_{-1}
+$$
+\end{definition}
+
+Let's record a few properties of $\text{Res}_z(\cdot)dz:=\text{Res}_z(\cdot)$.
+
+\begin{lemma}
+\label{lemma-properties-of-residues}
+\begin{enumerate}
+\item $\text{Res}_zf(z)\delta(z,w)=f(w)$.
+\item $\text{Res}_zf(z)(\partial_zg(z))=-\text{Res}_(\partial_zf(z))fg(z)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item Straightforward computation.
+\item Product rule, and uses that derivatives have no residues.
+\end{enumerate}
+\end{proof}
+
+So, in our example, $H,h(z)$ we see that
+$$
+(z-w)^2[h(z),h(w)]=0,
+$$
+which is a nontrivial example: we really need to 
+take the square, and also the bracket is not zero.
+
+\medskip\noindent
+\begin{definition}
+\label{definition-}
+Two quantum fields $a(z)$ and $b(z)$ on a vector space
+$V$ are {\it mutually local} if there exists $N$ 
+such that
+$$
+(z-w)^N[a(z),b(w)]=0.
+$$
+\end{definition}
+
+\begin{remark}
+\label{remark-motivation}
+See  \cite[Chapter 1]{KVA} for physics motivation.
+More generally, if $D=\sum_{m,n}D_{m,n}z^mw^n \in U[\![z^{\pm 1}, w^{\pm
+1}]\!]$,
+we call $D$ {\it local} if $(z-w)^ND=0$ for some $N$.
+\end{remark}
+
+\begin{proposition}
+\label{proposition-}
+Let $a(z),b(z)$ be a local pair of quantum fields on $V$.
+Then 
+\begin{equation}
+\label{equation-1}
+a(z)b(w)= :\!a(z)b(z)\!:+\sum_{j=0}^{N-1}c_j(w)
+i_{z,w}\frac{1}{(z-w)^{j+1}}
+\end{equation}
+and
+\begin{equation}
+\label{equation-2}
+b(w)a(z)=:\!a(z)b(z)\!:+\sum_{j=0}^{N-1}c_j(w)
+i_{w,z}\frac{1}{(z-w)^{j+1}}
+\end{equation}
+In particular,
+\begin{equation}
+\label{equation-3}
+[a(z),b(w)]=\sum_{j=0}^{N-1}c_j(w)\partial_w^{(j)}\delta(z,w).
+\end{equation}
+Furthermore
+\begin{equation}
+\label{equation-4}
+c_j(w)=\text{Res}_z(z-w)^j[a(z),b(w)].
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+First we prove \ref{equation-3} using \ref{equation-4}. 
+\end{proof}
+
+\begin{exercise}
+\label{exercise-deduce-1-and-2-from-3}
+Deduce \ref{equation-1} and  \ref{equation-2} from \ref{equation-3}.
+\end{exercise}
+
+\medskip\noindent
+{\bf Notation.} If $a(w)$ and $b(w)$ are quantum fields on $V$,
+we denote
+$$
+a(w)_{(j)}b(w)=\text{Res}_z(z-w)^j[a(z),b(w)]
+$$
+for $j \in \mathbb{Z}_{\geq 0}$.
+
+\begin{example}
+\label{example-}
+On $H$, $[h(z),h(w)]=\partial_w\delta(z,w)I_H$.
+So $\text{Res}_z\partial_w\delta(z,w)I_H=0$ and
+$\text{Res}_z(z-w)\partial_w\delta(z,w)I_H=
+\text{Res}_z\delta(z,w)I_H=I_H$.
+\end{example}
+
+Note that $I_H$ is a (very simple) quantum field.
+
+The following definition generalizes the $j$-product to any
+integer, possible negative.
+
+\begin{definition}
+\label{definition-}
+For $n \in \mathbb{Z}$, and $a(w)$, $b(w)$ quantum fields,
+we define the $\text{n}^{\text{th}}$ product $a(w)_{(n)}b(w)$ as
+$$
+a(w)_{(n)}b(w)=\text{Res}_z
+[i_{z,w}(z-w)^na(z)b(w)-i_{w,z}(z-w)^nb(w)a(z)].
+$$
+\end{definition}
+
+\begin{remark}
+\label{remark-}
+\begin{enumerate}
+\item We recover the prior definition: if $n \geq 0$,
+$$
+i_{z,w}(z-w)^n=i_{w,z}(z-w)^n=\sum_{r=0}^n\binom{n}{r}z^{n-r}(-w)^r,
+$$
+a finite sum.
+\item (Exercise.) If $n=1$, then
+\begin{align*}
+a(w)_{(-1)}b(w)&=a(w)_+b(w)+b(w)a(w)_-\\
+&=:\! a(w)b(w)\!:
+\end{align*}
+
+\item (Exercise.) 
+The more negative products are not something new:
+for $k \geq 0$,
+$$
+a(w)_{(-k-1)}b(w)=:\!(\partial_w^{(k)}a(w))b(w)\!:
+$$
+\end{enumerate}
+\end{remark}
+
+We have actually already used the following proposition:
+
+\begin{proposition}
+\label{proposition-nth-product-is-quantum-field}
+If $a(w),b(w)$ are quantum fields, then $a(w)_{(n)}b(w)$
+is also a quantum field for all $n \in \mathbb{Z}$.
+\end{proposition}
+
+\begin{definition}
+\label{definition-vertex-algebra}
+A {\it vertex algebra} consists of a vector space $V$,
+a set $\mathcal{F}$ of quantum fields on $V$,
+a nonzero vector $|0\rangle\in V$,
+and a linear map $T:V \to V$,
+such that
+\begin{enumerate}
+\item $T|0\rangle=0$, and $[T,a(z)]=\partial_za(z)$ 
+$\forall a(z) \in \mathcal{F}$.
+\item $V$ is spanned by $a_{(n_1)}^{i_1},\ldots,a_{(n_s)}^{i_s}|0\rangle$,
+where $a^{i_j}(z) \in \mathcal{F}$ (and 
+$s(z)=\sum a_{(n)}z^{-n-1}$ always).
+\item All pairs $a(z),b(z) \in \mathcal{F}$ are mutually local.
+\end{enumerate}
+\end{definition}
+
+We call $|0\rangle$ the {\it vacuum vector} and $T$ the {\it translation
+operator}.
+
+In fact, our Heisenberg example that we've been discussing
+so far is an example:
+
+\begin{example}
+\label{example-Heisenberg-is-vertex-algebra}
+$V=H=\mathbb{C}[x_1,x_2,\ldots]$,
+$\mathcal{F}=\{h(z)\}$, $|0\rangle=1$, $T=?$,
+is a vertex algebra.
+
+\noindent
+{\bf Answer 1.} Recall $L(z)=\frac{1}{2}:\!h(z)h(z)\!:=
+\frac{1}{2}h(z)_{(-1)}h(z)$, $L(z)=\sum_{m \in \mathbb{Z}}L_mz^{-m-z}$.
+In particular, $L_{-1}=\frac{1}{2}\sum_{k \in Z}h_kh_{-1-k}$.
+Well, $T=L_{-1}$.
+
+\noindent
+{\bf Answer 2.} Given that $T$ must satisfy
+$T1=0$, and $[T,h(z)]=\partial_zh(z)$, i.e.
+$$
+[T,h_n]=-nh_{n-1},
+$$
+and $H$ is generated from $1$ by $\{h_n|n\leq -1\}$,
+the action of $T$ on $H$ (if well-defined) is
+completely determined.
+\end{example}
+
+\begin{exercise}
+\label{exercise-write-a-formula}
+Write a formula for $T(x_1^{m_1}x_2^{m_2}\ldots x_s^{m_2})$.
+\end{exercise}
+
 
 
 \bibliography{my}
