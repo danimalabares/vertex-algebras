@@ -1548,20 +1548,21 @@ has a representation which we have seen already:
 $$
 H=\mathbb{C}[x_1,x_2,\ldots]
 $$
-$$
-h_n\mapsto \begin{cases}
-n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0, \substack{
-h_0\mapsto 0 \\
-k \mapsto \text{Id} } \\
-x_{-n}\qquad &\text{if }n<0.
-\end{cases}
-$$
+
+\begin{align*}
+h_n&\mapsto \begin{cases}
+n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0\\
+x_{-n}\qquad &\text{if }n<0\\
+0\qquad &\text{if }n=0
+\end{cases},
+\qquad \qquad  k\mapsto \text{Id}
+\end{align*}
 A picture of $H$ [Picture].
 
 Here I am introducing a \underline{grading} of $H$:
 $$
 H=\bigoplus_{n \in \mathbb{Z}_{\geq 0}}H_n,
-\qquad H_n=\text{span}\{x_{n_1},\ldots,x_{m_s}|
+\qquad H_n=\text{span}\{x_{m_1},\ldots,x_{m_s}|
 \sum m_s=n\}.
 $$
 
@@ -1571,11 +1572,11 @@ $\dim(H_n)=$\# $\{\text{integer partitions of }n\}=p(n)$
 and $\sum_{n=0}^\infty \dim(H_n)q^n=\prod_{k=1}^\infty \frac{1}{1-q^k}$.
 \end{remark}
 
-\begin{remark}
+\begin{remark}[Verma module style]
 \label{remark-Verma-module-style}
 $H$ can be presented alternatively as
 $$
-H=U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+}\mathbb{C}1
+H=U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}1
 $$
 where $\mathbb{C}1$ is a 1-dimensional representation of
  $$
@@ -1605,9 +1606,9 @@ $$
 \begin{align*}
 h_n |\mu\rangle&=\begin{cases}
 0\qquad &\text{if }n>0 \\
-\mu \cdot|\mu\rangle\qquad \text{if }n=0&
-\end{cases}
-K|\mu\rangle&=|\mu\rangle.
+\mu \cdot|\mu\rangle\qquad& \text{if }n=0
+\end{cases}\qquad \qquad 
+K|\mu\rangle=|\mu\rangle.
 \end{align*}
 $H^\mu$ is again a (irreducible) $\hat{\mathfrak{a}}$-module.
 \end{remark}
@@ -1971,7 +1972,7 @@ take the square, and also the bracket is not zero.
 
 \medskip\noindent
 \begin{definition}
-\label{definition-}
+\label{definition-mutually-local-quantum-fields}
 Two quantum fields $a(z)$ and $b(z)$ on a vector space
 $V$ are {\it mutually local} if there exists $N$ 
 such that
@@ -2046,9 +2047,9 @@ The following definition generalizes the $j$-product to any
 integer, possible negative.
 
 \begin{definition}
-\label{definition-}
+\label{definition-nth-product}
 For $n \in \mathbb{Z}$, and $a(w)$, $b(w)$ quantum fields,
-we define the $\text{n}^{\text{th}}$ product $a(w)_{(n)}b(w)$ as
+we define the {\it $\text{n}^{\text{th}}$ product} $a(w)_{(n)}b(w)$ as
 $$
 a(w)_{(n)}b(w)=\text{Res}_z
 [i_{z,w}(z-w)^na(z)b(w)-i_{w,z}(z-w)^nb(w)a(z)].
@@ -2099,7 +2100,10 @@ $\forall a(z) \in \mathcal{F}$.
 \item $V$ is spanned by $a_{(n_1)}^{i_1},\ldots,a_{(n_s)}^{i_s}|0\rangle$,
 where $a^{i_j}(z) \in \mathcal{F}$ (and 
 $s(z)=\sum a_{(n)}z^{-n-1}$ always).
-\item All pairs $a(z),b(z) \in \mathcal{F}$ are mutually local.
+\item All pairs $a(z),b(z) \in \mathcal{F}$ are mutually local. 
+(We saw (ref?) that this is equivalent to 
+$[a(z),b(w)]=\sum_{j=0}^{N-1}c_j(w)\partial_w^{(j)}\delta(z,w)$ and
+described the coefficients $c_j$, …)
 \end{enumerate}
 \end{definition}
 
@@ -2137,7 +2141,304 @@ completely determined.
 Write a formula for $T(x_1^{m_1}x_2^{m_2}\ldots x_s^{m_2})$.
 \end{exercise}
 
+\section{A second definition of vertex algebra}
+\label{section-second-definition-of-vertex-algebra}
 
+\noindent
+Now we aim for a second definition of vertex algebras.
+
+Let $(V,|0\rangle,T,\mathcal{F})$ be a vertex algebra.
+Define
+\begin{align*}
+\tilde{\mathcal{F}}&=\{\text{quantum fields $a(z)$ on $V$}
+|[T,a(Z)]&=\partial_za(z)\}\\
+\overline{\mathcal{F}}&=\bigcup_{k\geq 0}\mathcal{F}_k,\qquad 
+\mathcal{F}_0=\{I_V\},\qquad 
+\mathcal{F}_k=\{a(z)_{(n)}b(z)|a(z)\in \mathcal{F},b(z),\mathcal{F}_{k-1}\}\\
+\mathcal{F}'&=\{b(z) \in \tilde{\mathcal{F}}|a(z),b(z)\text{ is local},
+\forall  a(z) \in \mathcal{F}\}
+\end{align*}
+Where $I_V$ is the identity of $V$ considered as a quantum field.
+The idea is that this is like taking a subalgebra and taking
+the commutator over and over again.
+
+\begin{lemma}
+\label{lemma-simple-lemma1}
+$a(z)_{(-1)}I_V=a(z)$.
+\end{lemma}
+
+\begin{proof}
+Direct calculation.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-simple-lemma2}
+$a(z)_{(-n-1)}I_V=\partial_z^{(n)}a(z)$.
+\end{lemma}
+
+\begin{proof}
+Similar.
+\end{proof}
+
+\begin{lemma}[Dong]
+\label{lemma-Dong}
+Suppose $a(z),b(z)$ and $c(z)$ are mutually local in pairs.
+Let $n \in \mathbb{Z}$. Then $a(z)_{(n)}b(z)$ and $c(z)$
+is a local pair.
+\end{lemma}
+
+\begin{proof}
+Done in lecture.
+\end{proof}
+
+Therefore
+$$
+\mathcal{F} \subset \overline{\mathcal{F}}\overset{\text{Dong}}{\subset}
+\mathcal{F}'\subset \tilde{\mathcal{F}}
+$$
+\begin{remark}
+\label{remark-Fbar-subset-Ftilde}
+To be sure, we should chec $\overline{\mathcal{F}}\subset \tilde{\mathcal{F}}$.
+\end{remark}
+
+F tilde is the translation invariant
+\begin{exercise}
+\label{exercise-Fbar-subset-Ftilde}
+If $[T,a(z)]=\partial_za(z)$, $[T,b(z)]=\partial_zb(z)$,
+then
+$$
+[T,a(z)_{(n)}b(z)]=\partial_z(a(z)_{(n)}b(z)).
+$$
+\end{exercise}
+
+\begin{theorem}
+\label{theorem-}
+\begin{enumerate}
+\item For any $a(z) \in \tilde{\mathcal{F}}$,
+\label{item-vertex-algebra-second-definition-1}
+\begin{align*}
+a(z)|0\rangle&=v+z\cdot Tv+\frac{z^2}{2}T^2v+\ldots\\
+&=e^{2T}\qquad (v\in V)
+\end{align*}
+Thus we define
+\begin{align*}
+s: \tilde{\mathcal{F}} &\longrightarrow V \\
+a(z) &\longmapsto a(z)|0\rangle|_{z=0}
+\end{align*}
+
+\item 
+\label{item-vertex-algebra-second-definition-2}
+$$
+s(z(z)_{(n)}b(z)=a_{(n)}s(b(z)).
+$$
+\item Let $\mathcal{G} \subset \tilde{\mathcal{F}}$ be
+\label{item-vertex-algebra-second-definition-3}
+such that $s(\mathcal{G})=V$, and suppose
+$a(z)$ is local with all $b(z) \in \mathcal{G}$.
+``If you commute with a large enough bunch of guys,
+you are close enough to being zero.''
+If $s(a(z))=0$, then $a(z)=0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item We need to prove $a(z)|0\rangle$ does not have negative
+powers of $z$. So suppose it does, i.e. there is $n\geq 0$ such that
+$a_{(n)}|0\rangle z^{-n-1}\neq 0$.
+
+Idea: use translation invariance to pair $n$ and $-n$, and
+then the fact that $a(z)$ is a quantum field to get some vanishing.
+
+So first we translate and find that: 
+$$
+Tv(z)=Ta((z)|0\rangle=(Ta(z)-a(z)T)|0\rangle=\partial_z a(z)|0\rangle
+$$ 
+so that
+\begin{equation}
+\label{equation-star}
+v_n=\frac{1}{n}Tv_{n-1},\qquad (n \neq 0).
+\end{equation}
+So, $v_n \neq 0$ for some $n<0 \implies v_{n-1}$ also not zero.
+But we also know by $a(z)$ being a quantum field
+that there exists $N$ such that $a_{(n)}|0\rangle=0$ for all $n \geq N$.
+So, we'd have a contradiction.
+So $v(z)=\sum_{n \geq 0}v_nz^n$.
+
+Now Eq. \ref{equation-star} also implies
+$$
+v_1=Tv_0,v_0=\frac{1}{2}Tv_1,\ldots, v_n=\frac{1}{n!}T^nv_0.
+$$
+So $a(z)|0\rangle=e^{zT}v_0$ $(v_0 \in V)$.
+
+\item Consider 
+$$
+a(w)_{(n)}b(w)|0\rangle=
+\text{Res}_z(a(z)b(w)i_{z,w}(z-w)^n-
+\underbrace{b(w)a(z)i_{w,z}(z-w)^n}_{=0}
+$$ 
+where that vanishing is because the $i_{w,z}$ expands the argument
+in positive powers, and $b(w)a(z)$ also has only positive powers
+since $a(z)|0\rangle$ also has only positive powers 
+(and the residue picks the coefficient of the power  $-1$).
+So we obtain
+$$
+=\text{Res}_za(z)b(w)i_{z,w}(z-w)^n.
+$$
+But
+\begin{align*}
+s(a(w)_{(n)}b(w))&=\left(
+\text{Res}_zs(z)b(w)i_{z,w}(z-w)^n|0\rangle\right)|_{w=0}\\
+&=\text{Res}_za(z)b(w)z^n|0\rangle|_{z=0}\\
+&=\text{Res}_z z^n a(z)(s(b(w)))\\
+&=\text{Res}_z z^n \sum_{k}a_{(k)}z^{-k-1}s(b)\\
+&=a_{(n)}s(b).
+\end{align*}
+
+\item By locality, there exists $N$ such that
+\begin{align*}
+(z-w)^Na(z)b(w) |0\rangle&=(z-w)^Nb(w)a(z)|0\rangle\\
+&=(z-w)^Nb(w)e^{2T}s(a)=0
+\end{align*}
+\begin{align*}
+(z-w)^Na(z)b(w)|0\rangle |_{w=0}&=0\\
+\implies z^Na(z)s(b)&=0\\
+\implies a(z)v&=0\\
+\implies a(z)&=0
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip\noindent
+{\bf Corollary.}
+\begin{enumerate}
+\item $S|_{\mathcal{F}'}$ is injective.
+\item $S|_{\overline{\mathcal{F}}}$ is surjective.
+\item $S|_{\mathcal{F}}$ is isomorphism $\overline{\mathcal{F}}\to V$.
+
+So we define the inverse (linear) map $Y:V \to \overline{\mathcal{F}}$,
+i.e. for all $a \in V$, $Y(a,z)$ denotes $s^{-1}(a) \in \overline{\mathcal{F}}$.
+
+\item $(V,|0\rangle,T,\overline{\mathcal{F}})$ is a vertex algebra,
+and
+$$
+Y(a_{(n)}b,z)=Y(a,z)_{(n)}Y(b,z)\qquad \forall a,b \in V.
+$$
+\end{enumerate}
+
+So we have
+$$
+\xymatrix{
+\mathcal{F}\ar[r]&\overline{\mathcal{F}}\ar@{->>}[d]\ar[r]&
+\mathcal{F}'\ar@{^{(}->}[d]\ar[r]&\tilde{\mathcal{F}}\ar[d]^s\\
+&  V\ar[r]^{\text{id}}& V\ar[r]^{\text{id}} &V
+}
+$$
+\begin{proof}
+\begin{enumerate}
+\item Now we apply part \ref{item-vertex-algebra-second-definition-3}
+ in the theorem to $a(z) \in \mathcal{F}'$,
+$\mathcal{G}=\overline{\mathcal{F}}$.
+If $s(a(z))=0$, then  $a(z)=0$. So  $s:\mathcal{F}' \to V$ is injective
+(as in the diagram).
+
+\item By iterating the property in the theorem that
+$a_{(n)}s(b(z))=s(a(z)_{(n)}b(z))$ so we can take out ``one by one''
+in the following product to obtain
+$$
+a^1_{(n_1)}\ldots a_{(n_s)}^s |0\rangle
+=s(a^1(z)_{(n)}\ldots a^s(z)_{(n_s)}I_V
+$$
+This proves the double headed arrow in the diagram.
+
+\item Now define $Y(-,z):V \to \overline{\mathcal{F}}$.
+$$
+s(Y(a,z)_{(n)}Y(b,z))=a_{(n)}s(Y(b,z))=a_{(n)}b.
+$$
+\item Then all the axioms in our definition of vertex algebra are
+satisfied!
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+\label{remark-a-relation}
+Let $(V,|0\rangle,T,\mathcal{F})$ be a vertex algebra.
+$\overline{\mathcal{F}}$ and $Y$ as above.
+$\forall a,b \in V$,
+\begin{equation}
+\label{equation-star2}
+[Y(a,z),Y(b,w)]=\sum_{j=0}^{N-1}c_j(w)\partial_w^{(j)}\delta(z,w).
+\end{equation}
+$c_j(w)=Y(a,w)_{(j)}Y(b,w)=Y(a_{(j)}b,w)$.
+\end{remark}
+
+Which is like something we had written before.
+But now we know more. Let us extract
+the $z^{-m-1},w^{-n-1}$ coefficient of Eq. \ref{equation-star2}.
+We obtain
+$$
+LHS=\sum_{m,n}[a_{(m)}z^{-m-1},b_{(n)}w^{-n-1}]=[a_{(m)},b_{(n)}]
+$$
+$$
+RHS=\sum_{j}\left(\sum_{k}(a_{(j)}b)_{(k)}w^{-k-1}\right)
+\left(\sum_{s}\binom{s}{j}z^{-s-1}w^{s-j}\right)
+$$
+The coefficient of $z^{-m-1}w^{-n-1}$ of RHS is, $s=m$,
+$$
+\sum_{j}\binom{m}{j}w^{m-j}(a_{(j)}b)_{(k)}w^{-k-1}
+=\sum_{j}\binom{m}{j}(a_{(j)}b)_{(m+n-j)}
+$$
+So we put this as a proposition:
+\begin{proposition}[Commutator formula]
+\label{proposition-commutator-formula}
+In a vertex algebra $(V,|0\rangle,T,Y)$, we have
+$$
+[a_{(m)},b_{(n)}]=\sum_{j \geq 0}\binom{m}{j}(a_{(j)}b)_{(m+n-j)}
+\qquad \forall a,b \in V,\quad m,n\in \mathbb{Z}
+$$
+\end{proposition}
+
+\begin{exercise}
+\label{exercise-its-what-it-is}
+Prove that in a vertex algebra
+\begin{equation}
+\label{equation-star3}
+[Y(a,z)Y(b,w)i_{z,w}-Y(b,w)Y(a,z)i_{w,z}](z-w)^n
+=\sum_{j \geq 0}Y(a_{(n+j)}b,w)\partial_w^{(j)}\delta(z,w).
+\end{equation}
+Hint. Prove that he left hand side is local.
+\end{exercise}
+
+By extracting coefficients of Eq. \ref{equation-star3}, we obtain
+for all $a,b,c \in V$ and $m,n,k \in \mathbb{Z}$:
+\begin{equation}
+\label{equation-Bocherds-identity}
+\begin{aligned}
+&\sum_{j \geq 0}\binom{m}{j}(a_{(n+j)}b)_{(m+k-j)}c\\
+&=\sum_{j \geq 0}(-1)^j \binom{n}{j}
+\left(a_{(m+n-j)}b_{(k+j)}c-(-1)^nb_{(n+k-j)}a_{(n+j)}c\right)
+\end{aligned}
+\end{equation}
+
+This is called {\it Bocherd's identity}, and is the key
+ingredient in our second definition of vertex algebra:
+
+\begin{definition}
+\label{definition-vertex-algebra2}
+A {\it vertex algebra} is a vector space $V$,
+a nonzero vector $|0\rangle\in V$,
+and a set of bilinear products
+$V \times V \to V$, $a,b \mapsto a_{(n)}b$, $n \in \mathbb{Z}$
+such that
+\begin{enumerate}
+\item $\forall a,b \in V$ $\exists N$ such that $a_{(n)}b=0$
+$\forall n \geq N$.
+\item $\forall  a \in V$, $|0\rangle_{(n)}a=\delta_{n,-1}a$.
+\item $\forall a \in V,$ $a_{(-1)}|0\rangle =a$ and $a_{(\geq 0)}|0\rangle=0$.
+\item Equation \ref{equation-Bocherds-identity} holds
+$\forall a,b,c \in V$, $m,n,k \in \mathbb{Z}$.
+\end{enumerate}
+\end{definition}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
