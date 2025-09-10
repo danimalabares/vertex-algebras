@@ -1514,7 +1514,7 @@ $\text{SL}_2(\mathbb{Z})=\left<S,T\right>$.
 
 \begin{enumerate}
 \item Recall $\hat{\mathfrak{a}}=\mathbb{C}K\oplus 
-\bigoplus_{n \in \mathbb{Z}}\mathbb{C}h_n$ the Heisenberg Lie algebra,
+\bigoplus_{n \in \mathbb{Z}}\mathbb{C}h_n$ the {\it Heisenberg Lie algebra},
 or {\it oscillator Lie algebra},
 $$
 [h_m,h_n]=m\delta_{m,-n}K,\qquad [K,\hat{\mathfrak{a}}]=0.
@@ -1592,6 +1592,23 @@ $$
 $H$ is irreducible.
 \end{exercise}
 
+\begin{proof}
+We need to prove that there is no
+vector subspace $V \subset \mathbb{C}[x_1,x_2,\ldots]=H$
+such that $xV \subset V$ for all $x \in \hat{\mathfrak{a}}$.
+And then the proof is basically noticing 
+that the orbit of the action of $\hat{\mathfrak{a}}$ on $H$ 
+is all of $H$. That is, if we had proper subspace
+of $H$, we can always find an element of $\hat{\mathfrak{a}}$ 
+that takes some element in $V$ to the one of the
+elements that is not in $V$. Indeed, by applying
+$h_n$ for  different values of positive  $n$ we can take
+any element of $V$ to a constant. Then we apply
+$h_n$ for different values of negative $n$ to obtain
+any monomial. Then we add these monomials and obtain any
+polynomial in $H$.
+\end{proof}
+
 \noindent
 {\bf Notation.} Instead of $1$ let's write $|0\rangle$.
 
@@ -1623,7 +1640,7 @@ $$
 [at^m,bt^n]=m(a,b)\delta_{m,-n}K,\qquad [K,\hat{\mathfrak{h}}]=0.
 $$
 Let $\mu\in \mathfrak{h}$. Define
-$H^\mu=U(\hat{\mathfrak{h}})\otimes_{U(\hat{\mathfrak{h}}}\mathbb{C}|\mu\rangle$ 
+$H^\mu=U(\hat{\mathfrak{h}})\otimes_{U(\hat{\mathfrak{h}})}\mathbb{C}|\mu\rangle$ 
 , $\hat{\mathfrak{h}}_+=\mathfrak{h}[t]\oplus\mathbb{C}K$, and
 $$
 at^m\cdot |\mu\rangle=\begin{cases}
@@ -1645,7 +1662,7 @@ such that $p(\underline{x})=p(x_1,\ldots,x_{N-1})$,
 then $h_k\cdot p(x)=0$ $\forall  k \geq N$,
 and $h_{m-k}\cdot p(x)=0$ $\forall m-k \geq N$.
 
-So $(\sum h_{m-k}h)k)p(\underline{x})$ is a \underline{finite} sum.
+So $(\sum h_{m-k}h_k)p(\underline{x})$ is a \underline{finite} sum.
 Of course, the number of terms in the sum depends on $p(x)$ and can be
 arbitrarily large.
 
@@ -1676,12 +1693,13 @@ Indeed,
 {\bf Normal ordering idea (``that physicist do'').} Let's cheat
 and redefine the product as
 $$
-:h_{-k}h_k:=\begin{cases}
+\,:\!h_{-k}h_k\!:\,
+=\begin{cases}
 h_{-k}h_k\qquad & \text{if }k\geq 0\\
 h_k h_{-k}\qquad &\text{if }k<0.
 \end{cases}
 $$
-Now $\sum_{k \in \mathbb{Z}}:h_{-k}h_k:$ is well-defined! 
+Now $\sum_{k \in \mathbb{Z}}:\!h_{-k}h_k\!:$ is well-defined! 
 
 \medskip\noindent
 {\bf Notation.} Let us consider series of the form
@@ -1731,13 +1749,13 @@ The normally order product of quantum fields
 $a(z)=\sum_{n \in \mathbb{Z}}a_{(n)}z^{-n-1}$, and
 $b(z)=\sum_{n \in \mathbb{Z}}b_{(n)}z^{-n-1}$ is.
 $$
-:a(z)b(z):=a(z)_+b(z)+b(z)a(z)_-.
+:\!a(z)b(z)\!:\,=a(z)_+b(z)+b(z)a(z)_-.
 $$
 
 \begin{exercise}[Most important of the course]
 \label{exercise-most-important}
 Show that if $a(z)$ and $b(z)$ are quantum fields,
-then $:a(z)b(z):$ is well-defined, and is a quantum field.
+then $:\!a(z)b(z)\!:\,$ is well-defined, and is a quantum field.
 \end{exercise}
 
 \medskip\noindent
@@ -2151,10 +2169,10 @@ Let $(V,|0\rangle,T,\mathcal{F})$ be a vertex algebra.
 Define
 \begin{align*}
 \tilde{\mathcal{F}}&=\{\text{quantum fields $a(z)$ on $V$}
-|[T,a(Z)]&=\partial_za(z)\}\\
-\overline{\mathcal{F}}&=\bigcup_{k\geq 0}\mathcal{F}_k,\qquad 
-\mathcal{F}_0=\{I_V\},\qquad 
-\mathcal{F}_k=\{a(z)_{(n)}b(z)|a(z)\in \mathcal{F},b(z),\mathcal{F}_{k-1}\}\\
+|[T,a(Z)]=\partial_za(z)\}\\
+\overline{\mathcal{F}}&=\bigcup_{k\geq 0}\mathcal{F}_k,\\
+\mathcal{F}_0&=\{I_V\},\\
+\mathcal{F}_k&=\{a(z)_{(n)}b(z)|a(z)\in \mathcal{F},b(z),\mathcal{F}_{k-1}\}\\
 \mathcal{F}'&=\{b(z) \in \tilde{\mathcal{F}}|a(z),b(z)\text{ is local},
 \forall  a(z) \in \mathcal{F}\}
 \end{align*}
@@ -2198,7 +2216,7 @@ $$
 $$
 \begin{remark}
 \label{remark-Fbar-subset-Ftilde}
-To be sure, we should chec $\overline{\mathcal{F}}\subset \tilde{\mathcal{F}}$.
+To be sure, we should check $\overline{\mathcal{F}}\subset \tilde{\mathcal{F}}$.
 \end{remark}
 
 F tilde is the translation invariant
@@ -2421,7 +2439,8 @@ for all $a,b,c \in V$ and $m,n,k \in \mathbb{Z}$:
 \end{equation}
 
 This is called {\it Bocherd's identity}, and is the key
-ingredient in our second definition of vertex algebra:
+ingredient in our second definition of vertex algebra
+(see \cite[Proposition 4.8(b)]{VAFB}):
 
 \begin{definition}
 \label{definition-vertex-algebra2}
@@ -2439,6 +2458,222 @@ $\forall n \geq N$.
 $\forall a,b,c \in V$, $m,n,k \in \mathbb{Z}$.
 \end{enumerate}
 \end{definition}
+
+\section{Calculating vertex algebras}
+\label{section-calculating-vertex-algebras}
+
+
+We begin with some notation.
+
+\begin{definition}
+\label{definition-lambda-bracket}
+Let $V$ be a vertex algebra and
+$a,b \in V$.
+We package the elements $a_{(0)}b,a_{(1)}b,\ldots$
+into a series
+$$
+[a_{\lambda}b]=\sum_{j \geq 0}a_{(j)}b \frac{\lambda^j}{j!}
+$$
+called the {\it $\lambda$-bracket} or {\it operator product expansion (OPE)} 
+of $a$ and $b$.
+\end{definition}
+
+Recall that elements in $V$ correspond to fields $Y(a,z)$ and $Y(b,z)$.
+They are local, and the coefficients of their bracket are
+$c_j(w)=Y(a_{(j)}b,w)$. So we put that information in the $\lambda$-bracket.
+
+We also denote by $\,:\!ab\!:\,$ the vector correponding to the normally ordered
+product $\,:\!Y(a,z)Y(b,z)\!:\,$. Again, by last time's theorem,
+$\,:\!ab\!:\,=a_{(-1)}b$.
+
+\begin{example}
+\label{example-Heisenberg-is-vertex-algebra-with-definition2}
+$V=H=\mathbb{C}[x_1,x_2,\ldots]$, $\mathcal{F}=\{h(z)\}$ where
+$h(z)=\sum_{n \in \mathbb{Z}}z^{-n-1}$ (so in this example we are denoting
+$h_n \equiv h_{(n)}$)
+
+[This going too fast so I take photo] But the first part shows that
+$x_1$ corresponds to the sort of ``generating field'' $h(z)$. What about $x_2$?
+
+We conclude that
+$$
+Y(x_{n+1},z)=\partial_z^{(n)}h(z).
+$$
+The next question is: what about $x^2$? It turns out that
+\begin{align*}
+Y(x_1^2,z)&=Y(x_1\cdot x_1,z)\\
+&=Y(h_{(-1)}x_1,z)\ldots
+\end{align*}
+
+Recall that $L(z)=\frac{1}{2} \,:\!h(z)h(z)\!:\,$. We have claimed
+that $[L_m,L_n]=(m-n)L_{m+n}$…
+
+What about the $\lambda$-bracket? Let's denote…
+
+Well, long ago we computed that
+\begin{align*}
+\ldots&= 
+\end{align*}
+So we see that
+$$
+[h_\lambda h]=\lambda |0\rangle.
+$$
+
+We often omit  ``$|0\rangle$'' from these computations […]
+
+What about $h_{(0)}h$? Well, $h_{(0)}=0$ by definition of $h(z)$.
+So $h_{(0)}h=0$. Next, $h_{(j)}=j\frac{\partial }{\partial x_j}$ for
+$j>0$, so
+$$
+h_{(1)}h= \frac{\partial }{\partial x_1}(x_1)=1=|0\rangle.
+$$
+So $[h_\lambda h]=\lambda$ again.
+
+What I really want is $[L_\lambda L]=$? Let's use
+Bocherd's formula \ref{equation-Bocherds}.
+
+First let's comput $(h_{(-1)}h)_{(0)}L$, i.e. we
+are putting $n=-1$, $m=0$ and $k=0$.
+
+\begin{exercise}
+\label{exercise-conta}
+Check $(h_{(-1)}h)_{(1)}h=2h$ and
+$(h_{(-1)}h)_{\geq 2}h=0$.
+Thus $[L_\lambda h]=Th+\lambda h$.
+\end{exercise}
+If we wanted, we could continue to calculate
+$[L_\lambda L]$ by putting $c=\frac{1}{2}x_1^2$ above
+instead of $c=x_1$.
+
+We find
+$$
+[L_\lambda L]=\underbrace{TL}_{L_{(0)}L}
++\underbrace{2\lambda L}_{L_{(1)}L}
++\underbrace{\frac{\lambda^3}{12}|0\rangle}_{L_{(3)}L}.
+$$
+This means
+\begin{equation}
+\label{equation-looks-important}
+[L(z),L(w)]=(\partial_wL(w))\delta(z,w)
++2L(w)\partial_w\delta(z,w)
++\frac{1}{12}\partial_w^3\delta(z,w)I_V.
+\end{equation}
+So we can extract coefficients:
+$$
+LHS=\sum_{m,n}[L_m,L_n]w^{-m-2}z^{-n-2}
+$$
+Coefficient of $w^{-m-2}z^{-n-2}$ on RHS is:
+\begin{align*}
+&\sum_{k}(-k-2)L_kw^{-k-3}\sum z^{-a-1}w^a\\
+&+2\sum_{k}L_kw^{-k-2}\sum_{a}az^{-a-1}w^{a-1}
++\frac{1}{12}\sum_{a}a(a-1)(a-2)z^{-a-1}w^{a-3}.
+\end{align*}
+So actually we found
+$$
+[L_m,L_n]=(m-n)L_{m+n}+\frac{m^3-m}{12}\delta_{m,-n}I_V.
+$$
+The moral is: one tries to define $L=\frac{1}{2}h^2$ naively,
+expecting $[L_m,L_n]=(m-n)L_{m+n}$.
+Need to ``normally order/normalise'' to make $L$ 
+well-defined, now $L=\frac{1}{2}\,:\!h h\!:\,$.
+The ``cost'' is that the expected relation
+$[L_m,L_n]=(m-n)L_{m+n}$ gets altered by an 
+``anomaly'' $\frac{m^3-m}{12}I_V$.
+\end{example}
+
+Right, so we showed how to compute this using Bochner's
+formula, but there's actually another way
+using $\lambda$-bracket:
+
+\begin{theorem}
+\label{theorem-lambda-brackets}
+Let $V$ be a vertex algebra, $a,b,c \in V$.
+Then
+\begin{align}
+\label{equation-lambda-brackets}
+[Ta_\lambda b]&=-\lambda[a_\lambda b]\\
+[a_\lambda Tb]&=(T+\lambda)[a_\lambda b]\\
+T(\,:\!ab\!:\,)=\,:\!(Ta)b\!:\,+\,:\!a(Tb)\!:\,\\
+[b_\lambda a]&=-[a_{-\lambda -T}b]\\
+[a_\lambda \,:\!bc\!:\,]=\,:\![a_\lambda bc\!:\,+\,:\!b[a_\lambda c\!:\,
++\int_0^\lambda [[a_\lambda b]_\mu c]d\mu\\
+[a_\lambda[b_\mu c]]-[b_\mu [a_\lambda c]]&=[[a_\lambda b]_{\lambda+\mu}c].
+\end{align}
+\end{theorem}
+
+\begin{proof}
+For the first one use $\partial_z \delta(z,w)=-\partial_z \delta(z,w)$.
+
+For the last one notice that
+\begin{align*}
+-[a_{-\lambda - T}b]&=\sum_{j}\frac{1}{j!}(-\lambda-T)^j(a_{(j)}b)
+\end{align*}
+if $[a_\lambda b] =\sum_{j}\frac{\lambda^j}{j!}b$.
+\end{proof}
+
+\begin{remark}
+\label{remark-how-to-use}
+By noting that $[a_\lambda b]=\text{Res}_ze^{\lambda z}Y(a,z)b$,
+these identities can be proved pretty efficiently.
+\end{remark}
+
+That is,
+
+\begin{exercise}
+\label{exercise-use-the-5th}
+Use the fifth equation to prove what we proved with Bochner's formula.
+\end{exercise}
+
+And another one:
+
+\begin{exercise}
+\label{exercise-}
+Let $V=H=\mathbb{C}[x_1,x_2,\ldots]$ again.
+Define $B=\frac{1}{2}\,:\!h h\!:\,+\beta Th$ with $\beta \in \mathbb{C}$.
+Confirm that 
+$$
+[B_\lambda B]=TB+2\lambda B=\frac{1}{12}(1-12\beta^2)|0\rangle.
+$$
+\end{exercise}
+
+\begin{definition}
+\label{definition-Virasoro-Lie-algebra}
+The {\it Virasoro Lie algebra} is
+$$
+\text{Vir}=\bigoplus_{n \in \mathbb{Z}}\mathbb{C}L_n \oplus \mathbb{C}C
+$$
+with Lie bracket
+$$
+[L_m,L_n]=(m-n)L_{m+n}+\frac{m^3-m}{12}\delta_{m,-n}C,\qquad [C,\text{Vir}]=0.
+$$
+\end{definition}
+By the discussion above (all we've said so far!),
+there is a representation $\rho$ of $\text{Vir}$ in $H$ 
+given by
+$$
+\rho(\underbrace{L_n}_{\substack{\text{as an abstract} \\ \text{object in Vir}}}
+=\underbrace{L_n}_{\substack{\text{as a complicated} \\ \text{operator}}},
+\qquad \rho(C)=I_H.
+$$
+Also $H$ carries a representation $\rho_\beta$ of $\text{Vir}$,
+$$
+\rho_\beta(L_n)=B_n,\qquad \rho_\beta(C)=(1-12\beta^2)I_V
+$$
+If $(M,\rho)$ is a representation of $\text{Vir}$, in which 
+ $\rho(C)=c\cdot I_M$ for some scalar $c$, we sat $M$ has a
+{\it central charge} $c$.
+
+Looks like we have a second example of a vertex algebra.
+Consider $V=H$, $|0\rangle=1$, $T=T$ from before, but this time put
+$F=\{B(z)\}$. Then all the axioms of the first definition of vertex
+algebra are satisfied, except the second: 
+$B_{(n_1)}B_{(n_2)}\ldots B_{(n_s)}|0\rangle$
+might not span all of $V=H$.
+So take $V=\text{span}\{\text{these monomials}\}\subset H$.
+One can check that $T(V) \subset V$, and
+$B(z)$ is a quantum field on $V$.
+So $(V,1,T,\{B(z)\})$ is a vertex algebra, called the 
+{\it Virasoro vertex algebra}.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
