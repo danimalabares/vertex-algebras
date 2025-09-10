@@ -1778,7 +1778,7 @@ $$
 $$
 In this example,
 \begin{align*}
-[h(z),h(w)&=\sum_{m,n \in \mathbb{Z}}m \delta_{m,-n}z^{-m-1}
+[h(z),h(w)]&=\sum_{m,n \in \mathbb{Z}}m \delta_{m,-n}z^{-m-1}
 w^{-n-1}I_H\\
 &=\sum_{m \in \mathbb{Z}}z^{-m-1}w^{m-1}I_H.
 \end{align*}
@@ -1886,8 +1886,8 @@ $$
 $$
 We can similarly compute
 \begin{align*}
-h(z)h(w)&=:h(z)h(w):+i_{z,w}\frac{1}{(z-w)^2}\\
-h(w)h(z)&=:h(z)h(w):+i_{w,z}\frac{1}{(z-w)^2}.
+h(z)h(w)&=\,:\!h(z)h(w)\!:\,+i_{z,w}\frac{1}{(z-w)^2}\\
+h(w)h(z)&=\,:\!h(z)h(w)\!:\,+i_{w,z}\frac{1}{(z-w)^2}.
 \end{align*}
 
 \medskip\noindent
@@ -2075,7 +2075,7 @@ $$
 \end{definition}
 
 \begin{remark}
-\label{remark-}
+\label{remark-nth-product}
 \begin{enumerate}
 \item We recover the prior definition: if $n \geq 0$,
 $$
@@ -2490,37 +2490,125 @@ $\,:\!ab\!:\,=a_{(-1)}b$.
 \label{example-Heisenberg-is-vertex-algebra-with-definition2}
 $V=H=\mathbb{C}[x_1,x_2,\ldots]$, $\mathcal{F}=\{h(z)\}$ where
 $h(z)=\sum_{n \in \mathbb{Z}}z^{-n-1}$ (so in this example we are denoting
-$h_n \equiv h_{(n)}$)
+$h_n \equiv h_{(n)}$), where, as before,
+$$
+h_n=\begin{cases}
+n\frac{\partial }{\partial x_n}\qquad &n>0 \\
+x_n\qquad &n<0
+\end{cases}
+$$
+Recall we completed $\mathcal{F}$ to $\overline{\mathcal{F}}$ 
+and discovered
+$$
+\xymatrixrowsep{0.2 em}
+\xymatrix{
+V\ar[r]^{\simeq}&\overline{\mathcal{F}}\\
+a(z)|0\rangle |_{z=0}&a(z)\ar@{|->}[l]^s\\
+a \ar@{|->}[r]_Y&Y(a,z)
+}
+$$
+For $I_V \in \overline{\mathcal{F}}$,
+where
+ \begin{align*}
+I_V&=\sum I_{V(n)}z^{-n-1}\\
+I_{V(n)}&=\begin{cases}
+I_V\qquad &\text{if }n=-1 \\
+0\qquad &\text{if }n \neq -1
+\end{cases}
+\end{align*}
+we get $I_V |0\rangle|_{z=0}=|0\rangle$. So,
+$$
+Y(|0\rangle,z)=I_V
+$$
+This shows that the vacuum $|0\rangle$ corresponds to the identity.
 
-[This going too fast so I take photo] But the first part shows that
-$x_1$ corresponds to the sort of ``generating field'' $h(z)$. What about $x_2$?
+Next $h(z)$ in our example. We have
+\begin{align*}
+h(z)|0\rangle&=\sum_{ n \in \mathbb{Z}}h_n 1z^{-n-1}\\
+&=\sum_{ k \geq 1}x^kz^{k-1}+\sum_{k \geq 1}k\frac{\partial }{\partial x_k}1\\
+\implies h(z)|0\rangle|_{z=0}&=x_1\\
+\implies S(h(z))&=x_1\\
+\implies Y(x,z)&=h(z).
+\end{align*}
+So, $x_1$ corresponds to the sort of ``generating field'' $h(z)$.
 
-We conclude that
+What about $x_2$? Well, $h(z)=h(z)_{(-1)}I_V$.
+There was a lemma (maybe Remark \ref{remark-nth-product}?) that
+$$
+a(z)_{(-2)}I_V=\partial_za(z).
+$$
+So $\partial_zh(z) \in \overline{\mathcal{F}}$,
+\begin{align*}
+a(\partial_zh(z))&=\partial \sum_{k \geq 1}x_kz^{k-1}\Big|_{z=0}\\
+&=\sum_{k\geq 1}(k-1)x_kz^{k-2}\Big|_{z=0}\\
+&=x_2.
+\end{align*}
+So
 $$
 Y(x_{n+1},z)=\partial_z^{(n)}h(z).
 $$
-The next question is: what about $x^2$? It turns out that
+Continuing:
+$$
+Y(x_3,z)=\frac{1}{2}\partial_z^2h(z),
+$$
+and in general
+$$
+Y(x_{n+1},z)=\partial_z^{(n)}h(z).
+$$
+The next question is: what about $x_1^2$? 
+The trick here is that $x_1$ is identified with $h$, so
 \begin{align*}
 Y(x_1^2,z)&=Y(x_1\cdot x_1,z)\\
-&=Y(h_{(-1)}x_1,z)\ldots
+&=Y(h_{(-1)}x_1,z)\\
+&=Y(x_1,z)_{(-1)}Y(x,z)\\
+&=\,:\!h(z)h(z)\!:\,.
 \end{align*}
 
 Recall that $L(z)=\frac{1}{2} \,:\!h(z)h(z)\!:\,$. We have claimed
-that $[L_m,L_n]=(m-n)L_{m+n}$…
+(Exercise \ref{exercise-hard})
+that $[L_m,L_n]=(m-n)L_{m+n}$ when $m,n,m+n \neq 0$
+where
+\begin{align*}
+L(z)&=\sum_{m \in \mathbb{Z}}L_mz^{-m-2}\\
+&=\sum_{n \in \mathbb{Z}}L_{(n)}z^{-n-1}.
+\end{align*}
 
-What about the $\lambda$-bracket? Let's denote…
+\medskip\noindent
+What about the $\lambda$-bracket? Let's denote
+$h=x_1$, (so $Y(h,z)=h(z)$, $L=\frac{1}{2}x_1^2$
+and $Y(L,z)=L(z)$).
 
 Well, long ago we computed that
 \begin{align*}
-\ldots&= 
+[h(z),h(w)]&=\partial_w \delta(z,w)I_V\\
+&=\sum_{j \geq 0}Y(h_{(j)}h,w)\partial_w^{(j)}\delta(z,w).
+\end{align*}
+Then
+\begin{align*}
+Y(h_{(0)}h,w)&=0\\
+Y(h_{(1)}h,w)&=I_V\\
+Y(h_{\geq 2)}h,w)&=0\\
+\implies h_{(1)}h&=|0\rangle, \text{ and }\\
+h_{(j)}h=0,\qquad j=0\text{ and }j\geq 2.
 \end{align*}
 So we see that
 $$
 [h_\lambda h]=\lambda |0\rangle.
 $$
 
-We often omit  ``$|0\rangle$'' from these computations […]
+We often omit  ``$|0\rangle$'' from these computations,
+as if it were ``1''.
 
+So
+$$
+[h_\lambda h]=\lambda.
+$$
+\medskip\noindent
+$[h_\lambda |0\rangle]=0=[|0\rangle_\lambda h]$ 
+because $[h(z),I_V]=0$.
+In fact $[x_\lambda |0\rangle]=[|0\rangle_\lambda x]=0$ for all $x \in V$.
+
+\medskip\noindent
 What about $h_{(0)}h$? Well, $h_{(0)}=0$ by definition of $h(z)$.
 So $h_{(0)}h=0$. Next, $h_{(j)}=j\frac{\partial }{\partial x_j}$ for
 $j>0$, so
@@ -2530,11 +2618,14 @@ $$
 So $[h_\lambda h]=\lambda$ again.
 
 What I really want is $[L_\lambda L]=$? Let's use
-Bocherd's formula \ref{equation-Bocherds}.
+Bocherd's formula \ref{equation-Bocherds-identity}.
 
-First let's comput $(h_{(-1)}h)_{(0)}L$, i.e. we
+First let's compute $(h_{(-1)}h)_{(0)}L$, i.e. we
 are putting $n=-1$, $m=0$ and $k=0$.
 
+$$
+[\text{missing computations}]
+$$
 \begin{exercise}
 \label{exercise-conta}
 Check $(h_{(-1)}h)_{(1)}h=2h$ and
@@ -2651,7 +2742,8 @@ By the discussion above (all we've said so far!),
 there is a representation $\rho$ of $\text{Vir}$ in $H$ 
 given by
 $$
-\rho(\underbrace{L_n}_{\substack{\text{as an abstract} \\ \text{object in Vir}}}
+\rho(\underbrace{L_n}_{\substack{\text{as an abstract} \\ 
+\text{object in Vir}}})
 =\underbrace{L_n}_{\substack{\text{as a complicated} \\ \text{operator}}},
 \qquad \rho(C)=I_H.
 $$
