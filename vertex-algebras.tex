@@ -1326,7 +1326,7 @@ We find explicitly
 \frac{\sum_{m \in \mathbb{Z}}
 y^{3m}q^{3m^2+m}-\sum_{m \in \mathbb{Z}}
 y^{3m-1}q^{3m^2-m}}
-{\prod_{n=1}^\infty(1-y^{-1}q^{n-1}(1-q^n)(1-yq^n)}
+{\prod_{n=1}^\infty(1-y^{-1}q^{n-1})(1-q^n)(1-yq^n)}
 \end{align*}
 
 \begin{exercise}
@@ -1345,8 +1345,8 @@ $\sum_{n=0}^\infty q^np(n)=\prod_{k=1}^\infty\frac{1}{1-q^k}$, and expand.
 
 It would appear that
 $$
-\chi_{L(\Lambda_0)}=\left(\prod_{k=1}^\infty
-\frac{1}{1-q^k}\cdot \sum_{m \in \mathbb{Z}}y^mq^{m^2}\right)
+\chi_{L(\Lambda_0)}=
+\prod_{k=1}^\infty\frac{1}{1-q^k}\cdot \sum_{m \in \mathbb{Z}}y^mq^{m^2}
 $$
 This identity is true, and we will see it has a vertex-algebra interpretation.
 
@@ -1354,8 +1354,7 @@ This identity is true, and we will see it has a vertex-algebra interpretation.
 \label{remark-Jacobi-triple-product-identity}
 If we compute $L(0)=1$ using the formula, we obtain
 \begin{align*}
-\prod_{n=1}^\infty&=(1-yq^{n-1})(1-q^n)(1-y^{-1}q^n)\\
-&=\sum(\text{exercise})
+\prod_{n=1}^\infty(1-yq^{n-1})(1-q^n)(1-y^{-1}q^n)=\sum(\text{exercise})
 \end{align*}
 This identity is called the {\it Jacobi triple product identity}.
 \end{remark}
@@ -1650,7 +1649,7 @@ at^m\cdot |\mu\rangle=\begin{cases}
 $$ 
 
 \medskip\noindent
-{\bf Returning to $\hat{\mathfrak{a}}\mathbb{y}H=H^\circ$.} Introduce
+Returning to $\hat{\mathfrak{a}}\mathbb{y}H=H^\circ$. Introduce
 $$
 L_m=\frac{1}{2}\sum_{k \in \mathbb{Z}}h_{m-k}h_k.
 $$
@@ -1767,8 +1766,10 @@ so we had relations
 We sould like to interpret such relations at the level of $h(z)$.
 
 \begin{align*}
-[h(z),h(z)]&=\sum_{m,n \in \mathbb{Z}}&=\sum_{m,n}z^{-(m+n)-2}\\
-&=\sum z^{-p-2}\left(\underbrace{\sum_{m+n=2}p[h_m,h_n}_{\text{infinite?}}
+[h(z),h(z)]&=h(z)h(z)-h(z)h(z)\\
+&=\sum_{p}\sum_{m+n=p}h_mh_nz^{-(m+n)-2}
+-\sum_{m+n=p}h_nh_mz^{-(m+n)-2}\\
+&=\sum_p z^{-p-2}\left(\underbrace{\sum_{m+n=p}[h_m,h_n]}_{\text{infinite?}}
 \right)
 \end{align*}
 which is a bad idea, since that sum can be infinite.
@@ -1804,7 +1805,8 @@ $$
 \mathbb{C}[\![z,z^{-1},w,w^{-1}]\!].
 $$
 \end{definition}
-Why (Dirac) delta function? Recall that $\delta(x)$ is the 
+Why delta function? It behaves like Dirac delta.
+Recall that $\delta(x)$ is the 
 {\it distribution} on $\mathbb{R}$ defined by
 $\delta[f(x)]=f(0)$ for all test functions $f(x)$.
 Every function $k(x)$ gives a distribution $D_k$.
@@ -1843,7 +1845,7 @@ $$
 So, in fact,
 \begin{align*}
 [h(z),h(w)]&=i_{z,w}\frac{1}{(z-w)^2}-i_{w,z}\frac{1}{(z-w)^2}
-&=\partial_w \delta(z,w).
+=\partial_w \delta(z,w).
 \end{align*}
 \end{exercise}
 
@@ -2684,9 +2686,9 @@ Then
 \label{equation-lambda-brackets}
 [Ta_\lambda b]&=-\lambda[a_\lambda b]\\
 [a_\lambda Tb]&=(T+\lambda)[a_\lambda b]\\
-T(\,:\!ab\!:\,)=\,:\!(Ta)b\!:\,+\,:\!a(Tb)\!:\,\\
+T(\,:\!ab\!:\,)&=\,:\!(Ta)b\!:\,+\,:\!a(Tb)\!:\,\\
 [b_\lambda a]&=-[a_{-\lambda -T}b]\\
-[a_\lambda \,:\!bc\!:\,]=\,:\![a_\lambda bc\!:\,+\,:\!b[a_\lambda c\!:\,
+[a_\lambda \,:\!bc\!:\,]&=\,:\![a_\lambda bc\!:\,+\,:\!b[a_\lambda c\!:\,
 +\int_0^\lambda [[a_\lambda b]_\mu c]d\mu\\
 [a_\lambda[b_\mu c]]-[b_\mu [a_\lambda c]]&=[[a_\lambda b]_{\lambda+\mu}c].
 \end{align}
@@ -2766,6 +2768,318 @@ One can check that $T(V) \subset V$, and
 $B(z)$ is a quantum field on $V$.
 So $(V,1,T,\{B(z)\})$ is a vertex algebra, called the 
 {\it Virasoro vertex algebra}.
+
+\section{The charged free fermions: a vertex superalgebra}
+\label{section-charges-free-fermions}
+
+Also known as:
+\begin{itemize}
+\item The Clifford (vertex) algebra.
+\item The Dirac sea.
+\item The bc system.
+\end{itemize}
+
+First we consider a vector
+superspace with basis $\varphi$ and $\varphi^*$
+$$
+\mathfrak{a}=\mathbb{C}\varphi +\mathbb{C} \varphi^*
+$$
+(where $\varphi$ and $\varphi^*$ are odd,
+so this is a O,2-dimensional superspace).
+
+(A vector superspace is a $\mathbb{Z}/2$-graded vector space,
+i.e. a vector space split in two pieces,
+$V=V_0\oplus V_1$, which we call even and odd.)
+
+We consider a bilinear form
+\begin{align*}
+\left<\cdot,\cdot\right>: \mathfrak{a}\times \mathfrak{a}\times 
+&\longrightarrow  \mathbb{C}\\
+\left<\varphi^*,\varphi\right> &=1\\
+\left<\varphi,\varphi^*\right>&=1\text{ (why?)}
+\end{align*}
+Now consider
+$$
+\tilde{\mathfrak{a}}=\underbrace{t^{1/2}\mathfrak{a}[t,t^{-1}]}_{\text{odd}}
+\oplus \underbrace{\mathbb{C}K}_{\text{even}}.
+$$
+with Lie bracket
+\begin{align*}
+[at^m,b^n]&=\delta_{m,-n}\left<a,b\right>K,
+[K,\tilde{\mathfrak{a}}]&=0.
+\end{align*}
+(Notice the small difference from the
+Heisenberg case: there is no $m$ before the  $\delta$!)
+
+To see why $\left<\varphi,\varphi^*\right>=1$,
+notice that in a Lie superalgebra we always want
+$[x,y]=(-1)(-1)^{p(x)p(y)}[y,x]$ 
+where $p$ denotes the parity.
+Since both  $at^m$ and $bt^n$ are odd,
+we have $[at^m,bt^n]=[bt^n,at^m]$.
+Then apply the definition of bracket.
+
+Since $a,b$ odd here,
+we say $\left<a,b\right>=\left<b,a\right>$ means
+$\left<\cdot,\cdot\right>$ is skew-super symmetric.
+
+\begin{definition}
+\label{definition-supersymmetric}
+A bilinear form
+$$
+(\cdot,\cdot):U \times U \to \mathbb{C}
+$$
+is
+{\it supersymmetric} if  $(b,a)=(-1)^{p(a)p(b)}(a,b)$,
+and {\it skew-supersymmetric} if
+ $(b,a)=-(-1)^{p(a)p(b)}(a,b)$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-Lie-superalgebra}
+Invent the definition of Lie superalgebra,
+and confirm that if $U=U_0 \oplus U_1$ 
+is a vector superspace,
+$\text{End}(U)$ is a Lie superalgebra
+with $[X,Y]:=XY-(-1)^{p(X)p(Y)}YX$.
+\end{exercise}
+
+\medskip\noindent
+Let's build a Fock-type representation of $\tilde{\mathfrak{a}}$.
+
+Construction 1.
+$$
+\tilde{\mathfrak{a}_+}=
+\bigoplus_{n>0}t^n\mathfrak{a}\oplus\mathbb{C}K,
+\qquad (n \in \frac{1}{2}+\mathbb{Z},\text{ recall})
+$$
+$\tilde{\mathfrak{a}_+}\subset \tilde{\mathfrak{a}}$ is
+a superalgebra.
+
+Consider $U(\tilde{\mathfrak{a}})$
+and $U(\tilde{\mathfrak{a}})\subset U(\tilde{\mathfrak{a}})$.
+
+Recall that the PWB theorem says
+that $U(\mathfrak{g})$ ``looks like''
+polynomials on $\mathfrak{g}$.
+
+When $\mathfrak{g}$ is pure even,
+this says:
+take $\{a_1,a_1,\ldots\}$ a basis of $\mathfrak{g}$,
+then
+$$
+\{a_{i_1}^{m_1},a_{i_2}^{m_2}\ldots a_{i_s}^{m_s}:
+i_1\leq i_2\leq \ldots\leq i_s,m_j \geq 1\}.
+$$
+For $\mathfrak{g}=\mathfrak{g}_0 \oplus \mathfrak{g}_1$
+super Lie algebra,
+the statement is similar,
+only now, we take each $a^i$ homogeneous
+($\in \mathfrak{g}_0$ or $\mathfrak{g}_1$):
+$$
+\{a_{i_1}^{m_1}a_{i_2}^{m_2}\ldots a_{i_s}^{m_s},
+i_1\leq i_2 \leq \ldots \leq i_s, m_j\geq 1,
+\text{ if }a_{i_j}\text{ odd, }m_j=1\}.
+$$
+The point is that if we put an odd guy
+twice it becomes one.
+
+Why? Because in $U(\mathfrak{g})$, $X \in \mathfrak{g}_1$ should
+satisfy $X X + X X=[X,X]=0$.
+So  $X^2=0$. So we only allow
+odd basis vectors to appear 0 or 1 times each.
+
+\medskip\noindent
+Dfine $F=U(\tilde{\mathfrak{a}})\otimes_{U(\tilde{\mathfrak{a}}_+)}
+\mathbb{C}|0\rangle$,
+where $at^n\cdot|0\rangle$ for all $n>\frac{1}{2}$, and
+$K|0\rangle=|0\rangle$.
+
+[Picture of $F$]
+
+We can introduce a bi-grading of $F$:
+$$
+F=\bigoplus_{\substack{c \in \mathbb{Z} \\ \Delta}}
+$$
+The point is that $F$ is an infinite-dimensional
+vector space, but we get a reasonable mental
+picture of what it looks like.
+
+What is $\dim F_\Delta^c$? Let's write…
+
+\medskip\noindent
+So we have a vector superspace $F$,
+and an action on $F$ of $\tilde{\mathfrak{a}}$.
+Let's build some quantum fields!
+
+There are going to be two: $\varphi(z)$ 
+and $\varphi^*(z)$.
+$$
+\varphi(z)=\sum_{n \in \frac{1}{2}+\mathbb{Z}}\varphi_nz^{-n-\frac{1}{2}}
+$$
+(Notice the exponent on $z$ is an integer!)
+$$
+\varphi^* (z)=\sum_{n \in \frac{1}{2}+\mathbb{Z}}
+\varphi^*_n z^{-n-\frac{1}{2}}.
+$$
+Now let's compute $[\varphi^*(z),\varphi(w)]$.
+
+\begin{align*}
+[\varphi^*(z),\varphi(w)]&=\sum_{m,n \in \frac{1}{2}+\mathbb{Z}}
+[\varphi^*_m,\varphi_n]z^{-m-\frac{1}{2}}w^{-n-\frac{1}{2}}\\
+&=\sum_{n \in \frac{1}{2}+\mathbb{Z}}Kz^{n-\frac{1}{2}}w^{-n-\frac{1}{2}}
+&=\sum_{\substack{r \in \mathbb{Z} \\ r=n-\frac{1}{2}}}z^rw^{-r-1}
+&=\delta(z,w).
+\end{align*}
+So $F,|0\rangle,\mathcal{F}=\{\varphi(z),\varphi^*(z)\}$,
+$T:F\to F$, is a vertex superalgebra.
+Here $T:F \to F$ has to satisfy
+$T|0\rangle=0$ and $[T,\varphi(z)]=\partial_z\varphi(z)$,
+\begin{align*}
+\sum [T,\varphi_n]z^{-n-\frac{1}{2}}&=
+\sum (-n-\frac{1}{2})\varphi_n z^{-n-\frac{3}{2}}\\
+&=\sum (-k+\frac{1}{2})\varphi_{k-1}z^{-k-\frac{1}{2}}
+\end{align*}
+after putting $n=k-1$. So
+$$
+[T,\varphi_n]=-(n-\frac{1}{2})\varphi_{n-1}.
+$$
+Inductively, this determines
+how $T$ acts on $F$.
+
+\medskip\noindent
+In $\lambda$-bracket notation, this just says
+$$
+[\varphi^* _\lambda\varphi]=|0\rangle.
+$$
+Skew-symmetry says $[b_\lambda a]=-(-1)^{p(a)p(b)}[a_{-\lambda -T}b]$.
+
+For example,
+\begin{align*}
+[h_\lambda h]&=\lambda |0\rangle,\\
+[h_\lambda h]&=-[h_{-\lambda-T}h]=-(-\lambda-T)|0\rangle\\
+&=T\lambda |0\rangle.
+\end{align*}
+In this case $[\varphi_\lambda \varphi^* ]=+|0\rangle$ too.
+
+Notice $\sum \varphi_n z^{-n-\frac{1}{2}}=
+\sum \varphi_{(m)}z^{-m-1}$.
+
+So
+\begin{align*}
+\varphi_{(m)}&=\varphi_{m-\frac{1}{2}}\text{ and}\\
+\varphi^*_{(m)}&=\varphi_{m-\frac{1}{2}}.
+\end{align*}
+So
+\begin{align*}
+\,:\!\varphi^*\varphi\!:\,&=\varphi_{(-1)}^*\varphi_{(-1)}|0\rangle\\
+&=\varphi_{-\frac{1}{2}}^*\varphi_{-\frac{1}{2}}|0\rangle.
+\end{align*}
+I.e.
+$$
+\varphi=\varphi_{(-1)}|0\rangle=\varphi_{-\frac{1}{2}}|0\rangle
+$$
+Now we can put the former picture but with the
+associated operators using the
+second definition of vertex algebra: [Picture]
+
+Let's compute some brackets: [lots of computations]
+
+So,
+$$
+[\alpha_\lambda \alpha]=\lambda |0\rangle.
+$$
+Just like $[h_\lambda h]=\lambda |0\rangle$.
+This relation is the basis of the 
+``boson-fermion correspondence'', i.e.
+consider the subspace $U \subset F$ defined as
+ $$
+U=\text{span}\{\alpha_{n_1}\alpha_{n_2},\ldots,\alpha_{n_s}|0\rangle
+:n_{i} \in \mathbb{Z}\}.
+$$
+
+We claim that since $[T,\alpha(z)]=\partial_z \alpha(z)$,
+$[T,\alpha_n]=-n\alpha_{n-1}$.
+
+So $T(U) \subset U$. Put $\mathcal{F}_1=\{\alpha(z)\}$.
+Then $(U,|0\rangle,T|_{U},\{\alpha(z)\})$ is a vertex algebra
+(an honest one, not super).
+
+\begin{proposition}
+\label{proposition-isomorphic-to-Heisenberg}
+$U$ is isomorphic to the Heisenberg
+vertex algebra. (In particular,
+$U \simeq \mathbb{C}[x_1,x_2,\ldots]$
+as a vector space.)
+\end{proposition}
+
+\begin{proof}
+Next time.
+\end{proof}
+
+Since $[\alpha_0,\varphi_n]=-\varphi_n$,
+$[\alpha_0,\varphi_m^*]=\varphi_m^*$,
+and $\alpha_0 |0\rangle=0$, in fact the
+charge of a monomial is exactly the
+eigenvalue of $\alpha_0$ acting on it.
+
+\begin{align*}
+\alpha_0\cdot\varphi^*_{-m}\varphi^*_{-m_2}\varphi_{-n}|0\rangle
+&=[\alpha_0,\varphi^*_{-m},\varphi^*_{-m_2},\varphi_{-n}]|0\rangle\\
+&=\underbrace{(+1+1-1)}_{\text{charge}}
+\varphi_{-m_1}^*\varphi_{-m_2}\varphi_{-n}|0\rangle.
+\end{align*}
+From $[\alpha_\lambda \alpha]=\lambda |0\rangle$,
+we get
+$$
+[\alpha_m,\alpha_n]=m\delta_{m,-n}I_F\text{ (as for $h$)}
+$$
+So $[\alpha_0,\alpha_n]=0$ for all $n \in \mathbb{Z}$.
+Thus  $\alpha_0 |_{ U}=0$ and thus $U \subset F^{(0)}$.
+
+\begin{proposition}
+\label{proposition-U-is-F0}
+$U=F^{(0)}$.
+\end{proposition}
+
+\begin{proof}
+Next time.
+\end{proof}
+
+\medskip\noindent
+Let's take two copies of $F$,
+i.e. $F_2=F \otimes F$ 
+with fields $\varphi^1(z),\varphi^2(z),\varphi^{1*}(z),\varphi^{2*}(z)$
+$$
+[\varphi^{i*}_{\lambda}\varphi^j=\delta_{ij}.
+$$
+Basis of $F_2$ is
+$$
+\varphi_{-n_1}^1\ldots \varphi_{-n_2}^1\varphi_{-m_1}^2\ldots
+\varphi_{-m_t}^2\varphi^{*-1}_{-p_1}\ldots
+\varphi_{-p_u}^{*-1}\varphi_{-q_1}^{*2}\ldots\varphi_{-q_v}^{*2}|0\rangle.
+$$
+Let $\alpha^{ij}=\,:\!\varphi^{j*}\varphi^i\!:\,$.
+$$
+[\alpha^{ij}_\lambda \alpha^{k\ell}]=?
+$$
+(certainly $[\alpha^{ii}_\lambda \alpha^{ii}]=\lambda |0\rangle$.)
+In general
+$$
+[\varphi^k_\lambda \alpha^{ij}=\text{computation}=\delta_{ki}\varphi^j.
+$$
+Similarly
+$$
+[\varphi^{k*}_\lambda \alpha^{ij}=-\delta_{kj}\varphi^{i*}.
+$$
+\begin{align*}
+[\alpha^{ij}_\lambda \varphi^k]&=-\delta_{ik}\varphi^j\\
+[\alpha^{ij}_\lambda \varphi^{k*}]&=+\delta_{j k}\varphi^{i*}.
+\end{align*}
+
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
