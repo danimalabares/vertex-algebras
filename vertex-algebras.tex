@@ -3077,7 +3077,235 @@ $$
 [\alpha^{ij}_\lambda \varphi^{k*}]&=+\delta_{j k}\varphi^{i*}.
 \end{align*}
 
+We would like to consider
+$$
+F_n=F^{\otimes n}=F \otimes \ldots \otimes F
+$$
+where on the $i$-th factor we have $\varphi_i,\varphi^*_i$.
 
+Then we have relations among the generators:
+$$
+[\varphi^i_\lambda \varphi_j^* ]=[\varphi^* _j\lambda\varphi_i]
+=\delta_{ij}|0\rangle
+$$
+Today let's define
+$$
+\alpha_{ij}=\,:\!\varphi_i \varphi^*_j\!:\,
+$$
+We notice that
+\begin{itemize}
+\item the $\varphi_i$ behave like $e_i$,
+\item the $\alpha_{ij}$ behave like $E_{ij}$,
+\item the $\varphi_i^*$ behave like $e_i^*$.
+\end{itemize}
+
+$$
+\text{[Computations of some $\lambda$-brackets]}
+$$
+
+Recall, the $E_{ij}$ span a Lie algebra: $\mathfrak{gl}_n$.
+It has a representation on $\mathbb{C}^n=\left<e_1,\ldots,e_n\right>$ 
+by $E_{ij}e_k=\delta_{ik}e_i$,
+and on $(\mathbb{C}^n)^*$ we have
+$$
+[\text{computations}]
+$$
+$$
+E_{ij}e_k^* =-\delta_{ki}e_j^*.
+$$
+Let $A \in \mathfrak{gl}_n$. Let's write
+$$
+\alpha^A=\sum_{i,j}a_{ij}\alpha_{ij}\in F_n
+$$
+We'd like to compute $[\alpha^A_\lambda \alpha^B]$.
+
+Some computations done in lecture are the proof of
+
+\begin{theorem}
+\label{theorem-alpha-is-like-matrices}
+For $\alpha_{ij}=\,:\!\varphi_i \varphi_j^*\!:\, \in F_n$,
+and $\alpha^A$ as above,
+$$
+[\alpha^A_\lambda\alpha^B]=\alpha^{[A,B]}
++\lambda\text{Tr}(AB)|0\rangle.
+$$
+\end{theorem}
+
+Which says that $\alpha^A$ behaves like matrices,
+but with that correction term.
+
+\medskip\noindent
+Nex, let $\mathfrak{g}\subset \mathfrak{gl}_n$ 
+be a Lie subalgebra.
+For $A,B \in \mathfrak{g}$, $[A,B] \in \mathfrak{g}$ 
+also, and so the set
+$$
+\mathcal{F}=\{\alpha^A:A \in \mathfrak{g} \cup \{|0\rangle\}\}
+$$
+is ``closed under $\lambda$-brackets''.
+
+More precisely, for
+$$
+F_n \supset V=\text{span}\{\alpha^{A_1}_{(n_1)}\ldots\alpha^{A_s}_{(n_s)}:
+n_i \in \mathbb{Z}, A_i \in \mathfrak{g}\},
+$$
+with $|0\rangle=|0\rangle$, $T=T$ and
+$\mathcal{F}=\{\alpha^A(z):A \in \mathfrak{g}\}\cup \{I\}$ 
+is a vertex algebra.
+
+\section{Universal affine vertex algebra}
+\label{section-universal-affine-vertex-algebra}
+
+Recall the construction of the affine vertex algebra.
+
+Let $(M,\rho)$ be a representation of $\hat{\mathfrak{g}}$.
+
+For $a \in \mathfrak{g}$, define
+$$
+a^M(z)=\sum_{n \in \mathbb{Z}}\rho(at^n)z^{-n-1}
+\in\text{End}(M)[\![z^{\pm 1}]\!].
+$$
+\begin{definition}
+\label{definition-smooth-g-module}
+A {\it smooth $\hat{\mathfrak{g}}$-module}
+is a $\hat{\mathfrak{g}}$-module $(M,\rho)$ 
+such that for each $m \in M$ there is $N \in \mathbb{Z}$ 
+such that $\rho(at^n)m=0$ for all
+$a \in \mathfrak{g}$ and $n \geq N$.
+\end{definition}
+
+Notice that on a smooth module $M$,
+the fields $a^M(z)$ are quantum fields.
+
+We may calculate:
+\begin{align*}
+[a^m(z),b^m(w)&=\sum_{m,n}[\rho(at^m),\rho(bt^n)]z^{-m-1}w^{-n-1}\\
+&=\sum_{m,n}z^{-m-1}w^{-n-1}
+([a,b]t^{m+n}+m\delta_{m,-n}(a,b)\rho(K))\\
+&=\sum_{m,n}([a,b]t^{m+n}w^{-(m+n)-1})z^{-m-1}w^m
++\sum_{m,n}z^{-m-1}w^{-n-1}\delta_{m,-n}(a,b)\rho(K)\\
+&=[a,b]^m(w)\delta(z,w)
++(a,b)\partial_w\delta(z,w)\rho(K).
+\end{align*}
+Now suppose the $K$ acts by some constant, i.e.
+$\rho(K)=k I_M$.
+Then our quantum fields $a^M(z)$ are
+mutually local, with exponent 2, i.e.
+$(z-w)^2[a^M(z),b^M(w)]=0$.
+
+\medskip\noindent
+As a special case, we may take
+$M$ to be a sort of ``Fock space'':
+$$
+\hat{\mathfrak{g}}_+=\mathfrak{g}[t]\oplus \mathbb{C}K\subset
+\hat{\mathfrak{g}}.
+$$
+Let $\hat{\mathfrak{g}}_+$ 
+act on $\mathbb{C} |0\rangle$
+\begin{align*}
+at^m |0\rangle&=0 \qquad \forall m \geq 0,
+K\cdot |0\rangle&=k |0\rangle (\text{$k \in \mathbb{C}$ called {\it level}}).
+\end{align*}
+Consider
+$$
+V^k(\mathfrak{g})=U(\hat{\mathfrak{g}} \otimes_{U(\hat{\mathfrak{g}}_+)}
+\mathbb{C}|0\rangle.
+$$
+
+\begin{remark}
+\label{remark-Heisenberg-is-a-special-case-of-smooth-construction}
+$H=\mathbb{C}[x_1,x_2,\ldots]$ is an example of this construction with
+$\mathfrak{g}$ one dimensional and $(h,h)=1$.
+\end{remark}
+
+\begin{exercise}
+\label{exercise-Vk-is-smooth}
+$V^k(\mathfrak{g})$ is a smooth  $\hat{\mathfrak{g}}$-module,
+in which $K \mapsto  k \text{Id}$.
+\end{exercise}
+
+The set $\mathcal{F}=\left\{a(z)=\sum_{n \in \mathbb{Z}}
+(at)^nz^{-n-1}:a \in \mathfrak{g}\right\}$ 
+are mutually local quantum fields.
+
+Definint $T:V^k(\mathfrak{g})\mathbb{y} V^k(\mathfrak{g})$ 
+by the relation $T |0\rangle=0$ 
+and $[T,at^m]=-mat^{m-1}$.
+$V^k(\mathfrak{g})$ is a vertex algebra
+called the {\it universal affine vertex algebra} 
+of level $k$ associated with $\mathfrak{g}$.
+
+[Picture of $V^k(\mathfrak{g})$ for $\mathfrak{g}=\mathfrak{sl}_2$.
+
+We have a bigrading, vertical grading $\Delta$ (energy) is
+$$
+\Delta(a^1_{(-n_1)}a^2_{(-n_2)}\ldots a^s_{(-n_s)}|0\rangle
+=n_1+n_2+\ldots+n_s.
+$$
+
+Notice that for $a \in \mathfrak{g}$, we have
+\begin{align*}
+\mathcal{F}\ni a(z)&\overset{s}{\mapsto }
+a(z)|0\rangle |_{z=0}\\
+&=\sum_{m}at^m |0\rangle z^{-m-1}\Big|_{z=0}\\
+&=(at^{-1})|0\rangle+(at^{-2})z|0\rangle+\ldots\\
+&=at^{-1} |0\rangle.
+\end{align*}
+Thus we can think of
+$\{a t^{-1} |0\rangle:a \in \mathfrak{g}\}\subset V^k(\mathfrak{g})$ 
+as a ``copy'' of $\mathfrak{g}$ inside $V^k(\mathfrak{g})$.
+Let's {\bf abuse notation} and write $a$ for $at^{-1}|0\rangle$.
+
+Then $at^{-2}|0\rangle=Ta$, also
+$(at^{-1})(bt^{-1})|0\rangle=\,:\!ab\!:\,$, etc.
+$e=et^{-1}|0\rangle=e_{(-1)}|0\rangle$, $\Delta(e)=1$.
+
+In fact $\Delta(a)=1$ for all $a \in \mathfrak{g}$,
+$\Delta(Ta)=2$,
+$\Delta(\,:\!ab\!:\,)=2$, etc.
+
+In this example, i.e. $\mathfrak{g}=\mathfrak{sl}_2$,
+$\mathfrak{sl}_2$ is itself a $\mathbb{Z}$-graded Lie algebra,
+\begin{align*}
+\begin{aligned}
+w(E)&=2\\
+W(H)&=0\\
+w(F)&=-2
+\end{aligned}
+\qquad 
+\begin{aligned}
+[H,E]&=2E\\
+[H,H]&=0\\
+[H,F]&=-2F.
+\end{aligned}
+\end{align*}
+
+(That is, $\mathfrak{g}=\bigoplus_{n \in \mathbb{Z}}\mathfrak{g}_n$,
+$[\mathfrak{g}_m,\mathfrak{g}_n]=\mathfrak{g}_{m+n}$.)
+$w=$ eigenvalue of $\text{ad}(H)$.
+This induces a $\mathbb{Z}$-grading on $V^k(\mathfrak{sl}_2)$,
+compatible, i.e.
+$$
+w(a^1_{(-n_1)}\ldots a^s_{(-n_s)}|0\rangle=
+2\#(E)-2\#(F).
+$$
+
+\medskip\noindent
+As for the character,
+\begin{align*}
+\chi(q,u)&=\sum_{\Delta,w}\dim V^k(\mathfrak{g})_\Delta^w q^\Delta u^w\\
+&=1+q(u^2+1+u^{-2})
++q^2(u^4+2u^2+2+2u^{-2}+u^{-4}+\ldots
+\end{align*}
+Then by the generating function argument we have discussed
+before,
+$$
+\chi(q,u)=\prod_{n=1}^\infty \frac{1}{
+(1-u^2q^n)(1-q^n)(1-u^{-2}q^n)}.
+$$
+Can discard $u$ to get vertical grading
+$$
+\chi(q)=\prod_{n=1}^\infty \frac{1}{(1-q^n)^3}.
 
 
 
