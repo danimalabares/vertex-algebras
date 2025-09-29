@@ -516,8 +516,9 @@ $$
 \Pi^\vee=\{H_1,H_0\},\qquad \Pi=\{\alpha_0,\alpha_1\}
 $$
 \begin{align*}
-\mathfrak{h}&=\mathbb{C}H,\mathbb{C}d,\mathbb{C}K,\\
-\mathfrak{h}^*&=\mathbb{C}\alpha_1+\mathbb{C}\delta+\mathbb{C}\Lambda_0
+\mathfrak{h}&=\mathbb{C}H\oplus\mathbb{C}d\oplus\mathbb{C}K,\\
+\mathfrak{h}^*&=\mathbb{C}\alpha_1\oplus\mathbb{C}\delta
+\oplus\mathbb{C}\Lambda_0
 \end{align*}
 (Canonical dual, $\left<\alpha_1,H\right>=2$, 
 $\left<\delta,d\right>=1=\left<\Lambda_0,K\right>$, every other pairing $0$.)
@@ -1266,14 +1267,14 @@ $$
 \chi_{L(\Lambda)}=\frac{\sum_{w \in \tilde{W}}\varepsilon(w)
 e^{W(\Lambda+\rho)-\rho}}{R}
 $$
-Firstly $R=\prod_{\alpha \in \hat{\Delta}}+(1-e^{-\alpha})
+Firstly $R=\prod_{\alpha \in \hat{\Delta}}(1-e^{-\alpha})
 ^{\text{mult}(\alpha)}$
 
 Recall
 \begin{align*}
-\hat{\Delta}_+&=\{m\delta | m \in \mathbb{Z}_{\geq 1}\}\\
-&\cup \{\alpha_1+m\delta|m \in \mathbb{Z}_{\geq 0}\}\\
-&\cup \{-\alpha_1+m \delta |m \in \mathbb{Z}_{\geq 1}\}
+\hat{\Delta}_+&=\{m\delta | m \in \mathbb{Z}_{\geq 1}\}
+\cup \{\alpha_1+m\delta|m \in \mathbb{Z}_{\geq 0}\}
+\cup \{-\alpha_1+m \delta |m \in \mathbb{Z}_{\geq 1}\}
 \end{align*}
 So let's write $e^{m \delta}=q^m$ (i.e. $q = e^{-\delta}$, is a symbol)
 and $y=e^{\alpha_1}$.
@@ -1307,6 +1308,8 @@ Using the formula, we find
 \end{align*}
 
 [Picture]
+
+$\hat{W}=T \cup  T\sigma,$ $\sigma=r_1$ finite reflection.
 
 \medskip\noindent
 {\bf Notation.} $w(\Lambda+\rho):=w \circ \Lambda.$
@@ -2432,15 +2435,15 @@ Hint. Prove that he left hand side is local.
 By extracting coefficients of Eq. \ref{equation-star3}, we obtain
 for all $a,b,c \in V$ and $m,n,k \in \mathbb{Z}$:
 \begin{equation}
-\label{equation-Bocherds-identity}
+\label{equation-Borcherds-identity}
 \begin{aligned}
 &\sum_{j \geq 0}\binom{m}{j}(a_{(n+j)}b)_{(m+k-j)}c\\
 &=\sum_{j \geq 0}(-1)^j \binom{n}{j}
-\left(a_{(m+n-j)}b_{(k+j)}c-(-1)^nb_{(n+k-j)}a_{(n+j)}c\right)
+\left(a_{(m+n-j)}b_{(k+j)}c-(-1)^nb_{(n+k-j)}a_{(m+j)}c\right)
 \end{aligned}
 \end{equation}
 
-This is called {\it Bocherd's identity}, and is the key
+This is called {\it Borcherd's identity}, and is the key
 ingredient in our second definition of vertex algebra
 (see \cite[Proposition 4.8(b)]{VAFB}):
 
@@ -2456,7 +2459,7 @@ such that
 $\forall n \geq N$.
 \item $\forall  a \in V$, $|0\rangle_{(n)}a=\delta_{n,-1}a$.
 \item $\forall a \in V,$ $a_{(-1)}|0\rangle =a$ and $a_{(\geq 0)}|0\rangle=0$.
-\item Equation \ref{equation-Bocherds-identity} holds
+\item Equation \ref{equation-Borcherds-identity} holds
 $\forall a,b,c \in V$, $m,n,k \in \mathbb{Z}$.
 \end{enumerate}
 \end{definition}
@@ -2620,7 +2623,7 @@ $$
 So $[h_\lambda h]=\lambda$ again.
 
 What I really want is $[L_\lambda L]=$? Let's use
-Bocherd's formula \ref{equation-Bocherds-identity}.
+Borcherd's formula \ref{equation-Borcherds-identity}.
 
 First let's compute $(h_{(-1)}h)_{(0)}L$, i.e. we
 are putting $n=-1$, $m=0$ and $k=0$.
@@ -2688,7 +2691,7 @@ Then
 [a_\lambda Tb]&=(T+\lambda)[a_\lambda b]\\
 T(\,:\!ab\!:\,)&=\,:\!(Ta)b\!:\,+\,:\!a(Tb)\!:\,\\
 [b_\lambda a]&=-[a_{-\lambda -T}b]\\
-[a_\lambda \,:\!bc\!:\,]&=\,:\![a_\lambda bc\!:\,+\,:\!b[a_\lambda c\!:\,
+[a_\lambda \,:\!bc\!:\,]&=\,:\![a_\lambda b]c\!:\,+\,:\!b[a_\lambda c]\!:\,
 +\int_0^\lambda [[a_\lambda b]_\mu c]d\mu\\
 [a_\lambda[b_\mu c]]-[b_\mu [a_\lambda c]]&=[[a_\lambda b]_{\lambda+\mu}c].
 \end{align}
@@ -3208,7 +3211,7 @@ K\cdot |0\rangle&=k |0\rangle (\text{$k \in \mathbb{C}$ called {\it level}}).
 \end{align*}
 Consider
 $$
-V^k(\mathfrak{g})=U(\hat{\mathfrak{g}} \otimes_{U(\hat{\mathfrak{g}}_+)}
+V^k(\mathfrak{g})=U(\hat{\mathfrak{g}}) \otimes_{U(\hat{\mathfrak{g}}_+)}
 \mathbb{C}|0\rangle.
 $$
 
@@ -3228,7 +3231,7 @@ The set $\mathcal{F}=\left\{a(z)=\sum_{n \in \mathbb{Z}}
 (at)^nz^{-n-1}:a \in \mathfrak{g}\right\}$ 
 are mutually local quantum fields.
 
-Definint $T:V^k(\mathfrak{g})\mathbb{y} V^k(\mathfrak{g})$ 
+Define $T:V^k(\mathfrak{g})\mathbb{y} V^k(\mathfrak{g})$ 
 by the relation $T |0\rangle=0$ 
 and $[T,at^m]=-mat^{m-1}$.
 $V^k(\mathfrak{g})$ is a vertex algebra
@@ -3300,12 +3303,225 @@ As for the character,
 Then by the generating function argument we have discussed
 before,
 $$
-\chi(q,u)=\prod_{n=1}^\infty \frac{1}{
-(1-u^2q^n)(1-q^n)(1-u^{-2}q^n)}.
+\chi(q,u)=\prod_{n=1}^\infty \frac{1}
+{(1-u^2q^n)(1-q^n)(1-u^{-2}q^n)}.
 $$
 Can discard $u$ to get vertical grading
 $$
 \chi(q)=\prod_{n=1}^\infty \frac{1}{(1-q^n)^3}.
+$$
+
+Today we have refined the definition of $V^k(M)$
+to admit a general form  $B$.
+	
+Here's another example:
+
+\begin{example}
+\label{example-fermions-are-universal-vertex-algebra}
+$\mathfrak{g}=\mathfrak{gl}_n$, with $B(X,Y)=\text{Tr}(XY)$,
+and $k=1$.
+\end{example}
+
+\begin{remark}
+\label{remark-rescaling-the-Killing-form-and-Coxeter-number}
+In general $V^1(\mathfrak{g},kB)=V^k(\mathfrak{g},B)$.
+If $\mathfrak{g}$ is finite-dimensional simple, we 
+typically take $B(a,b)=\frac{1}{2 h^\vee}\kappa(a,b)$ 
+where $\kappa$ is the Killing form. (This $B$ 
+has the property that $B(\theta,\theta)=2$
+for {\bf long} roots $\theta \in \Delta \subset \mathfrak{h}^*$.)
+(In fact, in a simple f.d. there's
+all invariant forms are proportional.)
+Then we write this vertex algebra
+as $V^k(\mathfrak{g})$ without specifying $B$.
+\end{remark}
+
+So perhaps that's why last time we didn't put $B$.
+
+\medskip\noindent
+Back to the Fermion algebra $F_n$, and now
+denoting $J$ instead of $\alpha$,
+we built fields
+$\{J^A:A \in \mathfrak{gl}_n\}$ with $\lambda$-bracket
+$[J^A_\lambda J^B]=J^{[A,B]}+\lambda\text{Tr}(AB)|0\rangle$.
+This suggests a relation with $V^1(\mathfrak{gl}_n,B)$,
+where $B(X,Y)=\text{Tr}(X,Y)$.
+
+Consider $\mathcal{F}=\{J^A(z):A \in \mathfrak{gl}_n\}\subset \mathbb{F}_{F_n}
+\cong F_n$.
+Let $V=\text{span}\{J^{A_1}_{(n_1)}\ldots J^{A_s}_{(n_s)}|0\rangle:
+A_i \in \mathfrak{gl}_n,n_i \in \mathbb{Z}\}\subset F_n$.
+
+Then $(V,\mathcal{F},T|_{V},|0\rangle)$ is a vertex algebra.
+$V \subset F_n$. Notice that $V \neq F^n$
+since $V$ consists only of even fields,
+indeed, $V=\left<\,:\!\varphi_i \varphi_j^*\!:\,\right>$.
+
+Here $[T,\varphi_{(n)}]=-n\varphi_{(n-1)}$.
+$$
+T(\varphi^{i_1}_{(n_1)}\ldots\varphi^{i_s}_{(n_s)}|0\rangle)
+=-\sum_{j=1}^s n_j\varphi_{(n_1)}^{i_1}
+\ldots vo_{(n_j-1)}^{i_j}\ldots
+\varphi_{(n_s)}^{i_s}|0\rangle.
+$$
+Does $V=F^{(0)}_n$ then?
+
+Let's examine $n=1$ first. $\mathfrak{g}=\mathbb{C}1$,
+$B(1,1)=1$, $k=1$. We just remarked
+that $V^1(\mathfrak{g},B)=H$ is 
+Heisenberg. And $F_1=F=\left<\varphi,\varphi^*\right>$ 
+which we have drawn previously.
+We also computed
+the character as an infinite product.
+
+\medskip\noindent
+We have $F^{(0)} \ni J = \,:\!\varphi \varphi^*\!:\,$ 
+with $\lambda$-bracket relation $[J_\lambda J]=\lambda |0\rangle$.
+Recall $J(z)=\sum_{n \in \mathbb{Z}}J_{(n)}z^{-n-1}=
+\sum_{n \in \mathbb{Z}}J_n z^{-n-1}$.
+The $\lambda$-bracket relation implies
+\begin{align*}
+[J(z),J(w)]&=\partial_w \delta(z,w)I\\
+\implies [J_m,J_n]&=m \delta_{m,-n}I.
+\end{align*}
+This implies that $F^{(0)}$ is a representation
+of the oscillator Lie algebra
+$\hat{\mathfrak{a}}=\bigoplus_{m \in \mathbb{Z}}\mathbb{C} h_n \oplus
+\mathbb{C}K$,
+in which $h_m \mapsto  J_m$, $k \mapsto  I$ and $h_m |0\rangle$ 
+for all $m \geq 0$.
+
+\begin{proposition}
+\label{proposition-F0-isomorphic-to-polynomial-representations}
+As representations of $\mathfrak{a}$,
+$F^{(0)}\simeq H=\mathbb{C}[x_1,x_2,\ldots]$.
+\end{proposition}
+
+\begin{proof}
+Using $H \simeq
+U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}_+})}\mathbb{C}1$,
+by its universal property, there exists a morphism of
+ $\hat{\mathfrak{a}}$-representations
+$f: H \to F^{(0)}$, such that $f(1)=|0\rangle$.
+
+We know $H$ is irreducible, so
+$f:H \to F^{(0)}$ is injective.
+Is it an isomorphism?
+Consider  $\tilde{F}=F^{(0)}/f(H)$.
+We want to prove $\tilde{F}=\{0\}$.
+The trick is to consider  $L=\frac{1}{2}\,:\!J J\!:\,$.
+
+We have seen that 
+$$
+F^{(m)}=\{v \in F: J_0v=mv\}
+$$
+(since $[J_\lambda \varphi]=-\varphi$ and
+$[J_\lambda \varphi^*]=+\varphi^*$,
+$[J_0,\varphi_n]=-\varphi_n$).
+
+Write $L(z)=\sum_{n \in \mathbb{Z}}L_nz^{-n-2}$,
+then $L_0=\frac{1}{2}J_0^2+\sum_{m>0}J_{-m}J_m$.
+This implies (for example) that $L_0|0\rangle=0$.
+
+One may compute
+\begin{align*}
+[L_\lambda \varphi]&=T\varphi+\frac{1}{2}\lambda\varphi\\
+[L_\lambda\varphi^* ]&=T\varphi^* +\frac{1}{2}\lambda \varphi^*.
+\end{align*}
+
+\noindent
+If you expand these in terms of coefficients,
+you find
+$[L_0,\varphi_n]=-n\varphi_n$,
+$[L_0,\varphi_n^*]=-n\varphi_n^*$.
+
+From these relations we conclude that
+$\Delta(\text{monomial})=L_0$-eigenvalue
+(monomial), i.e.,
+the (charged, energy)-grading is the
+eigenspace grading by $(J_0,L_0)$.
+Suppose $\tilde{F}\neq 0$.
+Then $\exists \overline{v} \in \tilde{F}$ for which
+$J_m \overline{v}=0$ for all $m>0$.
+Indeed, by Lemma (?) there  $\mathbb{Z}_+$-grading
+of $F^{(0)}$ is inherited by $\tilde{F}$.
+Since $|0\rangle \in f(H)$,
+$\tilde{F}=\bigoplus_{\Delta \geq  N}\tilde{F}_{\Delta}$ 
+for some $N>0$. Let $\overline{v} \in \tilde{F}_N$,
+$\overline{v}\neq 0$.
+For $m>0$, $J_m \overline{v} \in \tilde{F}_{N-m}=0$.
+
+Key point: $J_0 \overline{v}$, because
+$\tilde{F}$ is quotient of $F^{(0)}$.
+Hence $L_0\overline{v}=0$.
+But $L_0=\Delta$, and we know the only element of $F^{(0)}$ 
+with $\Delta=0$ is $|0\rangle$.
+This contradiction implies $\tilde{F}=0$,
+hence $F^{(0)}=f(H) \simeq H$.
+\end{proof}
+
+In the process we saw that
+$\Delta$ coincides with $L_0$,
+where $L=\frac{1}{2}\,:\!J J\!:\,$,
+and $J=f(h)$. So consider
+$L=\frac{1}{2}\,:\!h h_i\!:\,$.
+
+We have $[L_\lambda h]=Th+\lambda h$
+so $[L_0,h_n]=-nh_n$ in particular,
+and 
+\begin{align*}
+L_0(h_{-n_1},h_{-n_2},\ldots,h_{-n_s}|0\rangle&=
+L_0(x_{n_1}x_{n_2}\ldots x_{n_s}|0\rangle)
+&=\left(\sum_{j}n_j x_{n_1}\ldots x_{n_s}|0\rangle\right)
+\end{align*}
+
+\noindent
+Using this we obtain
+ $$
+\chi_{F^{(0)}}(q)=\sum_{\Delta}\dim(F^{(0)}_{\Delta})q^{\Delta}
+=\prod_{m=1}^{\infty}\frac{1}{1-q^m}.
+$$
+
+In $F^{(m)}$, let us denote
+
+$$
+|m\rangle=\begin{cases}
+\varphi_{-1/2}\varphi_{-3/2}\varphi_{-5/2}\ldots
+\varphi_{-\frac{2(-m)-1}{2}}|\rangle\qquad &\text{if }m<0 \\
+\varphi^*_{-1/2}\varphi^*_{3/2}\ldots
+\varphi^*_{-\frac{2m-1}{2}}\qquad &\text{if }m>0
+\end{cases}
+$$
+
+We observe that 
+$\Delta(|m\rangle)=\frac{m^2}{2}$ 
+and $F^{(m)}_{m^2/2}=\mathbb{C} |m\rangle$.
+
+\begin{proposition}
+\label{proposition-isomorphic-representations-for-all-m}
+As an $\hat{\mathfrak{a}}$-module,
+$F^{(m)}\simeq H^m$, and is irreducible.
+\end{proposition}
+
+\begin{proof}
+Same as above.
+\end{proof}
+
+This gives a formula
+
+\begin{align*}
+\chi_{F^{(m)}}(q)&=\sum_{\Delta}\dim F^{(m)}_\Delta q^\Delta\\
+&=q^{m/2}\prod_{k=1}^\infty \frac{1}{1-q^k}.
+\end{align*}
+
+As a corollary, we obtain again
+Jacobi's triple product formula. (Again!)
+
+$$
+\prod_{m=1}^\infty(1+yq^{m-1/2})(1+y^{-1}q^{m-1/2}
+=\prod_{k=1}^\infty\frac{1}{1-q^k}
+\left(\sum_{n \in \mathbb{Z}}y^nq^{n^2/2}\right).
+$$
 
 
 
