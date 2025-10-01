@@ -2796,7 +2796,7 @@ $V=V_0\oplus V_1$, which we call even and odd.)
 
 We consider a bilinear form
 \begin{align*}
-\left<\cdot,\cdot\right>: \mathfrak{a}\times \mathfrak{a}\times 
+\left<\cdot,\cdot\right>: \mathfrak{a}\times \mathfrak{a}
 &\longrightarrow  \mathbb{C}\\
 \left<\varphi^*,\varphi\right> &=1\\
 \left<\varphi,\varphi^*\right>&=1\text{ (why?)}
@@ -2808,7 +2808,7 @@ $$
 $$
 with Lie bracket
 \begin{align*}
-[at^m,b^n]&=\delta_{m,-n}\left<a,b\right>K,
+[at^m,b^n]&=\delta_{m,-n}\left<a,b\right>K,\\
 [K,\tilde{\mathfrak{a}}]&=0.
 \end{align*}
 (Notice the small difference from the
@@ -2930,8 +2930,8 @@ Now let's compute $[\varphi^*(z),\varphi(w)]$.
 \begin{align*}
 [\varphi^*(z),\varphi(w)]&=\sum_{m,n \in \frac{1}{2}+\mathbb{Z}}
 [\varphi^*_m,\varphi_n]z^{-m-\frac{1}{2}}w^{-n-\frac{1}{2}}\\
-&=\sum_{n \in \frac{1}{2}+\mathbb{Z}}Kz^{n-\frac{1}{2}}w^{-n-\frac{1}{2}}
-&=\sum_{\substack{r \in \mathbb{Z} \\ r=n-\frac{1}{2}}}z^rw^{-r-1}
+&=\sum_{n \in \frac{1}{2}+\mathbb{Z}}Kz^{n-\frac{1}{2}}w^{-n-\frac{1}{2}}\\
+&=\sum_{\substack{r \in \mathbb{Z} \\ r=n-\frac{1}{2}}}z^rw^{-r-1}\\
 &=\delta(z,w).
 \end{align*}
 So $F,|0\rangle,\mathcal{F}=\{\varphi(z),\varphi^*(z)\}$,
@@ -3069,7 +3069,7 @@ $$
 (certainly $[\alpha^{ii}_\lambda \alpha^{ii}]=\lambda |0\rangle$.)
 In general
 $$
-[\varphi^k_\lambda \alpha^{ij}=\text{computation}=\delta_{ki}\varphi^j.
+[\varphi^k_\lambda \alpha^{ij}]=\text{computation}=\delta_{ki}\varphi^j.
 $$
 Similarly
 $$
@@ -3159,15 +3159,17 @@ is a vertex algebra.
 \section{Universal affine vertex algebra}
 \label{section-universal-affine-vertex-algebra}
 
-Recall the construction of the affine vertex algebra.
+Recall the construction of the affine vertex algebra,
+Definition \ref{definition-affine-Lie-algebra}.
 
 Let $(M,\rho)$ be a representation of $\hat{\mathfrak{g}}$.
 
 For $a \in \mathfrak{g}$, define
-$$
+\begin{equation}
+\label{equation-quantum-fields-for-universal-vertex-algebra}
 a^M(z)=\sum_{n \in \mathbb{Z}}\rho(at^n)z^{-n-1}
 \in\text{End}(M)[\![z^{\pm 1}]\!].
-$$
+\end{equation}
 \begin{definition}
 \label{definition-smooth-g-module}
 A {\it smooth $\hat{\mathfrak{g}}$-module}
@@ -3182,7 +3184,7 @@ the fields $a^M(z)$ are quantum fields.
 
 We may calculate:
 \begin{align*}
-[a^m(z),b^m(w)&=\sum_{m,n}[\rho(at^m),\rho(bt^n)]z^{-m-1}w^{-n-1}\\
+[a^m(z),b^m(w)]&=\sum_{m,n}[\rho(at^m),\rho(bt^n)]z^{-m-1}w^{-n-1}\\
 &=\sum_{m,n}z^{-m-1}w^{-n-1}
 ([a,b]t^{m+n}+m\delta_{m,-n}(a,b)\rho(K))\\
 &=\sum_{m,n}([a,b]t^{m+n}w^{-(m+n)-1})z^{-m-1}w^m
@@ -3190,6 +3192,8 @@ We may calculate:
 &=[a,b]^m(w)\delta(z,w)
 +(a,b)\partial_w\delta(z,w)\rho(K).
 \end{align*}
+
+\noindent
 Now suppose the $K$ acts by some constant, i.e.
 $\rho(K)=k I_M$.
 Then our quantum fields $a^M(z)$ are
@@ -3204,10 +3208,10 @@ $$
 \hat{\mathfrak{g}}.
 $$
 Let $\hat{\mathfrak{g}}_+$ 
-act on $\mathbb{C} |0\rangle$
+act on $\mathbb{C} |0\rangle$ by
 \begin{align*}
-at^m |0\rangle&=0 \qquad \forall m \geq 0,
-K\cdot |0\rangle&=k |0\rangle (\text{$k \in \mathbb{C}$ called {\it level}}).
+at^m |0\rangle&=0 \qquad \forall m \geq 0,\\
+K\cdot |0\rangle&=k |0\rangle\qquad  (\text{$k \in \mathbb{C}$ called {\it level}}).
 \end{align*}
 Consider
 $$
@@ -3227,6 +3231,18 @@ $V^k(\mathfrak{g})$ is a smooth  $\hat{\mathfrak{g}}$-module,
 in which $K \mapsto  k \text{Id}$.
 \end{exercise}
 
+\begin{proof}
+To prove  $V^k(\mathfrak{g})$ is smooth
+we need to show that for every
+formal power series of endomorphisms of
+$V^k(\mathfrak{g})$ of the form Equation
+\ref{equation-quantum-fields-for-universal-vertex-algebra},
+the coefficient operators vanish at every $v$ for sufficiently
+large $n$. But to define these
+power series we need to find a copy
+of  $\hat{\mathfrak{g}}$ inside $V^k(\mathfrak{g})$.
+\end{proof}
+
 The set $\mathcal{F}=\left\{a(z)=\sum_{n \in \mathbb{Z}}
 (at)^nz^{-n-1}:a \in \mathfrak{g}\right\}$ 
 are mutually local quantum fields.
@@ -3238,7 +3254,7 @@ $V^k(\mathfrak{g})$ is a vertex algebra
 called the {\it universal affine vertex algebra} 
 of level $k$ associated with $\mathfrak{g}$.
 
-[Picture of $V^k(\mathfrak{g})$ for $\mathfrak{g}=\mathfrak{sl}_2$.
+[Picture of $V^k(\mathfrak{g})$ for $\mathfrak{g}=\mathfrak{sl}_2$.]
 
 We have a bigrading, vertical grading $\Delta$ (energy) is
 $$
@@ -3404,7 +3420,8 @@ by its universal property, there exists a morphism of
  $\hat{\mathfrak{a}}$-representations
 $f: H \to F^{(0)}$, such that $f(1)=|0\rangle$.
 
-We know $H$ is irreducible, so
+By Exercise \ref{exercise-H-is-irreducible}
+we know $H$ is irreducible, so
 $f:H \to F^{(0)}$ is injective.
 Is it an isomorphism?
 Consider  $\tilde{F}=F^{(0)}/f(H)$.
@@ -3518,12 +3535,377 @@ As a corollary, we obtain again
 Jacobi's triple product formula. (Again!)
 
 $$
-\prod_{m=1}^\infty(1+yq^{m-1/2})(1+y^{-1}q^{m-1/2}
+\prod_{m=1}^\infty(1+yq^{m-1/2})(1+y^{-1}q^{m-1/2})
 =\prod_{k=1}^\infty\frac{1}{1-q^k}
 \left(\sum_{n \in \mathbb{Z}}y^nq^{n^2/2}\right).
 $$
 
+\section{Another presentation the charged free Fermions}
+\label{section-another-presentation-of-fermions}
 
+The idea is to consider $X = \bigoplus_{i \in \mathbb{Z}} \mathbb{C} e_i$,
+a countably infinite dimensional space,
+and define
+\begin{equation}
+\label{equation-semi-inifinite}
+\Lambda^{\infty/2}=
+\left\{\substack{\text{span of symbols of the form} \\ 
+e_{i_0}\wedge e_{i_1}\wedge e_{i_1} \wedge e_{i_3}\wedge\ldots\\
+\text{where }\exists N\text{ s.t. }\forall n \geq  N,
+i_{n+1}=i_n+1}\right\}\Big/
+\substack{\text{relation that} \\ e_i\wedge e_j=- e_j \wedge e_i\\
+\text{``wherever it occurs''}}.
+\end{equation}
+That is, the indices can dance around as they like 
+but at some point they will become
+consecutive.
+Clearly a basis of $\Lambda^{\infty/2}$ is given 
+by those ``semi-infinite monomials''
+for which 
+$i_0 < i_1< i_2<\ldots$.
+
+For any semi infinite monomial
+$\underline{e}=e_{i_0}\wedge e_{i_1}\wedge \ldots$
+there exists a number $m$ such that
+$i_j=-m+j$ for all  $j \gg 0$.
+This number is called the {\it charge} of $\underline{e}$.
+
+We have a decomposition in vector spaces
+$$
+\Lambda^{\infty/2}=\bigoplus_{m \in \mathbb{Z}}\Lambda^{\infty/2,(m)}
+$$
+called {\it charge decomposition}.
+
+Let's introduce some operators in  $\Lambda^{\infty/2}$:
+\begin{align*}
+\varphi_{(n)}: \Lambda^{\infty/2} &\longrightarrow \Lambda^{\infty/2} \\
+\varphi_{(n)}(\underline{e}) &= e_n \wedge \underline{e} 
+\end{align*}
+i.e. we just put $e_n$ at the beginning of the 
+monomial.
+
+Next
+\begin{align*}
+\varphi_{(n)}^*: \Lambda^{\infty/2} &\longrightarrow \Lambda^{\infty/2} \\
+\varphi^*_{(n)} & =\sum_{k \geq 0}(-1)^k \delta_{n,i_k}
+e_{i_0}\wedge e_{i_1}\wedge \ldots \wedge
+\underbrace{\widehat{e_{i_k}}}_{\text{remove this}}\wedge \ldots
+\end{align*}
+so in analogy, we remove this term.
+The $(-1)^k$ accounts for moving around the unwanted
+term to the beginning of the monomial.
+
+\begin{exercise}
+\label{exercise-something-like}
+Something like
+$$
+\varphi_{(m)}\varphi^*_{(n)}
++\varphi_{(n)}^*\varphi_{(m)}=
+\delta_{m,+n}I_{\Lambda^{\infty/2}}
+$$
+\end{exercise}
+
+Let's introduce some quantum fields now:
+
+$$
+\varphi(w)=\sum_{ n \in \mathbb{Z}}\varphi_{(n)}w^{-n-1}
+$$
+which vanishes for very large $n$ because
+we eventually get to the ``consecutive'' region,
+and
+$$
+\varphi^*(w)=\sum_{ n \in \mathbb{Z}}\varphi_{(n)^*}w^{n}
+$$
+which vanishes for very negative $n$ since the
+star operators are defined to give zero
+if the $e_n$ is not found in the monomial.
+
+Notice that the convention  $\varphi^*(w)=\sum \varphi^*_{(n)}w^n$,
+instead of $\sum \varphi^*_{(n)}w^{-n}$ is so that
+$\varphi^*(w)$ is a quantum field.
+The convention $\varphi^*(w)=\sum \varphi^*_{(n)}w^n$ 
+instead of, say, $\sum \varphi_{(n)}^* w^{n+1}$
+is so that the equation in 
+Exercise \ref{exercise-something-like}
+turns into a nice relatio
+$$
+[\varphi(z),\varphi^*(z)]=\delta(z,w)I,
+$$
+(i.e. $[\varphi_\lambda \varphi^* ]=|0\rangle$, just like in the
+charged fermions $F^{\text{ch}}$!).
+
+\begin{exercise}
+\label{exercise-relations-for-these-fields}
+These fields will match with our previous
+$\varphi,\varphi^*$ as
+\begin{align*}
+\sum \varphi_{(n)}z^{-n-1}&=\sum \varphi_n z^{-n-1/2} 
+: \varphi_n=\varphi_{n-1/2}\\
+\sum \varphi_{(n)}^*z^n&=\sum \varphi_n^* z^{-n-1/2}
+: \varphi_n^*=\varphi_i
+\end{align*}
+\end{exercise}
+
+\medskip\noindent
+The space $\Lambda^{\infty/2}$ has a super-structure
+with parity $\Lambda^{\infty/2,(m)}$ = the parity of $m$.
+Setting
+$|0\rangle=e_0 \wedge e_1 \wedge e_2 \ldots$,
+$\mathcal{F}=\{\varphi(z),\varphi^*(z)\}$,
+$T$ what it needs to be,
+we get a vertex superalgebra.
+In fact,
+$$
+F^{\text{ch}}=U(\hat{\mathfrak{a}}\otimes_{U(\hat{\mathfrak{a}_+}}
+\mathbb{C}|0\rangle
+\xrightarrow{\simeq}\Lambda^{\infty/2}
+$$
+is an isomorphism of vertex algebras.
+Indeed, if $n_j,m_k \geq 1$,
+\begin{align*}
+&\varphi_{(n-1)}\varphi_{(-n_2)}\ldots\varphi_{(-n_s)}
+\varphi^*_{(m_1)}\ldots \varphi^*_{(m_t)}|0\rangle
+&=\pm e_{-n_1}\wedge e\ldots \wedge e_{-n_s}
+\wedge \underbrace{(e_0 \wedge e_1 \wedge \ldots)
+}_{\substack{\text{but with} \\ e_{m_1}\ldots e_{m_t}}\\
+\text{missing}}
+\end{align*}
+
+\noindent
+But these two pictures are bases of $F^{\text{ch}}$ and $\Lambda^{\infty/2}$,
+so we have our linear isomorphism
+$F^{\text{ch}} \to \Lambda^{\infty/2}$.
+Just need to check carefully $\varphi$ and $\varphi^*$ 
+are compatible with it.
+
+Pauli exclusion principle. In an ensemble
+state of fermions,
+two cannot occupy the same state,
+(so they are modelled by odd variables
+like ``$e_n$'' such that $e_n \wedge e_n=0$.)
+
+Electron waves should obey 
+``quantized'' wave-equation,
+which is something like
+\begin{align*}
+\partial_t^2 \psi&=(- \overline{h}^2 \nabla+m)\psi\\
+\partial_t \psi&=\sqrt{-\overline{h}\nabla+m}\psi.
+\end{align*}
+
+\noindent
+A solution to this is, instead of
+$$
+\sqrt{\partial_{x x}+m},
+$$
+try to define
+$$
+\sqrt{(\partial_{x x}+m)I_4}
+$$
+where $I_4$ is the identity $4 \times 4 $ matrix.
+Then the ``square root'' of $-\overline{h}^2 \nabla +m$
+becomes a matrix valued differential operator,
+denoted sometimes as $\not \partial + \gamma$,
+where $\gamma$ is an explicit $4 \times 4$ matrix.
+In $\partial_t \psi=\ldots$, $\psi$ has become
+a vector-valued function on space,
+with a splitting in spin up and spin down parts
+of the electron wavefunction, and also an
+``unphysical'' part. The latter
+can be interpreted as the positrons.
+
+Problem: the Dirac equation has positive and negative
+energy solutions.
+
+\medskip\noindent
+Let's examine the neutral part
+of $\Lambda^{\infty/2(0)}$.
+Consider the element
+$$
+\underline{e}=e_{-4}\wedge e_{-2}\wedge e_{-1}
+\wedge e_0 \wedge e_1 \wedge e_4 \wedge e_5
+\wedge\underbrace{ e_7 \wedge e_8 \wedge e_9\wedge\ldots
+}_{\text{consecutive part}}
+$$
+The successive differences are
+$$
+2\quad 1 \quad  1\quad 1 \quad 3 \quad 3 \quad  1 \quad 2 \quad 1
+\quad  1 \quad  \ldots
+$$
+Since the sequence will stabilize at 1,
+we might as well subtract 1 and obtain the finite
+sequence 
+$$
+(1\quad 0\quad 0\quad 0\quad 2\quad 0\quad 1)
+$$
+In fact, you could reconstruct $\underline{e}$ 
+from this list, and knowing that
+$\text{charge}(\underline{e})=0$.
+
+Form the partial sums
+$$
+1000201 \to 4333311
+$$
+these numbers are non-increasing,
+so define uniquely a partition of some integer
+(in this case 18), 
+and if we compare with
+$$
+\underline{e}=\pm \varphi_{-4}\varphi_{-2}\varphi_{-1}
+\varphi^*_2\varphi_3^*\varphi_6^*|0\rangle
+$$
+which was energy
+$$
+\Delta=(4-1/2)+(2-1/2)+(1-1/2)
++(2+1/2)+(3+1/2)+(6+1/2)=18.
+$$
+
+\noindent
+We denote by $\underline{e}_\lambda$ 
+the semi-infinite monomial of charge 0 given by
+this procedure.
+
+\medskip\noindent
+So we have a basis
+$\{\underline{e}_\lambda|\lambda\text{ integer partitions}\}$
+of $F^{(0)}\simeq H = \mathbb{C}[x_1,x_2,x_3,\ldots]$,
+which also has the basis
+$\{\underline{x}_\lambda=x_1^{\lambda_1}\ldots x_5^{\lambda_5}|
+\lambda \text{ integer partitions}\}$
+where $\lambda=(1^{\lambda_1},2^{\lambda_2},\ldots,s^{\lambda_s})$,
+that is, $1$ appears $\lambda_1$ times and so on.
+We do {\bf not} have $\underline{e}_\lambda=\underline{x}_\lambda$!
+
+\section{Schur polynomials}
+\label{section-schur-polynomials}
+
+The Schur polynomials are given by
+the exponential generating function of $\sum z^kx_k$.
+More precisely,
+
+\begin{definition}
+\label{definition-schur-polynomial}
+We set  $S_k(\underline{x})$ by
+$$
+\sum_{k \geq 0}z^k S_k(\underline{x})
+=\text{exp}\left(\sum_{k \geq 1}z^k x_k\right).
+$$
+\end{definition}
+
+For a partition
+$\lambda=(1^{\lambda_1}2^{\lambda_2}\ldots k^{\lambda_k})$,
+define
+$$
+S_\lambda(\underline{x})
+=\det
+\begin{pmatrix}
+S_{\lambda_1}& S_{\lambda_1+1}&\cdots &  S_{\lambda_1+k-1}\\
+S_{\lambda_2-1}& S_{\lambda_2}&\cdots & \\
+\vdots &  &  &  \vdots \\
+S_{\lambda_k-k+1}&  &  &  S_{\lambda_k}
+\end{pmatrix}
+$$
+
+Recall we defined $X=\bigoplus_{i \in \mathbb{Z}}\mathbb{C}e_i$
+and $\Lambda^{\infty/2}=\left<e_{i_0}\wedge\ldots\right>$.
+Let $g:X \to X$ be an invertible endomorphism.
+We would like to 
+(define an endomorphism of the wedge)
+define a correspondence
+\begin{align*}
+R(g): \Lambda^{\infty/2} &\longrightarrow \Lambda^{\infty/2} \\
+R(g)(e_{i_0}\wedge e_{i_1}\wedge\ldots) &=
+(ge_{i_0})\wedge(ge_{i_1})\wedge \ldots 
+\end{align*}
+For some $g$, $\varepsilon g$, $g(e_n)=e_{-n}$,
+$R(g)$ does not make sense
+(or does not send  $\Lambda^{\infty/2}\to \Lambda^{\infty/2}$).
+
+As a note, if $X$ were finite-dimensional,
+say $X=\left<e_1,\ldots,e_n\right>$,
+then $R(g):\Lambda^{k+1}X \to \Lambda^{k+1}X$
+has matrix entry
+$$
+(e_{i_0}\wedge e_{i_1}\wedge\ldots\wedge e_{i_k})
+\to(e_{j_0}\wedge e_{j_1} \wedge \ldots \wedge e_{j_k}),
+$$
+(with strictly increasing indices on both sides,
+up to a sign maybe)
+given by the determinant of the $(k+1)\times(k+1)$ 
+matrix given by selecting the rows
+$i_0,i_1,\ldots,i_k$, and the columns
+$j_0,j_1,\ldots,j_k$ of the matrix of $g$.
+
+\medskip\noindent
+For our $X$ and $\Lambda^{\infty/2}$,
+$R(g)$ makes sense if $g$ is such that 
+$$
+g(e_i)-e_i \in \text{span} \{ e_{>i}\}\qquad \forall i.
+$$
+
+\begin{proposition}
+\label{proposition-schur-polynomials}
+$\underline{e}_\lambda=S_\lambda(\underline{x})$
+where 
+\end{proposition}
+
+\begin{proof}
+Write $\underline{e}_\lambda=P(x)$.
+We wish to show $P(x)=S_\lambda(x)$.
+Introduce new variables $y_1,y_2,\ldots$ and
+consider
+$$
+F(y)=\text{exp}
+\left(\sum_{k>0}y_k\frac{\partial }{\partial x_k}\right)P(x)\Big|_{x=0}
+$$
+First we observe that
+$$
+F(y)=P(x_1+y_1,x_2+y_2,\ldots)|_{x=0}=P(x+y)|_{x=0}=P(y)
+$$
+since in general exponentiaing a differential operator
+gives shifting by the coefficient, i.e.
+$e^{a \frac{\partial }{\partial t}}f(t)=f(t+a)$.
+
+Considering  
+$$
+P(x) \in \mathbb{C}[x_1,x_2,\ldots]=H\simeq F^{(0)},
+$$
+observe that for $k>0$,
+\begin{align*}
+\frac{\partial }{\partial x_k}&=h_k
+&=(\,:\!\varphi \varphi^*\!:\,)_k\\
+&=\sum_{i \in \mathbb{Z}}\varphi_{k+1}\varphi^*_i
+\end{align*}
+
+\noindent
+i.e. it's a sum of ``remove $e_i$'' and ``insert $e_{k+i}$''.
+
+Denote
+\begin{align*}
+\Lambda_k: X &\longrightarrow X \\
+\Lambda_k(e_n) &=e_{n+k}\qquad  \forall n \in \mathbb{Z}
+\end{align*}
+
+\noindent
+$R(\Lambda_k)=\frac{\partial }{\partial x_k}$,
+since $\Lambda^{\infty/2(0)}\xrightarrow{\simeq}H$.
+
+Therefore
+$$
+F(y)=R \text{exp}\left(\sum_{k>0}y_k \Lambda_k\right)
+\underline{e}_\lambda\Big|_{\text{coef. in }|0\rangle}.
+$$
+Notice that $R \text{exp}(\Lambda_k)$ is of the form
+$g(e_i)-e_i$.
+
+Finally, notice that $\Lambda_k=\Lambda_1^k$,
+so
+\begin{align*}
+&R \text{exp}\left(\sum_{k>0}y_k \Lambda_k\right)
+\underline{e}_\lambda\Big|_{\text{coef. in }|0\rangle}\\
+&=R \text{exp}\left(\sum y_k \Lambda_1^k\right)\underline{e}_\lambda\\
+&=R(\left(S_k \Lambda_k\right)\underline{e}_\lambda.
+\end{align*}
+\end{proof}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
