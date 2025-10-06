@@ -3614,7 +3614,7 @@ which vanishes for very large $n$ because
 we eventually get to the ``consecutive'' region,
 and
 $$
-\varphi^*(w)=\sum_{ n \in \mathbb{Z}}\varphi_{(n)^*}w^{n}
+\varphi^*(w)=\sum_{ n \in \mathbb{Z}}\varphi^*_{(n)}w^{n}
 $$
 which vanishes for very negative $n$ since the
 star operators are defined to give zero
@@ -3627,7 +3627,7 @@ The convention $\varphi^*(w)=\sum \varphi^*_{(n)}w^n$
 instead of, say, $\sum \varphi_{(n)}^* w^{n+1}$
 is so that the equation in 
 Exercise \ref{exercise-something-like}
-turns into a nice relatio
+turns into a nice relation
 $$
 [\varphi(z),\varphi^*(z)]=\delta(z,w)I,
 $$
@@ -3656,7 +3656,7 @@ $T$ what it needs to be,
 we get a vertex superalgebra.
 In fact,
 $$
-F^{\text{ch}}=U(\hat{\mathfrak{a}}\otimes_{U(\hat{\mathfrak{a}_+}}
+F^{\text{ch}}=U(\hat{\mathfrak{a}}\otimes_{U(\hat{\mathfrak{a}_+})}
 \mathbb{C}|0\rangle
 \xrightarrow{\simeq}\Lambda^{\infty/2}
 $$
@@ -3667,8 +3667,8 @@ Indeed, if $n_j,m_k \geq 1$,
 \varphi^*_{(m_1)}\ldots \varphi^*_{(m_t)}|0\rangle
 &=\pm e_{-n_1}\wedge e\ldots \wedge e_{-n_s}
 \wedge \underbrace{(e_0 \wedge e_1 \wedge \ldots)
-}_{\substack{\text{but with} \\ e_{m_1}\ldots e_{m_t}}\\
-\text{missing}}
+}_{\substack{\text{but with} \\ e_{m_1}\ldots e_{m_t}\\
+\text{missing}}}
 \end{align*}
 
 \noindent
@@ -3678,6 +3678,7 @@ $F^{\text{ch}} \to \Lambda^{\infty/2}$.
 Just need to check carefully $\varphi$ and $\varphi^*$ 
 are compatible with it.
 
+\medskip\noindent
 Pauli exclusion principle. In an ensemble
 state of fermions,
 two cannot occupy the same state,
@@ -3728,7 +3729,7 @@ $$
 $$
 The successive differences are
 $$
-2\quad 1 \quad  1\quad 1 \quad 3 \quad 3 \quad  1 \quad 2 \quad 1
+2\quad 1 \quad  1\quad 1 \quad 3 \quad 1 \quad 2 \quad 1
 \quad  1 \quad  \ldots
 $$
 Since the sequence will stabilize at 1,
@@ -3753,7 +3754,7 @@ $$
 \underline{e}=\pm \varphi_{-4}\varphi_{-2}\varphi_{-1}
 \varphi^*_2\varphi_3^*\varphi_6^*|0\rangle
 $$
-which was energy
+which has energy
 $$
 \Delta=(4-1/2)+(2-1/2)+(1-1/2)
 +(2+1/2)+(3+1/2)+(6+1/2)=18.
@@ -3809,8 +3810,7 @@ Recall we defined $X=\bigoplus_{i \in \mathbb{Z}}\mathbb{C}e_i$
 and $\Lambda^{\infty/2}=\left<e_{i_0}\wedge\ldots\right>$.
 Let $g:X \to X$ be an invertible endomorphism.
 We would like to 
-(define an endomorphism of the wedge)
-define a correspondence
+define an endomorphism
 \begin{align*}
 R(g): \Lambda^{\infty/2} &\longrightarrow \Lambda^{\infty/2} \\
 R(g)(e_{i_0}\wedge e_{i_1}\wedge\ldots) &=
@@ -3872,8 +3872,8 @@ $$
 observe that for $k>0$,
 \begin{align*}
 \frac{\partial }{\partial x_k}&=h_k
-&=(\,:\!\varphi \varphi^*\!:\,)_k\\
-&=\sum_{i \in \mathbb{Z}}\varphi_{k+1}\varphi^*_i
+=(\,:\!\varphi \varphi^*\!:\,)_k
+=\sum_{i \in \mathbb{Z}}\varphi_{k+1}\varphi^*_i
 \end{align*}
 
 \noindent
@@ -3906,6 +3906,299 @@ so
 &=R(\left(S_k \Lambda_k\right)\underline{e}_\lambda.
 \end{align*}
 \end{proof}
+
+
+\section{The Tate extension and the Japanese cocycle}
+\label{section-tate-extension-and-japanese-cocycle}
+
+\noindent
+Recall $X=\bigoplus_{n \in \mathbb{Z}}\mathbb{C}e_n$
+and $\Lambda^{\infty/2}$.
+(You can be floppy and think that $\Lambda^{\infty/2}$ 
+is the exterior power of $X$,
+though that's not completely right.)
+Define
+$$
+\mathfrak{gl}_\infty
+=\left\{(a_{ij}:\substack{i,j \in \mathbb{Z},a_{ij}\in \mathbb{C} \\ 
+\text{all but finitely many of the $a_{ij}$ vanish}}\right\},
+$$
+add and multiply as usual.
+
+$\text{GL}_\infty=\{I+(a_{ij}):a_{ij}\in\mathfrak{gl}_\infty\}$,
+with $I=(I_{ij})$ and $I_{ij}=\delta_{ij}$.
+A typical element of $\mathfrak{gl}_\infty$ 
+is $E_{ij}$ with $E_{ij}(e_k)=\delta_{jk}e_i$.
+
+Last time we used shift operators
+$\Lambda_k:e_n\mapsto e_{n+k}$ for all $n$.
+These are {\bf not} in $\mathfrak{gl}_\infty$,
+but {\bf are} in 
+$$
+\widetilde{\mathfrak{gl}_\infty}
+=\left\{(a_{ij}):\substack{rr N s.t. a_{ij}=0 \\ \text{ whenever }
+|i-j|>N}\right\}.
+$$
+Then $\Lambda_k=\sum E_{i+k,k}\in \widetilde{\mathfrak{gl}_\infty}$.
+
+\begin{remark}
+\label{remark-gltilde-is-Lie-algebra}
+$\widetilde{\mathfrak{gl}_\infty}$ is an associative
+Lie algebra (hence a Lie algebra with commutator).
+This is because the condition of finiteness in the definition
+excludes the possibility of infinite sums.
+\end{remark}
+
+
+We have a represenation $r$ of $\mathfrak{gl}_\infty$ 
+on $\Lambda^{\infty/2}$ by
+$$
+r:E_{ij}\mapsto \varphi_i\varphi_j^*
+$$
+But this doesn't extend to $\widetilde{\mathfrak{gl}_\infty}$.
+For instance, $r(\Lambda_0)=\sum_{j \in \mathbb{Z}}\varphi_{-j}\varphi^*_j$ 
+diverges.
+
+A ``solution'' is to use normal order,
+so $r(\Lambda_0)=\sum_{j \in \mathbb{Z}}\,:\!\varphi_{-j}\varphi^*_j\!:\,$,
+is now well-defined, but $r$ is no longer a representation.
+
+\medskip\noindent
+Today: more conceptual point of view.
+Consider the vector speca $\mathbb{C}(\!(t)\!)=X$.
+(Which is {\it uncountably} infinite-dimensional.)
+Give $X$ a linear topology
+with a base of open neighbourhoods
+of $0$ being $t^N\mathbb{C}[\![t]\!]$
+for $N \in \mathbb{Z}$.
+The idea is that
+$t,t^2,t^3,\ldots$ ``tends to $0$''
+in this topology.
+
+\begin{definition}
+\label{definition-tate}
+A {\it Tate vector space} is a linearly
+topologised vector space $X$ and a set $\mathcal{L}$ 
+of linear subspaces $L \subset X$ 
+(called {\it lattices}) such that
+\begin{enumerate}
+\item (Separated.) Any neighbourhood of $0$ contains
+a lattice.
+
+\item (Exhaustive.) Every $x \in X$
+is contained in some lattice.
+
+\item (Commensurable.) For all $L_1,L_2 \in \mathcal{L}$,
+$L_1 \cap L_2$ has finite codimension
+in $L_1$ (and in $L_2$). (This says
+that any two lattices cannot be
+``infinitely far apart''.)
+
+\item (Complete.) For all $L_1,L_2 \in \mathcal{L}$,
+all vector subspaces 
+$L_1 \cap L_2 \subset S \subset L_1+L_2$
+then $S \in \mathcal{L}$.
+
+\item (Another completeness.) By the universal property of limit,
+we know there exists a map
+$X \to \lim_{\substack{L \in \mathcal{L} \\ L \to 0}} X/L$.
+We ask this is an isomorphism.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\label{example-tate-vector-space}
+\begin{enumerate}
+\item 
+Laurent series is an example of a Tate vector space.
+Let $X=\mathbb{C}(\!(t)\!)$ with
+ $$
+\mathcal{L}=\left\{L\subset X:\exists N\text{ s.t. }
+t^N \mathbb{C}[\![t]\!] \subset L \subset
+t^{-N}\mathbb{C}[\![t]\!]\right\}.
+$$
+We can also say that $\mathcal{L}$ is the
+unique structure such that $\mathcal{L} \ni \mathbb{C}[\![t]\!]$.
+
+\item If $\mathcal{L}=\{0\}$,
+then $\mathcal{L}=\{L \subset X | \dim(L)<\infty\}$.
+
+\item If $\mathcal{L}\ni X$, then
+$\mathcal{L}=\{L \subset X|\dim(X/L)<\infty\}$.
+\end{enumerate}
+\end{example}
+
+\noindent
+Since we introduced a topology on $X$,
+we can consider the continuous endomorphisms
+$\text{End}_{\text{cont}}(X)$.
+Let's denote throughout this section
+ $$
+\text{End}(X)=\{f \in \text{End}_{\text{cont}}(X)
+:\exists u,v \in \mathcal{L}, f(U)\subset V\}.
+$$
+Relative to the ``basis''
+$\{t^n|n \in \mathbb{Z}\}$,
+the matrix of $f \in \text{End}(X)$ 
+looks like
+$$
+\begin{pmatrix}
+*&0\\ 
+*&*
+\end{pmatrix}
+\begin{pmatrix}
+0\\
+*
+\end{pmatrix}
+$$
+since the vectors in $V\subset t^m\mathbb{C}[\![t]\!]$
+have zeroes before a certain index $n$.
+
+\medskip\noindent
+\begin{align*}
+\text{End}_c(X)&=\{f \in \text{End}(X)| \exists  V \in \mathcal{L}
+\text{s.t. }f(X) \subset V\}\\
+&=\left\{\begin{pmatrix}
+0&0\\ 
+*&*
+\end{pmatrix}\right\}
+\text{End}_d(X)&=\{f \in \text{End}(X)|\exists U \in \mathcal{L}
+\text{s.t. }f(U)=0\}\\
+&=\begin{pmatrix}
+*&0\\ 
+*&0
+\end{pmatrix}\\
+\text{End}_f(X)&=\text{End}_c(X) \cap \text{End}_d(X)\\
+&=\begin{pmatrix}
+0&0\\ 
+*&0
+\end{pmatrix}.
+\end{align*}
+
+\begin{remark}
+\label{remark-trace-in-End}
+For $f \in \text{End}_f(X)$,
+the trace $\text{Tr}(f) \in \mathbb{C}$
+is well-defined because
+the intersection of the diagonal
+with the lower-left part of any
+matrix in $\text{End}_f(X)$ is finite.
+For $\text{End}_c$ and $\text{End}_d$
+trace is not well-defined.
+\end{remark}
+
+\noindent
+Notice that
+\begin{align*}
+\text{End}_c(X) \oplus \text{End}_d(X)  &\longrightarrow \text{End}(X)\to  0\\
+(f,g) &\longmapsto f+g
+\end{align*}
+
+\noindent
+which is clearly surjective since we can put
+$$
+\begin{pmatrix}
+A&0\\ 
+B&C
+\end{pmatrix}=\begin{pmatrix}
+A&0\\ 
+B&0
+\end{pmatrix}+
+\begin{pmatrix}
+0&0\\ 
+0&D
+\end{pmatrix}.
+$$
+We can complete this to a sort exact sequence by putting
+\begin{align*}
+\text{End}_f(X)  &\longrightarrow \text{End}_c \oplus \text{End}_d \\
+h &\longmapsto (h,-h).
+\end{align*}
+
+\noindent
+Considering the trace $\text{Tr}:\text{End}_f(X) \to \mathbb{C}$,
+we can form the pushout $L$ in the
+category of Lie algebras
+$$
+\xymatrix{
+0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}&
+\text{End}_c(X) \oplus \text{End}_d(X)\ar[d]\ar[r]&
+\text{End}(X)\ar[r]&0\\
+&\mathbb{C}\ar[r]& L
+}
+$$
+Concretely,
+$$
+L\frac{(\text{End}_c(X) \oplus \text{End}_d(X))\oplus \mathbb{C}}
+{\left<(h,-h)=(0,0,\text{Tr}(h))|
+\forall  h \in \text{End}_f(X)\right>}.
+$$
+In fact, this completes
+to a short exact sequence of Lie algebras
+(Exercise \ref{exercise-short-exact-sequence} below):
+$$
+\xymatrix{
+0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}&
+\text{End}_c(X) \oplus \text{End}_d(X)\ar[d]\ar[r]&
+\text{End}(X)\ar[r]\ar[d]^{=}&0\\
+0 \ar[r]&\mathbb{C}\ar[r]& L\ar[r]& \text{End}(X)\ar[r]&0
+}
+$$
+
+\begin{exercise}
+\label{exercise-short-exact-sequence}
+Show that
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}\ar[r]&L\ar[r]&\text{End}(X)\ar[r]&0
+}
+$$
+is a short exact sequence of Lie algebras,
+i.e. a {\bf central extension} of $\text{End}(X)$.
+(Don't forget these are {\it continuous} endomorphisms.)
+\end{exercise}
+
+\noindent
+Let $\mathfrak{gl}(X)=\text{End}(X)$ 
+with Lie bracket $[A,B]=AB-BA$.
+[Beilinson-Drinfeld] denote $L=\mathfrak{gl}^\flat$ in this case.
+
+\begin{example}[Computation]
+\label{example-computation}
+Let $A = \Lambda_1:t^k \mapsto  t^{k+1}$ for all $k \in \mathbb{Z}$
+and $B=\Lambda_{-1}:t^k \mapsto  t^{k-1}$ for all $k \in \mathbb{Z}$.
+Then $A,B \in \text{End}(X)$ and $[A,B]=0$ in fact.
+Let's compute $[A,B]$ in $\mathfrak{gl}^\flat(X)$,
+we hope it's not zero.
+
+The idea is to split both $A$ and $B$ 
+as sums of a matrix in $\text{End}_c$ and
+a matrix in $\text{End}_d$.
+Then we compute the brackets
+in $\text{End}_c$ and in $\text{End}_d$
+and obtain that
+$[A_c,B_c]=-[A_d,B_d]$, nice.
+That is, in $\mathfrak{gl}^\flat(X)$,
+$$
+[A,B]=(-E_{-1,-1},E_{-1,-1},0)=(0,0,-1)
+$$
+by our convention that $(h,-h,0)=\text{Tr}(h))$.
+\end{example}
+
+\begin{remark}
+\label{remark-tate-observed}
+If $fg \in \mathbb{C}(\!(t)\!)$,
+Tate observed that
+$$
+[\mu(f),\mu(g)]=\text{Res}_tf(t)dg(t).
+$$
+(In the example we had
+$A=\mu(t)$ and $B=\mu(t^{-1})$.
+\end{remark}
+
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
