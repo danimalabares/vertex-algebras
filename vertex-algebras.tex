@@ -3920,7 +3920,7 @@ though that's not completely right.)
 Define
 $$
 \mathfrak{gl}_\infty
-=\left\{(a_{ij}:\substack{i,j \in \mathbb{Z},a_{ij}\in \mathbb{C} \\ 
+=\left\{(a_{ij}):\substack{i,j \in \mathbb{Z},a_{ij}\in \mathbb{C} \\ 
 \text{all but finitely many of the $a_{ij}$ vanish}}\right\},
 $$
 add and multiply as usual.
@@ -3936,7 +3936,7 @@ These are {\bf not} in $\mathfrak{gl}_\infty$,
 but {\bf are} in 
 $$
 \widetilde{\mathfrak{gl}_\infty}
-=\left\{(a_{ij}):\substack{rr N s.t. a_{ij}=0 \\ \text{ whenever }
+=\left\{(a_{ij}):\substack{\exists  N s.t. a_{ij}=0 \\ \text{ whenever }
 |i-j|>N}\right\}.
 $$
 Then $\Lambda_k=\sum E_{i+k,k}\in \widetilde{\mathfrak{gl}_\infty}$.
@@ -3965,7 +3965,7 @@ is now well-defined, but $r$ is no longer a representation.
 
 \medskip\noindent
 Today: more conceptual point of view.
-Consider the vector speca $\mathbb{C}(\!(t)\!)=X$.
+Consider the vector space $\mathbb{C}(\!(t)\!)=X$.
 (Which is {\it uncountably} infinite-dimensional.)
 Give $X$ a linear topology
 with a base of open neighbourhoods
@@ -4035,7 +4035,7 @@ $\text{End}_{\text{cont}}(X)$.
 Let's denote throughout this section
  $$
 \text{End}(X)=\{f \in \text{End}_{\text{cont}}(X)
-:\exists u,v \in \mathcal{L}, f(U)\subset V\}.
+:\exists U,V \in \mathcal{L}, f(U)\subset V\}.
 $$
 Relative to the ``basis''
 $\{t^n|n \in \mathbb{Z}\}$,
@@ -4057,22 +4057,22 @@ have zeroes before a certain index $n$.
 \medskip\noindent
 \begin{align*}
 \text{End}_c(X)&=\{f \in \text{End}(X)| \exists  V \in \mathcal{L}
-\text{s.t. }f(X) \subset V\}\\
-&=\left\{\begin{pmatrix}
+\text{s.t. }f(X) \subset V\}
+=\left\{\begin{pmatrix}
 0&0\\ 
 *&*
-\end{pmatrix}\right\}
+\end{pmatrix}\right\}\\
 \text{End}_d(X)&=\{f \in \text{End}(X)|\exists U \in \mathcal{L}
-\text{s.t. }f(U)=0\}\\
-&=\begin{pmatrix}
+\text{s.t. }f(U)=0\}
+=\left\{\begin{pmatrix}
 *&0\\ 
 *&0
-\end{pmatrix}\\
-\text{End}_f(X)&=\text{End}_c(X) \cap \text{End}_d(X)\\
-&=\begin{pmatrix}
+\end{pmatrix}\right\}\\
+\text{End}_f(X)&=\text{End}_c(X) \cap \text{End}_d(X)
+=\left\{\begin{pmatrix}
 0&0\\ 
 *&0
-\end{pmatrix}.
+\end{pmatrix}\right\}.
 \end{align*}
 
 \begin{remark}
@@ -4095,7 +4095,7 @@ Notice that
 \end{align*}
 
 \noindent
-which is clearly surjective since we can put
+is clearly surjective since we can put
 $$
 \begin{pmatrix}
 A&0\\ 
@@ -4109,7 +4109,7 @@ B&0
 0&D
 \end{pmatrix}.
 $$
-We can complete this to a sort exact sequence by putting
+We can complete this to a short exact sequence by putting
 \begin{align*}
 \text{End}_f(X)  &\longrightarrow \text{End}_c \oplus \text{End}_d \\
 h &\longmapsto (h,-h).
@@ -4121,7 +4121,7 @@ we can form the pushout $L$ in the
 category of Lie algebras
 $$
 \xymatrix{
-0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}&
+0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}\ar@{}[dr]|-{\ulcorner}&
 \text{End}_c(X) \oplus \text{End}_d(X)\ar[d]\ar[r]&
 \text{End}(X)\ar[r]&0\\
 &\mathbb{C}\ar[r]& L
@@ -4129,16 +4129,16 @@ $$
 $$
 Concretely,
 $$
-L\frac{(\text{End}_c(X) \oplus \text{End}_d(X))\oplus \mathbb{C}}
+L=\frac{(\text{End}_c(X) \oplus \text{End}_d(X))\oplus \mathbb{C}}
 {\left<(h,-h)=(0,0,\text{Tr}(h))|
 \forall  h \in \text{End}_f(X)\right>}.
 $$
 In fact, this completes
 to a short exact sequence of Lie algebras
-(Exercise \ref{exercise-short-exact-sequence} below):
+(see Exercise \ref{exercise-short-exact-sequence} below):
 $$
 \xymatrix{
-0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}&
+0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}\ar@{}[dr]|-{\ulcorner}&
 \text{End}_c(X) \oplus \text{End}_d(X)\ar[d]\ar[r]&
 \text{End}(X)\ar[r]\ar[d]^{=}&0\\
 0 \ar[r]&\mathbb{C}\ar[r]& L\ar[r]& \text{End}(X)\ar[r]&0
@@ -4193,7 +4193,7 @@ $$
 [\mu(f),\mu(g)]=\text{Res}_tf(t)dg(t).
 $$
 (In the example we had
-$A=\mu(t)$ and $B=\mu(t^{-1})$.
+$A=\mu(t)$ and $B=\mu(t^{-1})$.)
 \end{remark}
 
 
