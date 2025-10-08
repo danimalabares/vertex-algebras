@@ -3622,7 +3622,9 @@ if the $e_n$ is not found in the monomial.
 
 Notice that the convention  $\varphi^*(w)=\sum \varphi^*_{(n)}w^n$,
 instead of $\sum \varphi^*_{(n)}w^{-n}$ is so that
-$\varphi^*(w)$ is a quantum field.
+$\varphi^*(w)$ is a quantum field
+(indeed, by our convention on how we write quantum fields,
+see Definition \ref{definition-quantum-field}).
 The convention $\varphi^*(w)=\sum \varphi^*_{(n)}w^n$ 
 instead of, say, $\sum \varphi_{(n)}^* w^{n+1}$
 is so that the equation in 
@@ -3656,7 +3658,7 @@ $T$ what it needs to be,
 we get a vertex superalgebra.
 In fact,
 $$
-F^{\text{ch}}=U(\hat{\mathfrak{a}}\otimes_{U(\hat{\mathfrak{a}_+})}
+F^{\text{ch}}=U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}_+})}
 \mathbb{C}|0\rangle
 \xrightarrow{\simeq}\Lambda^{\infty/2}
 $$
@@ -4088,14 +4090,15 @@ trace is not well-defined.
 \end{remark}
 
 \noindent
-Notice that
+We introduce the map
+
 \begin{align*}
-\text{End}_c(X) \oplus \text{End}_d(X)  &\longrightarrow \text{End}(X)\to  0\\
+p:\text{End}_c(X) \oplus \text{End}_d(X)  &\longrightarrow \text{End}(X)\to  0\\
 (f,g) &\longmapsto f+g
 \end{align*}
 
 \noindent
-is clearly surjective since we can put
+which clearly surjective since we can put
 $$
 \begin{pmatrix}
 A&0\\ 
@@ -4109,16 +4112,19 @@ B&0
 0&D
 \end{pmatrix}.
 $$
-We can complete this to a short exact sequence by putting
+We can complete this to a short exact sequence 
+(of vector spaces)
+by putting
 \begin{align*}
-\text{End}_f(X)  &\longrightarrow \text{End}_c \oplus \text{End}_d \\
+i:\text{End}_f(X)  &\longrightarrow \text{End}_c \oplus \text{End}_d \\
 h &\longmapsto (h,-h).
 \end{align*}
 
 \noindent
 Considering the trace $\text{Tr}:\text{End}_f(X) \to \mathbb{C}$,
 we can form the pushout $L$ in the
-category of Lie algebras
+category of
+{\bf vector spaces}
 $$
 \xymatrix{
 0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}\ar@{}[dr]|-{\ulcorner}&
@@ -4133,9 +4139,64 @@ L=\frac{(\text{End}_c(X) \oplus \text{End}_d(X))\oplus \mathbb{C}}
 {\left<(h,-h)=(0,0,\text{Tr}(h))|
 \forall  h \in \text{End}_f(X)\right>}.
 $$
-In fact, this completes
-to a short exact sequence of Lie algebras
-(see Exercise \ref{exercise-short-exact-sequence} below):
+Notice that the map $i$
+is {\bf not} a Lie algebra map:
+for this it would have to be a Lie algebra map
+in both entries, which is true in the first entry
+but not on the second.
+Meanwhile, $p$ {\it is} a morphism of Lie algebras.
+We could correct $i$ to map $h\mapsto  (h,h)$ 
+and then change $p$ to be $\beta-\gamma$,
+but then $p$ would stop being a Lie algebra morphism.
+So this is not a short exact sequence of Lie algebras;
+indeed it's not sensible to think of
+short exact sequences of Lie algebras
+since Lie algebras do not form an Abelian category.
+
+But it is a short exact sequence of vector spaces
+and we can form its pushout by the following
+Exercise \ref{exercise-pushout}.
+
+\begin{exercise}
+\label{exercise-pushout}
+Let
+$$
+\xymatrix{
+0\ar[r]&A\ar[r]&B\ar[r]&C\ar[r]&0
+}
+$$
+be a short exact sequence of vector spaces
+and $t:A \to K$ a linear map of vector spaces.
+Let $X$ be the pushout
+$$
+\xymatrix{
+A\ar[r]^i\ar[d]_t\ar@{}[dr]|-{\ulcorner}&B\ar[d]\\
+K\ar[r]&X.
+}
+$$
+Explicitly,
+$$
+K=\frac{K \oplus B}{\left<(t(a),0)-(0,i(a))|a \in A\right>}.
+$$
+Show that there exists a short exact sequence
+ $$
+\xymatrix{
+0\ar[r]&K\ar[r]&X\ar[r]&C\ar[r]&0
+}
+$$
+such that
+$$
+\xymatrix{
+0\ar[r]&A\ar[r]\ar[d]_{t}\ar@{}[dr]|-{\ulcorner}&
+B\ar[d]\ar[r]&
+C\ar[r]\ar[d]^{\text{id}}&0\\
+0 \ar[r]K\ar[r]& X\ar[r]& C\ar[r]&0
+}
+$$
+commutes.
+\end{exercise}
+
+Then we obtain
 $$
 \xymatrix{
 0\ar[r]&\text{End}_f\ar[r]\ar[d]_{\text{Tr}}\ar@{}[dr]|-{\ulcorner}&
@@ -4144,60 +4205,372 @@ $$
 0 \ar[r]&\mathbb{C}\ar[r]& L\ar[r]& \text{End}(X)\ar[r]&0
 }
 $$
-
-\begin{exercise}
-\label{exercise-short-exact-sequence}
-Show that
+\medskip\noindent
+Notice that the exact sequence
 $$
 \xymatrix{
-0\ar[r]&\mathbb{C}\ar[r]&L\ar[r]&\text{End}(X)\ar[r]&0
+0\ar[r]&\text{End}_f\ar[r]^i
+&\text{End}_d \oplus \text{End}_f\ar[r]^p
+&\text{End}\ar[r]&0
 }
 $$
-is a short exact sequence of Lie algebras,
-i.e. a {\bf central extension} of $\text{End}(X)$.
-(Don't forget these are {\it continuous} endomorphisms.)
+is a bit more than 
+just a short exact sequence of vector spaces.
+Notice that $\text{End}_d,\text{End}_c \subset \text{End}$
+are ideals.
+Indeed,
+if $f \in \text{End}_c$ and $g \in \text{End}$,
+then $f \circ g \in \text{End}_c$ obviously,
+$f(X) \subset V$ so $g \circ f (X) \subset g(V)$,
+continuity of $g$
+(plus axioms of Tate vector space)
+implies that there exists $\widetilde{V} \in \mathcal{L}$
+such that $g(V) \subset \widetilde{V}$.
+
+\begin{exercise}
+\label{exercise-spell-this-out}
+Spell this out.
+\end{exercise}
+
+So $g \circ f \in \text{End}_c$.
+
+\begin{exercise}
+\label{exercise-ideal-too}
+$\text{End}_d \subset \text{End}$ is an ideal too.
+\end{exercise}
+
+So $\text{End}_c, \text{End}_d$ are $\text{End}$-modules
+(as associative and as Lie algebras),
+and
+$$
+\xymatrix{
+0\ar[r]&\text{End}_f\ar[r]&\text{End}_d \oplus \text{End}_c\ar[r]&
+\text{End}\ar[r]&0
+}
+$$
+is a short exact sequence of End-modules.
+
+\medskip\noindent
+Let $\mathfrak{g}$ be a Lie algebra, $E$ a $\mathfrak{g}$-module
+with $E \xrightarrow{p}\mathfrak{g}$ surjective
+$\mathfrak{g}$-module morphism.
+Consider
+$$
+\xymatrix{
+0\ar[r]&\mathfrak{a}\ar[r]^i&E\ar[r]^p&\mathfrak{g}\ar[r]&0
+}
+$$
+i.e. $\mathfrak{a}=\Ker(p)$.
+
+Then one obtains a symmetric bilinear form
+defined by
+$$
+(a,b)=p(a)b+p(b)a.
+$$
+\begin{exercise}
+\label{exercise-bilinear-form-extension}
+This form is (1) symmetric and 
+(2) $\mathfrak{g}$-invariant.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-central-extension}
+Check that the data above,
+satisfying $(\cdot,\cdot)=0$
+is the same as a central extension of $\mathfrak{g}$ 
+by $\mathfrak{a}$,
+i.e. Lie bracket $[\cdot,\cdot]:E \times E \to E$
+compatible with $[\cdot,\cdot]$ on $\mathfrak{g}$ 
+such that $\mathfrak{a}\subset E$
+is central.
+{\bf Hint.} Set $[a,b]^E=p(a)b$.
 \end{exercise}
 
 \noindent
-Let $\mathfrak{gl}(X)=\text{End}(X)$ 
-with Lie bracket $[A,B]=AB-BA$.
-[Beilinson-Drinfeld] denote $L=\mathfrak{gl}^\flat$ in this case.
+As a particular case of this,
+if we have
+\begin{itemize}
+\item $\mathfrak{g}$ a Lie algebra,
+\item $\mathfrak{a}_1, \mathfrak{a}_2 \subset \mathfrak{g}$
+two ideals such that $\mathfrak{g}=\mathfrak{a}_1 + \mathfrak{a}_2$,
+\item setting $\mathfrak{a}_0=\mathfrak{a}_1 \cap \mathfrak{a}_2$,
+a linear map $\mathfrak{a}_0 \xrightarrow{T}K$
+such that $T([x_1,x_2])=0$ for all
+$x_1 \in \mathfrak{a}_1$ and $x_2 \in \mathfrak{a}_2$.
+\end{itemize}
 
-\begin{example}[Computation]
-\label{example-computation}
-Let $A = \Lambda_1:t^k \mapsto  t^{k+1}$ for all $k \in \mathbb{Z}$
-and $B=\Lambda_{-1}:t^k \mapsto  t^{k-1}$ for all $k \in \mathbb{Z}$.
-Then $A,B \in \text{End}(X)$ and $[A,B]=0$ in fact.
-Let's compute $[A,B]$ in $\mathfrak{gl}^\flat(X)$,
-we hope it's not zero.
+\noindent
+Then we can form
+$$
+\xymatrix{
+0\ar[r]&\mathfrak{a}_0\ar[d]_T\ar[r]^i
+&\mathfrak{a}_1 \oplus \mathfrak{a}_2\ar[d]\ar[r]^p
+&\mathfrak{g}\ar[r]\ar[d]^{\text{id}}&0\\
+0\ar[r]& K\ar[r]& X\ar[r]&\mathfrak{g}\ar[r]&0
+}
+$$
+\noindent
+with pushout at level of vector spaces
+and $i:\alpha \mapsto (\alpha,-\alpha)$ 
+and $p:(\beta,\gamma)\mapsto \beta+\gamma$.
 
-The idea is to split both $A$ and $B$ 
-as sums of a matrix in $\text{End}_c$ and
-a matrix in $\text{End}_d$.
-Then we compute the brackets
-in $\text{End}_c$ and in $\text{End}_d$
-and obtain that
-$[A_c,B_c]=-[A_d,B_d]$, nice.
-That is, in $\mathfrak{gl}^\flat(X)$,
+\begin{exercise}
+\label{exercise-central-extension}
+Then $X$ will become a Lie algebra
+with $K$ central and
+$\mathfrak{a}_1 \oplus \mathfrak{a}_2 \to X$
+a map of Lie algebras.
+\end{exercise}
+
+\noindent
+The main point of this construction
+is to use $T([x_1,x_2])$
+to confirm that
 $$
-[A,B]=(-E_{-1,-1},E_{-1,-1},0)=(0,0,-1)
+T(p(a)b+p(b)a)=0\qquad \forall a,b \in \mathfrak{a}_1 \oplus \mathfrak{a}_2.
 $$
-by our convention that $(h,-h,0)=\text{Tr}(h))$.
+Indeed, write $a=(a_1,a_2)$ and $b=(b_1,b_2)$.
+Then
+\begin{align*}
+&T(([a_1,a_2,b_1],[a_1+a_2,b_2])+([b_1+b_2,b_1],[b_1+b_2,a_2])\\
+&=T([a_1,b_1]+[a_2,b_1]+[b_1,a_1]+[b_2,a_1],
+[a_1,b_2]+[a_2,b_2]+[b_1,a_2]+[b_2,a_1])\\
+&=T(i(\underbrace{[a_2,b_1]}_{\in[\mathfrak{a}_1,\mathfrak{a}_2]}+
+\underbrace{[b_2,a_1]}_{\in[\mathfrak{a}_2,\mathfrak{a}_1]}))\\
+&=0\qquad \text{by hypothesis.}
+\end{align*}
+
+\medskip\noindent
+We apply this, in particular, to
+\begin{align*}
+\mathfrak{g}&=\text{End}(X)\\
+\mathfrak{a}_1&=\text{End}_d(X)\\
+\mathfrak{a}_2&=\text{End}_c(X)\\
+\mathfrak{a}_0&=\text{End}_f(X)\\
+X& \text{ our Tate vector space}\\
+T \text{trace}.
+\end{align*}
+
+\noindent
+For the construction above to work
+we still have to check that
+$$
+\text{Tr}([A_d,A_c])=0
+$$
+whenever $\text{Ad} \in \text{End}_d$ and
+$A_c \in \text{End}_c$.
+You would think this is obvious,
+but it isn't.
+(I.e., $\text{Tr}(AB-BA)=0$ for $A,B \in \text{End}(\text{finite-dimensional
+vector space})$.)
+
+Let us sketch the proof.
+Let $f \in \text{End}_c$ and $f(X) \subset V$ 
+($V \in \mathcal{L}$),
+and $g \in \text{End}_d$ and $g(U)=0$
+($U \in \mathcal{L}$).
+Then
+$$
+X \xrightarrow{f}\underbrace{f(X)}_{\subset V}\xrightarrow{g}
+\underbrace{gf(X)}_{\subset g(V)}.
+$$
+And
+$$
+X \xrightarrow{g}g(X) \to \underbrace{fg(X)}_{\subset V}.
+$$
+So $\text{Im}[f,g] \subset V+g(V)$
+So $[f,g](U \cap f^{-1}(U))=0$.
+$$
+\underbrace{
+f^{-1}g^{-1}(0)}_{\subset f^{-1}(U)}
+\xrightarrow{f}\underbrace{g^{-1}(0)
+}_{\subsetU}\xrightarrow{g}0
+$$
+and 
+$$
+\underbrace{g^{-1}f^{-1}(U)}_{\subset U}
+\xrightarrow{g}f^{-1}(0)\xrightarrow{f}0.
+$$
+
+\noindent
+Now the idea is to argue that
+$$
+\text{Tr}[f,g]=\text{Tr}_Q[f,g],
+$$
+where
+$$
+Q=(V+g(V))/(U\cap f^{-1}(U))
+$$
+is a finite-dimensional vector space.
+But on finite dimensional vector spaces
+the trace of commutator vanishes.
+
+\medskip\noindent
+You might imagine that $\text{Tr}[f,g]=0$
+whenever $[f,g]\in \text{End}_f(X)$,
+but this is false.
+
+\begin{example}
+\label{example-trace-of-commutator-not-vanishing}
+Let $A \subset \text{End} (X)$ be a commutative subalgebra.
+(For instance, if $X= \mathbb{C}((t))$,
+then $f(t) \in \mathbb{C}((t))$
+we have $\mu_f \in \text{End}(X)$
+and $\mu_f(g)=fg$.)
+Then I claim, if $f,g \in A$,
+$f=f_c+f_d$,  $g=g_c +g_d$,
+that $[f_c,g_c] \in \text{End}_f$.
+Obviously  $[f_c,g_c] \in \text{End}_c$,
+but also
+\begin{align*}
+[f_c,g_c]&=[f-f_d,g-g_d]\\
+&=\underbrace{[f,g]}_{=0}
+\underbrace{-[f,g_d]-[f_d,g]+[f_d,g_d]}_
+{\substack{\in\text{End}_d \text{ because }\\\text{End}_d \overset{\text{ideal}}
+{\subset} \text{End}}}.
+\end{align*}
+
+\noindent
+I claim that $\text{Tr}[f_c,g_c]$ might not vanish.
+
+In fact let $X=\mathbb{C}((t))$,
+$f=\mu_{t^{-2}}$, $g=\mu_{t^2}$ 
+(or with any $N \geq 0$ in place of 2).
+
+To fix $f_c,g_c$, lwt's make the following
+choice:
+ \begin{align*}
+\pi: X &\longrightarrow X \\
+\pi(t^n) &= \delta_{n\geq 0}t^n. 
+\end{align*}
+
+\noindent
+Then set $f_c=\pi \circ f$, etc.
+Let's compute $[f_c,g_c]$.
+[Picture]. We obtain $\text{Tr}[f_c,g_c]=2$.
 \end{example}
 
-\begin{remark}
-\label{remark-tate-observed}
-If $fg \in \mathbb{C}(\!(t)\!)$,
-Tate observed that
+\noindent
+The next proposition is
+``Tate's definition of the residue''.
+Tate was trying to generalize the Residue Theorem,
+i.e. that $\sum_{p \in C}\text{Res}_p \omega=0$ 
+for points on a curve $C$ and a differential form $\omega$.
+
+\begin{proposition}
+\label{proposition-trace}
+For any choice of splittings,
+$f=f_c+f_d$, etc, and for all $f,g \in \mathbb{C}((t))$,
 $$
-[\mu(f),\mu(g)]=\text{Res}_tf(t)dg(t).
+\text{Tr}[f_c,g_c]=\text{Res}_tf\cdot dg.
 $$
-(In the example we had
-$A=\mu(t)$ and $B=\mu(t^{-1})$.)
-\end{remark}
+\end{proposition}
 
+\section{Representing the endomorphisms algebra on the charged fermions}
+\label{section-end-rep-fermions}
 
+We want to represent $\text{End}(X)$ on $ \Lambda^{\infty/2}$.
+We start presenting the naive idea.
+Let $x \in X$ and $\varphi \in X^*$.
+We already have
+$$
+\rho(x)=x \wedge(-) \in \text{End}(\Lambda^{\infty/2})
+$$
+and
+$$
+\rho(\varphi)=\sum_{j=0}^\infty(-1)^j
+\varphi(x_{i_j})x_{i_0}\wedge x_{i_1}\wedge\ldots\wedge \widehat{x_{i_j}}
+\wedge \ldots.
+$$
 
+\noindent
+We already saw that
+$\rho(\hat{x}_i)\rho(\hat{\varphi}_j)+\rho(\hat{\varphi}_j)\rho(\hat{x}_i)
+=\delta_{ij}I$
+(here I'm identifying
+$\hat{x}_i \equiv t^i \in \mathbb{C}((t))=X$,
+ $\varphi_i \in X^*$ is
+$\hat{\varphi}_i (\sum c_jt^j)=c_j$).
+See Exercise \ref{exercise-something-like}.
+
+If $f \in \text{End}_d$, we can think of $f$ as
+$$
+f=\sum_{i=0}^a x_i \otimes \varphi_i,
+$$
+where $\varphi_i\to 0$ as $i \to \infty$.
+
+Here $x_i \to 0$ means
+$\forall  N \geq 0$ $\exists n_0$ such that
+$x_n \in t^N \mathbb{C}[[t]]$ for all $n\geq  n_0$.
+And $\varphi_i \to 0$ means $\forall  N \geq 0$ $\exists n_0$
+such that
+$\varphi_n(t^{-N}\mathbb{C}[[t]])=0$ for all $n\geq n_0$.
+
+One can confirm that for $f \in \text{End}_d$,
+$$
+\rho_d(f):=\sum_i\rho(x_i)\rho(\varphi_i)
+$$
+acts a finite sum,
+when applied to any fixed vector of
+$\Lambda^{\infty/2}$.
+So
+$$
+\rho_d:\text{End}_d \to \text{End}(\Lambda^{\infty/2}X)
+$$
+is well defined.
+
+For  $\text{End}_c \ni f$, we can write
+$$
+f=\sum_i x_i \otimes \varphi_i,
+$$
+where $x_i \to 0$.
+Now $\rho_d(f)$ makes no sense, but
+$$
+\rho_c(f):=\sum_{i=0}^\infty\rho(\varphi_i)\rho(x_i)
+$$
+does.
+
+\begin{exercise}
+\label{exercise-representation-of-end}
+Confirm that $\rho_d: \text{End}_d \to \text{End}(\Lambda^{\infty/2})$ 
+and $\rho_c:\text{End}_c \to \text{End}(\Lambda^{\infty/2}X)$
+are morphisms of Lie algebras.
+\end{exercise}
+
+\noindent
+(Neither of these morphisms work at the
+level of associative algebras.)
+
+\medskip\noindent
+We notice that,
+for $f \in \text{End}_f(X)$,
+$$
+\rho_d(f)-\rho_c(f)=\text{Tr}(f).
+$$
+This means 
+$$
+\text{End}_d \oplus \text{End}_c \xrightarrow{(\rho_d,\rho_c)}
+\text{End}(\Lambda^{\infty/2}X)
+$$
+descends to a morphism
+$$
+\xymatrix{
+\text{End}_d \oplus \text{End}_c\ar[r]^{(\rho_d,\rho_c)}\ar[d]
+&\text{End}(\Lambda^{\infty/2}X)\\
+\mathfrak{gl}^\flat (X).\ar[ur]_\rho
+}
+$$
+
+\begin{theorem}
+\label{theorem-tate}
+Let $X$ be a Tate vector space.
+There exists a natural representation
+of $\mathfrak{gl}^\flat(X)$ on $\Lambda^{\infty/2}(X)$.
+\end{theorem}
+
+\noindent
+Next time we'll apply this to the case
+$X$ itself is already a Lie algebra!
 
 
 \bibliography{my}
