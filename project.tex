@@ -8,6 +8,22 @@
 \phantomsection
 \label{section-phantom}
 
+\tableofcontents
+
+\section{Abstract}
+\label{section-abs}
+
+\noindent
+The main theorem in \cite{Nakajima-Heis}
+shows there is an action of the infinite
+dimensional Heisenberg algebra
+on the homology groups of the Hilbert
+scheme of points on a projective surface.
+We aim to explain the main construction
+and sketch the proof of the theorem.
+
+
+
 \section{Hilbert scheme of points}
 \label{section-hsp}
 
@@ -69,113 +85,6 @@ This gives a map
 \end{align*}
 called the {\it Hilbert-Chow morphism}.
 
-
-\medskip\noindent
-Let us have short digression on the concept of length
-
-The stalk is a colimit in the category
-of commutative rings, which makes it an
-$S=k[x_0,\ldots,x_n]$-module
-Here's Stacks Project Definition 10.52.1
-of length of a module:
-
-\begin{definition}
-\label{definition-length}
-Let $R$ be a ring. For any $R$-module $M$
-we define the {\it length} of $M$ over $R$ by the
-formula
-$$
-\text{length}_R(M)
-=
-\sup
-\{
-n
-\mid
-\exists\ 0 = M_0 \subset M_1 \subset \ldots \subset M_n = M,
-\text{ }M_i \not = M_{i + 1}
-\}.
-$$
-\end{definition}
-
-But we also have Lemma 10.52.5:
-
-\begin{lemma}
-\label{lemma-dimension-is-length}
-Let $R$ be a ring with maximal ideal $\mathfrak m$.
-Suppose that $M$ is an $R$-module with
-$\mathfrak m M  =  0$. Then the length of $M$ as
-an $R$-module agrees with the dimension of $M$ as
-a $R/\mathfrak m$ vector space.
-The length is finite if and only if $M$ is a finite $R$-module.
-\end{lemma}
-
-\noindent
-So basically this is what we mean by
-$\dim \Gamma(\mathcal{O}_{Z,x})$…
-But no… unfortunately I'm not done here:
-because it's the dimension of the {\it sections},
-not the dimension of the module itself.
-So perhaps this can be sorted
-by putting $\Gamma(\mathcal{O}_Z)\simeq H^{0}(\mathcal{O}_Z)$…
-Anyway this is just some nuance.
-
-
-\begin{remark}
-\label{remark-reduced}
-In the case of $X$ being 
-a smooth quasiprojective surface
-we don't need to considered the reduced
-version of $X^{[n]}$;
-it's a theorem that in this case 
-it is already reduced.
-\end{remark}
-
-\medskip\noindent
-Anyway, the point probably is
-that when a scheme somehow counts two
-points instead of one, the height of the
-stalk at that point will be 2. I guess.
-This distinguishes $X^{[n]}$ from $S^nX$.
-
-
-\begin{itemize}
-\item Search for a variety $(\mathbb{A}^2)^{[n]}$ 
-whose points are in bijection with
-$\{I \overset{\text{normal}}{<}\mathbb{C}[z_1,z_2]:
-\dim_{\mathbb{C}}/I\}$.
-
-\item We found such a variety, constructed as
-$$
-H:=\tilde{H}/\text{GL}_n(\mathbb{C})
-$$
-where
-\begin{align*}
-&\tilde{H}=\{(B_1,B_2,v) \in 
-\text{Mat}_n(\mathbb{C})\oplus\text{Mat}_n(\mathbb{C})\oplus \mathbb{C}^n\\
-&:[B_1,B_2]=0\text{ and }
-\substack{v\text{ generates $\mathbb{C}^n$ under}\\
-\text{the action of $B_1$ and $B_2$}}\}
-\end{align*}
-The latter condition is called the {\it stability condition}.
-This is the intersection of a closed set and an
-open subset, so it's a quasi-affine variety.
-
-\item $\text{GL}_n(\mathbb{C})$ acts freely on $\tilde{H}$ by
-$$
-g\cdot(B_1,B_2,v)=(gB_1g^{-1},gB_2g^{-1},gv).
-$$
-so we can take the quotient, called $H$.
-
-\item Then $H$ corresponds to codimension-$n$ ideals
-of $\mathbb{C}[z_1,z_2]$. This is because the points
-of $\tilde{H}$ […].
-
-\item Compare with the construction of the Grassmanian.
-
-\item {\bf Lecture 2:} prove that $H$ is smooth.
-
-\item {\bf Lecture 3:} prove that functor is representable.
-\end{itemize}
 
 \section{Heisenberg aglebra}
 \label{section-heisenberg-algebra}
@@ -330,6 +239,11 @@ In view of the construction so far we might as well
 consider level-1 representations, that is,
 $K$ acts as the identity (as we did in our course from the very beginning!).
 
+[Video 8 continues…]
+
+\medskip\noindent
+Here start notes from meeting with Jethro:
+
 For a complex number $\mu \in \mathbb{C}$
 define a highest weight module
 $$
@@ -438,28 +352,6 @@ m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times.
 For instance, the monomial $x_1x_2^2y_2^3$ 
 corresponds to the underlined term $(q)(q^4)(1)(1)(q^6)(1)\ldots$.
 
-Digression/unexplanation. It is indeed a nice picture,
-but do notice that's at least for me now
-it's now obvious why it's true. 
-The definition of the character
-as $\sum_{\Delta=0}^\infty q^\Delta \dim (F^0_\Delta)$,
-so $q$ is a formal variable storing the
-data of the dimensions of each factor in the
-$\Delta$-decomposition of $F^0$. That is,
-there is a collection of size $\dim F_{\Delta}^0$ 
-of monomials for every energy $\Delta=n$.
-So pick all the monomials that give $\Delta=3$.
-They are found in the sea of $q$ above.
-So you can factor $q^3$ out of all of them
-and you'll get a number, the coefficient.
-So I guess you factor $\Delta=1$ first,
-then $\Delta=2$ and so on untill you arrive
-at $\sum_{\Delta=0}^\infty q^\Delta \dim (F^0_\Delta)$.
-{\bf Edit.} In fact, we did prove this,
-once at least, using that the Heisenberg
-algebra is the charge-0 part of the fermion algebra,
-i.e. $F^{(0)}$.
-
 \medskip\noindent
 This construction generalizes for $U \cong \mathbb{C}^n$ 
 with a symmetric non-degenerate bilinear form 
@@ -489,39 +381,6 @@ $F^c=
 U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}|c\rangle$.
 
 
-
-\section{Symplectic quotient}
-\label{section-}
-
-The coadjoint action induces orbits in $\mathfrak{g}^*$.
-The tangent space at any point of a
-coadjoint orbit is given by infinitesimal vector
-fields, that is,
-$$
-T_{\xi}\mathcal{O}=\{u_{\mathfrak{g}^*}(\xi):\forall u \in \mathfrak{g}\}.
-$$
-
-\noindent
-We may introduce a symlpectic form
-$\omega \in \Lambda^{2}T^*_\xi\mathcal{O}$
-on the tangent space 
-at some point of a
-coadjoint orbit by
-$$
-\omega_\xi(X,Y):=\xi([u,v])=-u_{\mathfrak{g}^*}(\xi)v=v_{\mathfrak{g}^*}(\xi)(u)
-$$
-which does not depend on $u,v \in \mathfrak{g}$.
-
-\begin{theorem}[KKS]
-\label{theorem-KKS}
-$\xi \mapsto  \omega_\xi$ is symplectic on $\mathcal{O}$.
-\end{theorem}
-
-\begin{proof}
-Non degeneracy is easy.
-Then show that $\omega$ is $G$-invariant.
-Closedness follows from Jacobi identity.
-\end{proof}
 
 \section{Correspondences}
 \label{section-correspondences}
@@ -1105,13 +964,9 @@ $$
 $$
 
 
-
-
-
-
-
-\section{Worked expample}
-\label{section-worked-example}
+\medskip\noindent
+Now we present a worked example with the aim
+of explaining the main idea of the proof.
 
 Fix $x \in X$ and let $\alpha=[X]$ is the GH class of $X$,
 and $\beta=[x]$ the class of the little point $x$.
