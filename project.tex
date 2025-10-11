@@ -86,11 +86,20 @@ This gives a map
 called the {\it Hilbert-Chow morphism}.
 
 
-\section{Heisenberg aglebra}
-\label{section-heisenberg-algebra}
+\section{Heisenberg and Fermion algebras}
+\label{section-algebra}
 
 \noindent
-Recall our definition of the basic Heisenberg Lie algebra:
+This is mostly notes from video 8, except
+for Subsection \ref{subsection-meeting}, which is based
+on my meeting with Jethro.
+So far there's only stuff on Heisenberg.
+
+\subsection{Definition}
+\label{subsection-definition}
+
+\noindent
+Recall our definition of the ``basic'' Heisenberg Lie algebra:
 $\hat{\mathfrak{a}}=
 \bigoplus_{n \in \mathbb{Z}} \mathbb{C}h_n \bigoplus\mathbb{C}_K$
 with bracket given by $[h_m,h_n]=m\delta_{m,-n}K$ and
@@ -106,7 +115,8 @@ allowed for nonzero brackets in the original Lie algebra,
 in our definition of Heisenberg there's also no 
 appearence of the bracket of the original Lie algebra:
 instead we take the underlying Lie algebra
-to be 1-dimensional!
+to be 1-dimensional! Perhaps that's why we call ours
+the ``basic'' Heisenberg algebra.
 
 Let $\Gamma$ be a lattice 
 (i.e. a finitely generated torsion-free abelian group)
@@ -159,8 +169,21 @@ $$
 From now on we denote $\alpha(n):=\alpha \otimes t^n$
 for $\alpha \in \Gamma$.
 
+\subsection{Universal enveloping algebra,
+Verma modules and Fock representation}
+\label{subsection-review}
+
+\noindent
+In this subsection we review basic Lie theory
+aiming to describe the Fock representation of
+the Heisenberg Lie algebra.
+Perhaps this can be entirely skipped and summarized in the
+claim that $F^0=\mathbb{C}[x_1,x_2,\ldots]$
+is a highest weight representation of $\hat{\mathfrak{a}}$.
+
 \medskip\noindent
-Now we make some remarks on the universal enveloping algebra of Heisenberg.
+We start with some remarks on the universal enveloping algebra of
+the Heisenberg Lie algebra.
 Recall that an explicit construction of
 the universal enveloping algebra of a Lie algebra
 is given by a quotient of the tensor algebra by
@@ -195,7 +218,7 @@ $U(\mathfrak{g})\to \text{End}(V)$.)
 \medskip\noindent
 Next consider the following characterization
 of irreducible $\hat{\mathfrak{a}}$-modules.
-Let $V$ be an irreiducible $\hat{\mathfrak{a}}$-module.
+Let $V$ be an irreducible $\hat{\mathfrak{a}}$-module.
 Suppose that $K \in \text{End}(V)$
 has an eigenvalue (this will happen if we impose
 certain conditions on $V$ like countable dimension,
@@ -239,10 +262,120 @@ In view of the construction so far we might as well
 consider level-1 representations, that is,
 $K$ acts as the identity (as we did in our course from the very beginning!).
 
-[Video 8 continues…]
+First we observe that it's not possible to have a 1-dimensional
+representation of $\tilde{\mathcal{H}}$
+since for  $\alpha \in\Gamma\setminus \{0\}$, $n \neq 0$ 
+and $v \neq 0$ we would have
+$\alpha(n)v=\lambda v$ and $\alpha(-n)v=\mu v$,
+implying that
+$$
+0=\lambda\mu v-\mu \lambda v=[\alpha(n),\alpha(-n)v]=n\delta_{n, -n}K=nK,
+$$
+which is not possible.
+
+However, we can restrict ourselves to the subalgebra
+$\tilde{\mathcal{H}}_+=\{\alpha(n)|n\geq 0, \alpha\in \Gamma\}$ 
+and we no longer have this problem,
+so that in fact we have a trivial representation of $\tilde{\mathcal{H}}_+$
+on $\mathbb{C}$. Then we can ``induce'' this representation
+to $\tilde{\mathcal{H}}$ and obtain the {\it Fock representation}
+$$
+\pi:=\text{Ind}_{\tilde{\mathcal{H}}_+}^{\tilde{\mathcal{H}}}\mathbb{C}
+=\tilde{\mathcal{H}} \otimes_{\tilde{\mathcal{H}}_+} \mathbb{C}.
+$$
 
 \medskip\noindent
-Here start notes after meeting with Jethro:
+Let's quickly recall some facts about Verma modules
+(see also \cite[Lecture 24]{KLAL}).
+Let $\mathfrak{g}$ be a semi-simple Lie algebra.
+Recall that for any Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$ 
+and subset of positive roots $\Delta_+ \subset \mathfrak{h}^*$
+there's a triangular decomposition 
+$$
+\mathfrak{g}=\underbrace{\mathfrak{n}_-}_{\alpha(-n)}
+\oplus \underbrace{\mathfrak{h}}_{K} 
+\oplus \underbrace{\mathfrak{n}_+}_{\alpha(n)}
+$$
+where $\mathfrak{n}_{\pm}
+=\bigoplus_{\gamma \in \Delta_+}\mathfrak{g}_{\pm}\gamma$.
+The underbraces show what how this is in analogy
+with the case of the Heisenberg algebra.
+
+Now fix a character $\Lambda \in \mathfrak{h}^*$.
+Let $\mathfrak{n}_+ \mathbb{y} \mathbb{C}$ be trivial
+and define an action 
+$\mathfrak{b}=\mathfrak{h}\oplus\mathfrak{n}_+ \mathbb{y} \mathbb{C}$
+using $\Lambda$. We can extend to all of $\mathfrak{g}$ 
+to obtain the {\it Verma module} $M(\Lambda)$
+of highest weight $\Lambda$.
+
+It follows from PBW theorem that
+$U(\mathfrak{g})\cong 
+U(\mathfrak{n}_-)\otimes U(\mathfrak{h})\otimes U(\mathfrak{n}_+)$.
+In turn, this implies that
+$M(\Lambda)\cong U(\mathfrak{n}_-)$ as a vector space, 
+which is isomorphic to a polynomial ring $\mathbb{C}[\alpha^-i]$,
+where $\alpha^-i$ is a basis of $\mathfrak{n}_-$.
+
+In our case, this description allows us to conclude
+that in fact $\pi \cong \mathbb{C}[\alpha_i(n)]$
+where $\alpha_i \in \Gamma$ is a basis of 
+$\Gamma \otimes_\mathbb{Z}\mathbb{C}$.
+Further, the action of $\hat{\mathfrak{a}}$ is determined,
+and it is non other than the action of 
+$H=\mathbb{C}[x_1,x_2,\ldots]$ we used in class, namely
+\begin{align*}
+h_n&\mapsto \begin{cases}
+n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0\\
+x_{-n}\qquad &\text{if }n<0\\
+0\qquad &\text{if }n=0
+\end{cases},
+\qquad \qquad  K\mapsto \text{Id}
+\end{align*}
+
+\noindent
+One checks that this is a highest-weight module with
+highest weight vector $1$.
+We call the vector $1 \in \pi=H$ the {\it vacuum state}.
+(Here's $\pi$ is Emily's notation and $H$ is our notation.)
+The operators $\alpha(n)$ for $n<0$ {\it creation operators}:
+we think that such an operator maps the vacuum (no particles)
+to the state $\alpha(n)$. For $n\geq 0$ we call $\alpha(n)$ 
+{\it annihilation operators}: applying any such operator
+to a monomial enough times we can make it zero.
+We may write
+$$
+\pi \cong \underbrace{\mathbb{C}}_{\text{vacuum}}
+\oplus \underbrace{\mathfrak{n}_-}_{\substack{\text{1-particle} \\ 
+\text{states}}}
+\oplus \underbrace{\mathfrak{n}_- \otimes \mathfrak{n}_-}_{
+\substack{\text{2-particle} \\ \text{states}}}
+\oplus \ldots.
+$$
+
+
+
+\subsection{Character}
+\label{subsection-character}
+
+\noindent
+Here we should discuss the characters.
+This was already discussed in Subsection \ref{subsection-meeting}
+(and also in the mathematica notebook!).
+
+\subsection{Fermion algebra}
+\label{subsection-fermions}
+
+\noindent
+Here is gets super.
+
+\subsection{Meeting}
+\label{subsection-meeting}
+
+\noindent
+To avoid mixing up everything too much,
+I put notes from my meeting with Jethro
+in this separate subsection.
 
 For a complex number $\mu \in \mathbb{C}$
 define a highest weight module
@@ -380,7 +513,8 @@ is in fact isomorphic to the Fock space
 $F^c=
 U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}|c\rangle$.
 
-
+\medskip\noindent
+[Super part missing.]
 
 \section{Correspondences}
 \label{section-correspondences}
