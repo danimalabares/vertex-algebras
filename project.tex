@@ -242,7 +242,7 @@ $K$ acts as the identity (as we did in our course from the very beginning!).
 [Video 8 continues…]
 
 \medskip\noindent
-Here start notes from meeting with Jethro:
+Here start notes after meeting with Jethro:
 
 For a complex number $\mu \in \mathbb{C}$
 define a highest weight module
@@ -526,7 +526,7 @@ two chains.
 Notice this wouldn't work
 singular homology: we need the
 infinite assumption on the 2-chain
-to make sure that the whole plain
+to make sure that the whole plane
 is tiled by triangles
 and we cannot move the point
 to a region where it is not contained in
@@ -816,9 +816,7 @@ The key idea
 is to consider some subvarieties of direct products 
 and use their fundamental classes
 to produce operators
-on the homology. The main tool
-for this are
-``correspondences''.
+on the homology via correspondences.
 
 Let $n\geq i>0$. Define $P[i]$
 as a subset of
@@ -931,7 +929,24 @@ which we will not discuss.
 \medskip\noindent
 This about half of video 10.
 In the rest of the video an outline of the
-proof is explained. I didn't go over this yet.
+proof is explained. I didn't get very far yet.
+
+Fix $x \in X$ and let $\alpha=[X]$ is the GH class of $X$,
+and $\beta=[x]$ the class of the little point $x$.
+Take a set of distinct $n$ points
+$x_1,\ldots,x_n \in X\setminus\{x\}$ 
+non of which is $x$.
+Identify them with the corresponding
+ideal $\mathcal{I}$. We are going to interchangeably
+refer to those points as points and as ideal sheaves.
+
+Let's calculate
+$$
+[P_\alpha[1],P_\beta[-1]][\mathcal{I}].
+$$
+If you look back at the relation,
+we want this to give $\mathcal{I}$.
+
 
 \section{Götsche's formula}
 \label{section-gf}
@@ -962,28 +977,6 @@ of ``bi-generating function in $t$ and $n$'':
 $$
 \sum_{n \geq 0}q^nP_t(X^{[n]})=\text{\cite[Equation 1.1]{Nakajima-Heis}}.
 $$
-
-
-\medskip\noindent
-Now we present a worked example with the aim
-of explaining the main idea of the proof.
-
-Fix $x \in X$ and let $\alpha=[X]$ is the GH class of $X$,
-and $\beta=[x]$ the class of the little point $x$.
-Take a set of distinct $n$ points
-$x_1,\ldots,x_n \in X\setminus\{x\}$ 
-non of which is $x$.
-Identify them with the corresponding
-ideal $\mathcal{I}$. We are going to intercheangbly
-refer to those points as points and as $\mathcal{I}$.
-
-Let's calculate
-$$
-[P_\alpha[1],P_\beta[-1]][\mathcal{I}].
-$$
-If you look back at the relation,
-we want this to give $\mathcal{I}$.
-
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
