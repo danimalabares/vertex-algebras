@@ -1557,7 +1557,7 @@ n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0\\
 x_{-n}\qquad &\text{if }n<0\\
 0\qquad &\text{if }n=0
 \end{cases},
-\qquad \qquad  k\mapsto \text{Id}
+\qquad \qquad  K\mapsto \text{Id}
 \end{align*}
 A picture of $H$ [Picture].
 
@@ -1652,7 +1652,7 @@ at^m\cdot |\mu\rangle=\begin{cases}
 $$ 
 
 \medskip\noindent
-Returning to $\hat{\mathfrak{a}}\mathbb{y}H=H^\circ$. Introduce
+Returning to $\hat{\mathfrak{a}}\mathbb{y}H=H^0$. Introduce
 $$
 L_m=\frac{1}{2}\sum_{k \in \mathbb{Z}}h_{m-k}h_k.
 $$
@@ -2757,7 +2757,7 @@ $$
 \rho_\beta(L_n)=B_n,\qquad \rho_\beta(C)=(1-12\beta^2)I_V
 $$
 If $(M,\rho)$ is a representation of $\text{Vir}$, in which 
- $\rho(C)=c\cdot I_M$ for some scalar $c$, we sat $M$ has a
+ $\rho(C)=c\cdot I_M$ for some scalar $c$, we say $M$ has a
 {\it central charge} $c$.
 
 Looks like we have a second example of a vertex algebra.
@@ -2799,7 +2799,7 @@ We consider a bilinear form
 \left<\cdot,\cdot\right>: \mathfrak{a}\times \mathfrak{a}
 &\longrightarrow  \mathbb{C}\\
 \left<\varphi^*,\varphi\right> &=1\\
-\left<\varphi,\varphi^*\right>&=1\text{ (why?)}
+\left<\varphi,\varphi^*\right>&=1\text{ (why? see below)}
 \end{align*}
 Now consider
 $$
@@ -2902,8 +2902,18 @@ $K|0\rangle=|0\rangle$.
 
 We can introduce a bi-grading of $F$:
 $$
-F=\bigoplus_{\substack{c \in \mathbb{Z} \\ \Delta}}
+F=\bigoplus_{\substack{c \in \mathbb{Z} \\ \Delta \in \frac{1}{2}\mathbb{Z}_+}}
+F_\Delta^c
 $$
+where, for a monomial
+$$
+\varphi^*_{-n}\varphi^*_{-n_2}\ldots \varphi_{-n_s}^*
+\varphi_{-m},\varphi_{-m_2}\ldots \varphi_{-m_t}|0\rangle
+$$
+we define its {\it energy} by
+$\Delta=\sum_in_i+\sum_jm_j$ 
+and its {\it charge} by $c=s-t$.
+
 The point is that $F$ is an infinite-dimensional
 vector space, but we get a reasonable mental
 picture of what it looks like.
@@ -3054,7 +3064,7 @@ Let's take two copies of $F$,
 i.e. $F_2=F \otimes F$ 
 with fields $\varphi^1(z),\varphi^2(z),\varphi^{1*}(z),\varphi^{2*}(z)$
 $$
-[\varphi^{i*}_{\lambda}\varphi^j=\delta_{ij}.
+[\varphi^{i*}_{\lambda}\varphi^j]=\delta_{ij}.
 $$
 Basis of $F_2$ is
 $$
@@ -3222,7 +3232,7 @@ $$
 \begin{remark}
 \label{remark-Heisenberg-is-a-special-case-of-smooth-construction}
 $H=\mathbb{C}[x_1,x_2,\ldots]$ is an example of this construction with
-$\mathfrak{g}$ one dimensional and $(h,h)=1$.
+$\mathfrak{g}$ one-dimensional and $(h,h)=1$.
 \end{remark}
 
 \begin{exercise}
@@ -3327,9 +3337,10 @@ $$
 \chi(q)=\prod_{n=1}^\infty \frac{1}{(1-q^n)^3}.
 $$
 
-Today we have refined the definition of $V^k(M)$
-to admit a general form  $B$.
-	
+\medskip\noindent
+[Missing: we changed a little the definition of $V^k(M)$;
+now it also depends on a bilinear form $B$.]
+
 Here's another example:
 
 \begin{example}
@@ -3455,12 +3466,12 @@ $[L_0,\varphi_n^*]=-n\varphi_n^*$.
 From these relations we conclude that
 $\Delta(\text{monomial})=L_0$-eigenvalue
 (monomial), i.e.,
-the (charged, energy)-grading is the
+the (charge, energy)-grading is the
 eigenspace grading by $(J_0,L_0)$.
 Suppose $\tilde{F}\neq 0$.
 Then $\exists \overline{v} \in \tilde{F}$ for which
 $J_m \overline{v}=0$ for all $m>0$.
-Indeed, by Lemma (?) there  $\mathbb{Z}_+$-grading
+Indeed, by Lemma (?) the  $\mathbb{Z}_+$-grading
 of $F^{(0)}$ is inherited by $\tilde{F}$.
 Since $|0\rangle \in f(H)$,
 $\tilde{F}=\bigoplus_{\Delta \geq  N}\tilde{F}_{\Delta}$ 
@@ -3525,12 +3536,10 @@ Same as above.
 \end{proof}
 
 This gives a formula
-
-\begin{align*}
-\chi_{F^{(m)}}(q)&=\sum_{\Delta}\dim F^{(m)}_\Delta q^\Delta\\
-&=q^{m/2}\prod_{k=1}^\infty \frac{1}{1-q^k}.
-\end{align*}
-
+$$
+\chi_{F^{(m)}}(q)=\sum_{\Delta}\dim F^{(m)}_\Delta q^\Delta
+=q^{m/2}\prod_{k=1}^\infty \frac{1}{1-q^k}.
+$$
 As a corollary, we obtain again
 Jacobi's triple product formula. (Again!)
 
@@ -4059,13 +4068,13 @@ have zeroes before a certain index $n$.
 \medskip\noindent
 \begin{align*}
 \text{End}_c(X)&=\{f \in \text{End}(X)| \exists  V \in \mathcal{L}
-\text{s.t. }f(X) \subset V\}
+\text{ s.t. }f(X) \subset V\}
 =\left\{\begin{pmatrix}
 0&0\\ 
 *&*
 \end{pmatrix}\right\}\\
 \text{End}_d(X)&=\{f \in \text{End}(X)|\exists U \in \mathcal{L}
-\text{s.t. }f(U)=0\}
+\text{ s.t. }f(U)=0\}
 =\left\{\begin{pmatrix}
 *&0\\ 
 *&0
@@ -4098,7 +4107,7 @@ p:\text{End}_c(X) \oplus \text{End}_d(X)  &\longrightarrow \text{End}(X)\to  0\\
 \end{align*}
 
 \noindent
-which clearly surjective since we can put
+which is clearly surjective since we can put
 $$
 \begin{pmatrix}
 A&0\\ 
@@ -4154,8 +4163,9 @@ short exact sequences of Lie algebras
 since Lie algebras do not form an Abelian category.
 
 But it is a short exact sequence of vector spaces
-and we can form its pushout by the following
-Exercise \ref{exercise-pushout}.
+and we can form its exact sequence pushout by the following
+exercise. (Also see Stacks Project tag
+\href{https://stacks.math.columbia.edu/tag/010I}{010I}.)
 
 \begin{exercise}
 \label{exercise-pushout}
@@ -4176,7 +4186,7 @@ K\ar[r]&X.
 $$
 Explicitly,
 $$
-K=\frac{K \oplus B}{\left<(t(a),0)-(0,i(a))|a \in A\right>}.
+X=\frac{K \oplus B}{\left<(t(a),0)-(0,i(a))|a \in A\right>}.
 $$
 Show that there exists a short exact sequence
  $$
@@ -4190,11 +4200,29 @@ $$
 0\ar[r]&A\ar[r]\ar[d]_{t}\ar@{}[dr]|-{\ulcorner}&
 B\ar[d]\ar[r]&
 C\ar[r]\ar[d]^{\text{id}}&0\\
-0 \ar[r]K\ar[r]& X\ar[r]& C\ar[r]&0
+0\ar[r]&K\ar[r]& X\ar[r]& C\ar[r]&0
 }
 $$
 commutes.
 \end{exercise}
+
+\begin{proof}
+To define a map $X \to C$ we first notice
+that all we have to do is define the map on
+$K \oplus B$ at points not coming from $A$,
+i.e. whose entries are not of the form
+$(i(a),t(a))$ for $a \in A$.
+Indeed, those are cancelled by the pushout definition
+as a quotient. Further, we already have a map $\varphi:B \to C$
+defined on elements not of the form $i(a)$ for $a \in A$ 
+by exactness of the given short exact sequence.
+Then we must define $(k,b) \mapsto \varphi(b)$
+for the diagram to commute.
+
+The resulting exact sequence is exact once
+we know that $K \to B$ in the pushout
+is given by $k \mapsto (k,0) \text{mod }\sim$.
+\end{proof}
 
 Then we obtain
 $$
@@ -4240,7 +4268,7 @@ $\text{End}_d \subset \text{End}$ is an ideal too.
 \end{exercise}
 
 So $\text{End}_c, \text{End}_d$ are $\text{End}$-modules
-(as associative and as Lie algebras),
+(as associative algebras and as Lie algebras),
 and
 $$
 \xymatrix{
@@ -4342,14 +4370,16 @@ Then
 
 \medskip\noindent
 We apply this, in particular, to
-\begin{align*}
-\mathfrak{g}&=\text{End}(X)\\
-\mathfrak{a}_1&=\text{End}_d(X)\\
-\mathfrak{a}_2&=\text{End}_c(X)\\
-\mathfrak{a}_0&=\text{End}_f(X)\\
-X& \text{ our Tate vector space}\\
-T \text{trace}.
-\end{align*}
+$$
+\mathfrak{g}=\text{End}(X)
+\qquad \mathfrak{a}_1=\text{End}_d(X)
+\qquad \mathfrak{a}_2=\text{End}_c(X)
+\qquad \mathfrak{a}_0=\text{End}_f(X)
+$$
+$$
+X \text{ our Tate vector space}\qquad 
+T \text{ trace}.
+$$
 
 \noindent
 For the construction above to work
@@ -4381,10 +4411,9 @@ $$
 So $\text{Im}[f,g] \subset V+g(V)$
 So $[f,g](U \cap f^{-1}(U))=0$.
 $$
-\underbrace{
-f^{-1}g^{-1}(0)}_{\subset f^{-1}(U)}
-\xrightarrow{f}\underbrace{g^{-1}(0)
-}_{\subsetU}\xrightarrow{g}0
+\underbrace{f^{-1}g^{-1}(0)}_{\subset f^{-1}(U)}
+\xrightarrow{f}\underbrace{g^{-1}(0)}
+_{\subset U}\xrightarrow{g}0
 $$
 and 
 $$
@@ -4572,6 +4601,287 @@ of $\mathfrak{gl}^\flat(X)$ on $\Lambda^{\infty/2}(X)$.
 Next time we'll apply this to the case
 $X$ itself is already a Lie algebra!
 
+\section{The 26-dimensionality of the universe}
+\label{section-26-dimensionality-universe}
+
+Last time: $X$ a Tate vector space (for us $X=\mathbb{C}((t))$).
+We say that $\text{End}(X)=\text{End}_c(X)+\text{End}_d(X)$
+comes with a canonical central extension
+(as a Lie algebra
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}\ar[r]&
+\mathfrak{gl}(X)^\flat\ar[r]&
+\text{End}(X)\ar[r]&0
+}
+$$
+with
+$$
+\mathfrak{gl}(X)^\flat=
+\frac{\text{End}_c \oplus \text{End}_d \oplus \mathbb{C}}{
+\left<(h,-h,0)=(0,0,\text{Tr}(h))|h \in \text{End}_f(X)\right>},
+$$
+and there is a canonical representation of 
+$fl(X)^\flat$ on the semi-infinite wedge space
+$\Lambda^{\infty/2}(X)=\left<i_{i_0}\wedge e_{i_1}\wedge\ldots\right>$ 
+defined by
+\begin{equation}
+\label{equation-rep}
+\begin{aligned}
+\rho_d(\underbrace{\sum_ix_i\varphi_i}_{\in\text{End}_d?})&=
+\sum_i\rho(x_i)\rho(\varphi_i)\\
+\rho_c(\underbrace{\sum_ix_i\varphi_i}_{\in \text{End}_c})&=
+-\sum_i\rho(\varphi_i)\rho(x_i),
+\end{aligned}
+\end{equation}
+where
+$$
+\rho(x)=x\wedge(-),\qquad 
+\rho(\varphi)=
+\sum_{j=0}^\infty(-1)^j \varphi(e_{i_j})
+e_{i_0}\wedge e_{i_1}\wedge \ldots \wedge \widehat{e_{i_j}}\wedge\ldots
+$$
+
+
+\noindent
+Now suppose $X$ itself were a Lie algebra.
+
+\begin{example}
+\label{example-with-X-lie-algebra}
+$X=\mathbb{C}((t))$ as above, but we identigy
+$t^m \rightsquigarrow L_m$ in Vir @ $c=0$.
+So  $[t^m,t^n]=(m-n)t^{m+n}$.
+To avoid confusion, let's write $t^m$ as $L_m$ in fact.
+In such situation, we have a linear map
+$\text{ad}:X \to \text{End}(X)$.
+
+We can pull back $\mathfrak{gl}(X)^\flat$ 
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}\ar[r]
+&\mathfrak{gl}(X)^\flat\ar[r]^\pi
+&\text{End}(X)\ar[r]&0\\
+&& \hat{X}\ar[r]\ar[u]& X\ar[u]^{\text{ad}}.
+}
+$$
+Explicitly,
+$$
+\hat{X}=
+\{(x,A) \in X \oplus \mathfrak{gl}(X)^\flat
+|\text{ad}(X)=\pi(A) \text{ in }\text{End}(X)\}.
+$$
+\end{example}
+
+\begin{exercise}
+\label{exercise-pushout2}
+Similarly to Exercise \ref{exercise-pushout},
+show $\hat{X}$ fits into a sequence
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}\ar[r]&\hat{X}\ar[r]&X\ar[r]&0.
+}
+$$
+\end{exercise}
+So we get a (canonical!) central extension of $X$:
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}\ar[d]^{\text{id}}\ar[r]
+&\mathfrak{gl}(X)^\flat\ar[r]^\pi
+&\text{End}(X)\ar[r]&0\\
+0\ar[r]&\mathbb{C}\ar[r]&\hat{X}\ar[u]\ar[r]& X\ar[u]^{\text{ad}}\ar[r]&0
+}
+$$
+For $X=\text{Der}(\mathbb{C}[t^{\pm 1}]=$ centerless Vir,
+we will find the canonical central extension is
+Vir  @ $c=-26$. (i.e. charge is  $-26$.)
+
+\noindent
+What might be amazing here is that any infinite-dimensional
+Lie algebra has a central extension --- just by being infinite-dimensional.
+
+\medskip\noindent
+We'll exploit
+$$
+\Lambda^{\infty/2}(X)
+=\left<L_{m_0}\wedge L_{m_1}\wedge L_{m_2}\wedge\ldots\right>.
+$$
+We have quantum fields
+\begin{align*}
+\varphi(w)&=\sum_n\varphi_nw^{-n-1},\qquad 
+\varphi=L_n \wedge(-),\\
+\varphi^* (w)&=\sum_n \varphi_n^* w^n,\qquad 
+\varphi_n^* (\underline{L})=
+\sum(-1)^j\varphi(L_{i_j})L_{i_0}\wedge L_{i_1}\wedge\ldots
+\end{align*}
+
+\noindent
+Now for 
+$$
+L_m \in X,\qquad  L_m :L_n \mapsto  (m-n)L_{m+n},
+$$
+$$
+\text{ad}(L_m)=\underbrace{\sum_{n \in \mathbb{Z}}(m-n) L_{m+n}L_n^*}
+_{\in \text{End}_c + \text{End}_d}.
+$$
+To represent $\text{ad}(L_m)$ on $\Lambda^{\infty/2}$ 
+we have to split $\text{ad}(L_m)$ into pieces
+in $\text{End}_d$ and $\text{End}_c$ and
+send each part to their corresponding pieces
+according to Equation \ref{equation-rep}.
+
+\medskip\noindent
+Let's work at the level of fields.
+
+\begin{align*}
+L(w)&=\sum_m \rho(\text{ad}(L_m)) w^{-m-2}\\
+&=\sum_{m,n}(m-n)\rho(L_{m+n}L_n^*)w^{-m-2}\\
+&=\sum_{m,n}(m-n)\,:\!\varphi_{m+n}\varphi^*_n\!:\,w^{-m-2}\\
+&=[Picture]
+\end{align*}
+where
+$$
+\rho(L_{m+n}L_n^* =\begin{cases}
+\rho(L_{m+n})\rho(L_n^*)\qquad &\text{when $n\ll 0$} \\
+-\rho(L^*_n)\rho(L_{m+n})\qquad &\text{when }n\gg 0.
+\end{cases}
+$$
+\noindent
+So it seems we should consider
+$$
+-\,:\!(\partial \varphi)\varphi^*\!:\,
+-2\,:\!\varphi(\partial \varphi^*)\!:\,k
+$$
+
+\medskip\noindent
+So, we have a vertex superalgebra
+$V=\Lambda^{\infty/2}$, with quantum fields
+$\varphi$ and $\varphi^*$, OPE relation
+$[\varphi_\lambda \varphi^*]=1$.
+
+We are defining a field
+$$
+L=-\,:\!(\partial \varphi)\varphi^*:\,
+-2\,:\!\varphi(\partial \varphi^*)\!:\,,
+$$
+(which is a quantum field, $L(w)=\sum_m L_mw^{-m-2}$),
+adn we want to know/check
+$$
+[L_m,L_n]=(m-n)L_{m+n}+\delta_{m,-n}\frac{m^3-m}{12}CI_{\Lambda^{\infty/2}}.
+$$
+So, what's $c$? Let's do it.
+
+\begin{itemize}
+\item (Method 1.) Brute force.
+\item (Method 2.) Use mathematica (Thielman's package).
+\item (Method 3.) Recall $\alpha=\,:\!\varphi \varphi^*\!:\,$,
+satisfies $[\alpha_\lambda \alpha]=\lambda$ and
+$L^0=\frac{1}{2}\,:\!\alpha \alpha\!:\,$
+is Virasoro @ $c=1$.
+\end{itemize}
+$$
+[L^0_\lambda L^0]-TL^0+2\lambda L^0+\frac{\lambda^3}{12}.
+$$
+\begin{align*}
+L^0&=\frac{1}{2}\,:\!\alpha \alpha\!:\,\\
+&=\frac{1}{2}
+\,:\!(\,:\!\varphi \varphi^*\!:\,)(\,:\!\varphi \varphi^*\!:\,)\!:\,\\
+&=\ldots\\
+&=\frac{1}{2}(\,:\!(T\varphi)\varphi^*\!:\,+\,:\!\varphi(T\varphi^*)\!:\,.
+\end{align*}
+
+How to see this?
+Recall Borcherds identity (Equation \ref{equation-Bocherds-identity}):
+\begin{align*}
+&\sum_{j \geq 0}\binom{m}{j}(a_{(n+j)}b)_{(m+k-j)}c\\
+&=\sum_{j \geq 0}(-1)^j \binom{n}{j}
+(a_{(a+m-j)}b_{(k+j)}c-(-1)^nb_{(n+k-j)}a_{(m+j)}c.
+\end{align*}
+So put
+$$
+\begin{matrix}
+a=\varphi & m=0\\
+b=\varphi^*  & n=-1\\
+c=\,:\!\varphi \varphi ^*\!:\,& k=-1.
+\end{matrix}
+$$
+
+Then
+$$
+LHS=(a_{(-1)}b)_{(-1)}c=\,:\!(\,:\!\varphi\varphi^*\!:\,)
+(\,:\!\varphi\varphi^*\!:\,)\!:\,
+$$
+and
+$$
+RHS=\sum_{j \geq 0}(\varphi_{(-i-j)}\varphi^*_{(-1+j)}\varphi_{(-1)}\varphi^*
++\varphi^*_{(-2-j)}\varphi_{(j)}\varphi_{(-1)}\varphi^*).
+$$
+$$
+\text{[Picture]}
+$$
+$$
+RHS=\varphi_{(-1)}\varphi^*_{(-1)}\alpha+\varphi_{(-2)}\varphi^*_{(0)}\alpha
++\varphi^*_{(-2)}\varphi_{(0)}\alpha.
+$$
+
+Note:
+$$
+\varphi_{(0)}\alpha=-\alpha_{(0)}\varphi=+\varphi.
+$$
+In general
+$$
+b_{(0)}a=-\sum_{j\geq 0}\frac{1}{j!}T^j(a_{(j)}b)
+=-a_{(0)}b+T(\text{stuff}).
+$$
+
+\begin{remark}
+\label{remark-quotient}
+Recall (ref?) that if $V$ is any vertex algebra,
+$V/TV$, $[\overline{a},\overline{b}]=a_{(0)}b$,
+is a Lie algebra.
+\end{remark}
+
+\noindent
+So,
+$$
+RHS=\varphi_{(-1)}\varphi^*_{(-1)}\alpha
+-\varphi_{(-2)}\varphi^*+\varphi^*_{(-2)}\varphi.
+$$
+Now, since in general
+$$
+b_{(n)}a=-(-1)^{p(a)p(b)}\sum_{j \geq 0}\frac{(-1)^j}{j!}
+T^j(a_{(n+j)}b,
+$$
+then
+$$
+\varphi^*_{(-2)}\varphi=\sum_{j\geq 0}\frac{(-1)^j}{j!}
+T^j(\varphi_{(-2+j)}\varphi^*.
+$$
+But this led to mistaken calculations.
+I was trying to do the following: we know that
+$\alpha=\,:\!\varphi \varphi^*\!:\,$ satisfies
+$[\alpha_\lambda \alpha]=\lambda$,
+and $L^0=\frac{1}{2}\,:\!\alpha \alpha\!:\,$ is
+$\text{Vir}[L^0_\lambda L^0]=TL^0+2\lambda L^0+\frac{\lambda^3}{12}$
+($c=1$).
+Also, if $B=L^0+kT_\alpha$ then
+$$
+[B_\lambda B]=TB+2\lambda B+\frac{\lambda^3}{12}c_k,\qquad 
+c_k=1-12k^2.
+$$
+Writing $B$ in terms of $vp,\varphi^*$,
+one gets \underline{something} like
+$$
+B=b\,:\!(T\varphi)\varphi^*\!:\,
++(1-b)\,:\!\varphi(T\varphi^*)\!:\,.
+$$
+
+\medskip\noindent
+The correct answer is: if 
+$L=-\,:\!(T\varphi)\varphi^*\!:\,-2\,:\!\varphi(T\varphi^*)\!:\,$,
+we may verify that
+$$
+[L_\lambda L]=TL+2\lambda L- \frac{26}{12}\lambda^3.
+$$
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
