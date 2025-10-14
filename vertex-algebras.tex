@@ -4648,7 +4648,7 @@ Now suppose $X$ itself were a Lie algebra.
 
 \begin{example}
 \label{example-with-X-lie-algebra}
-$X=\mathbb{C}((t))$ as above, but we identigy
+$X=\mathbb{C}((t))$ as above, but we identify
 $t^m \rightsquigarrow L_m$ in Vir @ $c=0$.
 So  $[t^m,t^n]=(m-n)t^{m+n}$.
 To avoid confusion, let's write $t^m$ as $L_m$ in fact.
@@ -4736,7 +4736,8 @@ Let's work at the level of fields.
 L(w)&=\sum_m \rho(\text{ad}(L_m)) w^{-m-2}\\
 &=\sum_{m,n}(m-n)\rho(L_{m+n}L_n^*)w^{-m-2}\\
 &=\sum_{m,n}(m-n)\,:\!\varphi_{m+n}\varphi^*_n\!:\,w^{-m-2}\\
-&=[Picture]
+&=\sum_{m,n}(m-n)\,:\!(\varphi_{m+n}w^{-(m+n)-?})
+(\varphi_n^*w^{+n+?}\!:\,
 \end{align*}
 where
 $$
@@ -4745,8 +4746,16 @@ $$
 -\rho(L^*_n)\rho(L_{m+n})\qquad &\text{when }n\gg 0.
 \end{cases}
 $$
+Notice that
+\begin{align*}
+\partial_w\varphi(w)&=\partial_w \sum \varphi_{m+n}w^{-m+nj}\\
+&=-\sum(m+n)\varphi_{m+n}w^{-(m+n)-1}\\
+&=\sum n \varphi_n^* w^{n-1}
+\end{align*}
+
 \noindent
-So it seems we should consider
+since $m-n=(m+n)-2n$,
+so it seems we should consider
 $$
 -\,:\!(\partial \varphi)\varphi^*\!:\,
 -2\,:\!\varphi(\partial \varphi^*)\!:\,k
@@ -4790,7 +4799,7 @@ L^0&=\frac{1}{2}\,:\!\alpha \alpha\!:\,\\
 \end{align*}
 
 How to see this?
-Recall Borcherds identity (Equation \ref{equation-Bocherds-identity}):
+Recall Borcherds identity (Equation \ref{equation-Borcherds-identity}):
 \begin{align*}
 &\sum_{j \geq 0}\binom{m}{j}(a_{(n+j)}b)_{(m+k-j)}c\\
 &=\sum_{j \geq 0}(-1)^j \binom{n}{j}
