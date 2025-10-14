@@ -373,13 +373,21 @@ Here we should discuss the characters.
 This was already discussed in Subsection \ref{subsection-meeting}
 (and also in the mathematica notebook!).
 
-\subsection{Fermion algebra}
-\label{subsection-fermions}
+\subsection{Heisenberg superalgebra}
+\label{subsection-heisenberg-superalgebra}
 
 \noindent
-Let's first follow Video 10 from 14:30 on.
-Here we see a super variant of the lattice Lie algebra construction.
-Replace $\Gamma$ (or $\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$ 
+The main theorem is a representation of the Heisenberg superalgebra,
+which we introduce in this section.
+This can bee seen by the $(-1)^{i-1}$ factor
+in Equation \ref{equation-main}.
+In this section we introduce the Heisenberg superalgebra 
+following Video 10.
+See also Video 8, 42:00 for a quick super remark 
+and from 1:32:40 until the end.
+
+\medskip\noindent
+Start by replacing $\Gamma$ (or $\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$ 
 and $(-,-)$ with a super vector space $V=V_0 \oplus V_1$
 and a super bilinear form, namely
 $\left<-,-\right>:V \times V \to \mathbb{C}$ 
@@ -387,16 +395,27 @@ satisfying $\left<v,w\right>=(-1)^{\text{deg}v\text{deg}w}\left<w,v\right>$
 for all $v,w$ homogeneous.
 
 The next step is pass to the loop algebra.
+That is, we have to bring in $t$.
+Here Josh makes the remark that
+Nakajima does not the use topological Lie algebra approach
+for the definition of the loop algebra.
+That is, he goes for the algebraic,
+which is basically as in our lectures:
+the loop algebra is $V \otimes \mathbb{C}[t^{\pm 1}]$,
+but with one caveat: we don't include $t^0$.
 Let
 $$
 W=V\otimes t \mathbb{C}[t] \oplus V \otimes t^{-1}\mathbb{C}[t^{-1}]
 $$
-with a bilinear form extending the one on $V$, namely such that
+and put a bilinear form extending the one on $V$, namely,
+a bilinear form such that
 $$
 \left<v \otimes t^i,w \otimes t^j\right>=i \delta_{i,-j}\left<v,w\right>.
 $$
-Then define the {\it super Heisenberg algebra} associated to
-the super vector space $V$ by
+And then, instead of using central extension,
+we do the following.
+The {\it super Heisenberg algebra} associated to
+the super vector space $V$ is
 $$
 \hat{\mathfrak{h}}_V=\frac{\text{free Lie super algebra of $W$}}
 {[v,w]-\left<v,w\right>1}.
@@ -405,13 +424,19 @@ Notice that if we put a trivial super structure on $V$, namely if
 $V=V_0$, then we almost recover the old Heisenberg. The difference
 is that we do not have $K$ and we do not have $v \otimes t^0$.
 
-Finally,a Fock space associated to this algebra is
+Finally, the Fock space (highest weight representation)
+associated to this algebra is
 $$
 \pi=S^*(V \otimes t^{-1}\mathbb{C}[t^{-1}]),\qquad \alpha_i(n)
 $$
 where $S^*(U)=T(U)/(a \otimes b-(-1)^{\text{deg}a \text{deg}b}b \otimes a)$
 is the {\it super symmetric product} of $U$.
 This is an irreducible representation of $\hat{\mathfrak{h}}_V$.
+
+\section{Fermion algebra}
+\label{section-fermions}
+
+Not discussed in the videos!!
 
 \subsection{Meeting}
 \label{subsection-meeting}
@@ -1079,6 +1104,20 @@ $$
 $$
 via the perfect pairing property.
 
+\medskip\noindent
+Now we are almost ready to formulate the main theorem.
+First notice that this is \cite[Theorem 8.13]{Nakajima-lectures}
+and {\bf not} \cite[Theorem 3.1]{Nakajima-Heis}.
+Now let's clarify what are the main objects involved.
+The theorem is about a representation of the
+Heisenberg superalgebra Subsection \ref{subsection-fermions} 
+for $V=H_*(X)$.
+
+The pairing is the super skew-symmetric pairing
+given defined by $\left<\alpha,\beta\right>=p_*(\alpha \cap \beta)$
+where $p:X \to \text{pt}$ is the unique morphism
+from $X$ to the point pt.
+
 \begin{theorem}[Nakajima, Grojnowski]
 \label{theorem-NG}
 Suppose $(\text{deg} \alpha)(\text{deg}\beta)\equiv 0 (\text{mod} 2)$.
@@ -1088,14 +1127,31 @@ Then
 [P_\alpha[i],P_\beta[j]]=(-1)^{i-1}i \delta_{i,-j}
 \left<\alpha,\beta\right>\text{Id}.
 \end{equation}
-In particular, if we assume $V=H_*(X)$ 
-is concentrated in even degrees, then
-$\bigoplus_n H_*(X^{[n]})$ is a representation
-of $\mathfrak{h}_V$ with highest weight
-vector the generator of $H_0(X^{[0]})\cong \mathbb{Q}$.
-\end{theorem}
+ \end{theorem}
 
-It is not clear from this that
+Notice the condition on the degrees of $\alpha$ and $\beta$.
+{\it If we ignore this}, then we immediately
+interpret the theorem as saying that this construction
+is a representation of $\hat{\mathfrak{h}}_V$ on $\bigoplus_nH_{*})(X^{[n]})$.
+Another way to say this is:
+if $V=H_*(X)$ is concentrated in even degrees, then
+$\bigoplus_n H_*(X^{[n]})$ is a representation
+of $\hat{\mathfrak{h}}_V$.
+Further, this representation has highest weight
+vector the generator of $H_0(X^{[0]})\cong \mathbb{Q}$.
+
+\noindent
+{\bf Note.} I still don't understand why the $(-1)^{i-1}$ 
+appeared: this was not in the definition of the Heisenberg
+superalgebra as a quotient of the Lie algebra.
+I think that is due to the fact that that definition
+is done only for a super vector space, and
+not only a $\mathbb{Z}$-graded vector whose
+whose super structure is just the even/odd
+structure inherited from the $\mathbb{Z}$-grading.
+
+\medskip\noindent
+It is not immediate that
 this representation is irreducible,
 but that is in fact true.
 
@@ -1107,9 +1163,7 @@ which we will not discuss.
 \end{theorem}
 
 \medskip\noindent
-This about half of video 10.
-In the rest of the video an outline of the
-proof is explained. I didn't get very far yet.
+Now we do a worked example to illustrate the main idea of the proof.
 
 Fix $x \in X$ and let $\alpha=[X]$ is the BM class of $X$,
 and $\beta=[x]$ the class of the little point $x$.
