@@ -125,15 +125,27 @@ $(\cdot,\cdot):\Gamma \times \Gamma \to \mathbb{Z}$.
 E.g. $\Gamma=\sqrt{N}\mathbb{Z}$, $(\sqrt{N}n,\sqrt{N}m)=Nnm$.
 
 Turn $\Gamma$ into a commutative Lie algebra
-$\mathfrak{g}:=\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$
+$\mathfrak{a}:=\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$
 by putting zero bracket.
-Now consider the {\it loop algebra} $\mathfrak{g}[[t]]$,
+Now consider the {\it loop algebra} $\mathfrak{a}[[t]]$,
 which is ``spanned topologically'' by $\alpha \otimes t^n$,
-$\alpha \in \Gamma$ and $n \in \mathbb{Z}$
-(later in the video it is explained that this
-is the same as our loop algebra
+$\alpha \in \Gamma$ and $n \in \mathbb{Z}$.
+According to video 10 (6:40), the topology on 
+$\mathfrak{g}[[t]]$ is defined via a basis of neighbourhoods
+of $0$ of the form $t^n\mathfrak{a}[[t]]$.
+That is, the neighbourhoods get smaller and smaller
+as $n$ gets bigger.
+Further, we say that the loop algebra $\mathfrak{a}[[t]]$
+is {\it spanned topologically} by $\alpha \otimes t^n$ 
+if we first consider linear span of those elements
+and then the topological closure of that.
+Later in video 8 it is explained that we can
+replace this definition of loop algebra by ours, namely
 $L\mathfrak{\mathfrak{a}}=\mathfrak{\mathfrak{a}}[t,t^{-1}]
-=\mathfrak{\mathfrak{a}} \otimes_\mathbb{C}\mathbb{C}[t,t^{-1}]$).
+=\mathfrak{\mathfrak{a}} \otimes_\mathbb{C}\mathbb{C}[t,t^{-1}]$,
+and study the representations without worrying about the topology.
+(In our lectures, we introduced the same topology
+on the algebra $\mathbb{C}((t))$ when discussing Tate vector spaces.)
 Notice that $(\cdot,\cdot)$ extends to $\mathfrak{h}$.
 
 \begin{definition}
@@ -193,9 +205,7 @@ of Heisenberg $U(\hat{\mathfrak{a}})$
 contains finite linear combinations
 of finite products of possible {\it infinite} sums of $\alpha(n)$ and $K$.
 The ``topological completion'' of $U(\hat{\mathfrak{a}})$,
-denoted $\tilde{U}(\hat{\mathfrak{a}})$,
-allows from infinite sums.
-So, this topological completion is spanned
+denoted $\tilde{U}(\hat{\mathfrak{a}})$, is spanned
 by infinite linear combinations of finite products
 of the $\alpha(n)$ and $K$.
 
@@ -233,13 +243,13 @@ Then the map $K-\kappa\text{id}$ is also a
 morphism of $\hat{\mathfrak{a}}$-modules with 
 nonzero kernel ($v_0 \in \Ker$). 
 By Schur's Lemma, which says that any map
-of irreducible modules is either zero or on an isomorphism,
+of irreducible modules is either zero or an isomorphism,
 this map must be zero.
 
-In conclusion, in any irredicuble $\hat{\mathfrak{a}}$-module,
+In conclusion, in any irreducible $\hat{\mathfrak{a}}$-module,
 $K$ acts by multiplication by some complex number $\kappa$ 
 which we call the {\it level}.
-Often we just study representation of level $\kappa$ 
+Often we just study representations of level $\kappa$ 
 (not worrying any more about the restrictions of $V$
 and barely asking that $K$ acts by multiplication by $\kappa$).
 
@@ -298,7 +308,7 @@ $$
 $$
 where $\mathfrak{n}_{\pm}
 =\bigoplus_{\gamma \in \Delta_+}\mathfrak{g}_{\pm}\gamma$.
-The underbraces show what how this is in analogy
+The underbraces show how this is in analogy
 with the case of the Heisenberg algebra.
 
 Now fix a character $\Lambda \in \mathfrak{h}^*$.
@@ -338,7 +348,7 @@ One checks that this is a highest-weight module with
 highest weight vector $1$.
 We call the vector $1 \in \pi=H$ the {\it vacuum state}.
 (Here's $\pi$ is Emily's notation and $H$ is our notation.)
-The operators $\alpha(n)$ for $n<0$ {\it creation operators}:
+The operators $\alpha(n)$ for $n<0$ are called {\it creation operators}:
 we think that such an operator maps the vacuum (no particles)
 to the state $\alpha(n)$. For $n\geq 0$ we call $\alpha(n)$ 
 {\it annihilation operators}: applying any such operator
@@ -367,7 +377,41 @@ This was already discussed in Subsection \ref{subsection-meeting}
 \label{subsection-fermions}
 
 \noindent
-Here is gets super.
+Let's first follow Video 10 from 14:30 on.
+Here we see a super variant of the lattice Lie algebra construction.
+Replace $\Gamma$ (or $\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$ 
+and $(-,-)$ with a super vector space $V=V_0 \oplus V_1$
+and a super bilinear form, namely
+$\left<-,-\right>:V \times V \to \mathbb{C}$ 
+satisfying $\left<v,w\right>=(-1)^{\text{deg}v\text{deg}w}\left<w,v\right>$
+for all $v,w$ homogeneous.
+
+The next step is pass to the loop algebra.
+Let
+$$
+W=V\otimes t \mathbb{C}[t] \oplus V \otimes t^{-1}\mathbb{C}[t^{-1}]
+$$
+with a bilinear form extending the one on $V$, namely such that
+$$
+\left<v \otimes t^i,w \otimes t^j\right>=i \delta_{i,-j}\left<v,w\right>.
+$$
+Then define the {\it super Heisenberg algebra} associated to
+the super vector space $V$ by
+$$
+\hat{\mathfrak{h}}_V=\frac{\text{free Lie super algebra of $W$}}
+{[v,w]-\left<v,w\right>1}.
+$$
+Notice that if we put a trivial super structure on $V$, namely if
+$V=V_0$, then we almost recover the old Heisenberg. The difference
+is that we do not have $K$ and we do not have $v \otimes t^0$.
+
+Finally,a Fock space associated to this algebra is
+$$
+\pi=S^*(V \otimes t^{-1}\mathbb{C}[t^{-1}]),\qquad \alpha_i(n)
+$$
+where $S^*(U)=T(U)/(a \otimes b-(-1)^{\text{deg}a \text{deg}b}b \otimes a)$
+is the {\it super symmetric product} of $U$.
+This is an irreducible representation of $\hat{\mathfrak{h}}_V$.
 
 \subsection{Meeting}
 \label{subsection-meeting}
@@ -428,11 +472,12 @@ Define the {\it energy} by
 $$
 \Delta(x_1^{k_1}x_2^{k_2}\ldots x_s^{k_s})=\sum_j k_j.
 $$
-I think the is basically the grading
-we put on $F^0$. The natural grading on $\mathbb{C}[x_1,\ldots,x_n]$
-is degree, so that the factors of the decomposition
+(I think of $\Delta$ as a device to introduce a grading
+on $F^0$. In contrast, the natural grading on $\mathbb{C}[x_1,\ldots,x_n]$
+is degree, so that the factors of the graded decomposition
 are generated by homogeneous monomials.
-Here is not degree but this ``weighted'' sum.
+Here, instead of the degree of a monomial
+we have it's energy.)
 
 Then the character is
 $$
@@ -442,6 +487,9 @@ $$
 
 \noindent
 Consider the following similar construction.
+(This is Emily's construction!! Here we start with a 2-dimensional
+lattice, and later generalize to $n$-dimensional,
+and compute their characters.)
 Let $\mathfrak{h}=\mathbb{C}^2=\mathbb{C}x+\mathbb{C}y$ 
 and put the symmetric bilinear form given by
 $(x,x)=(y,y)=1$ and $(x,y)$ 
@@ -466,7 +514,7 @@ $$
 x_1^{k_1}x_2^{k_2}\ldots x_2^{k_s}
 y_1^{\ell_1}y_2^{\ell_2}\ldots y_t^{\ell_t}.
 $$
-Each of this monomials corresponds to exactly
+Each of these monomials corresponds to exactly
 one term in the product
 \begin{align*}
 x&\begin{cases}
@@ -477,7 +525,7 @@ m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times
 y&\begin{cases}
 m=1\qquad &(\underline{1}+q+q^2+q^3+\ldots)\times\\
 m=2\qquad &(1+q^2+q^4+\underline{q^6}+\ldots)\times\\
-m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times.
+m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times\ldots
 \end{cases}
 \end{align*}
 
@@ -492,7 +540,7 @@ $(\cdot,\cdot):U \times U \to \mathbb{C}$.
 There exists a basis $x^1,\ldots,x^n$ of $U$
 such that $(\cdot,\cdot)$ has Gram matrix the identity.
 Then the Fock module $F^0$ is spanned
-by monomials with are complicated to write or read,
+by monomials with are complicated to write and read,
 but the character is actually simple:
 $$
 \prod_{m=1}^\infty \frac{1}{(1-q^m)^n}.
@@ -512,9 +560,6 @@ in the (charge,energy)-decomposition of $F^{\text{ch}}$
 is in fact isomorphic to the Fock space
 $F^c=
 U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}|c\rangle$.
-
-\medskip\noindent
-[Super part missing.]
 
 \section{Correspondences}
 \label{section-correspondences}
@@ -543,7 +588,7 @@ and essentially pulling back a class
 and then pushing it forward, i.e.
 $$
 \xymatrix{
-H_i(X)\ar[r]^{p_X^*}&H_i(Z)\ar[r]^{P_{Y,*}}&H_i(Y)
+H_i(X)\ar[r]^{p_X^*}&H_i(Z)\ar[r]^{p_{Y,*}}&H_i(Y)
 }
 $$
 but it turns out that a functor
@@ -797,7 +842,7 @@ $$
 because the projection onto the second factor
 is a locally trivial (in fact trivial) fibration
 with fibers of real dimension $2d_1$.
-So by \ref{item-pullack} we obtain the dimension
+So by \ref{item-pullback} we obtain the dimension
 $i+2d_1$.
 
 Them we take the intersection pairing
@@ -1038,10 +1083,11 @@ via the perfect pairing property.
 \label{theorem-NG}
 Suppose $(\text{deg} \alpha)(\text{deg}\beta)\equiv 0 (\text{mod} 2)$.
 Then
-$$
+\begin{equation}
+\label{equation-main}
 [P_\alpha[i],P_\beta[j]]=(-1)^{i-1}i \delta_{i,-j}
 \left<\alpha,\beta\right>\text{Id}.
-$$
+\end{equation}
 In particular, if we assume $V=H_*(X)$ 
 is concentrated in even degrees, then
 $\bigoplus_n H_*(X^{[n]})$ is a representation
@@ -1065,7 +1111,7 @@ This about half of video 10.
 In the rest of the video an outline of the
 proof is explained. I didn't get very far yet.
 
-Fix $x \in X$ and let $\alpha=[X]$ is the GH class of $X$,
+Fix $x \in X$ and let $\alpha=[X]$ is the BM class of $X$,
 and $\beta=[x]$ the class of the little point $x$.
 Take a set of distinct $n$ points
 $x_1,\ldots,x_n \in X\setminus\{x\}$ 
@@ -1078,7 +1124,8 @@ Let's calculate
 $$
 [P_\alpha[1],P_\beta[-1]][\mathcal{I}].
 $$
-If you look back at the relation,
+If you look back Equation \ref{equation-main},
+it's easy to see that we should obtain just $\text{Id}$.
 we want this to give $\mathcal{I}$.
 
 
