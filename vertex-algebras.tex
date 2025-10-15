@@ -4891,6 +4891,378 @@ we may verify that
 $$
 [L_\lambda L]=TL+2\lambda L- \frac{26}{12}\lambda^3.
 $$
+\medskip\noindent
+In summary,
+for $\varphi, \varphi^*$ odd, $[\varphi_\lambda \varphi^*]=1$,
+we define the operator
+$$
+L=-\,:\!(T\varphi)\varphi^*\!:\,=2\,:\!\varphi(T\varphi^*)\!:\,.
+$$
+Then compute and find out that
+ $$
+[L_\lambda L]=TL+2\lambda L+\frac{c}{12}\lambda^3,
+$$
+where $c=-26$.
+
+That is, after computing the central extension
+of the Virasoro algebra, we turn to the
+vertex algebra language to find that the central
+charge is $-26$.
+
+Even more explicitly: by the Tate vector space construction
+we have the central extension
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}C\ar[r]&\mathfrak{gl}(X)^\flat\ar[r]&\mathfrak{gl}(X)\ar[r]&0
+}
+$$
+where $W=\mathbb{C}((t))$ is the Witt algebra,
+with bracket $[L_m,L_n]=(m-n)L_{m+n}$.
+
+And then we do the pullback in the following way:
+$$
+\xymatrix{
+0\ar[r]&\mathbb{C}K\ar[d]^{\text{id}}\ar[r]
+&\mathfrak{gl}(W)^\flat\ar[r]^\pi
+&\text{End}(X)\ar[r]&0\\
+0\ar[r]&\mathbb{C}K\ar[r]&W \oplus \mathbb{C} K\ar[u]\ar[r]
+& W\ar[u]^{\text{ad}}\ar[r]&0
+}
+$$
+Then we get a representation in which $K$ goes to the identity,
+namely
+$$
+\mathfrak{gl}(X)^\flat \mathbb{y} \Lambda^{\infty/2},
+\qquad K \mapsto \text{Id}.
+$$
+So, the vertex algebra language allows us to compute
+the central charge of the new algebra we obtained,
+$W \oplus \mathbb{C}K$,
+and realise it's $-26$. So the bracket in the new algebra is
+ $$
+[L_m,L_n]=(m-n)L_{m+n}+\frac{m^3-m}{12}(-26)K.
+$$
+
+\section{Lattice Vertex algebras}
+\label{section-lattices}
+
+\begin{definition}
+\label{definition-lattice}
+A {\it lattice} (for us) is a discrete subgroup $L \subset \mathbb{R}^n$,
+$L \simeq \mathbb{Z}^n$, and such that $(\alpha,\beta) \in \mathbb{Z}$ 
+for all $\alpha, \beta \in L$,
+where $(\cdot,\cdot):\mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ 
+is the standard bilinear form
+$((u_1,\ldots,u_n),(v_1,\ldots,v_n))=\sum u_iv_i$.
+\end{definition}
+
+\noindent
+In particular, $L$ contains a basis of the 
+ambient space $\mathbb{R}^n$.
+
+\begin{example}
+\label{example-lattices}
+\begin{enumerate}
+\item $\mathbb{Z}^n \subset \mathbb{R}^n$ is a lattice.
+\item $A_2$, the root lattice of $\mathfrak{sl}_3$ is a lattice.
+Recall this looks like a triangular tiling with
+$(\alpha_1,\alpha_1)=2$, $(\alpha_2,\alpha_2)=2$ 
+and $(\alpha_1,\alpha_2)=-1$, which in says
+that the angle between $\alpha_1$ and $\alpha_2$ is $120$ degrees. 
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\label{definition-even-lattice}
+A lattice is called {\it even} if $(\alpha,\alpha)\in 2 \mathbb{Z}$ 
+for all $\alpha \in L$.
+\end{definition}
+
+\noindent
+(That is, the product of every element with {\it itself} is even,
+not that $(\alpha,\beta)\in 2 \mathbb{Z}$ for all $\alpha,\beta \in L$.)
+
+So $A_2$ is even. In fact, whenever the basis elements
+are even, say $(\alpha,\alpha),(\beta,\beta)\in 2\mathbb{Z}$,
+then the lattice is even since
+$(\alpha \pm \beta,\alpha \pm \beta)=(\alpha,\alpha)
+\pm 2(\alpha,\beta)+(\beta,\beta) \in 2\mathbb{Z}$ too.
+
+\begin{definition}
+\label{definition-dual-lattice}
+The {\it dual} of $L$ is 
+$$
+L^\vee=\{ x \in \mathbb{R}^n|(x,\alpha) \in \mathbb{Z}\forall \alpha \in L\}.
+$$
+\end{definition}
+
+\noindent
+Clearly $L \subset L^\vee$.
+But $L^\vee$ might be strictly larger.
+
+\begin{exercise}
+\label{exercise-discriminant}
+$L^\vee/L$ is a finite group.
+\end{exercise}
+
+\noindent
+Notice that for  $\gamma,\delta \in L^\vee$
+it might happen that $(\gamma,\delta) \not\in \mathbb{Z}$.
+
+For $L=A_2$ we find that
+$$
+L^\vee = A_2 \cup (\omega+A_2) \cup  (2\omega + A_2).
+$$
+So $L^\vee/L \simeq \mathbb{Z}/3$ as groups.
+
+For $L = \mathbb{Z}^n$, we have $L^\vee=\mathbb{Z}^n=L$, that is,
+$\mathbb{Z}^n$ is self dual.
+On the other hand $\mathbb{Z}^n$ is not even.
+
+Are there any other even self-dual lattices
+(other than $\{0\}$)?
+
+The simplest nontrivial example is
+$$
+E_8=\{(x_1,x_2,\ldots,x_8) \in \mathbb{Z}^8 \cup (\frac{1}{2}+\mathbb{Z})^8|
+\sum_{i=1}^8 \equiv 0 \text{mod }2\}.
+$$
+
+\begin{lemma}
+\label{lemma-e8}
+$E_8$ is even and self-dual.
+\end{lemma}
+
+\begin{theorem}
+\label{theorem-self-dual-lattices}
+\begin{enumerate}
+\item If $L \subset \mathbb{R}^n$ is even and self dual,
+then $8|n$
+
+\item If, also, $n=8$, then $L \simeq E_8$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+\label{remark-discriminant-form}
+Let $L$ be an even lattice.
+On the group $D=L^\vee/L$ we define
+\begin{align*}
+q: D &\longrightarrow \mathbb{Q}/\mathbb{Z} \\
+q(a) &=(\alpha,\alpha)/2 \text{ mod }\mathbb{Z}.
+\end{align*}
+
+\noindent
+Then $q$ is a well-defined quadratic form.
+
+Indeed, for $\beta \in L$,
+$$
+q(\alpha+\beta)=\frac{(\alpha+\beta,\alpha+\beta)}{2}
+=\underbrace{\frac{(\alpha,\alpha)}{2}}_{=q(\alpha)}
++\underbrace{\frac{2(\alpha,\beta)}{2}}_{\in \mathbb{Z}}
++\underbrace{\frac{(\beta,\beta)}{2}}_{\in \mathbb{Z}}.
+$$
+We call $(D,q)$ the {\it discriminant form} of $L$.
+\end{remark}
+
+\medskip\noindent
+Now we explain the neighbour construction/orbifold.
+Let $L$ be a self-dual even lattice.
+Let $\phi:L \to \mathbb{Z}/2$ a homomorphism
+(i.e. if $\{e_1,\ldots,e_n\}$ is a basis of $L$,
+set $\phi(e_i)=\varepsilon_i \in \{0,1\}$
+and $\phi(\sum m_i e_i)=\sum m_i \varepsilon_i \text{ mod }2$.
+
+Assume $\phi$ is nontrivial and surjective, so that its kernel
+$L_0 = \Ker \phi \subset L$ has index 2.
+That is, $L/L_0 \simeq \mathbb{Z}/2$.
+
+Now we have $L_0 \underbrace{\subset }_{\text{index 2}}L 
+= L^\vee \underbrace{\subset}_{\substack{\text{index 2} \\ \text{exercise}}}
+L_0^\vee$.
+
+\begin{remark}
+\label{remark-discriminant-iso}
+$D=L_0^\vee/L_0 \simeq \mathbb{Z}/2\times\mathbb{Z}/2$.
+\end{remark}
+
+\noindent
+Why? If $\omega \in L_0^\vee$, then $2\omega$… Exercise.
+
+What about $(D,q)$? I claim there are two possibilities
+(up to $\simeq$):
+\begin{equation}
+\label{equation-cases}
+\begin{pmatrix}
+0&0\\ 
+0&1/2
+\end{pmatrix}\qquad 
+\begin{pmatrix}
+0&1/4\\ 
+0&3/4
+\end{pmatrix}
+\end{equation}
+
+\noindent
+Exercise.
+
+Suppose (by choice of $\phi$) we are in the first case.
+Then $L=L_0 \cup  (\alpha+L_0)$, $q(\beta)=0$, i.e.
+$(\beta,\beta)\equiv 0 \text{ mod }2$,
+$$
+\begin{pmatrix}
+L_0&\beta+L_0\\ 
+\alpha+L_0&\gamma+L_0
+\end{pmatrix}.
+$$
+Define $L^{\text{orb}(\phi)}=L_0 \cup  (\beta+L_0)$.
+
+\begin{lemma}
+\label{lemma-even-lattice}
+$L^{\text{orb}(\phi)}$ is an even lattice.
+\end{lemma}
+
+\begin{proof}
+Exercise. Idea: $(L_0,L_0) \subset \mathbb{Z}$ and 
+$(L_0,\beta+L_0)\subset \mathbb{Z}$ by definition.
+\end{proof}
+
+\noindent
+For $\beta,\beta' \in \beta+L_0$,
+\begin{align*}
+(\beta',\beta)&=(\beta+\alpha,\beta),\qquad \alpha \in L_0\\
+&=\underbrace{(\beta,\beta)}_{\in \mathbb{Z}}
++\underbrace{(\alpha,\beta)}_{\in \mathbb{Z}} \in \mathbb{Z}
+\end{align*}
+
+\noindent
+Also, $(L^{\text{orb}(\phi)})^\vee=L^{\text{orb}(\phi)}$.
+Indeed
+$$
+L_0 \underbrace{\subset}_{\text{index 2}}L^{\text{orb}(\phi)}
+\underbrace{\subset}_{\text{by above}}
+(L^{\text{orb}(\phi)})^\vee
+\underbrace{\subset}_{\text{index 2}}
+L_0^\vee.
+$$
+
+\begin{theorem}[Niemer]
+\label{theorem-niemer}
+If we consider the set $\Gamma_n$ of all
+even self-dual lattices of rank $n$ ($8|n$)
+as a graph, with edge whenever there
+exists an operation $L \to L^{\text{orb}(\phi)}$,
+then $\Gamma_n$ is connected for all $n$.
+\end{theorem}
+
+\begin{remark}
+\label{remark-reverse-orbifold}
+There is a reverse orbifold construction.
+\end{remark}
+
+\noindent
+Let $L$ be even self dual, $L=L_0 \cup  L_1$, and
+$$
+\begin{pmatrix}
+L_0&L_+\\ 
+L_1&L_-
+\end{pmatrix}
+$$
+$L_0^\vee=L_0 \cup  L_1 uu L_+ \cup  L_-$,
+say $L_+$ is $q(\alpha)=0$ for all $alp \in L_+$
+and $q(\beta)=1/2$ for all $\beta \in L_-$
+since we are fixed in the first case of
+Equation \ref{equation-cases}.
+
+Define
+\begin{align*}
+\psi: L^{\text{orb}(\phi)} &\longrightarrow \mathbb{Z}/2 \\
+ \psi(\alpha)&=
+\begin{cases}
+0\qquad \text{for }\alpha \in L_0& \\
+1\qquad &\text{for }\alpha \in L_+.
+\end{cases}
+\end{align*}
+
+\noindent
+By definition,
+ $\Ker(\psi)=(L^{\text{orb}(\phi)})_0=L_0 \subset L^{\text{orb}(\phi)}$.
+So $(L^{\text{orb}(\phi)})_0^\vee=L_0^\vee$
+and the discriminant form $(L^{\text{orb}(\phi)})_0^\vee/L^{\text{orb}(\phi)}_0$
+brecovers the same picture.
+$$
+(L^{\text{orb}(\phi)})^{\text{orb}(\phi)}=L.
+$$
+$$
+\begin{matrix}
+L
+\underbrace{0}_{L^{\text{orb}(\phi)}_0=L_0} & 0 & M\\
+0&1/2
+\end{matrix}
+$$
+\begin{definition}
+\label{definition-root-system-lattice}
+Let $L \subset \mathbb{R}^n$ be an even lattice.
+The {\it root system} of $L$ is
+$$
+\Delta(L)=\{\alpha \in L|(\alpha,\alpha)=2\}.
+$$
+\end{definition}
+
+\begin{proposition}
+\label{proposition-root-systems-lattice-lie-algebras}
+The root system of an even lattice is a root systems.
+\end{proposition}
+
+\begin{example}
+\label{example-e8-root-system}
+The root system of $E_8$ (the lattice)
+is $E_8$ (the root system).
+\end{example}
+
+\noindent
+If $\Delta(L_1) \not \simeq \Delta(L_2)$
+then $L_1\not\simeq L_2$.
+
+In fact, in $\mathbb{R}^{16}$ there exists 
+two even self-dual lattices,
+with root systems $E_8 \oplus E_8$ and $D_{16}$.
+
+For rank 24, there exist (coincidentally) 24 even self-dual lattices
+called  {\it Neimeier lattices}.
+They are constructed as a graph going from one another
+by applying the orbifold construction on different homomorphisms $\phi$.
+Eventually the graph looks like this:
+$$
+\xymatrix{
+\bullet \ar[dr]\\
+& A_1^{24}\ar[r]& \Lambda\\
+\bullet \ar[ur]
+}
+$$
+where $\Lambda$ is the {\it Leech lattice}, which has {\it empty} root system,
+that is, $\Lambda$ contains $0$, and no vectors of norm $2$,
+and 196560 (?) vectors of squared norm 4.
+
+\medskip\noindent
+There is something called the Siegel mass formula.
+Consider the orthogonal group of a lattice, namely
+\begin{align*}
+\text{Aut}(L)&=\{g \in \text{GL}_n(\mathbb{R})
+|(g \alpha,g \beta)=(\alpha,\beta)\forall \alpha,\beta \in L\text{ and }
+g(L) \subset L\}\\
+&=\{g \in O_n(\mathbb{R})|g(L) \subset L\},
+\end{align*}
+which is a finite group.
+
+Then
+$$
+\sum_{L \in \Gamma_n}\frac{1}{\# \text{Aut}(L)}
+=\frac{|B_{n/2}|}{n}
+\prod_{1 \leq j \leq  n/2}\frac{|B_{2j}|}{4j}
+$$
+where $B_k$ is a Bernoulli number.
+(See Wikipedia page for Neimeier lattice.)
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
