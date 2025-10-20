@@ -4737,7 +4737,7 @@ L(w)&=\sum_m \rho(\text{ad}(L_m)) w^{-m-2}\\
 &=\sum_{m,n}(m-n)\rho(L_{m+n}L_n^*)w^{-m-2}\\
 &=\sum_{m,n}(m-n)\,:\!\varphi_{m+n}\varphi^*_n\!:\,w^{-m-2}\\
 &=\sum_{m,n}(m-n)\,:\!(\varphi_{m+n}w^{-(m+n)-?})
-(\varphi_n^*w^{+n+?}\!:\,
+(\varphi_n^*w^{+n+?})\!:\,
 \end{align*}
 where
 $$
@@ -4865,7 +4865,7 @@ $$
 \varphi^*_{(-2)}\varphi=\sum_{j\geq 0}\frac{(-1)^j}{j!}
 T^j(\varphi_{(-2+j)}\varphi^*.
 $$
-But this led to mistaken calculations.
+{\bf But this led to mistaken calculations.}
 I was trying to do the following: we know that
 $\alpha=\,:\!\varphi \varphi^*\!:\,$ satisfies
 $[\alpha_\lambda \alpha]=\lambda$,
@@ -4883,17 +4883,16 @@ $$
 B=b\,:\!(T\varphi)\varphi^*\!:\,
 +(1-b)\,:\!\varphi(T\varphi^*)\!:\,.
 $$
-
-\medskip\noindent
 The correct answer is: if 
 $L=-\,:\!(T\varphi)\varphi^*\!:\,-2\,:\!\varphi(T\varphi^*)\!:\,$,
 we may verify that
 $$
 [L_\lambda L]=TL+2\lambda L- \frac{26}{12}\lambda^3.
 $$
+
 \medskip\noindent
-In summary,
-for $\varphi, \varphi^*$ odd, $[\varphi_\lambda \varphi^*]=1$,
+In summary, today we did the following.
+For $\varphi, \varphi^*$ odd, $[\varphi_\lambda \varphi^*]=1$,
 we define the operator
 $$
 L=-\,:\!(T\varphi)\varphi^*\!:\,=2\,:\!\varphi(T\varphi^*)\!:\,.
@@ -4964,10 +4963,10 @@ ambient space $\mathbb{R}^n$.
 \label{example-lattices}
 \begin{enumerate}
 \item $\mathbb{Z}^n \subset \mathbb{R}^n$ is a lattice.
-\item $A_2$, the root lattice of $\mathfrak{sl}_3$ is a lattice.
+\item $A_2$, the root lattice of $\mathfrak{sl}_3$, is a lattice.
 Recall this looks like a triangular tiling with
 $(\alpha_1,\alpha_1)=2$, $(\alpha_2,\alpha_2)=2$ 
-and $(\alpha_1,\alpha_2)=-1$, which in says
+and $(\alpha_1,\alpha_2)=-1$, which says
 that the angle between $\alpha_1$ and $\alpha_2$ is $120$ degrees. 
 \end{enumerate}
 \end{example}
@@ -5168,7 +5167,7 @@ L_0&L_+\\
 L_1&L_-
 \end{pmatrix}
 $$
-$L_0^\vee=L_0 \cup  L_1 uu L_+ \cup  L_-$,
+$L_0^\vee=L_0 \cup  L_1 \cup  L_+ \cup  L_-$,
 say $L_+$ is $q(\alpha)=0$ for all $alp \in L_+$
 and $q(\beta)=1/2$ for all $\beta \in L_-$
 since we are fixed in the first case of
@@ -5235,9 +5234,9 @@ by applying the orbifold construction on different homomorphisms $\phi$.
 Eventually the graph looks like this:
 $$
 \xymatrix{
-\bullet \ar[dr]\\
-& A_1^{24}\ar[r]& \Lambda\\
-\bullet \ar[ur]
+\bullet \ar@{-}[dr]\\
+& A_1^{24}\ar@{-}[r]& \Lambda\\
+\bullet \ar@{-}[ur]
 }
 $$
 where $\Lambda$ is the {\it Leech lattice}, which has {\it empty} root system,
@@ -5263,6 +5262,378 @@ $$
 $$
 where $B_k$ is a Bernoulli number.
 (See Wikipedia page for Neimeier lattice.)
+
+
+
+\section{Vertex algebra modules}
+\label{section-vertex-algebra-modules}
+
+\noindent
+Let $V$ be a vertex algebra, so we have,
+for every $v \in V$ a quantum field
+$Y(a,z)$ on $V$, also $|0\rangle \in V$ 
+and $T:V \to V$,
+such that various properties hold,
+in particular
+$$
+Y(a_{(n)}b,z)=Y(a,z)_{(n)}Y(b,z),\qquad Y(|0\rangle,z)=\text{Id},
+\qquad [T,Y(a,z)]=\partial_zY(a,z).
+$$
+
+\begin{definition}
+\label{definition-v-module}
+A {\it V-module} is a vector space $M$ and,
+for all $a \in V$, a quantu field $Y^M(a,z)$ on $M$
+(i.e. $Y^M(a,z)=\sum_{n \in \mathbb{Z}}a^M_{(n)}z^{-n-1}$ 
+such that $\forall x \in M$, $\exists N$
+such that $a_{(n)}x=0$ for all $n \geq N$)
+such that
+\begin{enumerate}
+\item $Y^M(a_{(n)}b,z)=Y^M(a,z)_{(n)}Y^M(b,z)$.
+\label{item-vmod1}
+
+\item $Y^M(|0\rangle,z)=I_M$.
+\label{item-vmod2}
+
+\item 
+\label{item-vmod3}
+Ambiguity! We might either omit (3), or…
+demand $M$ come with an endomorphism $T_M:M \to M$ such that
+$[T_M,Y^M(a,z)]=\partial_z Y^M(a,z)$.
+\end{enumerate}
+\end{definition}
+
+But we will not use \ref{item-vmod3}, i.e.
+for us a V-module just satisfies \ref{item-vmod1} and \ref{item-vmod2}.
+
+\medskip\noindent
+Let $\mathfrak{g}$ be a finite-dimensional Lie algebra,
+$(\cdot,\cdot):\mathfrak{g} \times \mathfrak{g} \to \mathbb{C}$
+an invariant symmetric bilinear form, and $\hat{\mathfrak{g}}$ the 
+corresponding affine Lie algebra, i.e.
+$\hat{\mathfrak{g}}=\mathfrak{g}[t^{\pm 1}] \oplus \mathbb{C}K$,
+$[at^m,bt^n]=[a,b]t^{m+n}+m\delta_{m,-n}(a,b)K$, $K$ central.
+Recall the affine vertex algebra 
+$V^k(\mathfrak{g})=U(\hat{\mathfrak{g}}) \otimes_{U(\hat{\mathfrak{g}}_+)}
+\mathbb{C}|0\rangle$,
+$K |0\rangle=k |0\rangle$, $\mathfrak{g}[t]|0\rangle=0$,
+which is a $\hat{\mathfrak{g}}$-representation with quantum fields
+for all $a \in \mathfrak{g}$,
+$$
+Y(a_{-1}|0\rangle,z)=a(z)=\sum_{n \in \mathbb{Z}}at^m \cdot z^{-m-1},
+$$
+where we denote $a_m=at^m$.
+
+Recall that the Lie bracket definition for $\hat{\mathfrak{g}}$ implies that
+$$
+[a(z),b(w)]=[a,b](w)\delta(z,w)+k(a,b)\partial_w\delta(z,w)I,
+$$
+i.e. in $\lambda$.$[a_\lambda b]=[a,b]+\lambda(a,b)k|0\rangle$.
+
+Recall also that a $\hat{\mathfrak{g}}$-module $M$ is called
+smooth if $\forall x \in M$ and $a \in \mathfrak{g}$ there
+is $N$ such that $at^n x=0$ for all $n \geq N$.
+
+It $M$ is a smooth $\hat{\mathfrak{g}}$-module,
+then 
+$$
+Y^M(a,z)=\sum_{n \in \mathbb{Z}}(at^n)|_{M}z^{-n-1}
+$$
+is a quantum field.
+
+If $M$ is a smooth $\hat{\mathfrak{g}}$-module of level $k$ 
+(i.e. $K|_{M}=k I_M$), then
+$$
+[Y^M(a,z),Y^M(b,w)]
+=Y^M([a,b],w)\delta(z,w)+(a,b)k\partial_w \delta(z,w)I_M.
+$$
+The following proposition says that there is an equivalence of
+categories between smooth level $k$ $\hat{\mathfrak{g}}$-modules
+and $V^k(\mathfrak{g})$-modules:
+
+\begin{proposition}
+\label{proposition-equivalence-vmods}
+If $M$ is a smooth level $k$ $\hat{\mathfrak{g}}$-module
+then there exists a structure of $V^k(\mathfrak{g})$-module on $M$ 
+such that $Y^M(a_{-1}|0\rangle,z)=Y^M(a,z)$ for all $a \in \mathfrak{g}$.
+\end{proposition}
+
+\noindent
+As a special case, $\mathfrak{g}=\mathfrak{h}$ a finite-dimensional
+vector space, $(\cdot,\cdot):\mathfrak{h}\times\mathfrak{h}\to\mathbb{C}$ 
+some nondegenerate symmetric bilinear form, $k=1$.
+Then we get  $V^k(\mathfrak{g})=H(\mathfrak{h})$ Heisenberg.
+Let $\mu \in \mathfrak{h}$, then we have the Fock module
+$H^\mu = 
+U(\hat{\mathfrak{h}})\otimes_{U(\hat{\mathfrak{h}}_+)}\mathbb{C}|\mu\rangle$,
+$$
+ht^m|\mu\rangle=\begin{cases}
+0\qquad &\text{if }m\geq 1 \\
+(\mu,h)|\mu\rangle\qquad &\text{if }m=0.
+\end{cases}
+$$
+As a vector space, 
+$H^\mu\cong\mathbb{C}[h^{i_1}_{(n_1)},h^{i_2}_{(n_2)}|
+\substack{i=1,\ldots,\dim \mathfrak{h} \\ n=1,2,\ldots}]|\mu\rangle$.
+
+$H^\mu$, $\mu=0$ is the Heisenberg vertex algebra itself,
+the $H^\mu$ for various $\mu$ are all modules over $H=H^0$.
+
+We saw an example in $F^{\text{ch}}=\bigoplus_{c \in \mathbb{Z}}F^c$.
+[Picture of upside-down parabola.
+The center column is
+ $F^{(0)}\cong H \cong H(\mathbb{C})\cong \mathbb{C}[h_{-1},h_{-2},\ldots] 
+\cong H^0$.
+In fact we can show that the $H^i$ are V-modules 
+over $H^0$.]
+
+\begin{remark}
+\label{remark-super}
+The fact that $F= \bigoplus_{c \in \mathbb{Z}}F^c$ is
+a vertex superalgebra implies that $F^c$ with $a \in F^0 \mathbb{y} F^c$
+by restriction of $Y(a,z)$, is a $F^0$-module.
+\end{remark}
+
+\noindent
+Can we go the other way and build a vertex
+(super)algebra from an infinite sum of $H(\mathfrak{h})$-modules? Yes.
+
+\begin{remark}[Technical]
+\label{remark-technical}
+In $H(\mathbb{C})$, we defined $L=\frac{1}{2}\,:\!hh\!:\,$,
+which is a Virasoro vector.
+$$
+[L_\lambda L]=TL+2\lambda L +\frac{\lambda^3}{12}|0\rangle.
+$$
+($L(z)=\sum_{n \in \mathbb{Z}}L_nz^{-n-2}$.)
+We observed that $L_{-1}=\frac{1}{2}\sum_{k \in \mathbb{Z}}h_{-1-k}h_k$ 
+coincides with $T$.
+\end{remark}
+
+\begin{exercise}
+\label{exercise-check-it}
+Check it.
+\end{exercise}
+
+\noindent
+More generally, if $\{a^1,\ldots,a^n\}$ is a basis of $\mathfrak{h}$,
+and $\{b^1,\ldots,b^n\}$ the dual basis
+(i.e., $(a^i,b^j)=\delta_{i,j}$).
+Define
+$$
+L=\frac{1}{2}\sum_{i=1}^{\dim \mathfrak{h}}\,:\!a^ib^i\!:\,.
+$$
+
+\begin{exercise}
+\label{exercise-virasoro-vector}
+$[L_\lambda L]=TL+2\lambda L+\frac{\lambda^3}{12}cI$,
+where $c=\dim(\mathfrak{h})$. We call this
+a {\it Virasoro or conformal vector} of central charge.
+$\dim (\mathfrak{h})$.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-once-again}
+$L_{-1}=T$ once again.
+\end{exercise}
+
+\noindent
+(Consider $\mathfrak{h} \otimes \mathfrak{h}$, the element
+$\sum_i a_i \otimes b_i$ is well-defined
+(i.e. depends on $\mathfrak{h}$ and $(\cdot,\cdot)$ 
+but not the choice of basis $\{a^i\}$.)
+
+So if we chose a different basis $\{a^i\}$ we'd get the same 
+$L \in H(\mathfrak{h})$.
+
+\begin{definition}
+\label{definition-conformal-vertex-algebra}
+If $V$ contains a Virasoro vector $L$,
+such that $T=L_{-1}$,
+we call $V$ (more precisely, the pair $(V,L)$)
+a {\it conformal vertex algebra} of ventral charge $c$.
+\end{definition}
+
+\noindent
+Now we can reinterpret Exercise \ref{exercise-virasoro-vector}
+as saying that the Heisenberg (?) algebra is conformal.
+
+\begin{remark}
+\label{remark-third-axiom-vmod}
+If $(V,L)$ is a conformal vertex algebra,
+and $M$ a $V$-module, then we may define
+$T_M:=L_{-1}^M$, i.e.
+(where $Y^M(L,Zz)=\sum L^m_n z^{-n-2}$)
+then we will have
+$$
+[T_M,Y^M(a,z)]=\partial_zY^M(a,z).
+$$
+(So for conformal vertex algebras, axiom \ref{item-vmod3} is superfluous).
+\end{remark}
+
+\noindent
+Observe that in the Fock space $H^\mu$, we have
+\begin{align*}
+L_{-1}|\mu\rangle&=\frac{1}{2}\sum_i \left(
+\sum_{k \in \mathbb{Z}}\,:\!a^i_{-1-k}b^i_k\!:\,\right)\\
+\sum_{k \in \mathbb{Z}}a^i_{-1-k}b^i_k\right),\qquad \text{since they commute}\\
+&=\sum_i(a_{-1}b_0^i+a_0^ib_{-1})|\mu\rangle\\
+&=\frac{1}{2}\sum_i(a^i_{-1}|\mu\rangle(b^i,\mu)
++b^i_{-1}|\mu\rangle (a^i,\mu)\\
+&= \frac{1}{2}(\mu_{-1}|\mu\rangle+\mu_{-1}|\mu\rangle)
+\qquad \substack{\text{lin. alg. fact} \\ \sum_i(\mu,b^i)a^i=\mu}\\
+&=\mu_{-1}|\mu\rangle\\
+&=\,:\!\underbrace{\mu}_{\substack{\text{element of} \\ \text{Heis. alg.}}}
+\underbrace{\mu}_{\substack{\text{generator of} \\ \text{Fock module}}}\!:\,.
+\end{align*}
+
+\noindent
+It's also fun to do:
+\begin{align*}
+L_0|\mu\rangle&=\frac{1}{2}\sum_i\left(\sum_k\,:\!a^i_{-k}
+b^i_k\!:\,\right)|\mu\rangle\\
+&=\frac{1}{2}\sum_i a_0^ib_0^i |\mu\rangle\\
+&=\frac{1}{2}\sum_i(b^i,\mu)(a^i,\mu)|\mu\rangle
+\qquad \substack{\text{lin. alg. fact} \\ \sum_i(x,a^i)(y,b^i)=(x,y)}\\
+&=\underbrace{\frac{1}{2}(\mu,\mu)}_{\text{a number}}|\mu\rangle.
+\end{align*}
+
+\medskip\noindent
+Let us try to build a vertex (super)algebra
+$V_S=\bigoplus_{\mu \in S}H^\mu$, where $S$ is some
+subset $S \subset \mathfrak{h}$ (assume $0 \in S$)
+such that $T=L_{-1}$, where $L=\frac{1}{2}\,:\!a^ib^i\!:\, \in H^0$.
+In particular 
+\begin{equation}
+\label{equation-t-mu}
+T|\mu\rangle=\,:\!\mu|\mu\rangle\!:\,\qquad \text{for all }\mu \in S.
+\end{equation}
+
+\noindent
+Let $\Gamma^\mu(z)$ denote $Y(|\mu\rangle,z)$ now.
+Equation \ref{equation-t-mu} implies
+$$
+\partial_z\Gamma^\mu(z)\underbrace{=}_{\substack{\text{for} \\\text{vertex
+algebras} }}[T,\Gamma^\mu(z)]
+\underbrace{=}_{\text{now}}
+\,:\!\mu(z)\Gamma^\mu(z)\!:\,.
+$$
+So
+\begin{equation}
+\label{equation-t-mu2}
+\partial_z\Gamma(z)=\,:\!\mu(z)\Gamma(z)\!:\,
+\end{equation}
+
+\noindent
+(Note that this is formally similar to
+$\partial_zf(z)=\mu(z)f(z)$, whose solution is
+$f(z)=ce^{\int \mu(z)dz}$. So informally we
+should have $\Gamma(z)=c\,:\!e^{\int \mu(z)dz}\!:\,$.)
+
+So we kind of have
+\begin{align*}
+\mu(z)&=\sum_{n \in \mathbb{Z}}\mu_nz^{-n-1},
+\int\mu(z)dz&=\mu_0\cdot \underbrace{\text{log}z}_{\substack{\text{not very} \\
+\text{well defined} }}+\sum_{n \neq 0}\frac{z^{-n}}{-n}\mu_n,\\
+\text{exp}(\mu_0\text{log}(z))=z^{\mu_0}.
+\end{align*}
+
+Maybe this means
+\begin{equation}
+\label{equation-maybe-this-means}
+\Gamma(z)=c \text{exp}\left(\sum_{j<0}\frac{z^{-j}}{-j}\mu j\right)
+\text{exp}\left(\sum_{j>0}\frac{z^{-j}}{-j}\mu_j\right)z^{\mu_0}.
+\end{equation}
+This crazy argument turns out to get us to the right definition.
+
+\medskip\noindent
+Now we describe the precise argument.
+Firstly $h_0|\mu\rangle=(h,\mu)|\mu\rangle$ for all $h \in \mathfrak{h}$,
+$h_{\geq 1}|\mu\rangle=0$.
+So
+ $$
+\underbrace{[h_\lambda |\mu\rangle]}
+_{\sum_jh_j|\mu\rangle\cdot\frac{\lambda^j}{j!}}=(h,\mu)|\mu\rangle.
+$$
+This implies that $[h_m,\Gamma^\mu(w)]=(h,\mu)w^m\Gamma^\mu(w)$.
+In particular $[h_0,\Gamma^\mu(w)]=(h,\mu)\Gamma^\mu(w)$.
+It follows that
+$$
+\Gamma^\mu(w):H^\beta \to H^{\beta+\mu}((w)).
+$$
+(where $H^\beta$ is where elements of $H$ act by pairing with $\beta$, i.e.
+$\forall x \in H^\beta$, $h_0x=(h,\beta)x$ for all $h \in \mathfrak{h}$.)
+
+Recall that all Fock spaces are spaces of polynomials,
+they are only different by the constant by which $h_0$ acts.
+So they are all isomorphic as Lie algebras over the oscillator Lie algebra
+$\mathfrak{a}'=\bigoplus_{n \neq 0}\mathbb{C}h_n \oplus \mathbb{C}K$.
+This means we can introduce
+$$
+u:H^\beta \to H^{\beta+\mu}
+$$
+such that
+\begin{enumerate}
+\item $u(|\beta\rangle)=|\beta+\mu\rangle$,
+\item $u(h_nx)=h_nu(x)$ for all  $n \neq 0$ (extend linearly).
+\end{enumerate}
+
+\noindent
+Consider on $H^\beta$
+$$
+A=u^{-1}\text{exp}\left(-\sum_{j<0}\frac{z^{-j}}{-j}\mu_j\right)\Gamma^\mu(z)
+\text{exp}\left(-\sum_{j>0}\frac{z^{-j}}{-j}\mu_j\right)
+$$
+$H^\beta \to H^\beta((z))$.
+(Which already looks similar to Equation \ref{equation-maybe-this-means}!)
+
+\begin{exercise}
+\label{exercise-a-and-hn}
+$[h_n,A]=0$ for all $n \neq 0$.
+\end{exercise}
+
+\noindent
+So $A|_{H^{\beta}}=p_{\mu,\beta}(z)I_{H^\beta}$.
+
+\begin{proposition}
+\label{proposition-exponentials}
+$$
+\Gamma^\mu(z)|_{H^\beta}=C_{\mu,\beta}
+\text{exp}\left(\sum_{j<0}\frac{z^{-j}}{-j}\mu_j\right)
+\text{exp}\left(\sum_{j>0}\frac{z^{-j}}{-j}\mu_j\right)z^{(\mu,\beta)}u.
+$$
+\end{proposition}
+
+\begin{proof}
+Consider $\Gamma^\mu(z)|\beta\rangle=
+\sum_{n \in \mathbb{Z}}\Gamma^\mu_{(n)}|\mu\rangle z^{-n-1}$.
+Take two elements $a,b$ with conformal weights given by
+ $L_0a=\Delta(a)a$ and $L_0b=\Delta(b)b$.
+Then $L_0(a_{(n)}b)=\Delta(a)+\Delta(b)-n-1$
+(exercise: deduce this from the commutator formula).
+
+We computed earlier that
+$$
+\Delta(|\beta\rangle)=\frac{(\beta,\beta)}{2},\qquad 
+\Delta(|\beta+\mu\rangle)=\frac{(\beta+\mu,\beta+\mu)}{2},
+$$
+and
+$$
+\Delta(|\mu\rangle)=\frac{(\mu,\mu)}{2}
+$$
+This implies
+$$
+\Gamma^\mu_{(-(\beta,\mu)-1)}|\beta\rangle
+=P_{\mu,\beta}(z)|\beta+\mu\rangle.
+$$
+It follows that
+$$
+P_{\mu,\beta}(z)=c z^{(\mu,\beta)}.
+$$
+\end{proof}
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
