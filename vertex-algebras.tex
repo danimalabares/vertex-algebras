@@ -4942,7 +4942,7 @@ and realise it's $-26$. So the bracket in the new algebra is
 [L_m,L_n]=(m-n)L_{m+n}+\frac{m^3-m}{12}(-26)K.
 $$
 
-\section{Lattice Vertex algebras}
+\section{Lattices and the neighbor construction}
 \label{section-lattices}
 
 \begin{definition}
@@ -5283,7 +5283,7 @@ $$
 \begin{definition}
 \label{definition-v-module}
 A {\it V-module} is a vector space $M$ and,
-for all $a \in V$, a quantu field $Y^M(a,z)$ on $M$
+for all $a \in V$, a quantum field $Y^M(a,z)$ on $M$
 (i.e. $Y^M(a,z)=\sum_{n \in \mathbb{Z}}a^M_{(n)}z^{-n-1}$ 
 such that $\forall x \in M$, $\exists N$
 such that $a_{(n)}x=0$ for all $n \geq N$)
@@ -5474,9 +5474,10 @@ $$
 \noindent
 Observe that in the Fock space $H^\mu$, we have
 \begin{align*}
-L_{-1}|\mu\rangle&=\frac{1}{2}\sum_i \left(
-\sum_{k \in \mathbb{Z}}\,:\!a^i_{-1-k}b^i_k\!:\,\right)\\
-\sum_{k \in \mathbb{Z}}a^i_{-1-k}b^i_k\right),\qquad \text{since they commute}\\
+L_{-1}|\mu\rangle&=\frac{1}{2}\sum_i 
+\left(\sum_{k \in \mathbb{Z}}\,:\!a^i_{-1-k}b^i_k\!:\,\right)
+\left(\sum_{k \in \mathbb{Z}}a^i_{-1-k}b^i_k\right),
+\qquad \text{since they commute}\\
 &=\sum_i(a_{-1}b_0^i+a_0^ib_{-1})|\mu\rangle\\
 &=\frac{1}{2}\sum_i(a^i_{-1}|\mu\rangle(b^i,\mu)
 +b^i_{-1}|\mu\rangle (a^i,\mu)\\
@@ -5513,7 +5514,8 @@ T|\mu\rangle=\,:\!\mu|\mu\rangle\!:\,\qquad \text{for all }\mu \in S.
 Let $\Gamma^\mu(z)$ denote $Y(|\mu\rangle,z)$ now.
 Equation \ref{equation-t-mu} implies
 $$
-\partial_z\Gamma^\mu(z)\underbrace{=}_{\substack{\text{for} \\\text{vertex
+\partial_z\Gamma^\mu(z)\underbrace{=}_{\substack{\text{holds for}
+ \\\text{vertex
 algebras} }}[T,\Gamma^\mu(z)]
 \underbrace{=}_{\text{now}}
 \,:\!\mu(z)\Gamma^\mu(z)\!:\,.
@@ -5580,10 +5582,11 @@ such that
 
 \noindent
 Consider on $H^\beta$
-$$
+\begin{equation}
+\label{equation-quantum-field-vmod}
 A=u^{-1}\text{exp}\left(-\sum_{j<0}\frac{z^{-j}}{-j}\mu_j\right)\Gamma^\mu(z)
 \text{exp}\left(-\sum_{j>0}\frac{z^{-j}}{-j}\mu_j\right)
-$$
+\end{equation}
 $H^\beta \to H^\beta((z))$.
 (Which already looks similar to Equation \ref{equation-maybe-this-means}!)
 
@@ -5632,8 +5635,359 @@ P_{\mu,\beta}(z)=c z^{(\mu,\beta)}.
 $$
 \end{proof}
 
+\medskip\noindent
+Here's a summary of this section so far (new lecture).
+$\mathfrak{h}$ complex vector space with 
+nondegenerate symmetric bilinear form $(\cdot,\cdot)$.
+$V=\bigoplus_{\mu \in S}H^\mu$ vertex (super)algebra?
+extending $H^0$-module structure $H^0 \hookrightarrow H^\mu$.
+We saw (putting $\Gamma^\mu(z)=T(|\mu\rangle,z))$
+$$
+\Gamma^\mu(z):H^\beta \to H^{\beta+\mu}[[z^{\pm 1}]],
+$$
+so $S$ should be closed under addition
+(we hadn't said this so far!)
+and
+\begin{equation}
+\label{equation-quantum-field-vmod2}
+\Gamma^\mu(z)|_{H^\beta}=
+C_{\mu,\beta}
+\text{exp}\left(\sum_{n<0}\frac{z^{-n}}{-n}\mu_n\right)
+\text{exp}\left(\sum_{n>0}\frac{z^{-n}}{-n}\mu_n\right)
+z^{(\mu,\beta)}u
+\end{equation}
+(see Equation \ref{equation-quantum-field-vmod}).
+Here $u$ is the unique linear map $u:H^\beta \to H^{\beta+\mu}$ 
+such that $u(|\beta\rangle)=|\beta+\mu\rangle$,
+and $u$ commutes with the action of $h_n$ for all 
+$n \in \mathbb{Z}\setminus \{0\}$.
+(Intuitively, it takes a monomial and takes it to
+``the same'' monomial.)
 
+{\textcolor{blue}
+Let's assume the constant $C_{\mu,\beta}$ are all nonzero.
+Also want $z^{(\mu,\beta)}$ to be an integer power of $z$,
+so $(\alpha,\beta) \in \mathbb{Z}$ for all $\alpha,\beta \in S$,
+i.e. $S \subset \mathfrak{h}$ should be an \underline{integral lattice}.
+Call $S$ as $Q$ from now on.}
 
+In particular
+\begin{align*}
+H^\beta&=\mathbb{C}[t^{-1}\mathfrak{h}[t^{-1}]]\otimes|\beta\rangle,\\
+H^{\mu+\beta}&=\mathbb{C}[t^{-1}\mathfrak{h}[t^{-1}]]\otimes |\mu+\beta\rangle,
+\end{align*}
+
+\noindent
+and
+$$
+u(\underbrace{
+h^{i_1}_{-n_1}h^{i_2}_{-n_2}\ldots h^{i_s}_{-n_s}\otimes |\beta\rangle}
+_{\substack{h_0\text{ acts by} \\ \text{the scalar }(h,\beta) \in \mathbb{C}}}
+=\underbrace{
+h^{i_1}_{-n_1}h^{i_2}_{-n_2}\ldots h^{i_s}_{-n_s}\otimes | \mu+\beta\rangle}
+_{\substack{h_0\text{ acts by} \\ \text{the scalar }(h,\mu+\beta) 
+\in \mathbb{C}}}.
+$$
+
+(We can picture this as a lattice with a vector space
+sitting at every point, and a map from every vector space
+with tag $\beta$ to the vector space $\beta+\mu$.
+The vector spaces are infinite-dimensional and 
+are drawn as cones with, e.g. $|\beta\rangle$ and $|\beta+\mu\rangle$ 
+in the vertex of the cone.)
+
+\medskip\noindent
+As a small remark, notice that in the vector space 
+$H^\beta$, $h_0=(h,\beta)$ constant, we can write
+$z^{(\mu,\beta)}I_{H^\beta}$ as $z^{\mu_0}$,
+therefore, let's write a symbol $e^\mu$ for the map(s) $u$,
+more precisely
+$$
+e^\mu:V \to V,
+$$
+whose restriction to $H^\beta$ is $C_{\mu,\beta}$ times
+the unique $u:H^\beta \to H^{\beta+\mu}$ as above.
+
+Let's also start writing
+$|\beta\rangle$ as $e^\beta$.
+So now elements of $V$ are linear combinations
+of vectors of the form
+$h^{i_1}_{-n_1}\ldots h^{i_s}_{-n_s} \otimes e^\beta$,
+for $\beta \in Q$.
+\begin{align*}
+e^\mu(h^{i_1}_{-n_1}\ldots h^{i_s}_{-n_s} \otimes e^\beta)
+&=C_{\mu,\beta} h^{i_1}_{-n_1}\ldots h^{i_s}_{-n_s}\otimes e^{\beta+\mu}\\
+z^{\mu_0}(h^{i_1}_{-n_1}\ldots h^{i_s}_{-n_s}\otimes e^\beta)
+&=z^{(\mu,\beta)}h^{i_1}_{-n_1}\ldots h^{i_s}_{-n_1} \otimes e^\beta.
+\end{align*}
+
+\noindent
+Now
+\begin{equation}
+\label{equation-quantum-field-vmod3}
+\Gamma^\mu(z)=e^\mu 
+\text{exp}\left(\sum_{n<0}\frac{z^{-n}}{-n}\mu_n\right)
+\text{exp}\left(\sum_{n>0}\frac{z^{-n}}{-n}\mu_n\right)
+z^{\mu_0}.
+\end{equation}
+
+\noindent
+Note this expression works in all of $V$,
+and not in a fixed $H^\beta$, as Equation \ref{equation-quantum-field-vmod2}
+does!
+
+\begin{exercise}
+\label{exercise-quantum-field-vmod}
+Each $\Gamma^\mu(z)$ is a quantum field.
+\end{exercise}
+
+\noindent
+Are the $\Gamma^\mu(z)$ mutually local?
+We claim that
+\begin{equation}
+\label{equation-mutually-local-vmode}
+\Gamma^\mu(z)\Gamma^\beta(w)=
+i_{z,w}(z-w)^{(\mu,\beta)}\,:\!\Gamma^\mu(z)\Gamma^\beta(w)\!:\,
+\end{equation}
+We can sketch a proof of this:
+\begin{align*}
+LHS&=e^\mu e^\beta z^? w^?
+\text{exp}\left(\sum_{n<0}\frac{z^{-n}}{-n}\mu_n\right)
+\underbrace{\text{exp}\left(\sum_{n>0}\frac{z^{-n}}{-n}\mu_n\right)
+\text{exp}\left(\sum_{n<0}\frac{w^{-n}}{-n}\beta_n\right)
+}_{\substack{\text{to pass to RHS we have to swap these terms}\\
+\text{(at least morally)}}}
+\text{exp}\left(\sum_{n>0}\frac{w-n}{-n}\beta_n\right)
+\end{align*}
+
+\noindent
+Consider $h \in \mathfrak{h}$, $(h,h)=1$ for simplicity,
+$\mu=\beta=h$. Now we claim
+\begin{align*}
+\left[ \sum_{m>0}\frac{z^{-m}}{-m}h_m,
+\sum_{n<0}\frac{w^{-n}}{-n}h_n \right] &=
+-\sum_{n>0}\frac{1}{n}\left(\frac{w}{z}\right)^n(\mu,\beta)\\
+&=\text{log}(1-\frac{w}{z})(\mu,\beta)
+\end{align*}
+
+\noindent
+Where the logarithm here is defined by
+$\text{log}(1-x)=-x+\frac{1}{2}x^2+\frac{1}{3}x^3+\ldots$.
+$(\mu,\beta)\text{log}(1-\frac{w}{z})$ goes into the exponential
+and becomes $i_{z,w}(z-w)^{(\mu,\beta)}$.
+(Check the details of this argument!)
+
+\medskip\noindent
+Consider this argument fixing conformal weights:
+$$
+\Delta(a_{(n)}b)&=\Delta(a)+\Delta(b)-n-1.
+$$
+If $a=|\mu\rangle$, $b=|\beta\rangle$, then
+\begin{align*}
+\Delta(|\beta\rangle)=(\beta,\beta)/2,&\qquad 
+\Delta(|\mu\rangle)=(\mu,\mu)/2\\
+\Delta(|\mu+\beta\rangle)=(\mu+\beta,\mu+\beta)/2.
+\end{align*}
+
+\noindent
+Knowing that $|\mu\rangle_{(n)}|\beta\rangle\in H^{\mu+\beta}$
+and
+\begin{align*}
+\Delta(|\mu\rangle_{(n)}|\beta\rangle)&=
+\frac{(\mu,\mu)}{2}+\frac{(\beta,\beta)}{2}-n-1\\
+&=\frac{(\mu+\beta,\mu+\beta)}{2},
+\end{align*}
+IF
+$$
+(\mu,\beta)=-n-1 \iff n=-(\mu,\beta)-1.
+$$
+Therefore,
+$$
+\Gamma^\mu_{(-(\mu,\beta)-1)}|\beta\rangle=C\cdot|\mu+\beta\rangle.
+$$
+$$
+\,:\!(\partial_z^{(\mu,\beta)}\Gamma^\mu(z)\Gamma^\beta(z)\!:\,
+=CT^{\mu+\beta}(z)
+$$
+if $(\mu,\beta)\geq 0$.
+
+One finds
+\begin{align*}
+\,:\!\Gamma^\mu(z)\Gamma^\beta(w)\!:\,&=e^\mu e^\beta(\text{junk}).\\
+\,:\!\Gamma^\beta(w)\Gamma^\mu(z)\!:\,&=e^\beta e^\mu(\text{same junk}).
+\end{align*}
+
+\noindent
+$$
+\Gamma^\mu(z)\Gamma^\beta(w)-(-1)^{p(\mu)p(\beta)}\Gamma^\beta(w)\Gamma^\mu(z)
+$$
+is local if and only if
+$$
+e^\mu e^\beta=(-1)^{p(\mu)p(\beta)}(-1)^{(\mu,\beta)}e^\beta e^\mu.
+$$
+(Here the $(-1)^{(\mu,\beta)}$ appeared because we changed the 
+order of $z$ and $w$ in Equation \ref{equation-mutually-localvmode}.)
+That is,
+\begin{equation}
+\label{equation-quantum-relation}
+C_{\mu,\beta}=(-1)^{p(\mu)p(\beta)}(-1)^{(\mu,\beta)}C_{\beta,\mu}.
+\end{equation}
+
+In case $Q=\mathbb{Z}$, $(1,1)=1$,
+we have
+$$
+C_{1,1}=-(-1)^{p(1)p(1)}C_{1,1},
+$$
+so $p(1)=1$ is forced on us! That is,
+$F^{\text{ch}}=\bigoplus_{m \in \mathbb{Z}}H^m$ can only be
+a vertex \underline{superalgebra},
+which we already knew (i.e. $F^\text{ch}$ is a vertex superalgebra,
+but now we know it couldn't have been otherwise).
+
+In fact, for all $\mu$, we get
+$$
+C_{\mu,\mu}=(-1)^{p(\mu)^2+(\mu,\mu)}C_{\mu,\mu},
+$$
+so we \underline{must} assign a parity $(\mu,\mu)\text{ mod }2$ 
+to $H^\mu$.
+
+In particular, if we take $Q$ an even lattice,
+$V$ will be an honest vertex algebra.
+
+\begin{exercise}
+\label{exercise-cocycle}
+Deduce (from Borcherds identity, or otherwise)
+that $C:Q \times Q\to \mathbb{C}^\times$
+must (in order for $V$ to be a vertex superalgebra)
+\begin{equation}
+\label{equation-cocycle}
+C(\alpha,\beta+\gamma)C(\alpha,\beta)C(\alpha,\beta)C(\alpha+\beta,\gamma)
+\end{equation}
+for all $\alpha,\beta,\gamma \in Q$. (This is a cocycle condition.)
+
+This apparently necessary condition on $C$ was not very evident
+from the locality of $\Gamma^\mu,\Gamma^\beta,\ldots$ Discuss.
+\end{exercise}
+
+\noindent
+There's a few other things we need apart from Equation \ref{equation-cocycle}.
+Namely, that $C(0,\alpha)=C(\alpha,0)=1$
+(normalization condition)
+and Equation \ref{equation-quantum-relation}.
+
+Equation \ref{equation-cocycle} says $C$ is a {\it group cocycle}.
+More precisely, consider the short exact sequence of
+(not necessarily abelian) groups
+$$
+\xymatrix{
+1\ar[r]&\mathbb{C}^\times\ar[r]&\hat{Q}\ar[r]&Q\ar[r]&1,
+}
+$$
+a central extension, i.e. $\hat{Q}=\mathbb{C}^\times \times Q$ 
+as a set, $\mathbb{C}^\times$ central, and 
+the product given by
+$(a,\alpha)(b,\beta)=(c(\alpha,\beta)ab,\alpha+\beta)$ 
+which, to be associative,
+$C:Q \times Q \to \mathbb{C}^\times$ must satisfy
+Equation \ref{equation-cocycle}, that is, $C:Q \times Q \to \mathbb{C}^\times$
+is a 2-cocycle
+(with coefficients in the trivial $Q$-module  $\mathbb{C}^\times$).
+(Also, $\underbrace{(1,0)}_{e \in \hat{Q}}\cdot(1,\alpha)=(1,\alpha)=
+(1,\alpha)(1,0)\iff C(0,\alpha)=C(\alpha,0)=1$.)
+
+\begin{remark}
+\label{remark-isomorphism}
+If we set up a linear isomorphism
+$\eta:V \to V$, of the form
+$\eta|_{H^\beta}=\eta(\beta) \in \mathbb{C}^\times$ for all $\beta$,
+then $\eta:Q \to \mathbb{C}^\times$ arbitrary function,
+conjugating $C$ by $\eta$, i.e.
+$$
+\tilde{C}(\alpha,\beta)=
+\eta(\alpha,\beta)C(\alpha,\beta)\eta^{-1}(\alpha)\eta^{-1}(\beta)
+$$
+i.e.,
+$$
+\tilde{C}(\alpha,\beta)=C(\alpha,\beta)\frac{\eta(\alpha+\beta)}
+{\eta(\alpha)\eta(\beta)}.
+\end{remark}
+$$
+This corresponds to modifying $C$ by the coboundary $d\eta$.
+It's the same vertex superalgebra, though.
+
+So really vertex superalgebra structures on $V$ 
+are classified by
+$$
+H^{2}(Q,\mathbb{C}^\times)=\frac{Z^2(Q,\mathbb{C}^\times}
+{B^2(Q,\mathbb{C}^\times)}.
+$$
+
+\medskip\noindent
+By the universal coefficient theorem,
+if $G$ is any group and $M$ any trivial $G$-module,
+$$
+\xymatrix{
+0\ar[r]&\text{Ext}^1_\mathbb{Z}(H_{n-1}(G,\mathbb{Z})\ar[r]
+&H^{n}(G,M)\ar[r]
+&\Hom_{\mathbb{Z}}(H_n(G,\mathbb{Z}),M)\ar[r]&0
+}
+$$
+In this case, $G=Q\simeq \mathbb{Z}^m$, 
+and $H_k(Q,\mathbb{Z}) \simeq \Lambda^kQ$.
+So
+$$
+\xymatrix{
+0\ar[r]&
+\text{Ext}^1_{\mathbb{Z}}(Q,\mathbb{C}^\times)\ar[r]&
+H^{2}(Q,\mathbb{C}^\times)\ar[r]&
+\Hom_{\mathbb{Z}}(\Lambda^2Q,\mathbb{C}^\times)\ar[r]&0
+}
+$$
+Now since $\mathbb{C}^\times$ is a divisible group (algebra fact),
+hence injective as a $\mathbb{Z}$-module,
+so $\text{Ext}^1_{\mathbb{Z}}(Q,\mathbb{C}^\times)=0$.
+(See [Weibel, 6.1.5] for more on universal coefficients and group homology.)
+So we have an isomorphism
+$$
+H^{2}(Q,\mathbb{C}^\times) \to \Hom_{\mathbb{Z}}(\Lambda^2Q,\mathbb{C}^\times).
+$$
+
+Concretely, the map is $C \mapsto  B$, where
+$$
+B(\alpha,\beta)=\frac{C(\alpha,\beta)}{C(\beta,\alpha)}
+$$
+Recall that our $C$ was required to satisfy
+$$
+C(\alpha,\beta)=(-1)^{\frac{(\alpha,\alpha)}{2}\frac{(\beta,\beta)}{2}
++(\alpha,\beta)}C(\beta,\alpha)
+$$
+hence the associated $B$ is
+$$
+B(\alpha,\beta)=(-1)^{\frac{\alpha,\alpha}{2}+(\alpha,\beta)}
+$$
+In conclusion, on $V_Q=\bigoplus_{\beta \in Q}H^\beta$,
+there exists a unique conformal vertex superalgebra structure
+which extends that on $H^0$.
+
+\medskip\noindent
+$Q=\mathbb{Z}$ gave $V_Q=F^{\text{ch}}$.
+$Q=\mathbb{Z}\sqrt{2}$ gives $V_Q\simeq L_1(\mathfrak{sl}_2)$,
+simple quotient of $V^1(\mathfrak{sl}_2)$, affine $\mathfrak{sl}_2$.
+
+Consider $\mathfrak{g}=B_2$, which was two different lengths of weight vectors,
+so as a lattice it's just $Q=\mathbb{Z}^2$.
+So $V_Q=V_\mathbb{Z} \otimes V_\mathbb{Z}=F^{\text{ch}}_2$,
+the charged fermions in two variables.
+Compare this with affine $B_2$, $L_1(B_2)$. Here $B_2$ sits (horizontally)
+as the charge 1 piece. So they are different! 
+
+Finally, it turns out that the vertex algebra associated
+to the Leech lattice $V_{\text{Leech}}$ is related 
+to the moonshine module $V^{\text{natural}}$ by
+an orbifold step.
+In a paper by [Jethro-?] it was shown that in
+rank 24 it's possible to pass from any vertex
+algebra to $V_{\text{Leech}}$ by a single orbifold step.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
