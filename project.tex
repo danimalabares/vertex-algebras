@@ -29,14 +29,64 @@ and sketch the proof of the theorem.
 
 \noindent
 Throughout $X$ will be a projective complex surface.
-The formal construction of the Hilbert scheme
-is omitted.
+We start by introducing the Hilbert scheme following
+\cite[Section 1.1]{Nakajima-lectures}.
+We consider a contravariant funtor 
+$\mathcal{H}ilb_X:(\text{Schemes})\to (\text{Sets})$ 
+which assigns to any scheme $U$ the set of flat families
+of closed subschemes in $X$ parametrized by $U$.
+Any such family is by definition a flat morphism
+$$
+\xymatrix{
+Z \ar[d]^\pi&\subseteq X \times U\\
+U,
+}
+$$
+so that the fibers of $\pi$ are closed subschemes of $X$.
+The Hilbert polynomial at a fiber $Z_u$ is defined by
+$P_u(m)=\chi(\mathcal{O}_{Z_u}\otimes \mathcal{O}_X(m))$.
+By flatness of $\pi$ the Hilbert polynomial is constant along $U$.
+
+For a fixed polynomial $P$
+we define $\mathcal{H}ilb^P_X$ as the functor which maps $U$ 
+to the set of families over $U$ with Hilbert polynomial $P$.
+A theorem by Grothendieck says $\mathcal{H}ilb^P_X$ is representable
+by a projective scheme $\text{Hilb}^P_X$.
+This means that families over $U$ are in bijection with
+morphisms $U \to \text{Hilb}^P_X$.
+(In particular for $U=\{u\}$ a singleton with fiber $Z=Z_u$ a closed
+subscheme of $X$ we have a point in $\text{Hilb}^P_X$.)
+
+\begin{definition}
+\label{definition-hilbert-scheme-of-points}
+Let $P$ be a constant polynomial given by $P(m)=n$ for all $m \in \mathbb{Z}$.
+The {\it Hilbert scheme of $n$ points in $X$} is $X^{[n]}:=\text{Hilb}^P_X$.
+\end{definition}
+
+\noindent
+The reason why this scheme is called the Hilbert scheme of {\it points} 
+is that any subscheme of $X$ consisting of $n$ distinct points is in
+$\text{Hilb}^P_X$. Indeed, if $Z=\{x_1,\ldots,x_n\}\subset X$, its
+structure sheaf is the direct sum of skyscraper sheaves
+$$
+\mathcal{O}_Z=\bigoplus_{i=1}\mathbb{C}
+$$
+so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)=\mathcal{O}_Z$.
+
 The essential property of the Hilbert scheme
 is that a point (over $\mathbb{C}$) of $X^{[n]}$
 is a 0-dimensional closed subscheme of $X$
-of length $n$. We think of points of $X^{[n]}$ 
-interchangeably as collections of $n$ points of $X$
-and ideal sheaves.
+of length $n$.
+Any such scheme is supported on finitely many points of $X$,
+and its length is given by 
+$\dim\Gamma(\mathcal{O}_Z)=\sum_{x \in \text{supp}}\Gamma(\mathcal{O}_{Z_x}$.
+This means that the Hilbert scheme contains more information
+than only the support of the subscheme,
+which is the set of points, counted with multiplicity,
+where the sheaf $\mathcal{O}_Z$ vanishes.
+Indeed, the Hilbert scheme distinguishes 
+the ``tangent directions in which points collide''.
+
 
 \begin{remark}
 \label{remark-points-over-c}
@@ -48,7 +98,6 @@ But also in Video 9 Anthony
 makes the remark that he will
 call  $V(\mathbb{C})$ just $V$.
 \end{remark}
-
 
 \medskip\noindent
 The following construction
@@ -85,8 +134,7 @@ This gives a map
 \end{align*}
 called the {\it Hilbert-Chow morphism}.
 
-
-\section{Heisenberg and Fermion algebras}
+\section{Heisenberg algebra}
 \label{section-algebra}
 
 \noindent
@@ -95,18 +143,11 @@ for Subsection \ref{subsection-meeting}, which is based
 on my meeting with Jethro.
 So far there's only stuff on Heisenberg.
 
-\subsection{Definition}
-\label{subsection-definition}
+\subsection{Basic Heisenberg algebra}
+\label{subsection-basic-heisenberg}
 
 \noindent
-Recall our definition of the ``basic'' Heisenberg Lie algebra:
-$\hat{\mathfrak{a}}=
-\bigoplus_{n \in \mathbb{Z}} \mathbb{C}h_n \bigoplus\mathbb{C}_K$
-with bracket given by $[h_m,h_n]=m\delta_{m,-n}K$ and
-$[K,\hat{\mathfrak{a}}]=0$.
-
-Before continuing let me explain
-Emily's construction of the Heisenberg algebra in Video 8.
+Let's work out Emily's construction of the Heisenberg algebra in Video 8.
 Essentially she constructs the affine Lie algebra
 associated to a commutative Lie algebra (a lattice)
 and defines Heisenberg as the central extension of that.
@@ -118,6 +159,7 @@ instead we take the underlying Lie algebra
 to be 1-dimensional! Perhaps that's why we call ours
 the ``basic'' Heisenberg algebra.
 
+\medskip\noindent
 Let $\Gamma$ be a lattice 
 (i.e. a finitely generated torsion-free abelian group)
 equipped with a positive definite symmetric bilinear form
@@ -135,18 +177,19 @@ $\mathfrak{g}[[t]]$ is defined via a basis of neighbourhoods
 of $0$ of the form $t^n\mathfrak{a}[[t]]$.
 That is, the neighbourhoods get smaller and smaller
 as $n$ gets bigger.
-Further, we say that the loop algebra $\mathfrak{a}[[t]]$
+We say that the loop algebra $\mathfrak{a}[[t]]$
 is {\it spanned topologically} by $\alpha \otimes t^n$ 
 if we first consider linear span of those elements
 and then the topological closure of that.
+(In our lectures, we introduced the same topology
+on the algebra $\mathbb{C}((t))$ when discussing Tate vector spaces.)
 Later in video 8 it is explained that we can
 replace this definition of loop algebra by ours, namely
 $L\mathfrak{\mathfrak{a}}=\mathfrak{\mathfrak{a}}[t,t^{-1}]
 =\mathfrak{\mathfrak{a}} \otimes_\mathbb{C}\mathbb{C}[t,t^{-1}]$,
 and study the representations without worrying about the topology.
-(In our lectures, we introduced the same topology
-on the algebra $\mathbb{C}((t))$ when discussing Tate vector spaces.)
-Notice that $(\cdot,\cdot)$ extends to $\mathfrak{h}$.
+
+Notice that $(\cdot,\cdot)$ extends to $\mathfrak{a}$.
 
 \begin{definition}
 \label{definition-heisenberg-lie-algebra}
@@ -176,8 +219,14 @@ bracket satisfies the definition of Lie bracket,
 and that in monomials it acts by:
 $$
 [\alpha \otimes t^m,\beta \otimes t^n]=
--(\alpha,\beta)n\delta_{m,n-n}K.
+-(\alpha,\beta)n\delta_{m,-n}K.
 $$
+Compare this formula with Equation \ref{equation-main}.
+It's identical except for a $(-1)^{m-1}$ factor.
+This is why we must introduce a variant of this Heisenberg algebra
+that has a superstructure, see Subsection
+\ref{subsection-heisenberg-superalgebra}.
+
 From now on we denote $\alpha(n):=\alpha \otimes t^n$
 for $\alpha \in \Gamma$.
 
@@ -377,9 +426,13 @@ This was already discussed in Subsection \ref{subsection-meeting}
 \label{subsection-heisenberg-superalgebra}
 
 \noindent
-The main theorem is a representation of the Heisenberg superalgebra,
-which we introduce in this section.
-This can bee seen by the $(-1)^{i-1}$ factor
+Nakajima's theorem shows that there
+exists representation of the Heisenberg {\it super}algebra
+on the homology of the Hilbert scheme of points on a surface.
+We can tell that it is indeed the super
+version of Heisenberg algebra
+(and not the usual Heisenberg algebra) 
+by the $(-1)^{i-1}$ factor
 in Equation \ref{equation-main}.
 In this section we introduce the Heisenberg superalgebra 
 following Video 10.
@@ -387,7 +440,7 @@ See also Video 8, 42:00 for a quick super remark
 and from 1:32:40 until the end.
 
 \medskip\noindent
-Start by replacing $\Gamma$ (or $\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$ 
+Start by replacing $\Gamma$ (or $\Gamma \otimes_{\mathbb{Z}}\mathbb{C}$) 
 and $(-,-)$ with a super vector space $V=V_0 \oplus V_1$
 and a super bilinear form, namely
 $\left<-,-\right>:V \times V \to \mathbb{C}$ 
@@ -399,7 +452,7 @@ That is, we have to bring in $t$.
 Here Josh makes the remark that
 Nakajima does not the use topological Lie algebra approach
 for the definition of the loop algebra.
-That is, he goes for the algebraic,
+That is, he goes for the algebraic version,
 which is basically as in our lectures:
 the loop algebra is $V \otimes \mathbb{C}[t^{\pm 1}]$,
 but with one caveat: we don't include $t^0$.
@@ -414,7 +467,7 @@ $$
 $$
 And then, instead of using central extension,
 we do the following.
-The {\it super Heisenberg algebra} associated to
+The {\it Heisenberg superalgebra} associated to
 the super vector space $V$ is
 $$
 \hat{\mathfrak{h}}_V=\frac{\text{free Lie super algebra of $W$}}
@@ -433,10 +486,11 @@ where $S^*(U)=T(U)/(a \otimes b-(-1)^{\text{deg}a \text{deg}b}b \otimes a)$
 is the {\it super symmetric product} of $U$.
 This is an irreducible representation of $\hat{\mathfrak{h}}_V$.
 
-\section{Fermion algebra}
-\label{section-fermions}
-
-Not discussed in the videos!!
+\medskip\noindent
+Unfortunately it looks like there's something missing:
+Equation \ref{equation-main}!
+I want to see here why the bracket of $\hat{\mathfrak{h}}_V$
+is given exactly by that equation.
 
 \subsection{Meeting}
 \label{subsection-meeting}
@@ -445,6 +499,13 @@ Not discussed in the videos!!
 To avoid mixing up everything too much,
 I put notes from my meeting with Jethro
 in this separate subsection.
+
+\medskip\noindent
+Recall our definition of the ``basic'' Heisenberg Lie algebra:
+$\hat{\mathfrak{a}}=
+\bigoplus_{n \in \mathbb{Z}} \mathbb{C}h_n \bigoplus\mathbb{C}_K$
+with bracket given by $[h_m,h_n]=m\delta_{m,-n}K$ and
+$[K,\hat{\mathfrak{a}}]=0$.
 
 For a complex number $\mu \in \mathbb{C}$
 define a highest weight module
@@ -589,6 +650,44 @@ U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}|c\rangle$.
 \section{Correspondences}
 \label{section-correspondences}
 
+\noindent
+Let's do a quick review of basic algebraic topology following \cite{Hatcher}.
+For every topological space we define a {\it singular $n$-simplex}
+to be a continuous map $\sigma:\Delta^n \to X$ where $\Delta^n$
+is the simplex
+$\{(t_0,\ldots,t_n \in \mathbb{R}^{n+1}:\sum_it_i=1,t_i\geq 0\forall i\}$.
+The free abelian group generated by the set of singular $n$-simplices in $X$ 
+is $C_n(X)$. Elements of $C_n(X)$ are formal sums $\sum_in_i\sigma_i$
+for $n_i \in \mathbb{Z}$. For every $n$ there is a boundary map 
+$\partial_n:C_n(X) \to C_{n-1}(X)$ such that $\partial_n\partial_{n+1}=0$.
+A continuous map of topological spaces $f:X\to Y$ induces
+a homomorphism $f_\sharp:C_n(X) \to C_n(Y)$ by composition of a simplex
+$\sigma:\Delta^n \to X$ with $f$ and extending linearly.
+This map satisfies $f_\sharp \partial=\partial f_\sharp$,
+thus giving a map in the category of chain complexes of groups.
+Thus we can apply the functor $H_n$ to obtain an induced map
+on homology groups $f_*:H_n(X) \to H_n(Y)$.
+
+Dual to the chain maps $f_\sharp$ are the cochain maps
+$f^\sharp:C^n(Y;G) \to C^n(X;G)$.
+The relation $f_\sharp \partial=\partial f_\sharp$
+dualizes to $\delta f^\sharp=f^\sharp \delta$, so
+$f^\sharp$ induces homomorphisms $f^*:H^n(Y;G) \to H^n(X;G)$.
+Recall that the cohomology groups are constructed by considering
+the cochain groups $C_n^*:=\Hom(C_n,G)$ and the coboundary map
+$\delta=\partial^* :C^*_{n-1}\to C^*_n$, this giving a cochain complex.
+While one could guess that $H^n(C;G)$ is isomorphic to
+$\Hom(H_n(C),G)$, this is overly optimistic and instead we have the
+universal coefficient theorem which relates them via the exact sequence
+$$
+\xymatrix{
+0\ar[r]&\text{Ext}(H_{n-1}(C),G)\ar[r]
+&H^n(C;G)\ar[r]
+&\Hom(H_n(C),G)\ar[r]&0.
+}
+$$
+
+
 If $f:X \to Y$ is continuous,
 we have an induced map $f_*:H_i(X)\to H_i(Y)$.
 If a group $G$ acts on $X$,
@@ -596,7 +695,7 @@ then it acts on $H_\bullet(X)$
 (this is a way producing a representation,
 it follows from the functoriality of homology).
 
-Thinking of the graph $f$ as a subset of $X \times Y$,
+Thinking of the graph of $f$ as a subset of $X \times Y$,
 we can ask if a closed subset $Z \subset X \times Y$ 
 (not necessarily the graph of a continuous map)
 will induce a map on homology $H_i(X)\to H_i(Y)$.
@@ -741,7 +840,9 @@ Key properties of Borel-Moore homology
 (see \cite[Section 4.2]{Kamnitzer}):
 
 \begin{enumerate}
-\item If $f:X \to Y$ is proper
+\item (Pushforward.)
+\label{item-pushfowrward}
+If $f:X \to Y$ is proper
 (e.g. inverse image of compact is compact)
 then $f_* :H_i^{BM}(X)\to H_i^{BM}(Y)$.
 This is functorial in proper maps,
@@ -752,8 +853,8 @@ chain remains locally finite with respect
 to the preimage chain by properness.
 
 \item 
-\label{item-pushforward}
-(Pushforward.) Let $U \subset X$ be open, $F=X\setminus U$,
+\label{item-les}
+(Long exact sequence.) Let $U \subset X$ be open, $F=X\setminus U$,
 $u:U \hookrightarrow X$ and $f:F \hookrightarrow X$ 
 inclusions.
 Then $u^* :H_i^{BM}(X) \to H_i^{BM}(U)$ 
@@ -854,43 +955,57 @@ X_1&&X_2.
 $$
 
 \noindent
-The correspondence is
+The correspondence is map
 $$
-c_{[Z]}:H_i^{BM}(X_2)\to H_{i+2d-2d_2}^{BM}(X_1),
+c_{[Z]}:H_i^{BM}(X_2)\to H_{i+2d-2d_2}^{BM}(X_1).
 $$
-defined by first applying the pullback property
+To define it we first apply the pullback property
 $$
 \xymatrix{
-H_i^{BM}(X)\ar[r]^{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2)
+H_i^{BM}(X)\ar[r]^-{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2),
 }
 $$
-because the projection onto the second factor
+which is valid the projection onto the second factor
 is a locally trivial (in fact trivial) fibration
 with fibers of real dimension $2d_1$.
-So by \ref{item-pullback} we obtain the dimension
+So by (\ref{item-pullback}) we obtain the dimension
 $i+2d_1$.
 
-Them we take the intersection pairing
+Then we take the intersection pairing
 with the fundamental class of $Z$,
 which lives in the $2d$-th BM homology of $Z$.
-According to \ref{item-intersection}
+According to (\ref{item-intersection})
 this should be a map
 $$
+\xymatrixcolsep{7em}
 \xymatrix{
-H_{i+2d_1}^{BM}(X_1\times X_2)\ar[r]^{\cap_{X_1 \times X_2}[Z]}
-&  H_{i+2d_1+2d-\underbrace{(2d_1+2d_2)}_{\substack{\text{real dimension} \\ 
-\text{of ambient space}}}}(Z).
+H_{i+2d_1}^{BM}(X_1\times X_2)\ar[r]^-{\cap_{X_1 \times X_2}[Z]}
+&  H^{BM}_{i+d_1+2d-(2d_1+2d_2)}(Z),
 }
 $$
+where the scary subindex is unpacked as
+$$
+\underbrace{i+2d_1}
+_{\substack{\text{we are here} \\ 
+\text{from previous step}}}+
+\underbrace{2d}
+_{\substack{\text{real dimension} \\ \text{of }Z}}
+-\underbrace{(2d_1+2d_2)}
+_{\substack{\text{real dimension} \\ 
+\text{of ambient space}}},
+$$
+which of course equals $i+2d-2d_2$.
+
 Finally take the pushforward map
 of $p_1$, which we assumed to be proper.
 All in all, using pullback, intersection and pushforward we have
 constructed
 $$
 \xymatrix{
-H_i^{BM}(X)\ar[r]^{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2)\ar[r]^{\cap_{X_1 \times X_2}[Z]}
-&  H_{i+2d_1+2d-(2d_1+2d_2)}(Z)
-\ar[r]^{(p_1)_*}& 
+H_i^{BM}(X)\ar[r]^-{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2)
+\ar[rr]^{\cap_{X_1 \times X_2}[Z]}
+&& H_{i+2d-2d_2}(Z)
+\ar[r]^-{(p_1)_*}& 
 H_{i+2d-2d_2}(X_1).
 }
 $$
@@ -909,9 +1024,12 @@ where $Z$ is contained and then take intersection.
 \begin{remark}
 \label{remark-notes}
 \begin{enumerate}
-\item We can also define correspondences
+\item 
+\label{item-any-class}
+We can also define correspondences
 $c_\alpha:H_1^{BM}(X_2)\to H_{i+2d-2d_2}^{BM}(X_1)$ 
-for any $\alpha \in H_{2d}^{BM}$.
+for any $\alpha \in H_{2d}^{BM}(Z)$,
+i.e. not only the fundamental class of $[Z]$.
 
 \item If $Z$ is the graph of a proper morphism
 $f:X_2 \to X_1$, then $c_{[Z]}=f_*$.
@@ -1037,7 +1155,20 @@ $$
 (For $i<0$, we swap $\mathcal{I}_1$ and $\mathcal{I}_2$ 
 in this definition.)
 
-We have projections
+\medskip\noindent
+Notice that by the procedure in Section \ref{section-correspondences}
+the submanifold $P[i]$ already defines a correspondence
+by pullback, intersection with the fundamental class of $P[i]$ 
+and then pushing forward. However, this is not quite what we will do:
+we will bring in two other classes. Let
+$\alpha \in H_*^{BM}(X)$, $\beta \in H_*(X)$
+and $i>0$
+Define
+\begin{align*}
+P_\alpha[i]&=\varpi_*(\Pi^*\alpha \cap [P[i]])\\
+P_\beta[i]&=\varpi_*(\Pi^*\beta \cap [P[-i]])
+\end{align*}
+according to the projections
 $$
 \xymatrix{
 &  \prod_n X^{[n-i]}\times X^{[n]}\times X
@@ -1045,6 +1176,50 @@ $$
 X&&\prod_n X^{[n-i]}\times X^{[n]}
 }
 $$
+I think the reason for this is that using just $P[i]$ as
+the correspondence could give non-proper projections,
+and the pullback may not be well-defined.
+Also, it's not clear why we have to choose
+$\alpha$ and  $\beta$ in different kinds of homology.
+Of course if we just assume that $X$ 
+is projective then BM homology
+coincides with usual homology.
+
+In conclusion, the classes $P_\alpha[i]$ and $P_\beta[i]$ belong to
+$\prod_nH_*(X^{[n\mp i]})\otimes H_*(X^{[n]})$.
+Here the  $\mp$ means that if  $i>0$ 
+we are substracting, and if $i<0$ we
+are adding.
+
+Now we use Poincaré duality 
+(either in its BM version $H^{BM}_i(M)\cong H^{m-i}(M)$
+or the usual $H_i(M) \cong H^{m-i}(M)$ one assuming $M$ is compact)
+to identify a class in the tensor product with an endomorphism,
+as in $V \otimes W^* \cong \Hom(W,V)$, $v \otimes \varphi \mapsto 
+(w \mapsto \varphi(w)v)$.
+This way $P_\alpha[i]$ and $P_\beta[-i]$ 
+give maps
+$$
+\bigoplus_{n}H_* (X^{[n]}) \to \bigoplus_{n}H_* (X^{[n\mp i]}).
+$$
+It's worth noting that in practice we will use the construction
+in Section \ref{section-correspondences}, specifically
+in Remark \ref{remark-notes}(\ref{item-any-class})
+for the classes $P_\alpha[i]$ and $P_\beta[i]$.
+Namely, we will use the projections $p_1$ and $p_2$
+in
+$$
+\xymatrix{
+&X^{[n+1]}\times X^{[n]}\times X\ar[ld]_{p_1}\ar[rd]^{p_2}\\
+X^{[n+1]}&&X^{[n]}.
+}
+$$
+to pull back using $p_2$, intersect with, say, $P_\alpha[i]$, 
+and pushforward using $p_1$.
+
+\medskip\noindent
+The following proposition is used to compute the exact degrees
+in the domain and codomain of our correspondences:
 
 \begin{proposition}
 \label{proposition-dimension}
@@ -1052,65 +1227,12 @@ $\dim_\mathbb{C}P[i]\cap (X^{[n-i]}\times X^{[n]})=2n-i+1$.
 \end{proposition}
 
 \medskip\noindent
-Next we define correspondences.
-For $i>0$, let
-$\alpha \in H_*^{BM}(X)$, $\beta \in H_*(X)$
-and consider
-\begin{align*}
-P_\alpha[i]&=\varpi_*(\Pi^*\alpha \cap [P[i]])\\
-P_\beta[i]&=\varpi_*(\Pi^*\beta \cap [P[-i]]).
-\end{align*}
-Notice that it's not clear why we choose
-$\alpha$ and  $\beta$ in different kinds of homology.
-At this point we may just assume that $X$ 
-is projective so that BM homology
-coincides with usual homology.
-
-These classes belong to
-$\prod_nH_*(X^{[n\mp i]})\otimes H_*(X^{[n]})$.
-Here the  $\mp$ means that if  $i>0$ 
-we are substracting, and if $i<0$ we
-are adding.
-
-Recall how correspondences work:
-if $M_1$, $M_2$ are varieties
-of dimensions $d_1$, $d_2$, and
-$Z \subseteq M_1\times M_2$ is a variety
-of dimension $d$.
-We have the projections
-$$
-\xymatrix{
-&Z \subseteq M_1 \times M_2\ar[ld]_{p_1}\ar[rd]^{p_2}\\
-M_1&&M_2.
-}
-$$
-Then we have correspondences defined by
-\begin{align*}
-[Z]: H_*(M_2) &\longrightarrow H_*(M_1) \\
-c &\longmapsto \pi_{1,*}(p_2^*c \cap[z]),
-\end{align*}
-
-\noindent
-which is to be read as:
-take a class in $H_*(M_2)$,
-pull it back to the homology of $M_1 \times M_2$,
-cap it with the fundamental class of $Z$,
-and push it down to the homology of $M_1$.
-
-In this way $P_\alpha[i]$ and $P_\beta[-i]$ 
-give maps
-$$
-\bigoplus_{n}H_* (X^{[n]}) \to \bigoplus_{n}H_* (X^{[n\mp i]}).
-$$
-via the perfect pairing property.
-
-\medskip\noindent
 Now we are almost ready to formulate the main theorem.
 First notice that this is \cite[Theorem 8.13]{Nakajima-lectures}
 and {\bf not} \cite[Theorem 3.1]{Nakajima-Heis}.
 Now let's clarify what are the main objects involved.
 The theorem is about a representation of the
-Heisenberg superalgebra Subsection \ref{subsection-fermions} 
+Heisenberg superalgebra Subsection \ref{subsection-heisenberg-superalgebra} 
 for $V=H_*(X)$.
 
 The pairing is the super skew-symmetric pairing
@@ -1162,14 +1284,20 @@ by considering graded dimensions,
 which we will not discuss.
 \end{theorem}
 
-\medskip\noindent
-Now we do a worked example to illustrate the main idea of the proof.
+\section{Worked example}
+\label{section-example}
 
-Fix $x \in X$ and let $\alpha=[X]$ is the BM class of $X$,
-and $\beta=[x]$ the class of the little point $x$.
+\noindent
+In this section we do a worked example following \cite{Nakajima-lectures}
+and Video 10
+to illustrate the main idea of the proof.
+
+\medskip\noindent
+Fix $x \in X$ and let $\alpha=[X]$ be the BM class of $X$,
+and $\beta=[x]$ the class of the point $x$.
 Take a set of distinct $n$ points
 $x_1,\ldots,x_n \in X\setminus\{x\}$ 
-non of which is $x$.
+none of which is $x$.
 Identify them with the corresponding
 ideal $\mathcal{I}$. We are going to interchangeably
 refer to those points as points and as ideal sheaves.
@@ -1180,8 +1308,41 @@ $$
 $$
 If you look back Equation \ref{equation-main},
 it's easy to see that we should obtain just $\text{Id}$.
-we want this to give $\mathcal{I}$.
 
+Let's compute first $P_\beta[-1][\mathcal{I}]$.
+For this consider
+$$
+\xymatrix{
+&X^{[n+1]}\times X^{[n]}\times X\ar[ld]_{p_1}\ar[rd]^{p_2}\\
+X^{[n+1]}&&X^{[n]}.
+}
+$$
+By definition, $P_{[x]}[-1]$ is given by:
+pull back $\mathcal{I}$ via $p_2$,
+intersect with the class $\varpi_*(\Pi^*\alpha \cap [P[-1]])=P_{[x]}[-1]$ and pushforward
+down to $X^{[n+1]}$. 
+Roughly this means that we pushforward the cycle corresponding to
+$$
+\{(\mathcal{I}\subseteq \mathcal{I}',x)
+:\text{supp}(\mathcal{I}'/\mathcal{I})=\{x\}\}
+\subset X^{[n]} \times X^{[n+1]} \times X,
+$$
+that is, the subschemes $\mathcal{I}'$ in $X^{[n+1]}$ satisfying
+$\text{supp}(\mathcal{I}'/\mathcal{I})=\{x\}$.
+But since the difference in the lengths of the ideals is one,
+we conclude that
+$$
+P_{[x]}[-1][\mathcal{I}]=[\{x\}\cup \mathcal{I}].
+$$
+
+On the other hand, the correspondence $P_{[X]}[1]$ 
+maps an ideal $\mathcal{I}'\in X^{[n+1]}$ to the cycle
+$\sum_{y \in \mathcal{I}'}[\mathcal{I}'-\{y\}]$.
+Then it becomes clear that
+$$
+[P_\alpha[1],P_\beta[-1]][\mathcal{I}]=[\mathcal{I}]
+$$
+(see \cite[Figure 8.1]{Nakajima-lectures}).
 
 \section{Götsche's formula}
 \label{section-gf}
