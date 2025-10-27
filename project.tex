@@ -25,7 +25,7 @@ and sketch the proof of the theorem.
 
 
 \section{Hilbert scheme of points}
-\label{section-hsp}
+\label{section-hilbert-scheme}
 
 \noindent
 Throughout $X$ will be a projective complex surface.
@@ -69,24 +69,39 @@ is that any subscheme of $X$ consisting of $n$ distinct points is in
 $\text{Hilb}^P_X$. Indeed, if $Z=\{x_1,\ldots,x_n\}\subset X$, its
 structure sheaf is the direct sum of skyscraper sheaves
 $$
-\mathcal{O}_Z=\bigoplus_{i=1}\mathbb{C}
+\mathcal{O}_Z=\bigoplus_{i=1}^n (\text{skyscraper sheaf at $x$})
 $$
 so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)=\mathcal{O}_Z$.
 
-The essential property of the Hilbert scheme
+However, not every point in $X^{[n]}$ is given
+by a set of $n$ distinct points,
+nor by a set of points with allowed repetitions.
+Indeed, the Hilbert scheme distinguishes 
+the ``tangent directions in which points collide''.
+The important thing to note here is that 
+there are elements in the Hilbert scheme
+given by ideals which
+do not correspond to sets of points
+(even with allowed repetition).
+
+In video 1 Anthony tells that 
+the essential property of the Hilbert scheme
 is that a point (over $\mathbb{C}$) of $X^{[n]}$
 is a 0-dimensional closed subscheme of $X$
 of length $n$.
-Any such scheme is supported on finitely many points of $X$,
-and its length is given by 
-$\dim\Gamma(\mathcal{O}_Z)=\sum_{x \in \text{supp}}\Gamma(\mathcal{O}_{Z_x}$.
-This means that the Hilbert scheme contains more information
-than only the support of the subscheme,
-which is the set of points, counted with multiplicity,
-where the sheaf $\mathcal{O}_Z$ vanishes.
-Indeed, the Hilbert scheme distinguishes 
-the ``tangent directions in which points collide''.
+Any such scheme is supported on finitely many points of $X$
+(this is consequence of $X$ being Noetherian:
+we couldn't have infinitely many points as it
+would give an infinite chain of prime ideals)
+and its {\it length} is defined by 
+$\dim\Gamma(\mathcal{O}_Z)=\sum_{x \in \text{supp}}\Gamma(\mathcal{O}_{Z_x})$.
 
+While this approach is more tangible than the
+initial definition of the Hilbert scheme,
+it's not immediate why it works:
+how exactly does having a constant Hilbert polynomial
+force a subscheme $Z$ of a surface $X$ to be 0-dimensional
+and have finite length?
 
 \begin{remark}
 \label{remark-points-over-c}
@@ -120,17 +135,12 @@ and are denoted as formal sums $\sum_{x \in X}n_x[x]$
 where $\sum_{x \in X}n_x=n$, with $n_x \in \mathbb{N}$
 and $[x]$ are formal symbols.
 
-If $Z$ is a 0-dimensional closed subscheme of $X$,
-the {\it length} of $Z$ is $\dim \Gamma(\mathcal{O}_Z)$.
-Any such $Z$ is supported at finitely many points.
-We have that $\dim\Gamma(\mathcal{O}_Z)
-=\sum_{x \in \text{supp}Z}\Gamma(\mathcal{O}_{Z,x})$.
-
-This gives a map
+Since elements of $X^{[n]}$ have length $n$ as defined above,
+we have a map
 \begin{align*}
 \pi : X^{[n]} &\longrightarrow S^nX \\
  Z&\longmapsto \underbrace{\sum_{x \in \text{supp}Z}\dim
-\Gamma(\mathcal{O}_{Z,x}x)}_{\text{cycle of $Z$}}
+\Gamma(\mathcal{O}_{Z,x}[x]}_{\text{cycle of $Z$}}
 \end{align*}
 called the {\it Hilbert-Chow morphism}.
 
