@@ -5688,15 +5688,16 @@ _{\substack{h_0\text{ acts by} \\ \text{the scalar }(h,\mu+\beta)
 \in \mathbb{C}}}.
 $$
 
+\noindent
 (We can picture this as a lattice with a vector space
 sitting at every point, and a map from every vector space
-with tag $\beta$ to the vector space $\beta+\mu$.
+with tag $\beta$ to the vector space with tag $\beta+\mu$.
 The vector spaces are infinite-dimensional and 
-are drawn as cones with, e.g. $|\beta\rangle$ and $|\beta+\mu\rangle$ 
+are drawn as cones with, e.g., $|\beta\rangle$ and $|\beta+\mu\rangle$ 
 in the vertex of the cone.)
 
 \medskip\noindent
-As a small remark, notice that in the vector space 
+Notice that in the vector space 
 $H^\beta$, $h_0=(h,\beta)$ constant, we can write
 $z^{(\mu,\beta)}I_{H^\beta}$ as $z^{\mu_0}$,
 therefore, let's write a symbol $e^\mu$ for the map(s) $u$,
@@ -5779,7 +5780,7 @@ and becomes $i_{z,w}(z-w)^{(\mu,\beta)}$.
 \medskip\noindent
 Consider this argument fixing conformal weights:
 $$
-\Delta(a_{(n)}b)&=\Delta(a)+\Delta(b)-n-1.
+\Delta(a_{(n)}b)=\Delta(a)+\Delta(b)-n-1.
 $$
 If $a=|\mu\rangle$, $b=|\beta\rangle$, then
 \begin{align*}
@@ -5907,10 +5908,12 @@ $$
 $$
 i.e.,
 $$
-\tilde{C}(\alpha,\beta)=C(\alpha,\beta)\frac{\eta(\alpha+\beta)}
+\tilde{C}(\alpha,\beta)=C(\alpha,\beta)
+\frac{\eta(\alpha+\beta)}
 {\eta(\alpha)\eta(\beta)}.
-\end{remark}
 $$
+\end{remark}
+
 This corresponds to modifying $C$ by the coboundary $d\eta$.
 It's the same vertex superalgebra, though.
 
@@ -5987,6 +5990,224 @@ an orbifold step.
 In a paper by [Jethro-?] it was shown that in
 rank 24 it's possible to pass from any vertex
 algebra to $V_{\text{Leech}}$ by a single orbifold step.
+
+
+\section{Representations of vertex algebras}
+\label{section-representations-vertex-algebras}
+
+\noindent
+In this section we aim at describing the
+irreducible representations of lattice vertex algebras $V_Q$.
+By restriction, $M$ is a $H$-module,
+where $H=H^0(\mathfrak{h})$ is the Heisenberg vertex algebra
+(and also a Fock representation of the Heisenberg Lie algebra,
+which has a vertex algebra
+structure, unlike other Fock representations)
+associated with the commutative Lie algebra
+$\mathfrak{h}=\mathbb{C}\otimes_\mathbb{Z}Q$
+with the induced bilinear form
+$(\cdot,\cdot):\mathfrak{h}\times\mathfrak{h}\to\mathbb{C}$.
+
+A few lectures ago, I stated
+(ref?)
+
+\begin{proposition}
+\label{proposition-past}
+$H(\mathfrak{h})$-modules are the same as smooth $\hat{\mathfrak{h}}$-modules.
+\end{proposition}
+
+\noindent
+This is a special case of a construction that works
+for any $\mathfrak{h}$ abelian Lie algebra. Also recall
+
+\begin{proposition}
+\label{proposition-past2}
+$V^k(\mathfrak{g})$-modules = $\{\text{smooth level $k$
+$\hat{\mathfrak{g}}$-modules}\}$.
+\end{proposition}
+
+\noindent
+Let $\mathfrak{h}=\mathbb{C}$ now for simplicity
+(general case is similar) and let
+$\mathfrak{a}=\bigoplus_{n \neq 0}\mathbb{C}h_n \oplus \mathbb{C} K \subset
+\hat{\mathfrak{h}}$. (We have excluded 0!)
+
+\begin{proposition}
+\label{proposition-representations-of-heisenberg}
+Consider $\mathfrak{a}$-modules with $\mathbb{Z}$-grading
+$M=\bigoplus_{k \in \mathbb{Z}}M_k$ with degrees bounded from below,
+that is such that $h_n(M) \subset M_{k-n}$
+and $m_k$ for $k$ sufficiently negative.
+We call this a {\it positive energy module}.
+(Will this work for any smooth??) $\mathfrak{a}$-module is isomorphic to a direct
+sum of copies of the Fock space $F=\mathbb{C}[x_1,x_2,x_3,\ldots]$
+with
+$$
+h_n=
+\begin{cases}
+n\frac{\partial }{\partial x_n}\qquad &n>0 \\
+x_{-n}\qquad &n>0.
+\end{cases}
+\qquad \qquad K=1.
+$$
+\end{proposition}
+
+\begin{proof}
+Let $M$ be an $\mathfrak{a}$-module.
+Define in general the {\it space of vacuum vectors} by
+$$
+\Omega_M=\{x \in M:h_nx=0\;\mathfrak{a}n\geq 1\}.
+$$
+Let $\Omega=\Omega_M$ and define
+\begin{align*}
+\varphi: F \otimes \Omega &\longrightarrow M \\
+p(\underline{x})\otimes v &\longmapsto p(\underline{h})v.
+\end{align*}
+
+\noindent
+We claim that $\varphi$ is injective. Indeed,
+if $v \in \Ker(\varphi)\subset F \otimes \Omega$, then
+there exists $v' \in 1 \otimes \Omega \cap \Ker$.
+To see why think of $v$ as a finite sum of polynomials
+times elements in the module, take the highest degree of the polynomials,
+apply as many operators as you need to get down to the vacuum,
+this gives a sum of vacuum vectors.
+(We had used this sort of argument to show
+irreducibility of modules)
+
+[Rest of proof made in class.]
+\end{proof}
+
+
+
+\medskip\noindent
+Now let $M$ be a $V_Q$-module which is positive 
+energy as an $\mathfrak{a}$-module.
+So $M \cong F \otimes \Omega$, as above.
+We have the action of quantum fields
+$$
+h^M(z)=\sum_{n \in \mathbb{Z}}h_{(n)}^M z^{-n-1}
+$$
+on $M$, for every $h \in \mathfrak{h}$.
+We also have
+$$
+\Gamma^M_\alpha(z)=\sum_n\Gamma^m_{\alpha(n)}z^{-n-1}
+=Y^M(e^\alpha,z)\qquad \forall \alpha\in Q.
+$$
+
+We have
+$$
+[h^M_{(m)},\Gamma^\alpha_M(z)=
+(h,\alpha)z^m\Gamma^\alpha_M(z),
+\qquad \forall m \in \mathbb{Z},h \in \mathfrak{h}, \alpha \in Q.
+$$
+(We saw this relation in $V_a$ itself a few lessons ago.)
+
+From this we deduce
+$$
+\Gamma^\alpha_M(z)=
+\text{exp}\left(\sum_{j<0}\frac{z^{-j}}{-j}\alpha_j\right)
+\text{exp}\left(\sum_{j>0}\frac{z^{-j}}{-j}\alpha_j\right)
+A_\alpha(z)
+$$
+(exactly as previously),
+where the coefficients of $A_\alpha(z)$ commute with all
+$h_n$ {\bf for $n \neq 0$}.
+In other words, it commutes with $\alpha$ as defined above.
+
+Since $T=L_{-1}$ in $V_Q$,
+we have (as before) that
+$$
+\partial_z\Gamma^\alpha_M(z)=\,:\!\alpha(z)\Gamma^\alpha_M(z)\!:\,
+$$
+which implies (as before) that
+$$
+A_\alpha(z)=Ce_M^\alpha z^{\alpha_0}.
+$$
+
+So
+$$
+\Gamma^\alpha_M(z)=e^\alpha
+\text{exp}(\sum\ldots)
+\text{exp}(\sum\ldots)
+z^{\alpha_0},
+$$
+where $e_M^\alpha:\Omega_M \to \Omega_M$.
+
+In particular $\alpha_0$ must act on $\Omega$ by integer eigenvalues
+for all $\alpha \in Q$, $\alpha_0|_{\Omega_\mu}=(\alpha,\mu)$.
+So
+ $$
+\Omega=\bigoplus_{\mu \in Q^\vee} \Omega_\mu.
+$$
+Furthermore (as before),
+$e_M^\alpha:\Omega_\mu \to \Omega_{\mu+\alpha}$.
+From Borcherds identity, we can deduce
+\begin{equation}
+\label{equation-cocycle-m}
+e^\alpha_M e^\beta_M=c(\alpha,\beta)e_M^{\alpha+\beta}\qquad 
+\forall \alpha,\beta \in Q.
+\end{equation}
+(Compare with Equation \ref{equation-cocycle}.)
+
+\noindent
+In particular, if $x \in \Omega_\mu$ nonzero,
+then $V_Q\cdot x \subset M$ is of the form
+$$
+\bigoplus_{\alpha \in Q}H^{\mu+\alpha}e^\alpha x.
+$$
+If $M$ is irreducible, then $M=
+\bigoplus_{\alpha \in Q}H^{\mu+\alpha}e^\alpha x$.
+
+As before, we can picture this as a lattice (say, triangular)
+with a Fock module sitting in every point. $V_Q$ is just
+the direct sum of these modules. We can also picture
+the dual lattice $Q^\vee$, labelled $Q+\mu$.
+
+(I think the upshot is that the weight modules
+are indexed by the quotient $Q^\vee/Q$.)
+
+\medskip\noindent
+Finally, for each $\mu \in Q^\vee/Q$, construct
+(or confirm it exists) $V_{\mu+Q}$.
+Recall the cocycle $Q \times Q \to \mathbb{C}^\times$, 
+$C(\alpha,\beta) \in \mathbb{C}^\times$
+had to satisfy Equation \ref{equation-quantum-relation}, namely:
+ $$
+C(\alpha+\beta,\gamma)C(\alpha,\beta)
+=C(\alpha,\beta+\gamma)C(\beta,\gamma),
+$$
+etc, $\Lambda^2Q \to \mathbb{C}^\times$,
+$$
+\frac{C(\alpha,\beta)}{C(\beta,\alpha)}
+=(-1)^{(\alpha,\alpha)(\beta,\beta)+(\alpha,\beta)}.
+$$
+
+For an explicit construction of $C(\alpha,\beta)$ see
+\cite[Section 5]{KVAB}.
+
+\medskip\noindent
+The idea is to consider
+$$
+V_{Q^\vee}=\bigoplus_{\mu \in Q^\vee}H^\mu\cdot e^\mu.
+$$
+Define an action
+ $$
+V_Q \times V_{Q^\vee} \to V_{Q^\vee}[[z^{\pm 1}]]
+$$
+by a similar formula,
+(extend $C:Q \times Q \to \mathbb{C}^\times$ 
+to $C:Q\times Q^\vee \to \mathbb{C}^\times$)
+get a $V_Q$-module $V_{Q\vee}$.
+Then
+$$
+V_{Q^\vee}=\bigoplus_{\mu \in Q^\vee/Q}V_{\mu+Q}
+$$
+where the $V_{\mu+Q}$ are irreducible modules.
+
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
