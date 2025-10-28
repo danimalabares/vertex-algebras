@@ -28,11 +28,20 @@ and sketch the proof of the theorem.
 \label{section-hilbert-scheme}
 
 \noindent
+The discussion in this section will not be used in what
+remains of this project and may summarized by saying,
+as Anthony does in the very beginning of video 1, 
+that the essential property of the Hilbert scheme
+is that a point (over $\mathbb{C}$) of $X^{[n]}$
+is a 0-dimensional closed subscheme of $X$
+of length $n$.
+
+\medskip\noindent
 Throughout $X$ will be a projective complex surface.
 We start by introducing the Hilbert scheme following
 \cite[Section 1.1]{Nakajima-lectures}.
 We consider a contravariant funtor 
-$\mathcal{H}ilb_X:(\text{Schemes})\to (\text{Sets})$ 
+$\mathcal{H}ilb_X:(\text{Schemes})^{\text{op}}\to (\text{Sets})$ 
 which assigns to any scheme $U$ the set of flat families
 of closed subschemes in $X$ parametrized by $U$.
 Any such family is by definition a flat morphism
@@ -45,17 +54,67 @@ $$
 so that the fibers of $\pi$ are closed subschemes of $X$.
 The Hilbert polynomial at a fiber $Z_u$ is defined by
 $P_u(m)=\chi(\mathcal{O}_{Z_u}\otimes \mathcal{O}_X(m))$.
-By flatness of $\pi$ the Hilbert polynomial is constant along $U$.
+By flatness of $\pi$ the Hilbert polynomial is constant along $U$
+\cite[Part III, Theorem 9.9]{Hartshorne}.
 
 For a fixed polynomial $P$
 we define $\mathcal{H}ilb^P_X$ as the functor which maps $U$ 
 to the set of families over $U$ with Hilbert polynomial $P$.
 A theorem by Grothendieck says $\mathcal{H}ilb^P_X$ is representable
 by a projective scheme $\text{Hilb}^P_X$.
-This means that families over $U$ are in bijection with
+This means that there is a natural transformation
+$\Hom(-,\text{Hilb}^P_X) \simeq \mathcal{H}ilb^P_X(-)$,
+that is, families over any scheme $U$ are in bijection with
 morphisms $U \to \text{Hilb}^P_X$.
-(In particular for $U=\{u\}$ a singleton with fiber $Z=Z_u$ a closed
-subscheme of $X$ we have a point in $\text{Hilb}^P_X$.)
+Moreover, as with any representable functor,
+we obtain a distinguished element associated to the identity morphism
+of $\text{Hilb}^P_X$.
+In our case, this distinguished element is a
+universal family $\mathcal{Z} \to \text{Hilb}^P_X$
+such that any other family $Z \to U$ is obtained as a pullback
+(the Hilbert functor acts on morphisms of schemes by pullbacks of families)
+of $\mathcal{Z}$.
+More exactly, the digram
+$$
+\xymatrix{
+\text{id}_{\text{Hilb}^P_X}\ar@{|->}[d]
+&\Hom(\text{Hilb}^P_X,\text{Hilb}^P_X)\ar[r]\ar[d]_{f^*}
+&\mathcal{H}ilb^P_X(\text{Hilb}^P_X)\ar[d]^{f^*}
+&\mathcal{Z}\ar@{|->}[d]\\
+f&\Hom(U,\text{Hilb}^P_X)\ar[r]&\mathcal{H}ilb^P_X(U)& f^*\mathcal{Z}.
+}
+$$
+commutes.
+
+This shows that studying families over the Hilbert scheme
+is enough to study any family of subschemes of our initial scheme $X$.
+Recall the fact that points $x$ of any scheme $X$ correspond to morphisms
+$\Spec(\kappa(x)) \to X$, where $\kappa(x)$ is the residue field of the point
+(see e.g. Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/01J9}{01J9}).
+Then for every point $h$ of the Hilbert scheme
+we have a unique subscheme
+of $X$ defined as the fiber
+$$
+\xymatrix{
+X_h\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&\mathcal{Z}\ar[d]
+& \subset X \times \text{Hilb}^P_X\\
+\Spec(\kappa(h))\ar[r]&\text{Hilb}^P_X.
+}
+$$
+\begin{remark}
+\label{remark-points-over-c}
+There is some concern about considering the $\mathbb{C}$-points.
+Formally, this means that the residue field
+i.e. the stalk over its maximal ideal,
+should be $\mathbb{C}$ on that point.
+I think is just so that we think of points of
+$X^{[n]}$ as the corresponding fiber of the universal family
+$\mathcal{Z} \to X^{[n]}$.
+See Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/01J5}{01J5} and
+\cite[VI.1.2]{EisenbudHarris}
+\end{remark}
 
 \begin{definition}
 \label{definition-hilbert-scheme-of-points}
@@ -64,6 +123,32 @@ The {\it Hilbert scheme of $n$ points in $X$} is $X^{[n]}:=\text{Hilb}^P_X$.
 \end{definition}
 
 \noindent
+This condition forces the dimension of the fibers of any family
+over $X$ to be zero. Indeed, the leading term
+of the Hilbert polynomial of a projective variety of degree $d$
+and dimension $s$ is $(dm^s)/s!$, which can only be constant
+for $s=0$ (see \cite[Exercise 1.13]{HarrMorr}).
+
+Further, any 0-dimensional subscheme of $X$
+is supported on finitely many points of $X$
+(this is consequence of $X$ being Noetherian, see 
+\href{https://math.stackexchange.com/questions/474873/why-is-every-noetherian-zero-dimensional-scheme-finite-discrete}{here}:
+we couldn't have infinitely many points as it
+would give an infinite chain of prime ideals).
+Finally, the {\it length} of any such subscheme, defined by
+ $\dim\Gamma(\mathcal{O}_Z)$
+must be $\sum_{x \in \text{supp} Z}\Gamma(\mathcal{O}_{Z_x})=n$.
+(See Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/0AYT}{0AYT}
+or
+\href{https://math.stackexchange.com/questions/3578689/
+understanding-length-of-schemes}
+{Stack Exchange}
+for the fact that if the support is 0-dimensional then
+$H^i(\mathcal{F})=0$ for $i>0$ and thus the length of the scheme
+is what we just wrote.)
+
+\medskip\noindent
 The reason why this scheme is called the Hilbert scheme of {\it points} 
 is that any subscheme of $X$ consisting of $n$ distinct points is in
 $\text{Hilb}^P_X$. Indeed, if $Z=\{x_1,\ldots,x_n\}\subset X$, its
@@ -83,36 +168,6 @@ there are elements in the Hilbert scheme
 given by ideals which
 do not correspond to sets of points
 (even with allowed repetition).
-
-In video 1 Anthony tells that 
-the essential property of the Hilbert scheme
-is that a point (over $\mathbb{C}$) of $X^{[n]}$
-is a 0-dimensional closed subscheme of $X$
-of length $n$.
-Any such scheme is supported on finitely many points of $X$
-(this is consequence of $X$ being Noetherian:
-we couldn't have infinitely many points as it
-would give an infinite chain of prime ideals)
-and its {\it length} is defined by 
-$\dim\Gamma(\mathcal{O}_Z)=\sum_{x \in \text{supp}}\Gamma(\mathcal{O}_{Z_x})$.
-
-While this approach is more tangible than the
-initial definition of the Hilbert scheme,
-it's not immediate why it works:
-how exactly does having a constant Hilbert polynomial
-force a subscheme $Z$ of a surface $X$ to be 0-dimensional
-and have finite length?
-
-\begin{remark}
-\label{remark-points-over-c}
-There is some concern about considering the $\mathbb{C}$-points.
-I think this means that the residue field
-i.e. the stalk over its maximal ideal,
-should be $\mathbb{C}$ on that point.
-But also in Video 9 Anthony
-makes the remark that he will
-call  $V(\mathbb{C})$ just $V$.
-\end{remark}
 
 \medskip\noindent
 The following construction
