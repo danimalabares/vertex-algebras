@@ -1,4 +1,4 @@
-#Nakajima's representation of the Heisenberg algebra
+# Nakajima's representation of the Heisenberg algebra
 
 ## Talk plan
 
@@ -15,12 +15,14 @@ but admitting locally infinite singular chains. Unlike singular homology,
 admits pushforwards AND pullbacks for certain maps.
 
 Key properties:
+
     1. (Pushforward.) Only for proper maps.
     2. (Pullback.) Only for locally trivial fibrations.
     3. (Fundamental class.)
     4. (Intersection pairing.)
 
 Other properties:
+
     - (Compact gives isomorphism.)
     - (Poincaré duality with (relative?) simplicial cohomology.)
 
@@ -47,8 +49,7 @@ and proving two claims, I'm almost done with this.
 
 6. (Götsche's formula.) [Pending.]
 
-
-##Caveats
+## Caveats
 
 1. The mysterious appearence of the (-1)^{something} in the main formula,
 and its relation to a super version of Heisenberg algebra.
