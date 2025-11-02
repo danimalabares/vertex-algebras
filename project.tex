@@ -102,19 +102,13 @@ X_h\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&\mathcal{Z}\ar[d]
 \Spec(\kappa(h))\ar[r]&\text{Hilb}^P_X.
 }
 $$
-\begin{remark}
-\label{remark-points-over-c}
-There is some concern about considering the $\mathbb{C}$-points.
-Formally, this means that the residue field
-i.e. the stalk over its maximal ideal,
-should be $\mathbb{C}$ on that point.
-I think is just so that we think of points of
-$X^{[n]}$ as the corresponding fiber of the universal family
-$\mathcal{Z} \to X^{[n]}$.
 See Stacks Project 
-\href{https://stacks.math.columbia.edu/tag/01J5}{01J5} and
-\cite[VI.1.2]{EisenbudHarris}
-\end{remark}
+\href{https://stacks.math.columbia.edu/tag/01K0}{01K0}
+for the definition of fibre.
+We see that to make sure that the fibers are $\mathbb{C}$-schemes,
+then we must restricts ourselves to $\mathbb{C}$-points
+of the Hilbert scheme. 
+This is just a technical remark specified in video 1.
 
 \begin{definition}
 \label{definition-hilbert-scheme-of-points}
@@ -906,7 +900,7 @@ Key properties of Borel-Moore homology
 
 \begin{enumerate}
 \item (Pushforward.)
-\label{item-pushfowrward}
+\label{item-pushforward}
 If $f:X \to Y$ is proper
 (e.g. inverse image of compact is compact)
 then $f_* :H_i^{BM}(X)\to H_i^{BM}(Y)$.
@@ -1010,30 +1004,42 @@ are proper.
 \end{situation}
 
 \noindent
-Our objective is to define a correspondence from the
-following diagram.
+The {\it correspondence} associated to $Z \subset X_1\times X_2$
+is the map
+\begin{equation}
+\label{equation-correspondence}
+\begin{aligned}
+c_{[Z]}:H_i^{BM}(X_2)&\longrightarrow H_{i+2d-2d_2}^{BM}(X_1)\\
+c&\longmapsto p_{1,*}(p_2^*c\cap [Z])
+\end{aligned}
+\end{equation}
+
+\noindent
+where $p_1$ and $p_2$ are the projections in the following diagram:
 $$
 \xymatrix{
-&Z\ar[ld]_{p_1}\ar[rd]^{p_2}\\
+&Z\ar[ld]_{p_1}\ar[rd]^{p_2} \subset X_1\times X_2\\
 X_1&&X_2.
 }
 $$
-
 \noindent
-The correspondence is map
-$$
-c_{[Z]}:H_i^{BM}(X_2)\to H_{i+2d-2d_2}^{BM}(X_1).
-$$
-To define it we first apply the pullback property
+That is, it is given by pulling back a class by $p_2$,
+intersecting with the fundamental class of $[Z]$,
+and pushing forward by $p_1$.
+
+\medskip\noindent
+Let us explain with more details why this map is well-defined.
+First we apply the pullback
 $$
 \xymatrix{
 H_i^{BM}(X)\ar[r]^-{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2),
 }
 $$
-which is valid the projection onto the second factor
+which is valid by property (\ref{item-pullback}) of BM cohomology
+since the projection onto the second factor
 is a locally trivial (in fact trivial) fibration
-with fibers of real dimension $2d_1$.
-So by (\ref{item-pullback}) we obtain the dimension
+with fibers of real dimension $2d_1$ .
+Also by (\ref{item-pullback}) we see that the degree of the target is
 $i+2d_1$.
 
 Then we take the intersection pairing
@@ -1048,7 +1054,7 @@ H_{i+2d_1}^{BM}(X_1\times X_2)\ar[r]^-{\cap_{X_1 \times X_2}[Z]}
 &  H^{BM}_{i+d_1+2d-(2d_1+2d_2)}(Z),
 }
 $$
-where the scary subindex is unpacked as
+where the degree of the target is given by
 $$
 \underbrace{i+2d_1}
 _{\substack{\text{we are here} \\ 
@@ -1062,7 +1068,8 @@ $$
 which of course equals $i+2d-2d_2$.
 
 Finally take the pushforward map
-of $p_1$, which we assumed to be proper.
+of $p_1$ using property (\ref{item-pushforward}),
+since we assumed $p_1$ is proper.
 All in all, using pullback, intersection and pushforward we have
 constructed
 $$
@@ -1091,30 +1098,69 @@ where $Z$ is contained and then take intersection.
 \begin{enumerate}
 \item 
 \label{item-any-class}
-We can also define correspondences
+We can define correspondences more generally
 $c_\alpha:H_1^{BM}(X_2)\to H_{i+2d-2d_2}^{BM}(X_1)$ 
 for any $\alpha \in H_{2d}^{BM}(Z)$,
-i.e. not only the fundamental class of $[Z]$.
+i.e. not only the fundamental class of a subvariety $Z$.
 
 \item If $Z$ is the graph of a proper morphism
 $f:X_2 \to X_1$, then $c_{[Z]}=f_*$.
 So that in fact correspondences generalize
 the usual pushforward notion we have
 for BM homology.
+
+\item We may use Poincaré duality 
+(either in its BM version $H^{BM}_i(M)\cong H^{m-i}(M)$
+or the usual $H_i(M) \cong H^{m-i}(M)$ for any compact $M$)
+to identify a class in the tensor product with an endomorphism
+as we do in general for $V,W$ vector spaces via the isomorphism
+$V \otimes W^* \cong \Hom(W,V)$, $v \otimes \varphi \mapsto 
+(w \mapsto \varphi(w)v)$.
+This way, the fundamental class 
+$[Z] \in \bigoplus_{i+j=\dim_\mathbb{R}Z}H_i(X_1)\otimes H_j^{BM}(X_2)$
+immediately gives a map
+$$
+\bigoplus_{n}H_* (X^{[n]}) \to \bigoplus_{n}H_* (X^{[n\mp i]})
+$$
+which coincides with Equation \ref{equation-correspondence}.
+
 \end{enumerate}
 \end{remark}
 
 \medskip\noindent
 Next we show how to compose correspondences.
-Consider the diagram:
+
+Suppose we are given two correspondences as subvarieties
+$Z_{12} \subset X_1 \times X_2$ and $Z_{23} \subset X_2 \times X_3$.
+Their composition should be a class in the homology ring of $X_1 \times X_3$.
+We define the composition of the corresponding correspondences by
+\begin{equation}
+\label{equation-composition}
+[Z_{12}]\circ[Z_{23}]:=p_{13,*}(p_{12}^* [Z_{12}]\cap p_{23}^* [Z_{23}])
+\end{equation}
+according to the diagram
+$$
+\xymatrix{
+&  X_1 \times X_2 \times X_3\ar[dl]_{p_{12}}\ar[dr]^{p_{23}}\ar[dd]_{p_{13}}\\
+ X_1\times X_2& & X_2\times X_3\\
+& X_1\times X_3
+}
+$$
+which is well defined since, in fact,
+the projection $p_{13}(p_{12}^{-1}Z_{12} \cap p_{23}^{-1} Z_{23})\to X_3$ 
+is proper (as required to apply the pullback according to
+property (\ref{item-pullback}) of BM homology).
+
+In fact, this operation can also be thought of via the pullback in
+the diagram
 $$
 \xymatrix{
 &  &  Z_{12}\times_{X_2}Z_{23}\ar[dl]\ar[dr]\\
 & Z_{12}\ar[dr]\ar[dl]&  &  Z_{23}\ar[dl]\ar[dr]\\
-X_1& & X_2& & X_3
+X_1& & X_2& & X_3.
 }
 $$
-Then the composition of the correspondences
+In fact, the composition of the correspondences
 in the bottom triangles
 is the correspondence of the outer triangle.
 Here we think of the fiber product as
@@ -1122,13 +1168,9 @@ Here we think of the fiber product as
 Z_{12}\times_{X_2}Z_{23}&=
 \{(x_1,x_2,x_3) \in X_1\times X_2\times X_3
 :(x_1,x_2) \in Z_{12}, (x_2,x_3)\in Z_{23}\}\\
-&=p_{12}^{-1}(Z_{12})\cap p_{23}^{-1}(Z_{23}),
+&=p_{12}^{-1}(Z_{12})\cap p_{23}^{-1}(Z_{23}).
 \end{align*}
 
-\noindent
-where $p_{12}$ is the projection
-from the triple product to $X_1\times X_2$ 
-and $p_{23}$ is similarly defined.
 
 We get 
 $$
@@ -1161,7 +1203,7 @@ So instead of taking the fundamental class
 of $Z_{12}\circ Z_{23}$, we get
 $$
 c_{[Z_{12}]}\circ c_{[Z_{23}]}=
-C_{(p_{13})_*(p_{12}^* [Z_{12}] \cap_{X_1\times X_2\times X_3}}
+c_{(p_{13})_*(p_{12}^* [Z_{12}] \cap_{X_1\times X_2\times X_3}}
 p_{23}^* [Z_{23}],
 $$
 which is an element of
@@ -1207,18 +1249,19 @@ on the homology via correspondences.
 
 Let $n\geq i>0$. Define $P[i]$
 as a subset of
-$\prod_nX^{[n-i]}\times X^{[n]}\times X$
+$\coprod_nX^{[n-i]}\times X^{[n]}$
 by
 $$
-P[i]=\prod_n \{(\underbrace{\mathcal{I}_1}_{\in X^{[n-i]}} \supseteq
-\underbrace{\mathcal{I}_2}_{\in X^{[n]}},
-\underbrace{x}_{\in X}):
-\text{supp}(\mathcal{I}_1/\mathcal{I}_2)=\{x\}\}.
+P[i]:=\coprod_n \{(\mathcal{I}_1,\mathcal{I}_2,x)
+\in X^{[n-i]}\times X^{[n]}:
+\mathcal{I}_1 \supseteq \mathcal{I}_2,
+\text{supp}(\mathcal{I}_1/\mathcal{I}_2)=\{x\}
+\text{ for some }x \in X\}.
 $$
 
 \noindent
-(For $i<0$, we swap $\mathcal{I}_1$ and $\mathcal{I}_2$ 
-in this definition.)
+For $i<0$, we swap $\mathcal{I}_1$ and $\mathcal{I}_2$ 
+in this definition.
 
 \medskip\noindent
 Notice that by the procedure in Section \ref{section-correspondences}
@@ -1227,18 +1270,17 @@ by pullback, intersection with the fundamental class of $P[i]$
 and then pushing forward. However, this is not quite what we will do:
 we will bring in two other classes. Let
 $\alpha \in H_*^{BM}(X)$, $\beta \in H_*(X)$
-and $i>0$
-Define
+and $i>0$. Define
 \begin{align*}
-P_\alpha[i]&=\varpi_*(\Pi^*\alpha \cap [P[i]])\\
-P_\beta[i]&=\varpi_*(\Pi^*\beta \cap [P[-i]])
+P_\alpha[i]&=\varpi_*(\Pi_i^*\alpha \cap [P[i]])\\
+P_\beta[i]&=\varpi_*(\Pi_i^*\beta \cap [P[-i]])
 \end{align*}
 according to the projections
 $$
 \xymatrix{
-&  \prod_n X^{[n-i]}\times X^{[n]}\times X
+&  \coprod_n X^{[n-i]}\times X^{[n]}\times X
 \ar[dl]_{\Pi_i}\ar[dr]^{\varpi_i}\\
-X&&\prod_n X^{[n-i]}\times X^{[n]}
+X&&\coprod_n X^{[n-i]}\times X^{[n]}.
 }
 $$
 I think the reason for this is that using just $P[i]$ as
@@ -1271,16 +1313,19 @@ It's worth noting that in practice we will use the construction
 in Section \ref{section-correspondences}, specifically
 in Remark \ref{remark-notes}(\ref{item-any-class})
 for the classes $P_\alpha[i]$ and $P_\beta[i]$.
-Namely, we will use the projections $p_1$ and $p_2$
+Namely, for $i>0$ will use the projections $p_1$ and $p_2$
 in
 $$
 \xymatrix{
-&X^{[n+1]}\times X^{[n]}\times X\ar[ld]_{p_1}\ar[rd]^{p_2}\\
-X^{[n+1]}&&X^{[n]}.
+&X^{[n-i]}\times X^{[n]}\ar[ld]_{p_1}\ar[rd]^{p_2}\\
+X^{[n-i]}&&X^{[n]}.
 }
 $$
-to pull back using $p_2$, intersect with, say, $P_\alpha[i]$, 
-and pushforward using $p_1$.
+and the formula
+\begin{equation}
+\label{equation-correspondence-p}
+P_\alpha[i](c)=p_{1,*}(p_2^*c\cap\Pi_i^*\alpha).
+\end{equation}
 
 \medskip\noindent
 The following proposition is used to compute the exact degrees
@@ -1378,7 +1423,7 @@ Let's compute first $P_\beta[-1][\mathcal{I}]$.
 For this consider
 $$
 \xymatrix{
-&X^{[n+1]}\times X^{[n]}\times X\ar[ld]_{p_1}\ar[rd]^{p_2}\\
+&X^{[n+1]}\times X^{[n]}\ar[ld]_{p_1}\ar[rd]^{p_2}\\
 X^{[n+1]}&&X^{[n]}.
 }
 $$
@@ -1408,6 +1453,119 @@ $$
 [P_\alpha[1],P_\beta[-1]][\mathcal{I}]=[\mathcal{I}]
 $$
 (see \cite[Figure 8.1]{Nakajima-lectures}).
+
+\begin{remark}
+\label{remark-hit-bottom}
+Emily highlights that in this example the annihilating 
+operator is associated to the class of the whole space, $[X]$,
+which allows us to remove any point.
+However, if we chose another class $\beta$
+and the support of the quotient $\mathcal{I}_1/\mathcal{I}_2$
+contains only points that are not in $\beta$,
+the operator would kill the class.
+This means that if we iterate an annihilating operator
+enough times we arrive at the zero class.
+Does this have any interpretation (maybe in vertex algebras)?
+\end{remark}
+
+
+\section{Proof of the main theorem}
+\label{section-proof}
+
+\noindent
+We split the proof in two different cases:
+(1) $i,j>0$
+and (2) $i>0$, $j<0$ or $i<0$, $j>0$.
+
+\medskip\noindent
+Case $i,j>0$. By Equation \ref{equation-main} we see that we need to prove
+that the operators commute. The intuitive picture according to the worked
+example is actually quite simple: starting with any set of $n$ points,
+the composition $P_\alpha[i]P_\beta[j]$ acts by
+removing $j$ points so that the support of the quotient
+is a point in the class $\beta$,
+and then remove $i$ more points
+ so that the support of the quotient is in $\alpha$.
+Then we would check that this operation yields the same class
+if we do it in the opposite order.
+
+In view of our definition of correspondences, 
+Equation \ref{equation-correspondence-p}, and
+our general definition for composition of correspondences, 
+Equation \ref{equation-composition},
+the composition $P_\alpha[i]P_\beta[j]$ is given by
+\begin{equation}
+\label{equation-composition-p}
+P_\alpha[i]P_\beta[j]
+=p_{13,*}(p_{12}^*[P[i]]\cap\Pi_1^*\alpha\cap p_{23}^*[P[j]]\cap\Pi_2^*\beta).
+\end{equation}
+Forgetting about the classes $\alpha$ and $\beta$ for a minute,
+consider the set
+\begin{equation}
+\label{equation-pij}
+\begin{aligned}
+P[i,j]&:=p_{12}^{-1}(P[i])\cap p_{23}^{-1}(P[j])
+\cap(X^{[n-i-j]}\times X^{[n-j]}\times X^{[n]})\\
+&=\left\{(\mathcal{I}_1,\mathcal{I}_2,\mathcal{I}_3):
+\mathcal{I}_1\supset\mathcal{I}_2\supset\mathcal{I}_3,
+\substack{
+\text{supp}(\mathcal{I}_1/\mathcal{I}_2)=\{x\}
+\text{ for some }x\in X\\
+\text{supp}(\mathcal{I}_2/\mathcal{I}_3)=\{y\}
+\text{ for some }y \in X }\right\}
+\end{aligned}
+\end{equation}
+
+\noindent
+which corresponds to the diagram
+$$
+\xymatrix{
+&  X^{[n-i-j]} \times X^{[n-j]} \times X^{[n]}
+\ar[dl]_{p_{12}}\ar[dr]^{p_{23}}\ar[dd]_{p_{13}}\\
+P[j]\subset X^{[n-j]}\times X^{[n]}& & X^{[n-i-j]}\times X^{[n-j]}\supset P[i]\\
+& X^{[n-i-j]}\times X^{[n]}
+}
+$$
+This is to be read as follows. First keep in mind that
+a correspondence may be equivalently thought of as
+a subvariety, a homology class and an operator in homology.
+By definition, the correspondence $P[j]$ maps the homology of $X^{[n]}$ to the 
+homology of $X^{[n-j]}$. In order to compose this with $P[i]$
+we must regard $P[i]$ as a map from the homology of $X^{[n-j]}$ 
+to the homology of $X^{[n-j-i]}$, which is perfectly
+valid since our correspondences are defined for all $n$.
+
+Observe that the middle factor $X^{[n-j]}$
+in the triple product of will become $X^{[n-i]}$ when
+we compute the composition in the opposite order.
+Being subsets of different products, it not immediately
+clear that the associated operators will coincide.
+
+\medskip\noindent
+To retrieve the correspondence as in \ref{equation-composition-p}
+from the set $P[i,j]$ we shall consider its algebraic closure
+and to it associate a fundamental class.
+However, we will do a key procedure before that.
+Observe that $P[i,j]$ may be decomposed as disjoint union
+of the set $\{x \neq y\}$ 
+of ``generic'' cases in which $x$ and $y$ in Equation \ref{equation-pij}
+are different, and the set $\{x=y\}$ in which they coincide.
+
+Let $\overline{P}[i,j]:=\overline{P[i,j]\cap\{x\neq y\}}$.
+Then
+$$
+p_{12}^* [P[i]]\cap p_{23}^* [P[j]]=[\overline{P}[i,j]]+\iota_*R
+$$
+where $R \in H_*^{BM}(P[i,j]\cap \{x=y\})$ is the part corresponding
+to the ``singular'' par of $P[i,j]$. Here $\iota$ is the inclusion.
+Observe that we have almost arrived at Equation \ref{equation-composition-p},
+since in fact the classes $[P_{23}^*[P[j]]$ and $\Pi_1^*\alpha$
+commute since they correspond to disjoint components of the product
+$X^{[n-j]}\times X^{[n]}\times X$.
+
+With a similar construction for the composition $P_\beta[j]P_\alpha[i]$,
+this part of the proof shall be concluded once we prove the following
+two claims.
 
 \section{Götsche's formula}
 \label{section-gf}
