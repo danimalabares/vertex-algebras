@@ -2204,7 +2204,7 @@ Similar.
 \end{proof}
 
 \begin{lemma}[Dong]
-\label{lemma-Dong}
+\label{lemma-dong}
 Suppose $a(z),b(z)$ and $c(z)$ are mutually local in pairs.
 Let $n \in \mathbb{Z}$. Then $a(z)_{(n)}b(z)$ and $c(z)$
 is a local pair.
@@ -6113,7 +6113,7 @@ $$
 (exactly as previously),
 where the coefficients of $A_\alpha(z)$ commute with all
 $h_n$ {\bf for $n \neq 0$}.
-In other words, it commutes with $\alpha$ as defined above.
+In other words, it commutes with $\mathfrak{a}$ as defined above.
 
 Since $T=L_{-1}$ in $V_Q$,
 we have (as before) that
@@ -6206,6 +6206,349 @@ $$
 where the $V_{\mu+Q}$ are irreducible modules.
 
 
+
+
+\medskip\noindent
+\noindent
+Let $\mathfrak{g}$ be a Lie algebra and
+$(\cdot,\cdot)$ a symmetric invariant bilinear form.
+We have the affine Lie algebra 
+$\hat{\mathfrak{g}}=\mathfrak{g}[t^{\pm 1}\oplus \mathbb{C}K$.
+We defined a smooth $\hat{\mathfrak{g}}$-module
+and level $k$ (which means that $K \mapsto  k \text{Id}$
+$\hat{\mathfrak{g}}$-modules,
+and the vertex algebra $V^k(\mathfrak{g})$.
+Again recall that $V^k(\mathfrak{g})$-modules
+are in correspondence with smooth level $k$ $\hat{\mathfrak{g}}$-modules.
+
+Consider $U$ an associative algebra over $\mathbb{C}$ with
+$U_0 \supset U_1 \supset U_2 \supset\ldots$ a decreasing
+filtration by subspaces $U_p$, such that
+\begin{enumerate}
+\item
+\label{item-separating}
+(Separating.) $\bigcap_{p}U_p=0$.
+[The idea here is that the $U_p$ may be thought of
+as a topological basis, and this condition means
+the algebra, as a topological algebra, separates points:
+there's an open set containing zero but not any given point.]
+
+\item 
+\label{item-l}
+For any $u \in U$ and $p\geq 0$, there exists $\ell$
+wuch that  $U_\ell \cdot u \subset U U_p$.
+(think: for any $p$, no matter how big,
+there exists $\ell$, maybe much bigger, such that  …)
+[The idea here is that we want to turn the  $U_p$ into ideals,
+just by multiplying by $U$ --- indeed, $U U_p$ is an ideal.]
+
+\item (Exhaustive.) $U_0= U$? Maybe not necessary.
+\label{item-exhaustive}
+\end{enumerate}
+
+\noindent
+We say a left $U$-module $M$ is {\it smooth} if
+for all $x \in M$ there exists $p$ such that $U_p\cdot x=0$.
+
+\medskip\noindent
+Given $U$ and $\{U_p\}$ as above, we can form the {\it completion} $U^c$
+as a categorical limit of the diagram
+
+$$
+\xymatrix{
+U/U U_0&U/U U/1 \ar[l]& U/ U U_2 \ar[l]& \cdots \ar[l].
+}
+$$
+Can think of $U^c$ as
+$$
+\left\{\sum_is_i:\sum_is_i\text{ mod }U U_p
+\text{is finite for each $p$}\right\}.
+$$
+Formally,
+$$
+U^c=\prod_{p \in \mathbb{Z}_{\geq 0}}U/U U_p
+=\left\{(u_0,u_1,u_2,\ldots):\substack{u_i \in U/U U_i \\ 
+\text{and }\overline{u_{i+1}}=u_i}\right\}.
+$$
+One can then set $s_i=u_i-u_{i-1}$, then
+$$
+(u_0,u_1,u_2,\ldots)=(s_0,s_0+s_1,s_0+s_1+s_2,\ldots)
+\text{``=''}\sum_is_i
+$$
+and we recover the first description.
+
+Clearly the action of $U$ on a smooth $U$-module $M$ 
+extends to a well-defined action of $U^c$.
+Now let $a(w)=\sum_{n \in \mathbb{Z}}a_{(n)}w^{-n-1}
+\in U^c[[w^{\pm}]]$,
+we call $a(w)$ a {\it continuous distribution} if
+for every $p \geq 0$ there exists $N \geq 0$ such that
+$a_{(n)}\in U U_p$ for all $n \geq N$.
+We denote the vector space of continuous distrinutions by
+$U^c[[w]]^{cont}$.
+
+Then it's clear that
+\begin{lemma}
+\label{lemma-continuous-distribution-is-quantum}
+If $M$ is a smooth $U$-module
+(denote action of $a_{(n)}$ on $M$ by $a^M_{(n)}\in \text{End}(M)$,
+and $a(w)$ a continuous distribution, then
+$$
+a^M(w)=\sum_n a_{(n)}^Mw^{-n-1}
+$$
+is a quantum field on $M$.
+\end{lemma}
+
+\begin{proposition}
+\label{proposition-}
+If $a(w),b(w)\in U^c[[w^{\pm 1}]]^{cont}$,
+the $n$-th product
+ $$
+a(w)_{(n)}b(w)
+=\text{Res}_z(a(z)b(w)i_{z,w}-b(w)a(z)i_{w,z})(z-w)^n
+$$
+is well defined and lies in $U^c[[w^{\pm 1}]]^{cont}$.
+\end{proposition}
+
+\begin{proof}
+Analogous to Exercise \ref{exercise-most-important}.
+\end{proof}
+
+\begin{definition}
+\label{definition-local}
+Let $a(w),b(w) \in U^c[[w^{\pm 1}]]^{cont}$.
+We say the $a(w),b(w)$ is
+ \begin{enumerate}
+\item {\it weakly local} if there exists  $N$ such that
+$a(w)_{(n)}b(w)=0$ for all $n \geq N$.
+\item {\it local} if there exists $N$ such that
+$(z-w)^N[a(z),b(w)]=0$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Obviously local implies weakly local.
+
+Let $\mathcal{F}\subset U^c[[w^{\pm}]]^{cont}$ be a subset such that
+all pairs of elements are local.
+Let $\overline{\mathcal{F}}\subset U^c[[w^{\pm 1}]]^{cont}$ be the
+closure of $\mathcal{F}$.
+ \begin{align*}
+\mathcal{F}^0&=\{1_{U^c}\},\qquad 
+\mathcal{F}^k=\left\{a(w)_{(n)}b(w):\substack{a \in \mathcal{F}, \\
+b \in \mathcal{F}^{k-1}, \\
+n \in \mathbb{Z}}\right\}.
+\end{align*}
+
+\noindent
+The analogue of Dong's lemma \ref{lemma-dong} guarantees all
+$a,b \in \overline{\mathcal{F}}$ are local.
+
+Then we obtain a vertex algebra:
+
+\begin{theorem}
+\label{theorem-vertex-algebra-continuous}
+The vector space $\overline{\mathcal{F}}$, equipped with
+$|0\rangle=1_{U^c}$,
+$Y(a(w),x)=\sum_{n \in \mathbb{Z}}a(w)_{(n)}x^{-n-1}$,
+$Ta(w)=\partial_wa(w)=a(w)_{(-2)}1_{U^c}$ is a vertex algebra.
+\end{theorem}
+
+\begin{proof}
+Exercise.
+\end{proof}
+
+\medskip\noindent
+Now let $M$ be a smooth $U$-module
+(thought of as a $U^c$-module.)
+
+Let's assign
+$$
+Y^M(a(w),x)=a^M(x)=\sum_{n \in \mathbb{Z}}a^M_{(n)}x^{-m-1}.
+$$
+
+\begin{proposition}
+\label{proposition-smooth-f-module}
+$(M,Y^M)$ is an $\overline{\mathcal{F}}$-module.
+\end{proposition}
+
+\begin{proof}
+$$
+Y(a(w)_{(n)}b(w),x)=Y(a(w),x)_{(n)}Y(b(w),x),
+$$
+because $\overline{\mathcal{F}}$ is a vertex algebra.
+
+So 
+
+\begin{align*}
+Y^M(a(w)_{(n)}b(w),x)&=a^M(x)_{(n)}b^M(x)\qquad 
+\text{by definition}\\
+&=Y^M(a(w),x)_{(n)}Y^M(b(w),x).
+\end{align*}
+\end{proof}
+
+\noindent
+[It looks as if this construction was a slight generalization
+of our earlier work for vertex algebras over vector spaces
+to vertex algebras over associative algebras;
+now we have to blend in this topological algebra notions - 
+completion, etc.]
+
+\medskip\noindent
+Now  let's look at the case of $\hat{\mathfrak{g}}$-modules and
+$V^k(\mathfrak{g})$.
+We have $\hat{\mathfrak{g}}=\mathfrak{g}[t^{\pm 1}] \oplus \mathbb{C}K$.
+Let
+$$
+U=U(\hat{\mathfrak{g}})/(K-k_\text{id}).
+$$
+Then $U$-modules are the same as level $k$ 
+$\hat{\mathfrak{g}}$-modules.
+Now consider $U_p=\text{Im}(\mathfrak{g}t^{\geq p})\subset U$.
+I claim $U$ with $U_p$ so defined satisfies the conditions
+(\ref{item-separating}) and (\ref{item-l}).
+Indeed, (\ref{item-separating}) is given by PBW theorem
+since every monomial has a highest degree term.
+As for (\ref{item-l}), e.g., for $u=at^{-5}$, $p=10$, if I take
+$\ell=15$, then $u_\ell \ni bt^{15}$,
+$[bt^{15},at^{-5}]=[b,a]t^{10}$.
+
+Now, in $U^c[[w^{\pm 1}]]^{cont}$ we have, for each
+$a \in \mathfrak{g}$, the continuous distribution
+$$
+a(w)=\sum_{n \in \mathbb{Z}}at^n w^{-n-1}.
+$$
+By the commutation relation
+$[at^m,bt^n]=[a,b]t^{m+n}+m\delta_{m,-n}(a,b)k 1$
+we have $(z-w)^2[a(z),b(w)]=0$
+so these are mutually local,
+($[a(z),b(w)]=[a,b](w)\delta(z,w)+(a,b)k 1 \partial_w \delta(z,w)$.)
+
+So we get a vertex algebra $\overline{\mathcal{F}}$ 
+from $\mathcal{F}=\{a(w):a \in \mathfrak{g}\}$
+and any smooth  $\hat{\mathfrak{g}}$-module of level $k$ gives
+an $\overline{\mathcal{F}}$-module.
+
+\medskip\noindent
+In particular 
+$V^k(\mathfrak{g})
+=U(\hat{\mathfrak{g}})\otimes_{U(\hat{\mathfrak{g}}_+)}\mathbb{C}K$ 
+(which happens to be a vertex algebra),
+being a smooth level $k$ $\hat{\mathfrak{g}}$-module is an
+$\overline{\mathcal{F}}$-module.
+
+In $M=V^k(\mathfrak{g})$, for $a \in \mathfrak{g}$,
+$a(w)$ (from $\overline{\mathcal{F}}$) acts via 
+$Y^M(a(w),x)=a(x)=T(a_{(-1)}|0\rangle,x)$.
+
+$$
+\xymatrix{
+a(w)\ar@{|->}[r]&Y(a(w),z)\\
+\hat{\mathcal{F}}\ar[r]\ar[rd]& \{Y(a,z):a \in V^k(\mathfrak{g})\}
+\ar[d]
+& a(z)\ar@{|->}[d]\\
+&V^k(\mathfrak{g})&a(z)|0\rangle|_{z=0}
+}
+$$
+which is the state-field correspondence,
+
+$$
+\xymatrix{
+a(w)_{(n)}b(w)\ar@{|->}[r]&Y(a(w),z)_{(n)}Y(b(w),z)\\
+\hat{\mathcal{F}}\ar[r]\ar[rd]_\phi& \{Y(a,z):a \in V^k(\mathfrak{g})\}
+\ar[d]
+& a(z)_{(n)}b(w)\ar@{|->}[d]\\
+&V^k(\mathfrak{g})&a_{(n)}b
+}
+$$
+So $\phi$ is a homomorphism of vertex algebras
+\begin{align*}
+\phi(a_{(n)}b)&\mapsto \phi(a)_{(n)}\phi(b)\\
+1 & \mapsto |0\rangle.
+\end{align*}
+
+\noindent
+Clearly $\phi$ is surjective. Want to show $\Ker(\phi)=0$.
+
+\medskip\noindent
+We can characterize $V^k(\mathfrak{g})$ as the universal
+highest weight level $k$ $\hat{\mathfrak{g}}$-module,
+i.e. if $M$ is a $\hat{\mathfrak{g}}$-module, 
+with $x \in M$ such that
+\begin{enumerate}
+\item $Kx = kx$,
+\item $at^{\geq 0}x=0$
+\end{enumerate}
+
+\noindent
+then there exists a unique $\hat{\mathfrak{g}}$-module map
+\begin{align*}
+\psi: V^k(\mathfrak{g}) &\longrightarrow M \\
+|0\rangle &\longmapsto x.
+\end{align*}
+
+\begin{lemma}
+\label{lemma-f-ghat-module}
+I claim 
+\begin{enumerate}
+\item $\overline{\mathcal{F}}$ is a $\hat{\mathfrak{g}}$-module,
+in which $x=1_{U^c}$ satisfies
+\item $Kx=k$ 
+\item $\mathfrak{g}t^{\geq 0}x=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item $\overline{\mathcal{F}}$ is a $\hat{\mathfrak{g}}$-module.
+For $c(w) \in \overline{\mathcal{F}}$,
+define $\rho(at^m)c(w)=a(w)_{(m)}c(w)$.
+Then
+\begin{align*}
+[\rho(at^m),\rho(bt^n)]&=[a(w)_{(m)},b(w)_{(n)}\\
+&=\sum_{j \geq 0}\binom{m}{j}(a(w)_{(j)}b(w))_{(m+n-j)}\\
+&=(*).
+\end{align*}
+
+\noindent
+But for $a,b \in \mathfrak{g}$, we have
+$[a(z),b(w)]=\ldots$ see above.
+So
+\begin{align*}
+a(w)_{(0)}b(w)&=[a,b](w)\\
+a(w)_{(1)}b(w)&=k(a,b)1_{U^c}\\
+a(w)_{\geq 2}b(w)&=0.
+\end{align*}
+
+\noindent
+Then
+\begin{align*}
+(*)&=[a,b](w)_{(m+n)}+mk(a,b)1_{U^c}(w)_{(m+n-1)}\\
+&=\rho([a,b]t^{m+n}+m\delta_{m,-n}(a,b)K).
+\end{align*}
+
+\noindent
+So $\rho$ is a representation of
+$\hat{\mathfrak{g}}$ on $\overline{\mathcal{F}}$.
+
+Obviously $\rho$ is level $k$
+and obviously $x=1_{U^c}(w) \in \overline{\mathcal{F}}$
+is highest weight.
+$a(w)_{(j)}1(w)=0$ for all $j\geq 0$.
+
+So we have maps
+$$
+\overline{\mathcal{F}}\underbrace{\xrightarrow{\phi}}
+_{\substack{\text{VA homo, hence} \\ \hat{\mathfrak{g}}\text{-mod map}}}
+V^k(\mathfrak{g})\underbrace{\xrightarrow{\psi}}_{
+\hat{\mathfrak{g}}\text{-mod map}}
+\overline{\mathcal{F}}.
+$$
+Can check $\psi \circ \phi=\text{id}$.
+So $\overline{\mathcal{F}}\simeq V^k(\mathfrak{g})$
+as vertex algebras.
+\end{enumerate}
+\end{proof}
 
 
 
