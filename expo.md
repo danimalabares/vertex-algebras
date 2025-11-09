@@ -4,8 +4,30 @@
 
 0. (Aim.) Formulation of Nakajima's formula.
 
-1. (Heisenberg algebra.) Recall our construction and Fock representation
-of the Heisenberg algebra.
+1. (Heisenberg algebra.)
+
+    - The Heisenberg Lie algebra is 
+
+        𝔞̂ = ⨁_{n ∈ ℤ} ℂ hₙ ⊕ ℂ K.
+
+    - It's Fock representation is given by hₙ ↦ (...) and K ↦ Id.
+
+    - Nakajima uses a construction similar to the lattice affine algebra
+      but putting a supervector space (regarded as a commutative Lie algebra)
+      as the starting object of the construction.
+
+      Perhaps, it is not only a supervector space V = V1 ⊕ V2 but actually
+      a graded vector space V = ⨁_{n ∈ ℤ} V_n (which is super by the evenness
+      or oddness of the integers).
+
+      Ultimately, using this algebra instead of the "basic" Heisenberg
+      algebra leads to the mysterious factor (-1)^{i-1} in the main formula.
+
+      But also, the graded version of the Heisenberg superalgebra should give
+      has a character formula that should match with Göttsche's formula,
+      which is apparently the reason why Nakajima concludes that his
+      representation is actually of highest weight.
+
 
 2. (Hilbert scheme of points.)
 
@@ -14,7 +36,7 @@ of the Heisenberg algebra.
       representing the functor of flat families and there exists a universal
       family).
 
-      Instead we work with the slogan that **the points of Hilbert 
+      Instead we work with the slogan that **the points of the Hilbert 
       scheme of n points on the (projective) surface X are 0-dimensional 
       subschemes of length n**.
 
@@ -93,6 +115,8 @@ we know there are points in the Hilbert scheme that
 are not uniquely determined as sets of points with multiplicities.
 
 ## To do
+
+0. Understand the character formula for the graded Heisenberg superalgebra!!!
 
 1. Clean up the Hilbert scheme section: too many Stack Exchange references!
 
