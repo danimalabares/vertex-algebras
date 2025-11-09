@@ -7,6 +7,28 @@
 1. (Heisenberg algebra.) Recall our construction and Fock representation
 of the Heisenberg algebra.
 
+2. (Hilbert scheme of points.)
+
+    - We won't explain the formal construction of the general Hilbert scheme
+      (can mention in words that it is constructed as the object
+      representing the functor of flat families and there exists a universal
+      family).
+
+      Instead we work with the slogan that **the points of Hilbert 
+      scheme of n points on the (projective) surface X are 0-dimensional 
+      subschemes of length n**.
+
+    - In general the points of the Hilbert scheme are **not** just sets of
+      points with multiplicities. For A^1 this is true since the ideals (of 
+      0-dimensional subschemes) are principal! So we can factorize any
+      generating polynomial as a product of maximal ideals. For A^2 this is no
+      longer the case - why?
+
+    - The Hilbert-Chow morphism is the main tool for determining this
+      difference. By a theorem of Fogarty the dimension of the Hilbert scheme
+      of n points on a surface is 2n, and the Hilbert-Chow morphism is a
+      resolution of singularities.
+
 **Talk strategy: items 2 and 3 below will be skipped
 and explained in practice at items 4 and 5**
 
