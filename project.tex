@@ -167,8 +167,7 @@ do not correspond to sets of points
 The following construction
 distinguishes the Hilbert scheme
 from the symmetric power $S^n X$
-of the surface $X$. In some cases
-this is an isomorphism, but not always.
+of the surface $X$.
 
 The {\it symmetric power} of $X$ is
 $$
@@ -189,9 +188,24 @@ we have a map
 \begin{align*}
 \pi : X^{[n]} &\longrightarrow S^nX \\
  Z&\longmapsto \underbrace{\sum_{x \in \text{supp}Z}\dim
-\Gamma(\mathcal{O}_{Z,x}[x]}_{\text{cycle of $Z$}}
+\Gamma(\mathcal{O}_{Z,x})[x]}_{\text{cycle of $Z$}}
 \end{align*}
 called the {\it Hilbert-Chow morphism}.
+
+As explained above, this map is an important tool used to distinguish
+the Hilbert scheme of a variety from its symmetric power.
+In some cases this is an isomorphism, but not always,
+as the following theorem suggests:
+
+\begin{theorem}[Fogarty]
+\label{theorem-fogarty}
+Suppose $X$ is nonsingular and $\dim X=2$,
+then the following holds.
+\begin{enumerate}
+\item $X^{[n]}$ is nonsingular and has dimension $2n$.
+\item The Hilbert-Chow morphism is a resolution of singularities.
+\end{enumerate}
+\end{theorem}
 
 \section{Heisenberg algebra}
 \label{section-algebra}
@@ -1252,15 +1266,15 @@ as a subset of
 $\coprod_nX^{[n-i]}\times X^{[n]}$
 by
 $$
-P[i]:=\coprod_n \{(\mathcal{I}_1,\mathcal{I}_2,x)
+P[i]:=\coprod_n \{(\mathcal{J}_1,\mathcal{J}_2,x)
 \in X^{[n-i]}\times X^{[n]}:
-\mathcal{I}_1 \supseteq \mathcal{I}_2,
-\text{supp}(\mathcal{I}_1/\mathcal{I}_2)=\{x\}
+\mathcal{J}_1 \supseteq \mathcal{J}_2,
+\text{supp}(\mathcal{J}_1/\mathcal{J}_2)=\{x\}
 \text{ for some }x \in X\}.
 $$
 
 \noindent
-For $i<0$, we swap $\mathcal{I}_1$ and $\mathcal{I}_2$ 
+For $i<0$, we swap $\mathcal{J}_1$ and $\mathcal{J}_2$ 
 in this definition.
 
 \medskip\noindent
@@ -1272,14 +1286,14 @@ we will bring in two other classes. Let
 $\alpha \in H_*^{BM}(X)$, $\beta \in H_*(X)$
 and $i>0$. Define
 \begin{align*}
-P_\alpha[i]&=\varpi_*(\Pi_i^*\alpha \cap [P[i]])\\
-P_\beta[i]&=\varpi_*(\Pi_i^*\beta \cap [P[-i]])
+P_\alpha[i]&=\varpi_*(\Pi_1^*\alpha \cap [P[i]])\\
+P_\beta[i]&=\varpi_*(\Pi_1^*\beta \cap [P[-i]])
 \end{align*}
 according to the projections
 $$
 \xymatrix{
 &  \coprod_n X^{[n-i]}\times X^{[n]}\times X
-\ar[dl]_{\Pi_i}\ar[dr]^{\varpi_i}\\
+\ar[dl]_{\Pi_1}\ar[dr]^{\varpi_i}\\
 X&&\coprod_n X^{[n-i]}\times X^{[n]}.
 }
 $$
@@ -1324,7 +1338,7 @@ $$
 and the formula
 \begin{equation}
 \label{equation-correspondence-p}
-P_\alpha[i](c)=p_{1,*}(p_2^*c\cap\Pi_i^*\alpha).
+P_\alpha[i](c)=p_{1,*}(p_2^*c\cap\Pi_1^*\alpha).
 \end{equation}
 
 \medskip\noindent
@@ -1335,6 +1349,32 @@ in the domain and codomain of our correspondences:
 \label{proposition-dimension}
 $\dim_\mathbb{C}P[i]\cap (X^{[n-i]}\times X^{[n]})=2n-i+1$.
 \end{proposition}
+
+\begin{proof}
+Suppose $i>0$.
+By Theorem \ref{theorem-fogarty} we know that
+$\dim X^{[n-i]}=2(n-i)$.
+Fix $\mathcal{J}_1 \in X^{[n-i]}$.
+We wish to find the dimension of the variety
+obtained by varying  $\mathcal{J}_2 \in X^{[n]}$ 
+satisfying $\mathcal{J}_1/\mathcal{J}_2=\{x\}$ 
+for some $x \in X$.
+The generic case is when 
+$x \in X\setminus\text{supp}(\mathcal{O}_X/\mathcal{J}_1)$
+(this may be accepted under the explanation
+that being  $\mathcal{O}_X/\mathcal{J}_1$ the structure sheaf
+of a variety, it has less dimension than that of $X$,
+i.e. it is generic that $x$ is not in this support;
+a formal proof is provided in \cite[Lemma 8.31]{Nakajima-lectures}
+during the proof 
+of the main theorem).
+In fact, the set of such $\mathcal{J}_2$ may be identified
+with $\pi^{-1}(S^i_{(i)}X)$, where $\pi$ is
+the Hilbert-Chow morphism and
+$S^i_{(i)}=\{[i]x \in S^i(X):x \in X\}$.
+It is shown in \cite[Lemma 6.10]{Nakajima-lectures}
+that it must have complex dimension $i+1$.
+\end{proof}
 
 \medskip\noindent
 Now we are almost ready to formulate the main theorem.
@@ -1409,17 +1449,17 @@ Take a set of distinct $n$ points
 $x_1,\ldots,x_n \in X\setminus\{x\}$ 
 none of which is $x$.
 Identify them with the corresponding
-ideal $\mathcal{I}$. We are going to interchangeably
-refer to those points as points and as ideal sheaves.
+ideal $\mathcal{J}$. We are going to interchangeably
+refer to those points as points and as the sheaf $\mathcal{J}$.
 
 Let's calculate
 $$
-[P_\alpha[1],P_\beta[-1]][\mathcal{I}].
+[P_\alpha[1],P_\beta[-1]][\mathcal{J}].
 $$
-If you look back Equation \ref{equation-main},
-it's easy to see that we should obtain just $\text{Id}$.
+Looking back at Equation \ref{equation-main},
+it's easy to see that we should obtain just Id.
 
-Let's compute first $P_\beta[-1][\mathcal{I}]$.
+Let's compute first $P_\beta[-1][\mathcal{J}]$.
 For this consider
 $$
 \xymatrix{
@@ -1428,45 +1468,64 @@ X^{[n+1]}&&X^{[n]}.
 }
 $$
 By definition, $P_{[x]}[-1]$ is given by:
-pull back $\mathcal{I}$ via $p_2$,
+pull back $\mathcal{J}$ via $p_2$,
 intersect with the class $\varpi_*(\Pi^*\alpha \cap [P[-1]])=P_{[x]}[-1]$ and pushforward
 down to $X^{[n+1]}$. 
-Roughly this means that we pushforward the cycle corresponding to
+Morally this means that we pushforward the cycle corresponding to
 $$
-\{(\mathcal{I}\subseteq \mathcal{I}',x)
-:\text{supp}(\mathcal{I}'/\mathcal{I})=\{x\}\}
-\subset X^{[n]} \times X^{[n+1]} \times X,
+\{(\mathcal{J}, \mathcal{J}',x)
+:\mathcal{J}\subseteq \mathcal{J}',\text{supp}(\mathcal{J}'/\mathcal{J})=\{x\}\}
+\subset X^{[n]} \times X^{[n+1]} \times X.
 $$
-that is, the subschemes $\mathcal{I}'$ in $X^{[n+1]}$ satisfying
-$\text{supp}(\mathcal{I}'/\mathcal{I})=\{x\}$.
-But since the difference in the lengths of the ideals is one,
-we conclude that
+The pushforward recovers the $X^{[n+1]}$ component,
+that is, the schemes $\mathcal{J}'$ in $X^{[n+1]}$ satisfying
+$\text{supp}(\mathcal{J}'/\mathcal{J})=\{x\}$.
+Since $x$ is not a point in $\mathcal{J}$,
+the only possible choice is that $\mathcal{J}'=\{x\}\cup \mathcal{J}$,
+that is,
 $$
-P_{[x]}[-1][\mathcal{I}]=[\{x\}\cup \mathcal{I}].
+P_{[x]}[-1][\mathcal{J}]=[\{x\}\cup \mathcal{J}].
 $$
 
 On the other hand, the correspondence $P_{[X]}[1]$ 
-maps an ideal $\mathcal{I}'\in X^{[n+1]}$ to the cycle
-$\sum_{y \in \mathcal{I}'}[\mathcal{I}'-\{y\}]$.
+starts with an ideal $\mathcal{J}'\in X^{[n+1]}$
+intersects it with 
+$$
+\{(\mathcal{J}, \mathcal{J}',x)
+:\mathcal{J}\subseteq \mathcal{J}',\text{supp}(\mathcal{J}'/\mathcal{J})=\{y\},
+\text{ for some }y\in X\}
+$$
+and projects to $X^{[n]}$. We obtain
+$\sum_{y \in \mathcal{J}'}[\mathcal{J}'-\{y\}]$.
 Then it becomes clear that
 $$
-[P_\alpha[1],P_\beta[-1]][\mathcal{I}]=[\mathcal{I}]
+[P_\alpha[1],P_\beta[-1]][\mathcal{J}]=[\mathcal{J}]
 $$
 (see \cite[Figure 8.1]{Nakajima-lectures}).
 
-\begin{remark}
-\label{remark-hit-bottom}
-Emily highlights that in this example the annihilating 
-operator is associated to the class of the whole space, $[X]$,
-which allows us to remove any point.
-However, if we chose another class $\beta$
-and the support of the quotient $\mathcal{I}_1/\mathcal{I}_2$
-contains only points that are not in $\beta$,
+The idea is very simple: it is not the same to add the point $x$ 
+and then remove any point, than removing any point and then
+adding the point $x$. Indeed, in the latter case we are obliged
+to have $x$, while in the former we may or may not.
+Thus the operators do not commute.
+
+Notice that this is a very particular situation by the choice of
+$i=1$ and $j=-1$. For different choices of $i$ and $j$ 
+we obtain schemes such as double points which cannot be
+thought of barely as sets of points ---and pictures do not
+accurately represent the situation.
+
+Also the choice of $\alpha$ and $\beta$ is special in this example.
+As Emily highlights, the annihilating 
+operator being associated to the class of the whole space, $[X]$,
+allows us to remove any point $y \in X$.
+If we chose another class $\beta$
+and the support of the quotient $\mathcal{J}'/\mathcal{J}$
+contained only points that are not in $\beta$,
 the operator would kill the class.
 This means that if we iterate an annihilating operator
 enough times we arrive at the zero class.
 Does this have any interpretation (maybe in vertex algebras)?
-\end{remark}
 
 
 \section{Proof of the main theorem}
@@ -1474,44 +1533,56 @@ Does this have any interpretation (maybe in vertex algebras)?
 
 \noindent
 We split the proof in two different cases:
-(1) $i,j>0$
-and (2) $i>0$, $j<0$ or $i<0$, $j>0$.
+\begin{enumerate}
+\item $i,j>0$ or $i,j<0$, and
+\label{item-same}
+\item $i>0$, $j<0$ or $i<0$, $j>0$.
+\label{item-different}
+\end{enumerate}
+
+\noindent
+Only in case (\ref{item-different}) can the commutator be nonzero.
 
 \medskip\noindent
-Case $i,j>0$. By Equation \ref{equation-main} we see that we need to prove
-that the operators commute. The intuitive picture according to the worked
-example is actually quite simple: starting with any set of $n$ points,
+Case (\ref{item-same}). Suppose $i,j>0$.
+The intuitive picture in this case is that removing
+$i$ points and then removing $j$ more points would coincide
+with removing $j$ and then removing $i$.
+More precisely: starting with any set of $n$ points,
 the composition $P_\alpha[i]P_\beta[j]$ acts by
 removing $j$ points so that the support of the quotient
-is a point in the class $\beta$,
+is in the class $\beta$,
 and then remove $i$ more points
- so that the support of the quotient is in $\alpha$.
+so that the support of the quotient is in $\alpha$.
 Then we would check that this operation yields the same class
 if we do it in the opposite order.
 
-In view of our definition of correspondences, 
-Equation \ref{equation-correspondence-p}, and
+To do this formally we have to use 
 our general definition for composition of correspondences, 
-Equation \ref{equation-composition},
+Equation \ref{equation-composition}.
+In view of the particular correspondences we are using, 
+Equation \ref{equation-correspondence-p}, we see that
 the composition $P_\alpha[i]P_\beta[j]$ is given by
+
 \begin{equation}
-\label{equation-composition-p}
+\label{equation-composition-pij}
 P_\alpha[i]P_\beta[j]
 =p_{13,*}(p_{12}^*[P[i]]\cap\Pi_1^*\alpha\cap p_{23}^*[P[j]]\cap\Pi_2^*\beta).
 \end{equation}
+
 Forgetting about the classes $\alpha$ and $\beta$ for a minute,
 consider the set
 \begin{equation}
-\label{equation-pij}
+\label{equation-cycle-pij}
 \begin{aligned}
 P[i,j]&:=p_{12}^{-1}(P[i])\cap p_{23}^{-1}(P[j])
 \cap(X^{[n-i-j]}\times X^{[n-j]}\times X^{[n]})\\
-&=\left\{(\mathcal{I}_1,\mathcal{I}_2,\mathcal{I}_3):
-\mathcal{I}_1\supset\mathcal{I}_2\supset\mathcal{I}_3,
+&=\left\{(\mathcal{J}_1,\mathcal{J}_2,\mathcal{J}_3):
+\mathcal{J}_1\supset\mathcal{J}_2\supset\mathcal{J}_3,
 \substack{
-\text{supp}(\mathcal{I}_1/\mathcal{I}_2)=\{x\}
+\text{supp}(\mathcal{J}_1/\mathcal{J}_2)=\{x\}
 \text{ for some }x\in X\\
-\text{supp}(\mathcal{I}_2/\mathcal{I}_3)=\{y\}
+\text{supp}(\mathcal{J}_2/\mathcal{J}_3)=\{y\}
 \text{ for some }y \in X }\right\}
 \end{aligned}
 \end{equation}
@@ -1542,13 +1613,14 @@ Being subsets of different products, it not immediately
 clear that the associated operators will coincide.
 
 \medskip\noindent
-To retrieve the correspondence as in \ref{equation-composition-p}
+To retrieve the correspondence as in 
+Equation \ref{equation-composition-pij}
 from the set $P[i,j]$ we shall consider its algebraic closure
 and to it associate a fundamental class.
 However, we will do a key procedure before that.
 Observe that $P[i,j]$ may be decomposed as disjoint union
 of the set $\{x \neq y\}$ 
-of ``generic'' cases in which $x$ and $y$ in Equation \ref{equation-pij}
+of ``generic'' cases in which $x$ and $y$ in Equation \ref{equation-cycle-pij}
 are different, and the set $\{x=y\}$ in which they coincide.
 
 Let $\overline{P}[i,j]:=\overline{P[i,j]\cap\{x\neq y\}}$.
@@ -1557,15 +1629,172 @@ $$
 p_{12}^* [P[i]]\cap p_{23}^* [P[j]]=[\overline{P}[i,j]]+\iota_*R
 $$
 where $R \in H_*^{BM}(P[i,j]\cap \{x=y\})$ is the part corresponding
-to the ``singular'' par of $P[i,j]$. Here $\iota$ is the inclusion.
-Observe that we have almost arrived at Equation \ref{equation-composition-p},
-since in fact the classes $[P_{23}^*[P[j]]$ and $\Pi_1^*\alpha$
-commute since they correspond to disjoint components of the product
-$X^{[n-j]}\times X^{[n]}\times X$.
+to the ``singular'' part of $P[i,j]$. Here $\iota$ is the inclusion
+of $\{i=j\}$ into $P[i,j]$.
 
-With a similar construction for the composition $P_\beta[j]P_\alpha[i]$,
-this part of the proof shall be concluded once we prove the following
-two claims.
+To arrive at Equation \ref{equation-composition-pij}
+the next step is to intersect with the classes $\Pi_1^*\alpha$ and
+$\Pi_2^*\beta$.
+Observe these commute with the classes
+$P_{12}^*[P[i]]$ and $[P_{23}^*[P[j]]$
+since they correspond to disjoint components of the product
+$X^{[n-j]}\times X^{[n]}\times X$.
+Then it only remains to pushforward by $p_{13}$.
+
+\medskip\noindent
+We can carry out the same construction
+for the composition $P_\beta[j]P_\alpha[i]$,
+obtaining the expressions
+\begin{equation}
+\label{equation-composition-pji}
+P_\alpha[j]P_\beta[i]
+=p_{13,*}(p_{12}^*[P[j]]\cap\Pi_2^*\alpha\cap p_{23}^*[P[i]]\cap\Pi_1^*\beta).
+\end{equation}
+
+\noindent
+and
+\begin{equation}
+\label{equation-pji-r}
+p_{12}^* [P[j]]\cap p_{23}^* [P[i]]=[\overline{P}[j,i]]+\iota'_*R'.
+\end{equation}
+
+\noindent
+Observe that Equations \ref{equation-composition-pij} and
+\ref{equation-composition-pji} differ in the classes
+$\Pi_1^*\alpha$ against $\Pi_2^*\alpha$, and correspondingly with $\beta$.
+It is clear that the following two lemmas are all we need
+to confirm that the difference of these two equations vanishes
+(which is the commutation relation we are aiming for):
+
+\begin{lemma}
+\label{lemma-pij}
+\begin{enumerate}
+\item There exists an isomorphism
+\begin{equation}
+\label{equation-pij-isomorphism}
+P[i,j]\cap\{x \neq y\}\xrightarrow{\cong}P[j,i]\cap \{x \neq y\},
+\end{equation}
+
+\noindent
+which exchanges $\Pi_1$ and $\Pi_2$.
+
+\item We have
+\begin{equation}
+\label{equation-r}
+p_{13,*}(\Pi_1^*\alpha\cap\Pi_2^*\beta\cap\iota_*R)=0,\qquad 
+p_{13,*}(\Pi_1\beta\cap\Pi_2^*\alpha\cap\iota_*R')=0.
+\end{equation}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item First notice that when we say the isomorphism, say $\varphi$, 
+``exchanges $\Pi_1$ and $\Pi_2$''
+we mean that $\Pi_1|_{X \times X}=\Pi_2|_{X \times X}\circ\varphi$
+according to the diagram
+$$
+\xymatrix{
+& & X\\
+P[i,j] \cap \{x\neq y\}\subset
+\ar[ddd]_\varphi&
+\save{
+X^{[n-i-j]}\times X^{[n-j]} \times X^{[n]} \times X \times X
+}
+\ar[ur]^{\Pi_1}\ar[dr]_{\Pi_2}
+\restore
+\\
+& & X\\
+& & X\\
+P[j,i]\cap\{x\neq y\}\subset&
+X^{[n-i-j]}\times X^{[n-i]} \times X^{[n]} \times X \times X
+\ar[ur]^{\Pi_1}\ar[dr]_{\Pi_2}\\
+& & X.
+}
+$$
+
+Now, the point of the map $\varphi$ is that it must
+exchange an ideal in $X^{[n-j]}$ for an ideal in $X^{[n-i]}$.
+More precisely, we map 
+$(\mathcal{J}_1,\mathcal{J}_2,\mathcal{J}_3)\in P[i,j] \cap \{x \neq  y\}$
+to $(\mathcal{J}_1,\mathcal{J}_2',\mathcal{J}_3) \in P[j,i]\cap \{x \neq y\}$.
+The defining relation is
+\begin{equation}
+\label{equation-isomorphism}
+\mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_2/\mathcal{J}_3,\qquad 
+\mathcal{J}_2'/\mathcal{J}_3=\mathcal{J}_1/\mathcal{J}_2.
+\end{equation}
+No further explanation other than
+ \cite[Firgure 8.2]{Nakajima-lectures} is provided.
+
+The setting is the following. We have the ideals with contentions
+$\mathcal{J}_1\supset \mathcal{J}_2,\mathcal{J}_2'\supset \mathcal{J}_3$.
+Passing to the supports, the inclusions are reversed, i.e 
+the support of $\mathcal{J}_3$ contains the rest,
+and the support of $\mathcal{J}_1$ is contained in the rest.
+
+To prove that this function is well-defined
+we need to show that for every $\mathcal{J}_2$ there is a unique
+$\mathcal{J}_2'$ satisfying Equation \ref{equation-isomorphism}.
+Notice that by definition, $\text{supp}\mathcal{J}_2/\mathcal{J}_3=\{x\}$
+for some $x \in X$ so that, as a scheme, $\{x\}$ has multiplicity $j$.
+We must define
+$\mathcal{J}_2'=\mathcal{J}_1\cup \{x\}$
+where $x$ has multiplicity $j$.
+(Caveat: how can we make sure that
+indeed there is only one scheme of length $j$ supported
+in the point $x$? 
+Recall that elements in the Hilbert scheme should not be considered
+barely as sets of points with multiplicities!
+Actually, in Proposition \ref{proposition-dimension}
+we used the fact that the space of
+possible choices coincides $\pi^{-1}(S^j_{(j)})$
+and has dimension $j-1$.)
+
+
+Defining $\mathcal{J}'_2$ this way implies that (recall we agreed 
+about being sloppy with our notations of the supports
+and multiplicities)
+$$
+\mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_1/(\mathcal{J}_1\cup \{x\})
+=\{x\}=\mathcal{J}_2/\mathcal{J}_3.
+$$
+Now we also must have $\mathcal{J}_1/\mathcal{J}_2=\{y\}$ 
+for some $y \in X$ with multiplicity $i$.
+This implies that $\mathcal{J}_1/\mathcal{J}_3=\{x\}\cup \{y\}$ 
+with their multiplicities.
+Then 
+$$
+\mathcal{J}_2'/\mathcal{J}_3=(\mathcal{J}_1\cup \{x\})/\mathcal{J}_3=\{y\}
+=\mathcal{J}_1/\mathcal{J}_2
+$$
+as required.
+An inverse function 
+defined similarly shows this is a bijection.
+
+Here I am supposing that ``isomorphism'' means bijection since
+$P[i,j]$ is considered as a set-theoretical intersection.
+
+\item (Outline.) First we argue that
+\begin{align*}
+\Pi_1^*\alpha\cap\Pi_2^*\beta\cap\iota_* R&=\ldots\\
+&=\iota_*({\Pi'}^*(\alpha\cap\beta)\cap R.
+\end{align*}
+
+\noindent
+Then we argue that
+\begin{equation}
+\label{equation-intersections}
+p_{13,*}\iota_*({\Pi'}^*(\alpha\cap\beta)\cap R)
+={\Pi''}^*(\alpha\cap \beta)\cap p_{13,*}\iota_*(R).
+\end{equation}
+
+\noindent
+By dimension reasons (not clear to me), $\iota_*(R)$ must vanish.
+\end{enumerate}
+
+\end{proof}
+
 
 \section{Götsche's formula}
 \label{section-gf}
