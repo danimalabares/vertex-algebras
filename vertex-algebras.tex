@@ -1384,14 +1384,16 @@ $$
 $$
 \end{remark}
 
-\section{$\theta$-functions}
+\section{Theta-functions}
 \label{section-theta-functions}
+
+\noindent
 Let's consider
 $$
 \theta(\tau)=\sum_{n \in \mathbb{Z}}q^{n^2/2},\qquad q=e^{2\pi i \tau}
 $$
 This converges (absolutely on compact regions in) 
-the comain $\text{Im}(\tau)>0$.
+the domain $\text{Im}(\tau)>0$.
 
 Consider the Fourier transform
 $$
@@ -1497,7 +1499,7 @@ system $\varepsilon:\Gamma \to \mathbb{C}^\times$ defined by
 \end{align*}
 
 \begin{theorem}
-\label{theorem-Dedekind-eta-function}
+\label{theorem-dedekind-eta-function}
 The {\it Dedekind eta function} 
 $$
 \eta(\tau)=q^{1/24}\prod_{n=1}^\infty (1-q^n),\qquad q=e^{2\pi i \tau}
@@ -1766,14 +1768,14 @@ the coefficients $h_n$ were coming from a Lie algebra,
 so we had relations
  $[h_m,h_n]=(\ldots)$.
 (Indeed, $[h_m,h_n]=m \delta_{m,-n}\text{Id}_H$ in this case.)
-We sould like to interpret such relations at the level of $h(z)$.
+We would like to interpret such relations at the level of $h(z)$.
 
 \begin{align*}
 [h(z),h(z)]&=h(z)h(z)-h(z)h(z)\\
 &=\sum_{p}\sum_{m+n=p}h_mh_nz^{-(m+n)-2}
 -\sum_{m+n=p}h_nh_mz^{-(m+n)-2}\\
-&=\sum_p z^{-p-2}\left(\underbrace{\sum_{m+n=p}[h_m,h_n]}_{\text{infinite?}}
-\right)
+&=\sum_p z^{-p-2}\underbrace{\left(\sum_{m+n=p}[h_m,h_n]\right)}
+_{\text{infinite?}}
 \end{align*}
 which is a bad idea, since that sum can be infinite.
 Better idea: change a variable:
@@ -6549,6 +6551,722 @@ So $\overline{\mathcal{F}}\simeq V^k(\mathfrak{g})$
 as vertex algebras.
 \end{enumerate}
 \end{proof}
+
+
+\section{Characters of vertex algebras and their modules}
+\label{section-characters-of-vertex-algebras}
+
+\noindent
+{\bf Disclaimer!} There may be several computational mistakes in this section.
+
+\medskip\noindent
+Prelude. Let $q=e^{2\pi i\tau}$, $\tau \in \mathbb{C}$,
+$\text{Im}(\tau)>0$ (so  $|q|<1$).
+Consider
+\begin{align*}
+\Delta(\tau)&=q\prod_{n=1}^\infty(1-q^n)^{24}\\
+&=\sum_{n=1}^\infty a_n q^n\\
+&=q-24q^2+252q^3+\ldots
+\end{align*}
+
+\noindent
+Then $\sum_{d|n}d^{11}\equiv a_n\text{ mod }691$.
+
+\medskip\noindent
+Let $V$ be a vertex algebra,
+and $L \in V$ a conformal vector.
+Let $L(Z)=\sum L_nz^{-n-2}$.
+Suppose furthermore that $L_0$ acts on $V$ 
+by integer eigenvalues with finite dimensional eigenspaces.
+Write $V=\bigoplus_{n \in \mathbb{Z}}V_n$,
+where $V_n=\{v \in V:L_0v=nv\}$
+and write $\chi_V = \sum_{n \in \mathbb{Z}}\dim(V_n)q^n$.
+
+\begin{example}
+\label{example-heisenberg-character}
+Recall that $V=H=\mathbb{C}[x_1,x_2,\ldots]$
+with conformal vector $L=\frac{1}{2}\,:\!hh\!:\,$.
+We saw that $L_01=0$, $[L_0,h_n]=nh_n$.So
+$$
+L_0(h_nv)=h_n(L_0v)-nh_nv.
+$$
+This means: take a vector with eigenvalue $\Delta$,
+then apply again, you'll get an eigenvector with eigenvalue
+$\Delta-n$. In symbols: $v \in V_\Delta$, then
+$L_0v \in V_{\Delta-n}$.
+
+So $\Delta(x_1^{m_1}x_2^{m_2}\ldots x_k^{m_k}1)=\sum i m_i$
+and 
+\begin{align*}
+\chi_H&=\prod_{m=1}^\infty(1-q^m)^{-1}\\
+&=\sum_{N=0}^\infty p(N)q^N,
+\end{align*}
+
+\noindent
+where $p(N)$ is the number of integer partitions of $N$.
+\end{example}
+
+\begin{example}
+\label{example-rank-n-heisenberg}
+If $\mathfrak{h}$ is an $n$-dimensional vector space
+$(\cdot,\cdot)$ a nondegenerate symmetric bilinear form,
+$\mathfrak{h}$ abelian Lie algebra, $\hat{\mathfrak{h}}$ 
+affine Lie algebra. Then $H=H(\mathfrak{h})$ 
+is the {\it rank $n$ Heisenberg algebra}.
+Given a basis $\{a^1,\ldots,a^n\}$ of $\mathfrak{h}$ 
+and a dual basis $\{b^1,\ldots,b^n\}$
+i.e. $(a^i,b^i)=\delta_{ij}$,
+(so we need $(\cdot,\cdot)$ for this),
+we compute Virasoro vector to be
+$L=\frac{1}{2}\sum_{i=1}^n\,:\!a^ib^i\!:\,$.
+Then
+$$
+[L_\lambda L]=TL+2\lambda L+\frac{\lambda^3}{12}c,
+$$
+where the central charge $c=n$ is the rank.
+Then
+$$
+\chi_{H(\mathfrak{h})}=\prod_{m=1}^\infty
+\frac{1}{(1-q^m)^n}.
+$$
+\end{example}
+
+\begin{example}
+\label{example-lattice-vertex-algebra-character}
+Let $Q \subset \mathbb{R}^n$ be an even integral lattice.
+Consider 
+$\mathfrak{h}=\mathbb{R}^n \otimes_{\mathbb{R}} \mathbb{C}=\mathbb{C}^n$
+with $(\cdot,\cdot)$ inherited.
+We have $V=V_Q=\bigoplus_{\alpha \in Q}H^\alpha(\mathfrak{h})$.
+
+As part of our construction of $V_Q$ we computed that
+$$
+L_0|\alpha\rangle=\frac{(\alpha,\alpha)}{2}|\alpha\rangle.
+$$
+Hence $|\alpha\rangle\in V_{\frac{(\alpha,\alpha)}{2}}$.
+(Also $[L_0,h_n]=-nh_n$ 
+for all $h \in \mathfrak{h}$ and all $n \in \mathbb{Z}$.)
+
+Also $h_{-n_1}^{i_1}h_{-n_2}^{i_2}\ldots h_{-n_s}^{i_s}|\alpha\rangle$
+lies in $V_{\Delta}$, $\Delta=\frac{(\alpha,\alpha)}{2}
++\sum_{j=1}^sn_j$. (Just as above: we apply the operator again
+and obtain another eigenvector, this time with eigenvalue given by that sum.)
+Therefore
+$$
+\chi_{V_Q}=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+\prod_{m=1}^\infty \frac{1}{(1-q^m)^n}.
+$$
+This makes sense, since (for now) $Q$ is assumed to be positive-definite.
+
+In fact
+$$
+\chi_{V_Q}=\prod_{m=1}^\infty\frac{1}{(1-q^m)^n}\cdot
+\underbrace{\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}}_{
+\substack{\text{theta} \\ \text{function}}}.
+$$
+The series on RHS is called the {\it theta function} 
+of the lattice $Q$, denoted $\theta_Q(\tau)$.
+(Think of it as a function that knows how many vectors of each
+norm the lattice has.)
+More precisely, for $q=e^{2\pi i \tau}$,
+$$
+\theta_Q(\tau)=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+=\sum_{\alpha \in Q}e^{\pi i (\alpha,\alpha)\tau}.
+$$
+
+As detour, notice that if $Q$ is integral, but not even,
+then some $\frac{(\alpha,\alpha)}{2} \not \in \mathbb{Z}$,
+but are in $\frac{1}{2}\mathbb{Z}$.
+As an example of this, $Q=\mathbb{Z} \subset \mathbb{R}$ is
+an odd lattice,
+$$
+\theta_Q(\tau)=
+\sum_{n \in \mathbb{Z}}q^{\frac{n^2}{2}}
+=1+2q^{\frac{1}{2}}+2q^2+2q^{\frac{a}{2}}+\ldots.
+$$
+\end{example}
+
+\begin{remark}
+\label{remark-theta-function-converges}
+Note that for any positive definite $Q$ (even or odd)
+the series $\theta_Q(\tau)$ converges for all
+$\text{Im}(\tau)>0$.
+(Easy application of some test or other.)
+
+If $Q$ is even, then only integer powers of $q$ 
+appear, and we have
+$$
+\theta_Q(\tau+1)=\theta_Q(\tau)\qquad \forall \tau\in \mathbb{H}
+$$
+where $\mathbb{H}=\{\tau \in \mathbb{C}:\text{Im}(\tau)>0\}$.
+
+Can then also think of $\theta_Q$ as a holomorphic
+function (of $q$) on the disk
+$D=\{q:|q|<1\}$.
+
+If $Q$ is odd, then $\theta_Q(\tau+2)=\theta_Q(\tau)$.
+\end{remark}
+
+\medskip\noindent
+Many lectures ago
+(see Section \ref{section-theta-functions}),
+I proved for $Q=\mathbb{Z}$ 
+that $\theta_Q\left(-\frac{1}{\tau}\right)
+=\sqrt{\frac{\tau}{i}}\theta_Q(\tau)$
+using the Poisson summation formula.
+
+What about for other $Q$?
+
+\begin{proposition}
+\label{proposition-theta-function-for-self-dual-lattice}
+If $Q$ is self-dual of rank $n$ (and even (?)),
+then
+$$
+\theta_Q\left(-\frac{1}{\tau}\right)=
+(\tau/i)^n\theta_Q(\tau).
+$$
+\end{proposition}
+
+\begin{proof}
+This is also an application of Poisson summation.
+\end{proof}
+
+\noindent
+More generally,
+
+\begin{proposition}
+\label{proposition-}
+If $Q$ is integral with dual $Q^\vee$,
+then
+$$
+\theta_Q\left(-\frac{1}{\tau}\right)
+=(\tau/i)^n \sum_{\mu \in Q^\vee/Q}s_{0,\mu}\cdot \theta_{\mu+Q}(\tau)
+$$
+where the $s_{0,\mu} \in \mathbb{C}^\times$ are nonzero complex numbers
+and $\tau_{\mu+Q}(\tau)=\sum_{\beta\in\mu+Q}q^{(\beta,\beta),2}$.
+\end{proposition}
+
+\noindent
+As opposed to the usual case, this function has very
+fractional powers of $q$. However, it is well-defined as
+a function on $\mathbb{H}$.
+
+\begin{proposition}
+\label{proposition-}
+If $Q$ is integral, then for all $\lambda \in Q^\vee/Q$,
+$\theta_{\lambda+Q}\left(-\frac{1}{\tau}\right)
+=(\tau/i)^n \sum_{\mu \in Q^\vee/Q}s_{\lambda\mu}\cdot\theta_{\mu+Q}(\tau)$.
+\end{proposition}
+
+\noindent
+Again proved by Poisson summation.
+In the process an explicit formula for $\{S_{\lambda\mu}\}$ emerges.
+I can't remember, but it's something like $$
+S_{\lambda\mu}=\frac{1}{|Q^\vee/Q|^{1/2}}e^{2\pi i(\lambda,\mu)}
+\qquad (?)
+$$
+Thinking of $Q^\vee/Q$ as a finite list
+$\{1,2,\ldots,N\}$, $N=|Q^\vee/Q|$, then
+$\{S_{\lambda\mu}\}_{\lambda,\mu=1,\ldots,n}$ becomes a matrix,
+the {\it $S$-matrix} of $Q$.
+
+Since $-1\frac{1}{\left(-\frac{1}{\tau}\right)}=\tau$,
+we (naively) should have $S^2=I$ identity matrix.
+
+There is a slight problem: $\theta_{\mu+Q}(\tau)$
+might not all be distinct.
+
+\begin{example}
+\label{example-a2-theta-function}
+Consider $Q=A_2$, the triangular lattice.
+We know that $Q^\vee/Q\simeq\mathbb{Z}/3$.
+Actually, $Q^\vee/Q=\{Q,\mu+Q,2\mu+Q\}$.
+In fact, two of the theta-functions associated to these
+three cosets are actually the same:
+\begin{align*}
+\theta_Q&=1+6q+\ldots\\
+Q_{\mu+2}&=3q^{\frac{2}{3}}+\ldots\\
+Q_{2\mu+Q}&=3q^{-\frac{2}{3}}+\ldots.
+\end{align*}
+
+\noindent
+We can refine the $\theta_{\mu+Q}(\tau)$
+to make them linearly independent.
+
+Let $z \in \mathfrak{h}$, and define
+$$
+\theta_{\mu+Q}(\tau,z)=\sum_{\beta \in \mu+Q}q^{\frac{(\beta,\beta)}{2}}
+e^{2\pi i(z,\beta)}.
+$$
+Now
+$$
+\theta_{\mu+Q}:\mathbb{H}\times\mathfrak{h}\to\mathbb{C}
+$$
+(convergent and holomorphic).
+\end{example}
+
+\begin{proposition}
+\label{proposition-}
+For all $\lambda \in Q^\vee/Q$,
+$$
+\theta_{\lambda+Q}\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=(\tau/i)^ne^{\frac{\pi i(z,z)}{\tau}}
+\sum_{\mu \in Q^\vee/Q}S_{\lambda,\mu}\theta_\mu(\tau,z)
+$$
+\end{proposition}
+
+\begin{proof}
+Also by Poisson summation, same $s_{\lambda,\mu}$.
+But now $\{\theta_{\mu+Q}(\tau,z)|\mu \in Q^\vee/Q\}$ 
+are linearly independent. So $S$ makes sense (as a matrix).
+So it no longer holds that $S^2=I$.
+We apply $S$-transformations as follows
+\begin{align*}
+(\tau,z)&\overset{s}{\mapsto }\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+\mapsto \left(-\frac{1}{-\frac{1}{\tau}},\frac{z/\tau}{-1/\tau}\right)
+=(\tau,-z)
+\overset{s}{\mapsto }\left(-\frac{1}{\tau},-\frac{z}{\tau}\right)
+\overset{s}{\mapsto }(\tau,z).
+\end{align*}
+
+\noindent
+So $S^4=I$.
+\end{proof}
+
+\noindent
+Recall that
+$$
+\chi_{V_Q}(\tau)=\frac{1}{\prod_{m=1}^\infty(1-q^m)^n}\theta_Q(\tau).
+$$
+
+Recall the definition of the Dedekind $\eta$ function
+(Theorem \ref{theorem-dedekind-eta-function}).
+Why do we need to put the factor $q^{1/24}$?
+The reason is that without it, it is not a modular form,
+whereas with it, it is.
+
+\begin{lemma}
+\label{lemma-}
+$$
+\eta\left(-\frac{1}{\tau}\right)
+=\sqrt{(\tau/i)}\eta(\tau)
+$$
+(that's why we normalised by $q^{1/24}$).
+\end{lemma}
+
+\noindent
+So
+$$
+\prod_{m=1}^\infty (1-q^m)^n
+=q^{-n/24}\eta(\tau)^n
+$$
+$$
+\chi_{V_Q}(\tau)=\frac{\theta_Q(\tau)}{\eta(\tau)^n}q^{n/24}.
+$$
+
+Let's correct the definition of $\chi_{V_Q}(\tau)$.
+Note that $n=\text{rank}(Q)$ is the central charge $c$ of $V_Q$.
+
+\begin{definition}
+\label{definition-character-of-conformal-vertex-algebra}
+The {\it character} of a conformal vertex algebra $V$ is
+$$
+\chi_V(\tau)=q^{-\frac{c}{24}}\sum_{n \in \mathbb{Z}}\dim(V_n)q^n.
+$$
+If $M$ is a $V$-module,
+we also define $\chi_M(\tau)=q^{-\frac{c}{24}}\sum_{n\in!!}\dim(M_n)q^n$,
+where $!!$ are the eigenvalues on $M$ of $L_0$ (maybe not in $\mathbb{Z}$).
+
+We write
+$$
+M_\Delta=\{m \in M:L_0m=\Delta m\}.
+$$
+A more uniform notation is
+\begin{align*}
+\chi_V(\tau)&=\text{Tr}_Vq^{L_0-c/24},\\
+\chi_M(\tau)&=\text{Tr}_Mq^{L_0-c/24}.
+\end{align*}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-character-v-modules}
+For $\mu \in Q^\vee/Q$, we have the $V_Q$-module $V_\mu$.
+Then
+$$
+\text{Tr}_{V_\mu}q^{L_0-c/24}=\frac{\theta_\mu(\tau)}{\eta(\tau)^n}
+$$
+and
+$$
+\boxed{\chi_M(\tau,z)=\text{Tr}_Me^{2\pi iz_0}q^{L_0-c/24}.}
+$$
+Indeed in $V_\lambda=\bigoplus_{\beta\in\lambda+Q}H^\beta(\mathfrak{h})$,
+$z \in \mathfrak{h}$. In $H^\beta(\mathfrak{h})$,
+$z_0|_{H^\beta}=(\beta,z)I_{H^\beta}$.
+So $e^{2\pi i(z,\beta)}=e^{2\pi i z_0}$.
+$$
+\chi_{V_\lambda}\left(0\frac{1}{\tau},\frac{z}{\tau}\right)
+=e^{\frac{\pi i(z,z)}{\tau}}
+\sum_{\mu \in Q^\vee/Q}S_{\lambda,\mu}\chi_\mu(\tau,z).
+$$
+\end{lemma}
+
+
+
+
+\medskip\noindent
+(New lecture.) Let's do a summary of what we have done
+in this section so far.
+For $Q \subset \mathbb{R}^n$ an integral lattice,
+we defined a function
+$$
+\theta_Q:\underbrace{\mathbb{H}}_{\{\text{Im}>0\}}x \mathfrak{h} \to \mathbb{C}
+$$
+by
+$$
+\theta_Q(\tau,z)=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+e^{2\pi i(\alpha,z)},
+$$
+where $q=e^{2\pi i \tau}$, $z \in \mathfrak{h}=\mathbb{C}^n$.
+We explained that this series converges since $|q|<1$ and it
+is raised to a quadratic term.
+
+More generally, if
+$[\mu] \in Q^\vee/Q$, then
+$$
+\theta_\mu(\tau,z)=\sum_{\alpha \in \mu+Q}q^{\frac{(\alpha,\alpha)}{2}}
+e^{2\pi i (\alpha,z)}
+$$
+similarly.
+
+\medskip\noindent
+If $Q$ is self-dual,
+$$
+\theta_Q\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=(\tau/i)^{n/2}e^{\frac{\pi i (z,z)}{\tau}}
+\theta_Q(\tau,z)
+$$
+by the Poisson summation formula.
+More generally, for $Q$ non self-dual,
+$$
+\theta_\lambda\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=(\tau/i)^{n/2}e^{\frac{\pi(z,z)}{\tau}}
+\sum_{\mu \in Q^\vee/Q}S_{\lambda\mu}\theta_\mu(\tau,z),
+$$
+where $S=(S_{\lambda\mu})$ is some matrix,
+$S^4=I$.
+
+\begin{remark}
+\label{remark-t-matrix}
+There is also the $T$-matrix, corresponding to
+$(\tau,z)\mapsto (\tau+1,z)$.
+\begin{align*}
+S&\xymatrix{\ar@{<->}[r]&}
+\begin{pmatrix}
+0&-1\\ 
+1&0
+\end{pmatrix}\in \text{SL}_2\mathbb{Z}\\
+T & \xymatrix{\ar@{<->}[r]&}
+\begin{pmatrix}
+1&1\\ 
+0&1
+\end{pmatrix}\in \text{SL}_2(\mathbb{Z}).
+\end{align*}
+
+\noindent
+In fact, these generate $\text{SL}_2(\mathbb{Z})$.
+\end{remark}
+
+\begin{align*}
+T&:\underbrace{e^{2\pi i \tau}}_{q}\to e^{2\pi i(\tau+1)}
+=e^{2\pi i \tau}=q\\
+T&:\underbrace{e^{2\pi i\tau a}}_{q^a}\to
+e^{2\pi i a \tau+2\pi i a}=q^ae^{2\pi i a}.
+\end{align*}
+
+\medskip\noindent
+In $\theta_{\mu+Q}(\tau,z)$,
+we have powers $q^{\frac{(\alpha,\alpha)}{2}}$ such that $\alpha \in \mu+Q$.
+Note that if $\mu,\mu' \in \mu+Q$, $\mu'-\mu \in Q$,
+$$
+\frac{(\mu+\alpha,\mu+\alpha)}{2}
+=\frac{(\mu,\mu)}{2}
++\underbrace{\frac{2(\mu,\alpha)}{2}}_{\in \mathbb{Z}}
++\underbrace{(\alpha,\alpha)}_{\in \mathbb{Z}}
+$$
+since $Q$ is even.
+
+So $T$ acts on $\theta_\mu(\tau,z)$
+by a constant. Indeed, by the constant
+$e^{2\pi i (\mu,\mu)/2} \in \mathbb{C}^\times$.
+
+So we have a $T$-matric, which is diagonal, with these numbers
+$$
+\{e^{2\pi i (\mu,\mu)/2}|\mu \in Q^\vee/Q\}
+$$
+on the diagonal.
+
+In $\text{SL}_2(\mathbb{Z})$, $S^4=I$, $(ST)^3=I$.
+These relations hold for our matrices $S$ and $T$.
+
+\begin{proposition}
+\label{proposition-lattices-and-sl2-representations}
+An even integral lattice $Q$ 
+gives a representation of $\text{SL}_2(\mathbb{Z})$ 
+of dimension $|Q^\vee/Q|$.
+\end{proposition}
+
+\noindent
+Also earlier we noted that
+$$
+\chi_{\mu+Q}(\tau,z)
+=\frac{\theta_{\mu+Q}(\tau,z)}{\eta(\tau)^n}
+$$
+is the graded dimension of the $V_Q$-module  $V_{\mu+Q}$.
+More precisely,
+$V=V_Q\mathbb{y}M=V_{\mu+Q}$.
+$z \in \mathfrak{h}\subset H\subset V_Q$,
+so $z_0$ acts on $V_{\mu+Q}$,
+also $L_0$ acts on $V_{\mu+Q}.$ 
+And
+$$
+\chi_{\mu+Q}(\tau,z)=\text{Tr}_{V_{\mu+Q}}e^{2\pi i z_0}
+q^{L_0-c/24}
+$$
+where the central charge is $c=n=\text{rank}(Q)$.
+
+\medskip\noindent
+Recall (compare with Definition \ref{definition-modular-form}) that
+
+\begin{definition}
+\label{definition-modular-form2}
+A {\it modular form} of weight $k$ is a holomorphic function
+$f(\tau)$ of $\tau \in \mathbb{H}$ such that
+\begin{enumerate}
+\item 
+$$
+f\left(\frac{a\tau+b}{c\tau+d}\right)
+=(c\tau+d)^kf(\tau)
+$$
+for all 
+$\begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}\in \text{SL}_2(\mathbb{Z})$.
+
+\item The Fourier series expansion of $f$ 
+(which exists since it must be periodic):
+ $$
+f(\tau)=\sum_{n=0}^\infty a_nq^n
+$$
+has no $a_{<0}$ terms.
+\end{enumerate}
+\end{definition}
+
+\medskip\noindent
+Now we explain a construction:
+let $\Lambda=\{m+n\tau|m,n \in \mathbb{Z}\}\subset\mathbb{C}$
+a ``lattice spanned by 1 and $\tau$''.
+(It's not a lattice in the sense of Section \ref{section-lattices}.)
+Consider
+$$
+\sum_{\lambda \in \Lambda\setminus 0}
+\frac{1}{\lambda^m}=G_m(\Lambda).
+$$
+\begin{enumerate}
+\item $G_m(\Lambda)$ can be thought of as $G_m(\tau)$.
+\item The infinite series converges if $m \geq 3$.
+Inside the disk $D_{2^N}$, there are
+on the order of $(2^N)^2$ points.
+These points have
+$$
+\left|\frac{1}{\lambda^m}\right|<\frac{1}{(2^{N-1})^m}.
+$$
+$$
+\sum\left|\frac{1}{\lambda^m}\right|
+=\sum_N\sum_{N/2<|\lambda|<N}
+\frac{1}{\lambda^m}
+<2^m \sum_N\frac{2^{2N}}{2^{m N}}
+$$
+converges for $m \geq 3$.
+\end{enumerate}
+
+Think of $G_m(\tau)$ ($m\geq 3$).
+Consider
+$\begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}$,
+$a,b,c,d$ integers,
+and  $a\tau+b \in \Lambda$, $c\tau+d \in \Lambda$.
+E.g. $\begin{pmatrix}
+2&5\\ 
+1&3
+\end{pmatrix}$.
+
+We claim that if $\det \begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}=1$,
+then
+$$
+\{m(a\tau+b)+n(c\tau+d)|m,n\in \mathbb{Z}\}=\Lambda.
+$$
+So, denoting $\sum'=\sum_{(m,n) \in \mathbb{Z}^2\setminus(0,0)}$,
+\begin{align*}
+G_k(\tau)&=\sum'\frac{1}{(m\tau+n)^k}\\
+&=\sum'\frac{1}{(m(a\tau+b)+n(c\tau+d))^k}\\
+&=(c\tau+d)^{-k}\sum'\frac{1}{\left(
+m\frac{a\tau+b}{c\tau+d}+n\right)^k}\\
+&=(c\tau+d)^{-k}G_k\left(\frac{a\tau+b}{c\tau+d}\right).
+\end{align*}
+
+\noindent
+So $G_k\left(\frac{a\tau+b}{c\tau+d}\right)G_k(\tau)$ 
+for all $\begin{pmatrix}
+a&b\\ 
+c&d
+\end{pmatrix}\in \text{SL}_2(\mathbb{Z})$.
+This is called an {\it Eiseistein series} of weight $k$.
+
+\begin{remark}
+\label{remark-firs-eisestein-series}
+If $k$ odd, then $\frac{1}{\lambda^m}$ and $\frac{1}{(-\lambda)^m}$ 
+cancel, and $G_k(\tau)=0$, nontrivial.
+So $G_4(\tau)$ is the first Eisenstein series.
+\end{remark}
+
+\medskip\noindent
+Now let's talk about the Fourier series of $G_{2k}(\tau)$.
+Start with
+\begin{equation}
+\label{equation-euler}
+(1-x^2)(1-\frac{x^2}{4})(1-\frac{x^2}{9}\ldots=\frac{\sin(\pi x)}{x},
+\end{equation}
+
+\noindent
+which may be proved by applying Liouville's theorem
+to the quotient LHS/RHS.
+
+In fact, this was Euler's method for proving the identity
+$\sum_{n=1}^\infty \frac{1}{n^2}=\frac{\pi^2}{6}$.
+
+\medskip\noindent
+Do log derivative of Equation \ref{equation-euler}.
+$$
+\pi \frac{\sin(\pi x)}{\cos(\pi x)}
+=\frac{d}{dx}\text{log}\left(\prod_{n=1}^\infty
+(1-\frac{x^2}{n^2})\right)=\ldots
+$$
+
+\begin{theorem}
+\label{theorem-g2k}
+\begin{align*}
+G_{2k}(\tau)&=(-1)^k\frac{\pi^{2k}}{(2k)!}B_{2k}\cdot E_{2k}(\tau),\\
+E_{2k}(\tau)&=1-\frac{4k}{B_{2k}}\sum_{m=1}^\infty
+\frac{m^{2k-1}q^m}{1-q^m}.
+\end{align*}
+\end{theorem}
+
+\noindent
+Here $B_{2k}$ are Bernoulli numbers,
+$$
+\sum_{n=0}^\infty B_n\frac{t^n}{n!}
+=\frac{t}{e^t-1}.
+$$
+The first of them are
+ $$
+\begin{matrix}
+2k:& 0 & 2 & 4 & 6 & 8 & 10 & 12 & 14\\
+B_{2k}:& 1 & 1/6 & 1/30 & 1/42 & -1/30 & 5/66 & -691/2730 & 7/6
+\end{matrix}
+$$
+So
+$$
+E_4(\tau)=1-240 \sum_{m=1}^\infty \frac{m^3 q^m}{1-q^m},
+$$
+$$
+G_4(\tau)=\frac{\pi^4}{45}E_4(\tau).
+$$
+
+\begin{definition}
+\label{definition-space-of-holomorphic-modular-forms}
+Let $\mathcal{M}^{\text{hol}}_{2k}$ be the vector space
+of holomorphic modular forms of weight $k$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-dimension-mhol2k}
+$\dim \mathcal{M}^{\text{hol}}_{2k}$ is
+ $$
+\begin{matrix}
+2k:& 0 & 2 & 4 & 6 & 8 & 10 & 12 & 14 & 16 & 18\\
+\dim\mathcal{M}^{\text{hol}}_{2k}:
+& 0 & 0 & 1 & 1 & 1 & 1 & 2 & 1 & 2 & 2 & \leavevmode
+\end{matrix}
+$$
+and $\dim\mathcal{M}^{\text{hol}}_{2k+12}=\dim\mathcal{M}^{\text{hol}}_{2k}+1$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Let $f(\tau) \in \mathcal{M}^{\text{hol}_{2k}}$ 
+and consider
+$$
+\xi(\tau)=\frac{d}{d\tau}\text{log}f(\tau)=\frac{f'(\tau)}{f(\tau)}.
+$$
+Since
+\begin{align*}
+f(-1/\tau)&=\tau^{2k}f(\tau),\\
+\xi(-1/\tau)=\frac{2k}{\tau}+\xi(\tau),
+\end{align*}
+
+\noindent
+apply Cauchy-formula-type argument $\int_{\partial \mathcal{D}}\xi(\tau)d\tau
+=$ numer of zeroes of $f -$ number of poles of  $f$ in $\mathcal{D}$.
+
+Then integrate along the boundary of the region above the unit circle,
+between the vertical lines $x=-1/2,1/2$ and bounded above by
+some horizontal segment at height $N$.
+In conclusion, the vertical integrals cancel each other
+and $\frac{k}{12}\geq N(i\infty)$,
+where $N(i\infty)=$ order of the zero of $f$ at $i\infty$.
+\end{proof}
+
+\noindent
+One has, if $f \in \mathcal{M}_{2k}^{\text{hol}}$,
+$g \in \mathcal{M}_{2\ell}^{\text{hol}}$,
+$fg \in \mathcal{M}^{\text{hol}}_{2(k+\ell)}$.
+So $E^3_4 \in \mathcal{M}^{\text{hol}}_{12}$ and
+$E_{12}\in \mathcal{M}_{12}^{\text{hol}}$.
+
+Then do
+\begin{align*}
+E_{12}-E^3_4&=\frac{65520}{691}(q-24q+252q-\ldots)\\
+&=\frac{65520}{691}q\prod_{n=1}^\infty(1-q^N)^{24}.
+\end{align*}
+
+\begin{remark}
+\label{remark-dedekind}
+\begin{align*}
+\Delta(\tau)&=q\prod_{n=1}^\infty(1-q^n)^{24}\\
+&=\eta(\tau)^{24}.
+\end{align*}
+
+\noindent
+In fact, $\bigoplus_{k=0}^\infty\mathcal{M}_{2k}^{\text{hol}}
+\simeq\mathbb{C}[E_4,E_{12}]$.
+\end{remark}
+
+\medskip\noindent
+Next time. Let $Q$ be unimodular of rank 24.
+So
+$$
+P(\tau,z)=\frac{\theta_Q(\tau,z)}{\eta(\tau)^{24}}
+$$
+satisfies
+$$
+P\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=e^{\frac{\pi i (z,z)}{\tau}}P(\tau,z).
+$$
 
 
 
