@@ -24,188 +24,6 @@ and sketch the proof of the theorem.
 
 
 
-\section{Hilbert scheme of points}
-\label{section-hilbert-scheme}
-
-\noindent
-The discussion in this section will not be used in what
-remains of this project and may summarized by saying,
-as Anthony does in the very beginning of video 1, 
-that the essential property of the Hilbert scheme
-is that a point (over $\mathbb{C}$) of $X^{[n]}$
-is a 0-dimensional closed subscheme of $X$
-of length $n$.
-
-\medskip\noindent
-Throughout $X$ will be a projective complex surface.
-We start by introducing the Hilbert scheme following
-\cite[Section 1.1]{Nakajima-lectures}.
-We consider a contravariant funtor 
-$\mathcal{H}ilb_X:(\text{Schemes})^{\text{op}}\to (\text{Sets})$ 
-which assigns to any scheme $U$ the set of flat families
-of closed subschemes in $X$ parametrized by $U$.
-Any such family is by definition a flat morphism
-$$
-\xymatrix{
-Z \ar[d]^\pi&\subseteq X \times U\\
-U,
-}
-$$
-so that the fibers of $\pi$ are closed subschemes of $X$.
-The Hilbert polynomial at a fiber $Z_u$ is defined by
-$P_u(m)=\chi(\mathcal{O}_{Z_u}\otimes \mathcal{O}_X(m))$.
-By flatness of $\pi$ the Hilbert polynomial is constant along $U$
-\cite[Part III, Theorem 9.9]{Hartshorne}.
-
-For a fixed polynomial $P$
-we define $\mathcal{H}ilb^P_X$ as the functor which maps $U$ 
-to the set of families over $U$ with Hilbert polynomial $P$.
-A theorem by Grothendieck says $\mathcal{H}ilb^P_X$ is representable
-by a projective scheme $\text{Hilb}^P_X$.
-This means that there is a natural transformation
-$\Hom(-,\text{Hilb}^P_X) \simeq \mathcal{H}ilb^P_X(-)$,
-that is, families over any scheme $U$ are in bijection with
-morphisms $U \to \text{Hilb}^P_X$.
-Moreover, as with any representable functor,
-we obtain a distinguished element associated to the identity morphism
-of $\text{Hilb}^P_X$.
-In our case, this distinguished element is a
-universal family $\mathcal{Z} \to \text{Hilb}^P_X$
-such that any other family $Z \to U$ is obtained as a pullback
-(the Hilbert functor acts on morphisms of schemes by pullbacks of families)
-of $\mathcal{Z}$.
-More exactly, the digram
-$$
-\xymatrix{
-\text{id}_{\text{Hilb}^P_X}\ar@{|->}[d]
-&\Hom(\text{Hilb}^P_X,\text{Hilb}^P_X)\ar[r]\ar[d]_{f^*}
-&\mathcal{H}ilb^P_X(\text{Hilb}^P_X)\ar[d]^{f^*}
-&\mathcal{Z}\ar@{|->}[d]\\
-f&\Hom(U,\text{Hilb}^P_X)\ar[r]&\mathcal{H}ilb^P_X(U)& f^*\mathcal{Z}.
-}
-$$
-commutes.
-
-This shows that studying families over the Hilbert scheme
-is enough to study any family of subschemes of our initial scheme $X$.
-Recall the fact that points $x$ of any scheme $X$ correspond to morphisms
-$\Spec(\kappa(x)) \to X$, where $\kappa(x)$ is the residue field of the point
-(see e.g. Stacks Project 
-\href{https://stacks.math.columbia.edu/tag/01J9}{01J9}).
-Then for every point $h$ of the Hilbert scheme
-we have a unique subscheme
-of $X$ defined as the fiber
-$$
-\xymatrix{
-X_h\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&\mathcal{Z}\ar[d]
-& \subset X \times \text{Hilb}^P_X\\
-\Spec(\kappa(h))\ar[r]&\text{Hilb}^P_X.
-}
-$$
-See Stacks Project 
-\href{https://stacks.math.columbia.edu/tag/01K0}{01K0}
-for the definition of fibre.
-We see that to make sure that the fibers are $\mathbb{C}$-schemes,
-then we must restricts ourselves to $\mathbb{C}$-points
-of the Hilbert scheme. 
-This is just a technical remark specified in video 1.
-
-\begin{definition}
-\label{definition-hilbert-scheme-of-points}
-Let $P$ be a constant polynomial given by $P(m)=n$ for all $m \in \mathbb{Z}$.
-The {\it Hilbert scheme of $n$ points in $X$} is $X^{[n]}:=\text{Hilb}^P_X$.
-\end{definition}
-
-\noindent
-This condition forces the dimension of the fibers of any family
-over $X$ to be zero. Indeed, the leading term
-of the Hilbert polynomial of a projective variety of degree $d$
-and dimension $s$ is $(dm^s)/s!$, which can only be constant
-for $s=0$ (see \cite[Exercise 1.13]{HarrMorr}).
-
-Further, any 0-dimensional subscheme of $X$
-is supported on finitely many points of $X$
-(this is consequence of $X$ being Noetherian, see 
-\href{https://math.stackexchange.com/questions/474873/why-is-every-noetherian-zero-dimensional-scheme-finite-discrete}{here}:
-we couldn't have infinitely many points as it
-would give an infinite chain of prime ideals).
-Finally, the {\it length} of any such subscheme, defined by
- $\dim\Gamma(\mathcal{O}_Z)$
-must be $\sum_{x \in \text{supp} Z}\Gamma(\mathcal{O}_{Z_x})=n$.
-(See Stacks Project 
-\href{https://stacks.math.columbia.edu/tag/0AYT}{0AYT}
-or
-\href{https://math.stackexchange.com/questions/3578689/
-understanding-length-of-schemes}
-{Stack Exchange}
-for the fact that if the support is 0-dimensional then
-$H^i(\mathcal{F})=0$ for $i>0$ and thus the length of the scheme
-is what we just wrote.)
-
-\medskip\noindent
-The reason why this scheme is called the Hilbert scheme of {\it points} 
-is that any subscheme of $X$ consisting of $n$ distinct points is in
-$\text{Hilb}^P_X$. Indeed, if $Z=\{x_1,\ldots,x_n\}\subset X$, its
-structure sheaf is the direct sum of skyscraper sheaves
-$$
-\mathcal{O}_Z=\bigoplus_{i=1}^n (\text{skyscraper sheaf at $x$})
-$$
-so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)=\mathcal{O}_Z$.
-
-However, not every point in $X^{[n]}$ is given
-by a set of $n$ distinct points,
-nor by a set of points with allowed repetitions.
-Indeed, the Hilbert scheme distinguishes 
-the ``tangent directions in which points collide''.
-The important thing to note here is that 
-there are elements in the Hilbert scheme
-given by ideals which
-do not correspond to sets of points
-(even with allowed repetition).
-
-\medskip\noindent
-The following construction
-distinguishes the Hilbert scheme
-from the symmetric power $S^n X$
-of the surface $X$.
-
-The {\it symmetric power} of $X$ is
-$$
-S^nX=\underbrace{X \times \ldots \times X}_{n\text{ copies}}/S_n
-$$
-where the symmetric group $S_n$ acts by
-permutating copies. Thus, a point of $S^nX$ is
-an $S_n$-orbit on the cartesian product $X \times \ldots \times X$,
-that is, an unordered $n$-tuple of points of $X$,
-with allowed repetition.
-In algebraic geometry these are called ``algebraic cycles''
-and are denoted as formal sums $\sum_{x \in X}n_x[x]$ 
-where $\sum_{x \in X}n_x=n$, with $n_x \in \mathbb{N}$
-and $[x]$ are formal symbols.
-
-Since elements of $X^{[n]}$ have length $n$ as defined above,
-we have a map
-\begin{align*}
-\pi : X^{[n]} &\longrightarrow S^nX \\
- Z&\longmapsto \underbrace{\sum_{x \in \text{supp}Z}\dim
-\Gamma(\mathcal{O}_{Z,x})[x]}_{\text{cycle of $Z$}}
-\end{align*}
-called the {\it Hilbert-Chow morphism}.
-
-As explained above, this map is an important tool used to distinguish
-the Hilbert scheme of a variety from its symmetric power.
-In some cases this is an isomorphism, but not always,
-as the following theorem suggests:
-
-\begin{theorem}[Fogarty]
-\label{theorem-fogarty}
-Suppose $X$ is nonsingular and $\dim X=2$,
-then the following holds.
-\begin{enumerate}
-\item $X^{[n]}$ is nonsingular and has dimension $2n$.
-\item The Hilbert-Chow morphism is a resolution of singularities.
-\end{enumerate}
-\end{theorem}
 
 \section{Heisenberg algebra}
 \label{section-algebra}
@@ -216,8 +34,8 @@ for Subsection \ref{subsection-meeting}, which is based
 on my meeting with Jethro.
 So far there's only stuff on Heisenberg.
 
-\subsection{Basic Heisenberg algebra}
-\label{subsection-basic-heisenberg}
+\subsection{Lattice Heisenberg algebra}
+\label{subsection-lattice-heisenberg}
 
 \noindent
 Let's work out Emily's construction of the Heisenberg algebra in Video 8.
@@ -505,14 +323,6 @@ and counting the number of appearances of each term) that
 $$
 where $p$ is the number of integer partitions of $\Delta$.
 
-\subsection{Character}
-\label{subsection-character}
-
-\noindent
-Here we should discuss the characters.
-This was already discussed in Subsection \ref{subsection-meeting}
-(and also in the mathematica notebook!).
-
 \subsection{Heisenberg superalgebra}
 \label{subsection-heisenberg-superalgebra}
 
@@ -795,10 +605,10 @@ Writing $x_m=at^{-m}$ we have
 \begin{equation}
 \label{equation-symmetric-rank-1}
 \begin{aligned}
-H&=\mathbb{C}[at^{-1},at^{-2},\ldots]\\
-&=\text{Sym}\left(\bigoplus_{m>0}\mathbb{C}at^{-m}\right)\\
-&=\bigotimes_{m>0}\text{Sym}(\mathbb{C}at^{-m})\\
-&=\bigotimes_{m>0}(\mathbb{C}\oplus \mathbb{C}at^{-m}
+H&\cong\mathbb{C}[at^{-1},at^{-2},\ldots]\\
+&\cong\text{Sym}\left(\bigoplus_{m>0}\mathbb{C}at^{-m}\right)\\
+&\cong\bigotimes_{m>0}\text{Sym}(\mathbb{C}at^{-m})\\
+&\cong\bigotimes_{m>0}(\mathbb{C}\oplus \mathbb{C}at^{-m}
 \oplus \mathbb{C}(at^{-m})^2
 \oplus \ldots),
 \end{aligned}
@@ -810,23 +620,32 @@ is the polynomial ring in its generators,
 and the symmetric power of a direct sum
 is the tensor product of the symmetric powers of the factors.
 
+It is not a coincidence that we can write the Fock module
+of this algebra as a symmetric power of a Lie subalgebra.
+This is due to the Poincaré-Birkoff-Witten theorem
+applied to the universal enveloping algebra of the
+$\mathfrak{n}_-$ term of the
+triangular decomposition of $\hat{\mathfrak{a}}$ 
+as in the theory of finite dimensional Lie algebras
+(see \cite[Lecture 24]{KLAL}).
+
 Putting a dummy variably $q$ to every 1-dimensional
 factor and multiplying throughout, we obtain
 \begin{align*}
-m=1\qquad &(1+\underline{q}+q^2+q^3+\ldots)\times\\
-m=2\qquad &(1+q^2+\underline{q^4}+q^6+\ldots)\times\\
-m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times\ldots.
+m=1\qquad &(1+q+q^2+q^3+\ldots)\times\\
+m=2\qquad &(1+q^2+q^4+q^6+\ldots)\times\\
+m=3\qquad &(1+q^3+q^6+q^9+\ldots)\times\ldots,
 \end{align*}
 
 \noindent
-So that indeed the character is given by 
+so that indeed the character is given by 
 Equation \ref{equation-character-heisenberg}.
-Regrouping according to the energy grading 
+(Regrouping according to the energy grading 
 $H=\bigoplus_{\Delta=0}^\infty H_\Delta$
 we see that this character must also equal
 $\sum_{\Delta=1}^\infty p(\Delta)q^\Delta$
 where $p(\Delta)$ is the number
-of integer partitions of $\Delta$.
+of integer partitions of $\Delta$.)
 
 \medskip\noindent
 Another version of this construction
@@ -852,10 +671,10 @@ A similar formula to Equation \ref{equation-symmetric-rank-1} is
 \begin{equation}
 \label{equation-symmetric}
 \begin{aligned}
-H&=\text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
+H&\cong\text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
 \mathbb{C}at^{-n}\right)\\
-&=\bigotimes_{m>0}\bigotimes_{a \in B}\text{Sym}(\mathbb{C}at^{-m})\\
-&=\bigotimes_{m>0}\bigotimes_{a \in B}\mathbb{C}[at^{-m}]
+&\cong\bigotimes_{m>0}\bigotimes_{a \in B}\text{Sym}(\mathbb{C}at^{-m})\\
+&\cong\bigotimes_{m>0}\bigotimes_{a \in B}\mathbb{C}[at^{-m}]
 \end{aligned}
 \end{equation}
 where $B$ is a basis of the underlying vector space $\mathfrak{h}$.
@@ -868,9 +687,32 @@ If $\mathfrak{h}$ has dimension $r$, this has character
 \medskip\noindent
 Taking this construction one step further,
 let's change $\mathfrak{h}$ for a finite-dimensional
-super vectorspace $V=V_0\oplus V_1$
+super vectorspace $\mathfrak{h}=\mathfrak{h}_0\oplus \mathfrak{h}_1$
 with basis $B^{\text{even}}\amalg B^{\text{odd}}$.
-Now we obtain
+If we equip $\mathfrak{h}$ with a graded commutative
+pairing $\left<\cdot,\cdot\right>$, we can
+apply the same construction as above
+to obtain the algebra
+\begin{equation}
+\label{equation-super-heisenberg}
+\hat{\mathfrak{h}}
+=(\mathfrak{h}_0[[t^{\pm 1}]]\oplus\mathfrak{h}_1[[t^{\pm 1}]])
+\oplus\mathbb{C}K
+\end{equation}
+with Lie bracket
+\begin{equation}
+\label{equation-super-bracket}
+[at^m,bt^n]=\left<a,b\right>m\delta_{m,-n}K,\qquad 
+[K,\hat{\mathfrak{h}}]=0.
+\end{equation}
+
+\noindent
+One can check that this is indeed a super Lie bracket
+(which essentially holds by the pairing being graded commutative
+and $K$ being central),
+i.e. $\hat{\mathfrak{h}}$ is a Lie superalgebra.
+
+Its Fock module is given by
 \begin{align*}
 H&\cong \text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
 \mathbb{C}at^{-m}\right)\\
@@ -902,17 +744,23 @@ $$
 $$
 Multiplying throughout we obtain the character
 $$
-\prod_{m=0}^\infty \frac{(1+q^m)^{\dim V^{\text{odd}}}}{
-(1+q^m)^{\dim V^{\text{even}}}}.
+\prod_{m=0}^\infty \frac{(1+q^m)^{\dim \mathfrak{h}^{\text{odd}}}}{
+(1+q^m)^{\dim \mathfrak{h}^{\text{even}}}}.
 $$
 
 \medskip\noindent
 Let's introduce one last variant of this construction.
 This time we start from a graded vector space
-$V=\bigoplus_{m \in \mathbb{Z}}V_m$,
-which is graded as $V^{\text{even}}=\bigoplus_{i \in \mathbb{Z}}V_{2i}$ 
-and $V^{\text{odd}}=\bigoplus_{i \in \mathbb{Z}}V_{2i+1}$.
-Suppose $V_i$ is finite-dimensional with basis $B_i$.
+$\mathfrak{h}=\bigoplus_{m \in \mathbb{Z}}\mathfrak{h}_m$,
+which is graded as 
+$\mathfrak{h}^{\text{even}}=\bigoplus_{i \in \mathbb{Z}}\mathfrak{h}_{2i}$ 
+and $\mathfrak{h}^{\text{odd}}=\bigoplus_{i \in \mathbb{Z}}\mathfrak{h}_{2i+1}$.
+Suppose $\mathfrak{h}_i$ is finite-dimensional with basis $B_i$,
+and that $\mathfrak{h}$ is equipped with a graded commutative
+pairing $\left<\cdot,\cdot\right>$.
+The definition of $\hat{\mathfrak{h}}$ as an algebra
+is given exactly as in Equation \ref{equation-super-heisenberg}
+with bracket given by Equation \ref{equation-super-bracket}.
 
 Now we obtain
 \begin{align*}
@@ -932,12 +780,12 @@ _{\substack{a \in B_{2i} \\ i \in \mathbb{Z}}}
 This gives the character (or Poincaré polynomial)
 $$
 \sum_{\substack{\Delta\in \mathbb{Z}_\geq  \\ i \in \mathbb{Z}}}
-\dim V_{i,\Delta}t^iq^\Delta
-=\prod_{m>0}\prod_j(1-(-1)^jt^jq^m)^{-(-1)^j\dim V_j}.
+\dim \mathfrak{h}_{i,\Delta}t^iq^\Delta
+=\prod_{m>0}\prod_j(1-(-1)^jt^jq^m)^{-(-1)^j\dim \mathfrak{h}_j}.
 $$
 
 \noindent
-Finally fix $V=H_*(X)$, the singular homology ring
+Finally fix $\mathfrak{h}=H_*(X)$, the singular homology ring
 of a complex projective surface $X$.
 The character of the corresponding Heisenberg algebra is
 \begin{equation}
@@ -965,21 +813,202 @@ of the Heisenberg algebra we shall discuss in the main theorem,
 this shows that in fact it is a highest weight representation.
 
 \medskip\noindent
-It remains to find out the formulas for the 
-variants of the Heisenberg algebra introduced above.
-In comparing the brackets of the first two variants 
-(the ``basic'' Heisenberg
-algebra and the one starting from 
-a finite-dimensional vector space $\mathfrak{h}$)
-with Equation \ref{equation-main},
-we notice that the latter has a strange factor $(-1)^{i-1}$.
+It remains to explain the strange factor $(-1)^{i-1}$
+in the main equation Equation \ref{equation-main}.
 The reason for including this term in the main theorem 
 is explained in
 \cite[Theorem 9.15]{Nakajima-lectures},
 but I would expect to find it also in the bracket
-of our super variants of the Heisenberg algebra.
+of our super variants of the Heisenberg algebra,
+namely in Equation \ref{equation-super-bracket}…
 
 
+
+
+
+
+\section{Hilbert scheme of points}
+\label{section-hilbert-scheme}
+
+\noindent
+The discussion in this section will not be used in what
+remains of this project and may summarized by saying,
+as Anthony does in the very beginning of video 1, 
+that the essential property of the Hilbert scheme
+is that a point (over $\mathbb{C}$) of $X^{[n]}$
+is a 0-dimensional closed subscheme of $X$
+of length $n$.
+
+\medskip\noindent
+Throughout $X$ will be a projective complex surface.
+We start by introducing the Hilbert scheme following
+\cite[Section 1.1]{Nakajima-lectures}.
+We consider a contravariant funtor 
+$\mathcal{H}ilb_X:(\text{Schemes})^{\text{op}}\to (\text{Sets})$ 
+which assigns to any scheme $U$ the set of flat families
+of closed subschemes in $X$ parametrized by $U$.
+Any such family is by definition a flat morphism
+$$
+\xymatrix{
+Z \ar[d]^\pi&\subseteq X \times U\\
+U,
+}
+$$
+so that the fibers of $\pi$ are closed subschemes of $X$.
+The Hilbert polynomial at a fiber $Z_u$ is defined by
+$P_u(m)=\chi(\mathcal{O}_{Z_u}\otimes \mathcal{O}_X(m))$.
+By flatness of $\pi$ the Hilbert polynomial is constant along $U$
+\cite[Part III, Theorem 9.9]{Hartshorne}.
+
+For a fixed polynomial $P$
+we define $\mathcal{H}ilb^P_X$ as the functor which maps $U$ 
+to the set of families over $U$ with Hilbert polynomial $P$.
+A theorem by Grothendieck says $\mathcal{H}ilb^P_X$ is representable
+by a projective scheme $\text{Hilb}^P_X$.
+This means that there is a natural transformation
+$\Hom(-,\text{Hilb}^P_X) \simeq \mathcal{H}ilb^P_X(-)$,
+that is, families over any scheme $U$ are in bijection with
+morphisms $U \to \text{Hilb}^P_X$.
+Moreover, as with any representable functor,
+we obtain a distinguished element associated to the identity morphism
+of $\text{Hilb}^P_X$.
+In our case, this distinguished element is a
+universal family $\mathcal{Z} \to \text{Hilb}^P_X$
+such that any other family $Z \to U$ is obtained as a pullback
+(the Hilbert functor acts on morphisms of schemes by pullbacks of families)
+of $\mathcal{Z}$.
+More exactly, the digram
+$$
+\xymatrix{
+\text{id}_{\text{Hilb}^P_X}\ar@{|->}[d]
+&\Hom(\text{Hilb}^P_X,\text{Hilb}^P_X)\ar[r]\ar[d]_{f^*}
+&\mathcal{H}ilb^P_X(\text{Hilb}^P_X)\ar[d]^{f^*}
+&\mathcal{Z}\ar@{|->}[d]\\
+f&\Hom(U,\text{Hilb}^P_X)\ar[r]&\mathcal{H}ilb^P_X(U)& f^*\mathcal{Z}.
+}
+$$
+commutes.
+
+This shows that studying families over the Hilbert scheme
+is enough to study any family of subschemes of our initial scheme $X$.
+Recall the fact that points $x$ of any scheme $X$ correspond to morphisms
+$\Spec(\kappa(x)) \to X$, where $\kappa(x)$ is the residue field of the point
+(see e.g. Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/01J9}{01J9}).
+Then for every point $h$ of the Hilbert scheme
+we have a unique subscheme
+of $X$ defined as the fiber
+$$
+\xymatrix{
+X_h\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&\mathcal{Z}\ar[d]
+& \subset X \times \text{Hilb}^P_X\\
+\Spec(\kappa(h))\ar[r]&\text{Hilb}^P_X.
+}
+$$
+See Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/01K0}{01K0}
+for the definition of fibre.
+We see that to make sure that the fibers are $\mathbb{C}$-schemes,
+then we must restricts ourselves to $\mathbb{C}$-points
+of the Hilbert scheme. 
+This is just a technical remark specified in video 1.
+
+\begin{definition}
+\label{definition-hilbert-scheme-of-points}
+Let $P$ be a constant polynomial given by $P(m)=n$ for all $m \in \mathbb{Z}$.
+The {\it Hilbert scheme of $n$ points in $X$} is $X^{[n]}:=\text{Hilb}^P_X$.
+\end{definition}
+
+\noindent
+This condition forces the dimension of the fibers of any family
+over $X$ to be zero. Indeed, the leading term
+of the Hilbert polynomial of a projective variety of degree $d$
+and dimension $s$ is $(dm^s)/s!$, which can only be constant
+for $s=0$ (see \cite[Exercise 1.13]{HarrMorr}).
+
+Further, any 0-dimensional subscheme of $X$
+is supported on finitely many points of $X$
+(this is consequence of $X$ being Noetherian, see 
+\href{https://math.stackexchange.com/questions/474873/why-is-every-noetherian-zero-dimensional-scheme-finite-discrete}{here}:
+we couldn't have infinitely many points as it
+would give an infinite chain of prime ideals).
+Finally, the {\it length} of any such subscheme, defined by
+ $\dim\Gamma(\mathcal{O}_Z)$
+must be $\sum_{x \in \text{supp} Z}\Gamma(\mathcal{O}_{Z_x})=n$.
+(See Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/0AYT}{0AYT}
+or
+\href{https://math.stackexchange.com/questions/3578689/
+understanding-length-of-schemes}
+{Stack Exchange}
+for the fact that if the support is 0-dimensional then
+$H^i(\mathcal{F})=0$ for $i>0$ and thus the length of the scheme
+is what we just wrote.)
+
+\medskip\noindent
+The reason why this scheme is called the Hilbert scheme of {\it points} 
+is that any subscheme of $X$ consisting of $n$ distinct points is in
+$\text{Hilb}^P_X$. Indeed, if $Z=\{x_1,\ldots,x_n\}\subset X$, its
+structure sheaf is the direct sum of skyscraper sheaves
+$$
+\mathcal{O}_Z=\bigoplus_{i=1}^n (\text{skyscraper sheaf at $x$})
+$$
+so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)=\mathcal{O}_Z$.
+
+However, not every point in $X^{[n]}$ is given
+by a set of $n$ distinct points,
+nor by a set of points with allowed repetitions.
+Indeed, the Hilbert scheme distinguishes 
+the ``tangent directions in which points collide''.
+The important thing to note here is that 
+there are elements in the Hilbert scheme
+given by ideals which
+do not correspond to sets of points
+(even with allowed repetition).
+
+\medskip\noindent
+The following construction
+distinguishes the Hilbert scheme
+from the symmetric power $S^n X$
+of the surface $X$.
+
+The {\it symmetric power} of $X$ is
+$$
+S^nX=\underbrace{X \times \ldots \times X}_{n\text{ copies}}/S_n
+$$
+where the symmetric group $S_n$ acts by
+permutating copies. Thus, a point of $S^nX$ is
+an $S_n$-orbit on the cartesian product $X \times \ldots \times X$,
+that is, an unordered $n$-tuple of points of $X$,
+with allowed repetition.
+In algebraic geometry these are called ``algebraic cycles''
+and are denoted as formal sums $\sum_{x \in X}n_x[x]$ 
+where $\sum_{x \in X}n_x=n$, with $n_x \in \mathbb{N}$
+and $[x]$ are formal symbols.
+
+Since elements of $X^{[n]}$ have length $n$ as defined above,
+we have a map
+\begin{align*}
+\pi : X^{[n]} &\longrightarrow S^nX \\
+ Z&\longmapsto \underbrace{\sum_{x \in \text{supp}Z}\dim
+\Gamma(\mathcal{O}_{Z,x})[x]}_{\text{cycle of $Z$}}
+\end{align*}
+called the {\it Hilbert-Chow morphism}.
+
+As explained above, this map is an important tool used to distinguish
+the Hilbert scheme of a variety from its symmetric power.
+In some cases this is an isomorphism, but not always,
+as the following theorem suggests:
+
+\begin{theorem}[Fogarty]
+\label{theorem-fogarty}
+Suppose $X$ is nonsingular and $\dim X=2$,
+then the following holds.
+\begin{enumerate}
+\item $X^{[n]}$ is nonsingular and has dimension $2n$.
+\item The Hilbert-Chow morphism is a resolution of singularities.
+\end{enumerate}
+\end{theorem}
 
 
 
@@ -1645,14 +1674,25 @@ Now we are almost ready to formulate the main theorem.
 First notice that this is \cite[Theorem 8.13]{Nakajima-lectures}
 and {\bf not} \cite[Theorem 3.1]{Nakajima-Heis}.
 Now let's clarify what are the main objects involved.
-The theorem is about a representation of the
-Heisenberg superalgebra Subsection \ref{subsection-heisenberg-superalgebra} 
-for $V=H_*(X)$.
 
-The pairing is the super skew-symmetric pairing
-given defined by $\left<\alpha,\beta\right>=p_*(\alpha \cap \beta)$
+The theorem is about a representation of the
+Heisenberg superalgebra introduced in Section \ref{section-variants} 
+for the graded (and thus super) vector space $\mathfrak{h}=H_*(X)$.
+This means that we will construct a representation of the
+infinite-dimensional Heisenberg superalgebra
+$\hat{\mathfrak{h}}$ given by Equation \ref{equation-super-heisenberg}
+with bracket given Equation \ref{equation-super-bracket}.
+
+The pairing we use is the graded commutative pairing
+defined by $\left<\alpha,\beta\right>=p_*(\alpha \cap \beta)$
 where $p:X \to \text{pt}$ is the unique morphism
 from $X$ to the point pt.
+Notice that this pairing is indeed graded commutative
+since the intersection pairing $\cap$ in BM homology 
+is introduced via the usual cup product in relative cohomology
+(see key property (\ref{item-intersection}) of BM homology);
+and of course it is valued in $\mathbb{C}$ 
+since $H_*(\text{pt})=\mathbb{C}$.
 
 \begin{theorem}[Nakajima, Grojnowski]
 \label{theorem-NG}
