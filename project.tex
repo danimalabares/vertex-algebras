@@ -418,7 +418,11 @@ $$
 
 \medskip\noindent
 Let's quickly recall some facts about Verma modules
-(see also \cite[Lecture 24]{KLAL}).
+following 
+\href{https://youtu.be/oYpls6x1jPc?si=CuZ6tZEVfNaZW_Ki}{Video 10}
+from 31:00 to 39:04.
+See also \cite[Lecture 24]{KLAL}.
+
 Let $\mathfrak{g}$ be a semi-simple Lie algebra.
 Recall that for any Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$ 
 and subset of positive roots $\Delta_+ \subset \mathfrak{h}^*$
@@ -445,24 +449,27 @@ It follows from PBW theorem that
 $U(\mathfrak{g})\cong 
 U(\mathfrak{n}_-)\otimes U(\mathfrak{h})\otimes U(\mathfrak{n}_+)$.
 In turn, this implies that
-$M(\Lambda)\cong U(\mathfrak{n}_-)$ as a vector space, 
+$M(\Lambda)\cong U(\mathfrak{n}_-)$ as a vector space
+(see \cite[Lecture 24, Proposition 1.1(iii)']{KLAL}), 
 which is isomorphic to a polynomial ring $\mathbb{C}[\alpha^-i]$,
 where $\alpha^-i$ is a basis of $\mathfrak{n}_-$.
 
 In our case, this description allows us to conclude
 that in fact $\pi \cong \mathbb{C}[\alpha_i(n)]$
 where $\alpha_i \in \Gamma$ is a basis of 
-$\Gamma \otimes_\mathbb{Z}\mathbb{C}$.
+$\Gamma \otimes_\mathbb{Z}\mathbb{C}$ and $n<0$.
 Further, the action of $\hat{\mathfrak{a}}$ is determined,
 and it is non other than the action of 
-$H=\mathbb{C}[x_1,x_2,\ldots]$ we used in class, namely
+$H=\mathbb{C}[x_1,x_2,\ldots]$ we used in class.
+Switching to our more familiar notation,
+the action is given by
 \begin{align*}
 h_n&\mapsto \begin{cases}
 n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0\\
 x_{-n}\qquad &\text{if }n<0\\
 0\qquad &\text{if }n=0
 \end{cases},
-\qquad \qquad  K\mapsto \text{Id}
+\qquad \qquad  K\mapsto \text{Id}.
 \end{align*}
 
 \noindent
@@ -484,8 +491,19 @@ $$
 \substack{\text{2-particle} \\ \text{states}}}
 \oplus \ldots.
 $$
-
-
+Introduce the {\it energy} as $\Delta$… this gives the character
+formula 
+$$
+\chi=\prod_{m=0}^\infty\frac{1}{(1-q^m)^n}
+$$
+for the Heisenberg algebra of rank $n$.
+In fact, for the rank 1 case we can easily see 
+(after simply writing out each of the factors of the product
+and counting the number of appearances of each term) that
+ $$
+\prod_{m=0}^\infty\frac{1}{1-q^m}=\sum_{\Delta=0}^\infty p(\Delta)q^\Delta
+$$
+where $p$ is the number of integer partitions of $\Delta$.
 
 \subsection{Character}
 \label{subsection-character}
@@ -719,6 +737,252 @@ in the (charge,energy)-decomposition of $F^{\text{ch}}$
 is in fact isomorphic to the Fock space
 $F^c=
 U(\hat{\mathfrak{a}})\otimes_{U(\hat{\mathfrak{a}}_+)}\mathbb{C}|c\rangle$.
+
+
+\section{Variants of the Heisenberg algebra}
+\label{section-variants}
+
+\noindent
+After all the messy discussion in the previous section,
+all of it shall be gone and this shall be the only text
+surviving in the last version of the project.
+
+\medskip\noindent
+It looks like Nakajima's representation of the Heisenberg
+algebra is not exactly a representation of the ``basic''
+Heisenberg algebra we have been using in lectures.
+Here I introduce what seems to be the correct
+variant of the Heisenberg algebra following
+\href{https://youtu.be/oYpls6x1jPc?si=BEUsSZXXdjvfFaAM&t=5749}{Video 8}
+from 1:35:49.
+
+\medskip\noindent
+Recall our definition of the ``basic'' Heisenberg Lie algebra:
+$\hat{\mathfrak{a}}=
+\bigoplus_{n \in \mathbb{Z}} \mathbb{C}h_n \bigoplus\mathbb{C}K$
+with bracket given by 
+\begin{equation}
+\label{equation-bracket-basic}
+[h_m,h_n]=m\delta_{m,-n}K,\qquad 
+[K,\hat{\mathfrak{a}}]=0.
+\end{equation}
+
+\noindent
+In class we described it's Fock space representation
+$H=\mathbb{C}[x_1,x_2,\ldots]$ with
+\begin{align*}
+h_n&\mapsto \begin{cases}
+n \frac{\partial }{\partial x_n}\qquad &\text{if }n>0\\
+x_{-n}\qquad &\text{if }n<0\\
+0\qquad &\text{if }n=0
+\end{cases},
+\qquad \qquad  K\mapsto \text{Id}.
+\end{align*}
+We introduced a grading in $H=\bigoplus_{\Delta=0}^\infty H_\Delta$ 
+given by the {\it energy} of a monomial, defined by
+$$
+\Delta(x_1^{k_1}x_2^{k_2}\ldots x_s^{k_s})=\sum_j k_j.
+$$
+This gives the character formula
+\begin{equation}
+\label{equation-character-heisenberg}
+\sum_{\Delta=0}^\infty q^\Delta \dim H_\Delta
+=\prod_{m=1}^\infty\frac{1}{1-q^m}.
+\end{equation}
+In order to generalize this construction
+it's worth going over why this formula holds.
+Writing $x_m=at^{-m}$ we have 
+\begin{equation}
+\label{equation-symmetric-rank-1}
+\begin{aligned}
+H&=\mathbb{C}[at^{-1},at^{-2},\ldots]\\
+&=\text{Sym}\left(\bigoplus_{m>0}\mathbb{C}at^{-m}\right)\\
+&=\bigotimes_{m>0}\text{Sym}(\mathbb{C}at^{-m})\\
+&=\bigotimes_{m>0}(\mathbb{C}\oplus \mathbb{C}at^{-m}
+\oplus \mathbb{C}(at^{-m})^2
+\oplus \ldots),
+\end{aligned}
+\end{equation}
+
+\noindent
+since the symmetric power of a vector space
+is the polynomial ring in its generators,
+and the symmetric power of a direct sum
+is the tensor product of the symmetric powers of the factors.
+
+Putting a dummy variably $q$ to every 1-dimensional
+factor and multiplying throughout, we obtain
+\begin{align*}
+m=1\qquad &(1+\underline{q}+q^2+q^3+\ldots)\times\\
+m=2\qquad &(1+q^2+\underline{q^4}+q^6+\ldots)\times\\
+m=3\qquad &(\underline{1}+q^3+q^6+q^9+\ldots)\times\ldots.
+\end{align*}
+
+\noindent
+So that indeed the character is given by 
+Equation \ref{equation-character-heisenberg}.
+Regrouping according to the energy grading 
+$H=\bigoplus_{\Delta=0}^\infty H_\Delta$
+we see that this character must also equal
+$\sum_{\Delta=1}^\infty p(\Delta)q^\Delta$
+where $p(\Delta)$ is the number
+of integer partitions of $\Delta$.
+
+\medskip\noindent
+Another version of this construction
+we discussed in lectures
+(see \cite[Section 3.1]{Jethro-vertex-algebras})
+starts with any finite-dimensional vector space $\mathfrak{h}$
+equipped with a symmetric bilinear form $(\cdot,\cdot)$ 
+and define
+$$
+\hat{\mathfrak{h}}=\mathfrak{h}\otimes\mathbb{C}[[t^{\pm 1}]]\oplus\mathbb{C}K
+$$
+with bracket
+\begin{equation}
+\label{equation-bracket-affine}
+[at^m,bt^n]=m\delta_{m,-n}(a,b)K,\qquad [K,\hat{\mathfrak{h}}]=0,
+\end{equation}
+
+\noindent
+which is just the affine Lie algebra of $\mathfrak{h}$ when
+regarded as a commutative Lie algebra.
+
+A similar formula to Equation \ref{equation-symmetric-rank-1} is
+\begin{equation}
+\label{equation-symmetric}
+\begin{aligned}
+H&=\text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
+\mathbb{C}at^{-n}\right)\\
+&=\bigotimes_{m>0}\bigotimes_{a \in B}\text{Sym}(\mathbb{C}at^{-m})\\
+&=\bigotimes_{m>0}\bigotimes_{a \in B}\mathbb{C}[at^{-m}]
+\end{aligned}
+\end{equation}
+where $B$ is a basis of the underlying vector space $\mathfrak{h}$.
+If $\mathfrak{h}$ has dimension $r$, this has character
+\begin{equation}
+\label{equation-character-rank-r}
+\prod_{m=0}^\infty\frac{1}{(1-q^m)^r}.
+\end{equation}
+
+\medskip\noindent
+Taking this construction one step further,
+let's change $\mathfrak{h}$ for a finite-dimensional
+super vectorspace $V=V_0\oplus V_1$
+with basis $B^{\text{even}}\amalg B^{\text{odd}}$.
+Now we obtain
+\begin{align*}
+H&\cong \text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
+\mathbb{C}at^{-m}\right)\\
+&\cong \bigotimes_{m>0}\text{Sym}\left(\bigoplus_{a \in B^{\text{even}}}
+\mathbb{C}at^{-m}\right)
+\otimes\bigotimes_{m>0}
+\Lambda\left(\bigoplus_{a \in B^{\text{odd}}}
+\mathbb{C}at^{-m}\right).
+\end{align*}
+
+\noindent
+Though it is not clear to me why the Fock representation
+becomes exterior power on the odd part --- this must have
+to do with the Verma modules/universal enveloping algebras
+for super vector spaces.
+
+Now recall that while the symmetric power of a vector
+space yields the polynomial algebra on the basis of the vector space,
+the exterior power yields the algebra generated
+by the wedge products of the basic vectors.
+In the case of a 1-dimensional vector space generated
+by the element of energy $m$, we get
+$$
+\Lambda(\mathbb{C}at^{-m})=\mathbb{C} \oplus \mathbb{C}at^{-m}
+$$
+and thus the character contribution in this case is simply
+$$
+1+q^m.
+$$
+Multiplying throughout we obtain the character
+$$
+\prod_{m=0}^\infty \frac{(1+q^m)^{\dim V^{\text{odd}}}}{
+(1+q^m)^{\dim V^{\text{even}}}}.
+$$
+
+\medskip\noindent
+Let's introduce one last variant of this construction.
+This time we start from a graded vector space
+$V=\bigoplus_{m \in \mathbb{Z}}V_m$,
+which is graded as $V^{\text{even}}=\bigoplus_{i \in \mathbb{Z}}V_{2i}$ 
+and $V^{\text{odd}}=\bigoplus_{i \in \mathbb{Z}}V_{2i+1}$.
+Suppose $V_i$ is finite-dimensional with basis $B_i$.
+
+Now we obtain
+\begin{align*}
+H&\cong \text{Sym}\left(\bigoplus_{m>0}\bigoplus
+_{\substack{a \in B_i \\ i \in \mathbb{Z}}}
+\mathbb{C}at^{-m}\right)\\
+&\cong \bigotimes_{m>0}\text{Sym}\left(\bigoplus
+_{\substack{a \in B_{2i} \\ i \in \mathbb{Z}}}
+\mathbb{C}at^{-m}\right)
+\otimes\bigotimes_{m>0}
+\Lambda\left(\bigoplus_{
+\substack{a \in B_{2i+1} \\ i \in \mathbb{Z}}}
+\mathbb{C}at^{-m}\right).
+\end{align*}
+
+\noindent
+This gives the character (or Poincaré polynomial)
+$$
+\sum_{\substack{\Delta\in \mathbb{Z}_\geq  \\ i \in \mathbb{Z}}}
+\dim V_{i,\Delta}t^iq^\Delta
+=\prod_{m>0}\prod_j(1-(-1)^jt^jq^m)^{-(-1)^j\dim V_j}.
+$$
+
+\noindent
+Finally fix $V=H_*(X)$, the singular homology ring
+of a complex projective surface $X$.
+The character of the corresponding Heisenberg algebra is
+\begin{equation}
+\label{equation-character}
+\prod_{m=1}^\infty \frac{
+(1+t^{2m-1}1^m)^{b_1(X)}
+(1+t^{2m+1}q^m)^{b_3(X)}}
+{(1-t^{2m-2}q^m)^{b_0(X)}
+(1-t^{2m}q^m)^{b_2(X)}
+(1-t^{2m+2}q^m)^{b_4(X)}}
+\end{equation}
+
+\noindent
+It was proved by Göttsche that Equation \ref{equation-character}
+in fact equals
+$$
+\sum_{n=0}^\infty q^nP_t(X^{[n]}),
+$$
+where the Poincaré polynomials are defined by
+$P_t(Z)=\sum_{m\geq 0}b_m(Z)t^m$, $b_m(Z)=\text{rank}H_m(Z)$ for
+any variety $Z$.
+
+Since $\bigoplus_{n=0}^\infty H_*(X^{[n]})$ is the representation
+of the Heisenberg algebra we shall discuss in the main theorem,
+this shows that in fact it is a highest weight representation.
+
+\medskip\noindent
+It remains to find out the formulas for the 
+variants of the Heisenberg algebra introduced above.
+In comparing the brackets of the first two variants 
+(the ``basic'' Heisenberg
+algebra and the one starting from 
+a finite-dimensional vector space $\mathfrak{h}$)
+with Equation \ref{equation-main},
+we notice that the latter has a strange factor $(-1)^{i-1}$.
+The reason for including this term in the main theorem 
+is explained in
+\cite[Theorem 9.15]{Nakajima-lectures},
+but I would expect to find it also in the bracket
+of our super variants of the Heisenberg algebra.
+
+
+
+
+
 
 \section{Correspondences}
 \label{section-correspondences}
