@@ -6,27 +6,22 @@
 
 1. (Heisenberg algebra.)
 
-    - The Heisenberg Lie algebra is 
+    - The "basic" Heisenberg Lie algebra is 
 
         𝔞̂ = ⨁_{n ∈ ℤ} ℂ hₙ ⊕ ℂ K.
 
-    - It's Fock representation is given by hₙ ↦ (...) and K ↦ Id.
+      with Lie bracket
 
-    - Nakajima uses a construction similar to the lattice affine algebra
-      but putting a supervector space (regarded as a commutative Lie algebra)
-      as the starting object of the construction.
+        [h_n,h_m] = m\delta_{m,-n}K,    [K,𝔞̂]=0.
 
-      Perhaps, it is not only a supervector space V = V1 ⊕ V2 but actually
-      a graded vector space V = ⨁_{n ∈ ℤ} V_n (which is super by the evenness
-      or oddness of the integers).
+      Its Fock representation is given by hₙ ↦ (...) and K ↦ Id,
+      and its character is given by...
 
-      Ultimately, using this algebra instead of the "basic" Heisenberg
-      algebra leads to the mysterious factor (-1)^{i-1} in the main formula.
+    - Introduce the other three variants of the Heisenberg algebra
+      and compute their characters. (Lie brackets missing!)
 
-      But also, the graded version of the Heisenberg superalgebra should give
-      has a character formula that should match with Göttsche's formula,
-      which is apparently the reason why Nakajima concludes that his
-      representation is actually of highest weight.
+    - Compare to Göttsche's formula and confirm that Nakajima's
+      representation, once proved, must be of highest weight.
 
 
 2. (Hilbert scheme of points.)
@@ -99,8 +94,10 @@ In videos Anthony explains there's a duality with *relative* singular
 cohomology. (This rather technical remark can be skipped if we just
 assume X is projective).
 
-2. The mysterious appearence of the (-1)^{something} in the main formula,
-and its relation to a super version of Heisenberg algebra.
+2. Computing the Lie brackets in the super variants of the Heisenberg algebra
+is necessary so that we make sure that the representation Nakajima
+proves is indeed a representation of such algebra. Of course the appearance
+of the (-1)^{i+1} in the formula is a more delicate matter.
 
 3. Why is P_alpha[i] a subvariety - we don't consider its Zariski closure!
 
@@ -116,7 +113,7 @@ are not uniquely determined as sets of points with multiplicities.
 
 ## To do
 
-0. Understand the character formula for the graded Heisenberg superalgebra!!!
+0. Try to compute the Lie bracket of the super variants of Heisenberg!!
 
 1. Clean up the Hilbert scheme section: too many Stack Exchange references!
 
@@ -124,6 +121,4 @@ are not uniquely determined as sets of points with multiplicities.
 
 3. Finish proof of Claim (2).
 
-4. Göttsche's formula.
-
-5. Clean up!
+4. Clean up!
