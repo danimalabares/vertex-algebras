@@ -7268,6 +7268,366 @@ P\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
 =e^{\frac{\pi i (z,z)}{\tau}}P(\tau,z).
 $$
 
+\section{A non-modular form}
+\label{section-a-non-modular-form}
+
+\noindent
+\begin{align*}
+G_2(\tau)&=\frac{\pi^2}{3}E_2(\tau)\\
+E_2(\tau)&=1-24\sum_{n=0}^\infty\frac{n q^n}{1-q^n}.
+\end{align*}
+
+\noindent
+The series $\sum_{\lambda \in \Lambda\setminus 0}\frac{1}{\lambda^2}$ 
+does not converge absolutely, but converges conditionally.
+
+We could define, i.e.,
+$$
+G_2(\tau)=\sum_{ n \neq 0}\frac{1}{n^2}
++\sum_{m \neq 0}\sum_{n \in \mathbb{Z}}
+\frac{1}{(m\tau+n)^2}.
+$$
+$$
+[\text{Picture of dot arrangement in plane}]
+$$
+A modular transformation on $\Lambda$ 
+sends the rows here into some diagonal lines
+$$
+[\text{Picture of diagonal dor arrangement in plane}]
+$$
+and so the argument that proves modularity of
+$G_{2k}(\tau)$, $k\geq 2$, in this case shows
+$$
+G_2\left(\frac{a\tau+b}{c\tau+d}\right)
+=(c\tau+d)^2[\underbrace{\leavevmode}_{
+\substack{\sum_{\lambda \in \Lambda \setminus 0}\frac{1}{\lambda^2}, \\
+ \text{but summed in }\\
+\text{different order}}}].
+$$
+\begin{proposition}
+\label{proposition-e2}
+$$
+E_2(-1/\tau)=\tau^2E_2(\tau)+\frac{12\tau}{2\pi i}.
+$$
+\end{proposition}
+
+\begin{remark}
+\label{remark-bizzare-fact}
+This relation can be used to prove that
+$\eta(\tau)=q^{1/24}\prod_{n=1}^\infty(1-q^n)$ 
+is modular of weight $1/2$.
+($\eta(-1/\tau)=(\tau/i)^{1/2}\eta(\tau)$.)
+Idea: consider $\frac{\eta'(\tau)}{\eta(\tau)}$ 
+and relate it to $E_2(\tau)$.
+\end{remark}
+
+\noindent
+$$
+\bigoplus_{k=0}^\infty\mathcal{M}^{\text{hol}}_{2k}
+\cong\mathbb{C}[G_4,G_6].
+$$
+
+\medskip\noindent
+Recall we were working with an even self-dual lattice $Q$ 
+of rank (say) 24. [This case is actually simpler thank
+ranks 8 or 16 since we don't get fractional powers of $q$.]
+We had
+$$
+\theta_Q(\tau,z)=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+e^{2\pi i(\alpha,z)}.
+$$
+$$
+\theta_Q\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=e^{\frac{\pi i (z,z)}{\tau}}(\tau/i)^{n/2}\theta_Q(\tau,z)
+$$
+Let's consider
+$$
+P_Q(\tau,z)=e^{\frac{-2\pi i(z,z)}{24}E_2(\tau)}
+\theta_Q(\tau,z).
+$$
+
+We can check that the non-modularity of $E_2(\tau)$ 
+``cancels'' the $e^{\frac{\pi i (z,z)}{\tau}}$ factos,
+and we get
+$$
+P_Q\left(-\frac{1}{\tau},\frac{z}{\tau}\right)=(\tau/i)^{n/2}P_Q(\tau,z).
+$$
+
+\begin{proof}
+\begin{align*}
+e^{-2\pi i \frac{\left(\frac{z}{\tau},\frac{z}{\tau}\right)}{24}
+E_2\left(-\frac{1}{\tau}\right)}
+&=e^{2\pi i \frac{(z,z)}{24\tau^2}
+\left(\tau^2E_2(\tau)+\frac{12\tau}{2\pi i}\right)}\\
+&=e^{-2\pi i \frac{(z,z)}{24}E_2(\tau)-\frac{(z,z)}{2\tau}},
+\end{align*}
+
+\noindent
+which is close enough.
+\end{proof}
+
+\medskip\noindent
+Let's Taylor series expand $P_Q$ (in $\mathbb{Z}$).
+\begin{align*}
+\theta_Q(\tau,z)
+&=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+\left(1+2\pi i(\alpha,z)
++\frac{(2\pi i)^2}{2}(\alpha,z)^2
++\frac{(2\pi i)^2}{6}(\alpha,z)^3+\ldots\right)\\
+&=\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
++2\pi i\underbrace{\sum_{\alpha\in Q}q^{\frac{(\alpha,\alpha)}{2}}(\alpha,z)
+}_{\substack{=0\text{ since} \\ \alpha,-\alpha\text{ cancel }\forall \alpha \in
+Q}}
++\frac{(2\pi i)^2}{2}\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}
+(\alpha,z)^2+\ldots
+\end{align*}
+
+\noindent
+Meanwhile,
+$$
+e^{-2\pi i \frac{(z,z)}{24}E_2(\tau)}
+=1-\frac{2\pi i}{24}(z,z)E_2(\tau)
++\frac{(2\pi i)^2}{24^2}(z,z)^2E_2(\tau)^2+\ldots
+$$
+Multiply to get
+$$
+P_Q(\tau,z)=\theta_Q(\tau)+
+\left(\theta_Q(\tau)\frac{-2\pi i}{24}(z,z)E_2(\tau)
++\frac{(2\pi i)^2}{2}
+\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}(\alpha,z)^2\right)+\ldots
+$$
+Expanding further the $z^2$ term:
+\begin{align*}
+-\frac{2\pi i}{24}\underbrace{(1-24q+\ldots)
+}_{E_2(\tau)}
+\sum_{\alpha \in Q}q^{\frac{(\alpha,\alpha)}{2}}(z,z)
++\frac{(2\pi i)^2}{2}\sum q^{\frac{(\alpha,\alpha)}{2}}(\alpha,z)^2
+\end{align*}
+
+\noindent
+write the $q$-series expansion:
+gives $(2\pi i)^2$ times
+\begin{equation}
+\label{equation-e14}\begin{aligned}
+&-\frac{(z,z)}{24}\left(1-24q
++\sum_{(\alpha,\alpha)=2}q+O(q^2)\right)\\
+&+\frac{1}{2}\left(
+\sum_{(\alpha,\alpha)=2}q(\alpha,z)^2+O(q^2)\right)\\
+&=-\frac{(z,z)}{24}
++q\left(\frac{1}{2}\sum_{(\alpha,\alpha)=2}(\alpha,z)^2
+-\frac{(z,z)}{24}(N-24)\right)
++O(q^2)
+\end{aligned}
+\end{equation}
+
+\noindent
+where $N=\#\{\alpha|(\alpha,\alpha)=2\}$.
+
+\medskip\noindent
+What good is this?
+Since $P_Q\left(-\frac{1}{\tau},\frac{z}{\tau}\right)
+=\tau^{12}P_Q(\tau,z)$ (for $n=24$).
+We have ($S$ and $T$-invariance, which generate
+the whole modular group)
+\begin{align*}
+P_Q\left(\frac{a\tau+b}{c\tau+d},\frac{z}{c\tau+d}\right)
+&=(c\tau+d)^{12}P_Q(\tau,z).\\
+P_Q(\tau,z)&=
+\sum_{i=0}^\infty P_Q^i(\tau)z^i,
+\end{align*}
+
+\noindent
+one finds
+$$
+P_Q^i\left(\frac{a\tau+b}{c\tau+d}\right)
+=(c\tau+d)^{12+i}P_Q^i(\tau).
+$$
+In particular the quadratic (in $z$)
+term lies in $\mathcal{M}^{\text{hol}}_{14}$,
+which is 1-dimensional, spanned by $E_{14}(\tau)=1-24q+\ldots$.
+
+For us, this means 
+that $\text{coef}(q)=-24\text{coef}(1)$ in the last equality of
+Equation \ref{equation-e14}.
+I.e.,
+\begin{equation}
+\label{equation-coefficients}
+\frac{1}{2}\sum_{(\alpha,\alpha)=2}(\alpha,z)^2
+-\frac{(z,z)}{24}(N-24)=(z,z).
+\end{equation}
+$$
+\frac{1}{2}\sum_{(\alpha,\alpha)=2}(\alpha,z)^2=(z,z)\frac{N}{24}.
+$$
+Recall that
+$$
+\Delta=\{\alpha\in Q|(\alpha,\alpha)=2\}
+$$
+is a simply laced root system.
+$\Delta$ is either $A_n$, $D_n$, $E_6$, $E_7$ or $E_8$
+(or an orthogonal sum of such components).
+A simple root system $\Delta$ has 
+an associated invariant called the dual Coxeter number
+$h^\vee$. By definition, if $r=r_\alpha$ is
+the reflection in $\alpha \in \Delta$,
+then $(r_\alpha x,r_\alpha y)=(x,y)$ for all
+$x,y \in \mathbb{R}^n$ ambient space.
+In particular, $(\cdot,\cdot)$ is invariant
+for the action of the Weyl group
+$W=\left<r_\alpha|\alpha \in \Delta\right>$,
+or rather, $W \subset O(\mathbb{R}^n)$.
+The following lemma claims that this form is unique.
+
+\begin{lemma}
+\label{lemma-uniqueness-of-bilinear-form}
+If $\left<\cdot,\cdot\right>:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$
+invariant under $W$, then
+$\left<\cdot,\cdot\right>=\alpha(\cdot,\cdot)$
+for some scalar $\alpha$.
+\end{lemma}
+
+\noindent
+OK, so consider
+$$
+\left<x,y\right>=\frac{1}{2}
+\sum_{\alpha \in \Delta}(\alpha,x)(\alpha,y).
+$$
+This is $W$-invaraint, and so is some multiple of $(\cdot,\cdot)$.
+The definition of $h^\vee$ is that
+$$
+\left<x,y\right>=h^\vee(x,y).
+$$
+In particular,
+$$
+\frac{1}{2}\sum_{\alpha \in \Delta}(\alpha,z)^2=h^\vee(z,z),
+$$
+which appears in Equation \ref{equation-coefficients}.
+
+\begin{example}
+\label{example-coxeter-numbers}
+For $A_n$, $h^\vee=n+1$, for $E_7$, 18,
+for $D_n$, $2n-2$.
+\end{example}
+
+\noindent
+So, suppose
+$$
+Q \supset \Delta=\{\alpha|(\alpha,\alpha)=2\}
+=\Delta_1\cup \Delta_2\cup \ldots\cup \Delta_k
+$$
+where $\Delta_i$ is a simple root system.
+
+Let $\beta\in\Delta_i$, our formula implies
+\begin{align*}
+h_i^\vee(\beta,\beta)&=(\beta,\beta)\frac{N}{24}\\
+\implies h_i^\vee&=\frac{N}{24}.
+\end{align*}
+
+\noindent
+that is,
+$$
+N=\sum_{i=1}^k|\Delta_i|,
+$$
+and 
+$$
+h_i^\vee=\frac{N}{24}
+$$
+for each component $\Delta_i$.
+
+\begin{example}
+\label{example-simple-root-systems}
+If $\Delta=\Delta_i$ is simple and type $A_n$,
+say $A_{24}$. We have $h^\vee=25$,
+\begin{align*}
+\dim \mathfrak{sl}_{25}&=25^2-1=(25+1)(25-1)\\
+N&=25^2-1-24=(24)(26)-24=25(24).
+\end{align*}
+\end{example}
+
+\begin{remark}
+\label{remark-other-solutions}
+\begin{itemize}
+\item  The empty set is vacuously a solution.
+\item $E_8^3$: $|\Delta_{E_8}|=240$, $h^\vee=30$,
+$h^\vee=\frac{3\times 240}{24}=30$, is a solution.
+\item $A_2^{24}$, $h^\vee=2$ for all components,
+$\frac{|\Delta|}{24}=\frac{24(2)}{24}=2$.
+\end{itemize}
+\end{remark}
+
+\noindent
+Consider $\mathfrak{g}$ a semisimple Lie algebra with root system $\Delta$,
+$\mathfrak{g}=\mathfrak{g}_1\oplus\mathfrak{g}_2 \oplus \ldots 
+\oplus \mathfrak{g}_k$,
+$\Delta(\mathfrak{g}_i)=\Delta_i$.
+
+Note that if $\Delta\neq \emptyset$, then $\text{rank}(\Delta)=24$.
+So we can rewrite $\#\Delta$ as $\dim \mathfrak{g}-24$.
+so
+\begin{equation}
+\label{equation-hi}
+h_i^\vee=\frac{\dim(\mathfrak{g})}{24}-1.
+\end{equation}
+
+\noindent
+There exist at most ``partitions of 24 into 3 colours
+A, D and E'' solutions to Equation \ref{equation-hi}.
+
+Observe: $\ell:$ rank, $d:$ dimension, $h^\vee:$ $h^\vee$.
+For ADE, $h^\vee=O(\ell)$, $d=O(\ell^2)$.
+Use this to bound $\dim(\mathfrak{g})$.
+
+Turns out there are 23 solutions (24 if we include the 
+empty root system)
+$A_{24},E_8^3,A_1^{24},A_2^{12}$, etc.
+
+\begin{theorem}
+\label{theorem-solutions}
+Each nonempty solution $\Delta$ is the root system
+of exactly one self-dual even lattice.
+\end{theorem}
+
+\begin{proof}
+Construct $Q_\Delta$ by orbifolding from $E_8^3$.
+Compute $|\text{Aut}(Q_\Delta)|$,
+ $$
+RHS(\text{mass formula})-\sum_{\Delta \neq \emptyset}
+\frac{1}{|\text{Aut}(Q_\Delta)|}=\frac{1}{10^{18}}.
+$$
+\end{proof}
+
+\medskip\noindent
+The subalgebra $\mathfrak{g}_i\subset \mathfrak{g}$
+induces a homomorphism of vertex algebras
+$$
+L_1(\mathfrak{g}_i) \to V_Q.
+$$
+Note that $V_Q$ has one irreducible module,
+namely $V_Q$.
+Let $V=V_0 \oplus V_1 \oplus V_2 \oplus \ldots$
+be a vertex algebra with this parity,
+\begin{align*}
+V_0&=\mathbb{C}|0\rangle\\
+V_1&=\mathfrak{g}\text{ some Lie algebra}
+\end{align*}
+
+\noindent
+It turns out that $\mathfrak{g}=\mathfrak{g}_1 \oplus \mathfrak{g}_2
+\oplus \ldots \oplus \mathfrak{g}_k$ 
+induces a set of embeddings 
+$$
+L_{k_i}(\mathfrak{g}_i) \to V,\qquad  k_i \in \mathbb{Z}_{\geq 1}.
+$$
+One can prove that
+$$
+\frac{h_i^\vee}{k_i}
+=\frac{\dim\mathfrak{g}}{24}-1
+$$
+now. If you allow $k_i\geq 2$,
+there are no longer 23 solutions
+but 221 solutions.
+71 vertex algebra. This is called
+``Schellekens list''.
+
 
 
 \bibliography{my}
