@@ -699,6 +699,8 @@ to obtain the algebra
 =(\mathfrak{h}_0[[t^{\pm 1}]]\oplus\mathfrak{h}_1[[t^{\pm 1}]])
 \oplus\mathbb{C}K
 \end{equation}
+
+\noindent
 with Lie bracket
 \begin{equation}
 \label{equation-super-bracket}
@@ -734,7 +736,7 @@ space yields the polynomial algebra on the basis of the vector space,
 the exterior power yields the algebra generated
 by the wedge products of the basic vectors.
 In the case of a 1-dimensional vector space generated
-by the element of energy $m$, we get
+by the element $at^{-m}$, we get
 $$
 \Lambda(\mathbb{C}at^{-m})=\mathbb{C} \oplus \mathbb{C}at^{-m}
 $$
@@ -745,14 +747,15 @@ $$
 Multiplying throughout we obtain the character
 $$
 \prod_{m=0}^\infty \frac{(1+q^m)^{\dim \mathfrak{h}^{\text{odd}}}}{
-(1+q^m)^{\dim \mathfrak{h}^{\text{even}}}}.
+(1-q^m)^{\dim \mathfrak{h}^{\text{even}}}}.
 $$
 
 \medskip\noindent
 Let's introduce one last variant of this construction.
 This time we start from a graded vector space
 $\mathfrak{h}=\bigoplus_{m \in \mathbb{Z}}\mathfrak{h}_m$,
-which is graded as 
+which is automatically also a supervector space
+by the $\mathbb{Z}_2$-grading
 $\mathfrak{h}^{\text{even}}=\bigoplus_{i \in \mathbb{Z}}\mathfrak{h}_{2i}$ 
 and $\mathfrak{h}^{\text{odd}}=\bigoplus_{i \in \mathbb{Z}}\mathfrak{h}_{2i+1}$.
 Suppose $\mathfrak{h}_i$ is finite-dimensional with basis $B_i$,
@@ -777,7 +780,7 @@ _{\substack{a \in B_{2i} \\ i \in \mathbb{Z}}}
 \end{align*}
 
 \noindent
-This gives the character (or Poincaré polynomial)
+This gives the character
 $$
 \sum_{\substack{\Delta\in \mathbb{Z}_\geq  \\ i \in \mathbb{Z}}}
 \dim \mathfrak{h}_{i,\Delta}t^iq^\Delta
@@ -804,7 +807,7 @@ in fact equals
 $$
 \sum_{n=0}^\infty q^nP_t(X^{[n]}),
 $$
-where the Poincaré polynomials are defined by
+where the {\it Poincaré polynomials} $P_t(Z)$ are defined by
 $P_t(Z)=\sum_{m\geq 0}b_m(Z)t^m$, $b_m(Z)=\text{rank}H_m(Z)$ for
 any variety $Z$.
 
@@ -1013,8 +1016,8 @@ then the following holds.
 
 
 
-\section{Correspondences}
-\label{section-correspondences}
+\section{Borel-Moore homology}
+\label{section-bm}
 
 \noindent
 Let's do a quick review of basic algebraic topology following \cite{Hatcher}.
@@ -1154,7 +1157,7 @@ has trivial homology class.
 
 \medskip\noindent
 Facts:
-\begin{itemize}
+\begin{enumerate}
 \item If $X$ is compact, $H_i^{BM}(X)\cong H_i(X)$.
 \item If $X$ is not compact,
 $H_i^{BM}(X)\cong H_i(\hat{X},\infty)$ 
@@ -1162,7 +1165,9 @@ where $\hat{X}$ is the one-point
 compactification of $X$ and
 $H_i(\hat{X},\infty)$ is the
 relative homology group.
-\item If the dimension of the manifold
+\item 
+\label{item-isomorphism-relative-cohomology}
+If the dimension of the manifold
 where $X$ is embedded is $m$,
 there is a canonical isomorphism
 $H_i^{BM}(X) \cong H^{m-i}(M,M\setminus X)$.
@@ -1177,7 +1182,7 @@ transversal intersection condition
 that we would require before
 computing the intersection of
 two simplicial chains).
-\end{itemize}
+\end{enumerate}
 
 In the previous example of
 the tiling of $\mathbb{R}^2$
@@ -1253,8 +1258,10 @@ $$
 \cap_M:H_i^{BM}(X)\times H_j^{BM}(Y)
 \to H_{i+j-m}^{BM}(X\cap Y).
 $$
-The proof of this product is
-by using the isomorphism with relative cohomology,
+Constructing this product can be done
+via the isomorphism with relative cohomology
+(item (\ref{item-isomorphism-relative-cohomology})
+in the previous list),
 and then using usual cap product.
 
 \item (Fundamental classes.)
@@ -1297,20 +1304,22 @@ the fundamental class of the whole space,
 as in our example with $\mathbb{R}^2$,
 is a BM-class because we admit infinite chains.
 
-\medskip\noindent
-Finally we arrive at correspondences.
+\section{Correspondences}
+\label{section-correspondences}
 
-\begin{situation}
-\label{situation-correspondences}
+\noindent
+In this section we introduce the main tool
+for constructing the operators in our representation
+of the Heisenberg algebra.
+
+\medskip\noindent
 Let $X_1,X_2$ be smooth irreducible varieties
 of dimensions $d_1,d_2$.
 Let $Z$ be a $d$-dimensional 
 closed subvariety of $X_1\times X_2$ 
 such that the projections $p_1$ and $p_2$
 are proper.
-\end{situation}
 
-\noindent
 The {\it correspondence} associated to $Z \subset X_1\times X_2$
 is the map
 \begin{equation}
@@ -1865,7 +1874,7 @@ To do this formally we have to use
 our general definition for composition of correspondences, 
 Equation \ref{equation-composition}.
 In view of the particular correspondences we are using, 
-Equation \ref{equation-correspondence-p}, we see that
+i.e. Equation \ref{equation-correspondence-p}, we see that
 the composition $P_\alpha[i]P_\beta[j]$ is given by
 
 \begin{equation}
@@ -1901,9 +1910,7 @@ P[j]\subset X^{[n-j]}\times X^{[n]}& & X^{[n-i-j]}\times X^{[n-j]}\supset P[i]\\
 & X^{[n-i-j]}\times X^{[n]}
 }
 $$
-This is to be read as follows. First keep in mind that
-a correspondence may be equivalently thought of as
-a subvariety, a homology class and an operator in homology.
+This is to be read as follows.
 By definition, the correspondence $P[j]$ maps the homology of $X^{[n]}$ to the 
 homology of $X^{[n-j]}$. In order to compose this with $P[i]$
 we must regard $P[i]$ as a map from the homology of $X^{[n-j]}$ 
@@ -1911,35 +1918,34 @@ to the homology of $X^{[n-j-i]}$, which is perfectly
 valid since our correspondences are defined for all $n$.
 
 Observe that the middle factor $X^{[n-j]}$
-in the triple product of will become $X^{[n-i]}$ when
+in the triple product will become $X^{[n-i]}$ when
 we compute the composition in the opposite order.
 Being subsets of different products, it not immediately
 clear that the associated operators will coincide.
 
 \medskip\noindent
-To retrieve the correspondence as in 
+To recover the correspondence as in 
 Equation \ref{equation-composition-pij}
-from the set $P[i,j]$ we shall consider its algebraic closure
+from the set $P[i,j]$ it's natural to consider its algebraic closure
 and to it associate a fundamental class.
-However, we will do a key procedure before that.
+We will do this in the following special way.
 Observe that $P[i,j]$ may be decomposed as disjoint union
 of the set $\{x \neq y\}$ 
 of ``generic'' cases in which $x$ and $y$ in Equation \ref{equation-cycle-pij}
 are different, and the set $\{x=y\}$ in which they coincide.
-
 Let $\overline{P}[i,j]:=\overline{P[i,j]\cap\{x\neq y\}}$.
 Then
 $$
 p_{12}^* [P[i]]\cap p_{23}^* [P[j]]=[\overline{P}[i,j]]+\iota_*R
 $$
-where $R \in H_*^{BM}(P[i,j]\cap \{x=y\})$ is the part corresponding
-to the ``singular'' part of $P[i,j]$. Here $\iota$ is the inclusion
-of $\{i=j\}$ into $P[i,j]$.
+where $R \in H_*^{BM}(P[i,j]\cap \{x=y\})$ corresponds
+to the $\{x=y\}$ part of $P[i,j]$ 
+and $\iota$ is the inclusion.
 
 To arrive at Equation \ref{equation-composition-pij}
 the next step is to intersect with the classes $\Pi_1^*\alpha$ and
 $\Pi_2^*\beta$.
-Observe these commute with the classes
+Observe that these commute with the classes
 $P_{12}^*[P[i]]$ and $[P_{23}^*[P[j]]$
 since they correspond to disjoint components of the product
 $X^{[n-j]}\times X^{[n]}\times X$.
@@ -1948,7 +1954,7 @@ Then it only remains to pushforward by $p_{13}$.
 \medskip\noindent
 We can carry out the same construction
 for the composition $P_\beta[j]P_\alpha[i]$,
-obtaining the expressions
+obtaining
 \begin{equation}
 \label{equation-composition-pji}
 P_\alpha[j]P_\beta[i]
@@ -1967,8 +1973,7 @@ Observe that Equations \ref{equation-composition-pij} and
 \ref{equation-composition-pji} differ in the classes
 $\Pi_1^*\alpha$ against $\Pi_2^*\alpha$, and correspondingly with $\beta$.
 It is clear that the following two lemmas are all we need
-to confirm that the difference of these two equations vanishes
-(which is the commutation relation we are aiming for):
+to confirm that the difference of these two equations vanishes:
 
 \begin{lemma}
 \label{lemma-pij}
@@ -2017,8 +2022,8 @@ X^{[n-i-j]}\times X^{[n-i]} \times X^{[n]} \times X \times X
 }
 $$
 
-Now, the point of the map $\varphi$ is that it must
-exchange an ideal in $X^{[n-j]}$ for an ideal in $X^{[n-i]}$.
+Now, the point of the isomorphism $\varphi$ is that it must
+map an ideal in $X^{[n-j]}$ to an ideal in $X^{[n-i]}$.
 More precisely, we map 
 $(\mathcal{J}_1,\mathcal{J}_2,\mathcal{J}_3)\in P[i,j] \cap \{x \neq  y\}$
 to $(\mathcal{J}_1,\mathcal{J}_2',\mathcal{J}_3) \in P[j,i]\cap \{x \neq y\}$.
@@ -2028,8 +2033,8 @@ The defining relation is
 \mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_2/\mathcal{J}_3,\qquad 
 \mathcal{J}_2'/\mathcal{J}_3=\mathcal{J}_1/\mathcal{J}_2.
 \end{equation}
-No further explanation other than
- \cite[Firgure 8.2]{Nakajima-lectures} is provided.
+(No further explanation other than a figure 
+is provided in \cite{Nakajima-lectures}.)
 
 The setting is the following. We have the ideals with contentions
 $\mathcal{J}_1\supset \mathcal{J}_2,\mathcal{J}_2'\supset \mathcal{J}_3$.
@@ -2063,7 +2068,7 @@ $$
 \mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_1/(\mathcal{J}_1\cup \{x\})
 =\{x\}=\mathcal{J}_2/\mathcal{J}_3.
 $$
-Now we also must have $\mathcal{J}_1/\mathcal{J}_2=\{y\}$ 
+Now, we also must have $\mathcal{J}_1/\mathcal{J}_2=\{y\}$ 
 for some $y \in X$ with multiplicity $i$.
 This implies that $\mathcal{J}_1/\mathcal{J}_3=\{x\}\cup \{y\}$ 
 with their multiplicities.
@@ -2095,43 +2100,20 @@ p_{13,*}\iota_*({\Pi'}^*(\alpha\cap\beta)\cap R)
 
 \noindent
 By dimension reasons (not clear to me), $\iota_*(R)$ must vanish.
+
+I think we may regard $P[i+j]$ as a correspondence.
+In fact, consider $P_{\alpha\cap\beta}[i+j]$… anything?
+No, I think that's not the way:
+this is the ``on the other hand''
+from the formula that looks like
+the defining equation of the correspondence $P_{\alpha \cap \beta}[i+j]$.
+So I think it's something else. But what? {\bf Plan:}
+do a practice session of the proof with pen and paper.
 \end{enumerate}
 
 \end{proof}
 
-
-\section{Götsche's formula}
-\label{section-gf}
-
-\noindent
-So far I didn't investigate
-how this formula can be derived from Theorem \ref{theorem-NG}.
-This is not explained in the videos but most likely it is
-in \cite{Nakajima-lectures}.
-
-\medskip\noindent
-For any variety $Z$ (or manifold)
-we can form the {\it Poincaré polynomial} of $Z$,
-which is the generating function of the 
-Betti numbers of $Z$ 
-$$
-P_t(Z)=\sum_{m \geq 0}b_m(Z)t^m, \qquad b_m(Z)=\text{rank}H_m(Z).
-$$
-
-\noindent
-The idea is to consider the Poincaré polynomials
-for each each of the
-$n$-th Hilbert schemes and look
-at a generating function of all these polynomials
-That is, this is some sort
-of ``bi-generating function in $t$ and $n$'':
-
-$$
-\sum_{n \geq 0}q^nP_t(X^{[n]})=\text{\cite[Equation 1.1]{Nakajima-Heis}}.
-$$
 \bibliography{my}
 \bibliographystyle{amsalpha}
-
-
 
 \end{document}
