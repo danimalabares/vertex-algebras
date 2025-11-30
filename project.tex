@@ -1,9 +1,12 @@
 \input{preamble}
 \usepackage{graphicx}
+\usepackage{url}
 
 \begin{document}
 
-\title{Project}
+\title{Nakajima's representation of the Heisenberg algebra}
+\author{Daniel González Casanova Azuela}
+
 \maketitle
 
 \phantomsection
@@ -29,18 +32,48 @@ and give an idea of the proof of the theorem.
 \label{section-intro}
 
 \noindent
-This work is mostly based in Nakajima's book
-\cite{Nakajima-lectures}. I have
+Motivated by earlier work on moduli spaces of 
+torsion-free sheaves
+(see \cite{Nakajima-ALE}),
+Nakajima constructed in \cite{Nakajima-Heis}
+a representation the infinite-dimensional Heisenberg
+algebra on the homology groups of the Hilbert schemes
+on a nonsingular projective surface.
+
+In this work we outline the basic ideas in Nakajima's construction
+and explain the first part of the proof of the main theorem.
+Most of this work is based in \cite{Nakajima-lectures},
+with the exception of the first section
+where I try to identify the precise version of the Heisenberg
+algebra that is being represented.
+In Section \ref{section-hilbert-scheme},
+I explain the construction of the Hilbert scheme,
+providing slightly more details than what is really essential 
+to understand the main theorem,
+but which help to get a better idea on what the Hilbert scheme is
+and how to work with it.
+
+This work is strongly influenced by \cite{videos}, 
+a series of seminars aimed at understanding \cite{Nakajima-lectures}
+documented in videos.
+This was of great help
+specially in Section \ref{section-bm}, since
+the properties of Borel-Moore homology are a rather technical
+but essential part of the construction.
+The remaining sections, containing the main theorem
+and part of its proof,
+also pick up ideas from these videos,
+but are mostly based in \cite{Nakajima-lectures}.
 
 
 \section{Heisenberg algebra}
 \label{section-heisenberg}
 
 \noindent
-In this section I review four different variants
+In this section we review four different variants
 of the Heisenberg algebra and discuss their characters.
-We conclude showing how the character is used
-to prove that Nakajima's representation is in fact
+We conclude by showing how the character is used
+to prove that Nakajima's representation is
 of highest weight.
 
 \medskip\noindent
@@ -55,7 +88,7 @@ with bracket given by
 \end{equation}
 
 \noindent
-In class we described it's highest weight representation
+In class we described its highest weight representation
 $H=\mathbb{C}[x_1,x_2,\ldots]$ with
 \begin{align*}
 h_n&\mapsto \begin{cases}
@@ -68,7 +101,7 @@ x_{-n}\qquad &\text{if }n<0\\
 
 \noindent
 We introduced a grading in $H=\bigoplus_{\Delta=0}^\infty H_\Delta$ 
-given by the {\it energy} of a monomial, defined by
+given by the {\it energy} of monomials, defined by
 $$
 \Delta(x_1^{k_1}x_2^{k_2}\ldots x_s^{k_s})=\sum_j k_j,
 $$
@@ -82,21 +115,28 @@ which gives the character formula
 \noindent
 In order to generalize this construction
 it's worth going over why this formula holds.
-As in the finite-dimensional case (see \cite[Lecture 24]{KLAL}, Video 8),
-the highest weight representation of the Heisenberg algebra
-can be expressed as the universal enveloping algebra of the negative
-roots of the triangular decomposition.
-by the PBW theorem
-Writing $x_m=at^{-m}$ we have 
+Recall that the \textit{Verma module} of
+weight $\mu=0$
+of $\hat{\mathfrak{a}}$ is defined by
+$H=
+\mathcal{U}(\hat{\mathfrak{a}})
+\otimes_{\mathcal{U}(\hat{\mathfrak{a}}_+)}
+\mathbb{C}|0\rangle$.
+Further, by the PBW theorem, this module
+is isomorphic to $\mathcal{U}(\mathfrak{n}_-)$,
+the universal enveloping algebra
+of the negative roots in the triangular decomposition
+(as in the finite-dimensional case, see \cite[Lecture 24]{KLAL} and
+\cite[Video 8]{videos}).
+Since the subalgebra of negative roots is abelian,
+the universal enveloping algebra becomes the symmetric algebra
+and therefore we have
 \begin{equation}
 \label{equation-symmetric-rank-1}
 \begin{aligned}
-H&\cong\mathbb{C}[at^{-1},at^{-2},\ldots]\\
-&\cong\text{Sym}\left(\bigoplus_{m>0}\mathbb{C}at^{-m}\right)\\
+H&\cong\text{Sym}\left(\bigoplus_{m>0}\mathbb{C}at^{-m}\right)\\
 &\cong\bigotimes_{m>0}\text{Sym}(\mathbb{C}at^{-m})\\
-&\cong\bigotimes_{m>0}(\mathbb{C}\oplus \mathbb{C}at^{-m}
-\oplus \mathbb{C}(at^{-m})^2
-\oplus \ldots),
+&\cong \bigotimes_{m>0}\mathbb{C}[at^{-m}],
 \end{aligned}
 \end{equation}
 
@@ -105,15 +145,8 @@ since the symmetric power of a vector space
 is the polynomial ring in its generators,
 and the symmetric power of a direct sum
 is the tensor product of the symmetric powers of the factors.
-
-It is not a coincidence that we can write the Fock module
-of this algebra as a symmetric power of a Lie subalgebra.
-This is due to the Poincaré-Birkoff-Witten theorem
-applied to the universal enveloping algebra of the
-$\mathfrak{n}_-$ term of the
-triangular decomposition of $\hat{\mathfrak{a}}$ 
-as in the theory of finite dimensional Lie algebras
-(see \cite[Lecture 24]{KLAL}).
+This matches our previous formula
+$H=\mathbb{C}[x_1,x_2,\ldots]$ by letting $x_m=at^{-m}$.
 
 Putting a dummy variably $q$ to every 1-dimensional
 factor and multiplying throughout, we obtain
@@ -132,8 +165,8 @@ Another version of this construction
 we discussed in lectures
 (see \cite[Section 3.1]{Jethro-vertex-algebras})
 starts with any finite-dimensional vector space $\mathfrak{h}$
-equipped with a symmetric bilinear form $(\cdot,\cdot)$ 
-and define
+equipped with a symmetric bilinear form $(\cdot,\cdot)$.
+Define
 $$
 \hat{\mathfrak{h}}=\mathfrak{h}\otimes\mathbb{C}[[t^{\pm 1}]]\oplus\mathbb{C}K
 $$
@@ -193,8 +226,7 @@ One can check that this is indeed a super Lie bracket
 (which essentially holds by the pairing being graded commutative
 and $K$ being central),
 i.e. $\hat{\mathfrak{h}}$ is a Lie superalgebra.
-
-Its Fock module is given by
+Its highest weight module is given by
 \begin{align*}
 H&\cong \text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
 \mathbb{C}at^{-m}\right)\\
@@ -206,6 +238,9 @@ H&\cong \text{Sym}\left(\bigoplus_{m>0}\bigoplus_{a \in B}
 \end{align*}
 
 \noindent
+since the universal enveloping algebra of the odd
+part is the exterior power (see \cite[Video 8]{videos}).
+
 Now recall that while the symmetric power of a vector
 space yields the polynomial algebra on the basis of the vector space,
 the exterior power yields the algebra generated
@@ -216,9 +251,9 @@ $$
 \Lambda(\mathbb{C}at^{-m})=\mathbb{C} \oplus \mathbb{C}at^{-m}
 $$
 and thus the character contribution in this case is simply
-$$
+$
 1+q^m.
-$$
+$
 Multiplying throughout we obtain the character
 $$
 \prod_{m=0}^\infty \frac{(1+q^m)^{\dim \mathfrak{h}^{\text{odd}}}}{
@@ -257,7 +292,7 @@ _{\substack{a \in B_{2i} \\ i \in \mathbb{Z}}}
 \noindent
 This gives the character
 $$
-\sum_{\substack{\Delta\in \mathbb{Z}_\geq  \\ i \in \mathbb{Z}}}
+\sum_{\substack{\Delta\in \mathbb{Z}_{\geq 0}  \\ i \in \mathbb{Z}}}
 \dim \mathfrak{h}_{i,\Delta}t^iq^\Delta
 =\prod_{m>0}\prod_j(1-(-1)^jt^jq^m)^{-(-1)^j\dim \mathfrak{h}_j}.
 $$
@@ -265,7 +300,7 @@ $$
 \noindent
 Finally fix $\mathfrak{h}=H_*(X)$, the singular homology ring
 of a complex projective surface $X$.
-The character of the corresponding Heisenberg algebra is
+Then the character of the corresponding Heisenberg algebra is
 \begin{equation}
 \label{equation-character}
 \prod_{m=1}^\infty \frac{
@@ -273,11 +308,13 @@ The character of the corresponding Heisenberg algebra is
 (1+t^{2m+1}q^m)^{b_3(X)}}
 {(1-t^{2m-2}q^m)^{b_0(X)}
 (1-t^{2m}q^m)^{b_2(X)}
-(1-t^{2m+2}q^m)^{b_4(X)}}
+(1-t^{2m+2}q^m)^{b_4(X)}}.
 \end{equation}
 
 \noindent
-It was proved by Göttsche that Equation \ref{equation-character}
+It was proved by Göttsche using the Weil conjectures in \cite{Gottsche1990} 
+(and in \cite[Section 6.2]{Nakajima-lectures} by other methods)
+that Equation \ref{equation-character}
 in fact equals
 $$
 \sum_{n=0}^\infty q^nP_t(X^{[n]}),
@@ -286,9 +323,11 @@ where the {\it Poincaré polynomials} $P_t(Z)$ are defined by
 $P_t(Z)=\sum_{m\geq 0}b_m(Z)t^m$, $b_m(Z)=\text{rank}H_m(Z)$ for
 any variety $Z$.
 
-Since $\bigoplus_{n=0}^\infty H_*(X^{[n]})$ is the representation
-of the Heisenberg algebra we shall discuss in the main theorem,
-this shows that in fact it is a highest weight representation.
+The representation
+of the Heisenberg algebra we discuss in this work corresponds
+precisely to this version of the Heisenberg algebra.
+Göttsche's formula shows that it is a highest weight representation,
+as explained in \cite[Corollary 8.16]{Nakajima-lectures}.
 
 
 
@@ -297,18 +336,15 @@ this shows that in fact it is a highest weight representation.
 \label{section-hilbert-scheme}
 
 \noindent
-In this section I define the Hilbert scheme of points
-of a projective complex surface. I give more details than
-what is really necessary for the remainder of this work.
+In this section we define 
+of the Hilbert scheme of points
+on a smooth projective complex surface $X$.
 The essential property of the Hilbert scheme
 is that its points (over $\mathbb{C}$) 
 are 0-dimensional closed subschemes of $X$
 of length $n$.
 
 \medskip\noindent
-We start by constructing the Hilbert scheme following
-\cite[Section 1.1]{Nakajima-lectures}.
-Let $X$ be a projective complex surface.
 Consider a contravariant functor 
 $$
 \mathcal{H}ilb_X:(\text{Schemes})^{\text{op}}\to (\text{Sets})
@@ -323,20 +359,19 @@ Z \ar[d]^\pi&\subseteq X \times U\\
 U.
 }
 $$
-In particular, the fibres of such a morphism
-are subschemes of $X$.
 We define $\mathcal{H}ilb$ to map a morphism of schemes
-$U \to U'$ to a map of sets (of families over $U$ and $U'$) given
-by pullback.
+$U \to U'$ to the map of sets (of families over $U$ and $U'$) given
+by pullback. That is, we map a flat family $Z'\to U'$ 
+to $Z'\times_{U'}U \to U$, which remains flat.
 
 The Hilbert polynomial at a fibre $Z_u$ is defined by
 $P_u(m)=\chi(\mathcal{O}_{Z_u}\otimes \mathcal{O}_X(m))$.
 By flatness of $\pi$ the Hilbert polynomial is constant along $U$
-\cite[Part III, Theorem 9.9]{Hartshorne}.
+(\cite[Part III, Theorem 9.9]{Hartshorne}).
 For a fixed polynomial $P$
 we define $\mathcal{H}ilb^P_X$ as the functor which maps $U$ 
 to the set of families over $U$ with Hilbert polynomial $P$.
-A theorem by Grothendieck says $\mathcal{H}ilb^P_X$ is representable
+A theorem by Grothendieck says that $\mathcal{H}ilb^P_X$ is representable
 by a projective scheme $\text{Hilb}^P_X$.
 This means that there is a natural transformation
 $\Hom(-,\text{Hilb}^P_X) \simeq \mathcal{H}ilb^P_X(-)$;
@@ -350,28 +385,29 @@ In our case, this is a
 ``universal'' family $\mathcal{Z} \to \text{Hilb}^P_X$
 with the property that any other family $Z \to U$ is obtained as a pullback
 of $\mathcal{Z}$.
-More exactly, regarding an arbitrary family $Z \to U$ as a morphism
+More exactly, when regarding an arbitrary family $Z \to U$ as a morphism
 $f \in \Hom(U,\text{Hilb}^P_X)$, we see that
 $$
 \xymatrix{
 \text{id}_{\text{Hilb}^P_X}\ar@{|->}[d]
 &\Hom(\text{Hilb}^P_X,\text{Hilb}^P_X)\ar[r]^-{\simeq}\ar[d]_{f^*}
-&\mathcal{H}ilb^P_X(\text{Hilb}^P_X)\ar[d]^{f^*}
+&\mathcal{H}ilb^P_X(\text{Hilb}^P_X)\ar[d]^{U\times_{\text{Hilb}_X^P}-}
 &\mathcal{Z}\ar@{|->}[d]\\
-f&\Hom(U,\text{Hilb}^P_X)\ar[r]^-{\simeq}&\mathcal{H}ilb^P_X(U)& Z=f^*\mathcal{Z}.
+f&\Hom(U,\text{Hilb}^P_X)\ar[r]^-{\simeq}
+ &\mathcal{H}ilb^P_X(U)& Z=U\times_{\text{Hilb}_X^P}\mathcal{Z}.
 }
 $$
-commutes since the Hilbert functor acts on morphisms by pullbacks
-of families.
+commutes by naturality.
 This shows that studying families of subschemes of $X$ parametrized by any
-scheme $U$ can be done by studying families over the Hilbert scheme.
+scheme $U$ can be done by studying the universal family
+over the Hilbert scheme.
 
-In fact, we can formally view subschemes of $X$
+We can formally view subschemes of $X$
 as points of $\operatorname{Hilb}_X^P$ as follows.
 Recall that, as with any other scheme,
 points $h$ of $\text{Hilb}_X^P$ correspond to morphisms
 $\Spec(\kappa(h)) \to \text{Hilb}^P_X$, where $\kappa(h)$ is the residue field of the point
-(see e.g. Stacks Project 
+(see Stacks Project 
 \href{https://stacks.math.columbia.edu/tag/01J9}{01J9}).
 Then for every point $h$ of the Hilbert scheme
 we have a unique subscheme
@@ -387,7 +423,7 @@ $$
 As a rather technical observation that will not be
 addressed later, we note that 
 to make sure that the fibres are $\mathbb{C}$-schemes,
-we must restricts our analysis to $\mathbb{C}$-points
+we must restrict our analysis to $\mathbb{C}$-points
 of the Hilbert scheme (i.e. when the residue field is $\mathbb{C}$).
 
 \begin{definition}
@@ -422,50 +458,57 @@ structure sheaf is the direct sum of skyscraper sheaves
 $$
 \mathcal{O}_Z=\bigoplus_{i=1}^n (\text{skyscraper sheaf at $x_i$})
 $$
-so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)=\mathcal{O}_Z$.
-
-However, not every point in $X^{[n]}$ is given
-by a set of $n$ distinct points,
-nor by a set of points with multiplicites.
-Indeed, the Hilbert scheme distinguishes 
-the ``tangent directions in which points collide''.
-The important thing to note here is that 
-there are elements in the Hilbert scheme
-given by ideals which
-do not correspond to sets of points
-(even with allowed repetition).
+so that $\mathcal{O}_Z \otimes \mathcal{O}_X(m)\cong\mathcal{O}_Z$
+and thus the Hilbert polynomial of $Z$ is constant $n$.
+The latter isomorphism can be verified via
+the exact sequence associated to the maximal ideal 
+$\mathfrak{m}_{x_i}$
+of the stalk $\mathcal{O}_{X,x_i}$, namely
+$$
+\xymatrix{
+0\ar[r]
+&\mathfrak{m}_{x_i}\ar[r]
+&\mathcal{O}_{X,x_i}\ar[r]
+&\mathcal{O}_{X,x_i}/\mathfrak{m}_{x_i}\cong\mathbb{C}\ar[r]
+&0,
+}
+$$
+which after tensoring by 
+$\mathcal{O}_{Z,x_i}
+\cong\mathbb{C}\cong\mathcal{O}_{X,x_i}/\mathfrak{m}_{x_i}$ 
+kills the first term.
+Twisting by $m$ does not alter this construction.
 
 \medskip\noindent
-The following construction
-is an important tool used to prove different
-statements related to the Hilbert scheme.
-
-The {\it symmetric power} of $X$ is
+However, not every point in $X^{[n]}$ is given
+by a set of $n$ distinct points,
+nor by a set of points with multiplicites,
+as the following construction suggests.
+Define the {\it symmetric power} of $X$ as
 $$
 S^nX=\underbrace{X \times \ldots \times X}_{n\text{ copies}}/S_n
 $$
 where the symmetric group $S_n$ acts by
 permutating copies. Thus, a point of $S^nX$ is
 an $S_n$-orbit on the cartesian product $X \times \ldots \times X$,
-that is, an unordered $n$-tuple of points of $X$,
+i.e., an unordered $n$-tuple of points of $X$
 with allowed repetition.
 In algebraic geometry these are called ``algebraic cycles''
 and are denoted as formal sums $\sum_{x \in X}n_x[x]$ 
-where $\sum_{x \in X}n_x=n$, with $n_x \in \mathbb{N}$
+where $\sum_{x \in X}n_x=n$, with $n_x \in \mathbb{N}$,
 and $[x]$ are formal symbols.
 
 By our discussion above on the length of 0-dimensional subschemes of $X$,
 we have a map
 \begin{align*}
 \pi : X^{[n]} &\longrightarrow S^nX \\
- Z&\longmapsto \underbrace{\sum_{x \in \text{supp}Z}\dim
-\Gamma(\mathcal{O}_{Z,x})[x]}_{\text{cycle of $Z$}}
+ Z&\longmapsto \sum_{x \in \text{supp}Z}\dim
+\Gamma(\mathcal{O}_{Z,x})[x]
 \end{align*}
 called the {\it Hilbert-Chow morphism}.
-In some cases this is an isomorphism, but not always,
-as the following theorem suggests:
+In some cases this is an isomorphism, but not always.
 
-\begin{theorem}[Fogarty]
+\begin{theorem}[Fogarty, \cite{Fogarty}]
 \label{theorem-fogarty}
 Suppose $X$ is nonsingular and $\dim X=2$,
 then the following holds.
@@ -484,23 +527,25 @@ then the following holds.
 \noindent
 In this section we define Borel-Moore (BM) homology
 and formulate its basic properties.
-Most of this section is based on Video 9.
-For details on the construction see \cite{Fulton-Young-Tableaux}.
+Most of this section is based on \cite[Video 9]{videos}.
+For further details on the construction see \cite{Fulton-Young-Tableaux}.
 
 \medskip\noindent
 Let $M$ be a a smooth, connected,
-oriented, finite dimensional manifold over $\mathbb{R}$.
+oriented, finite-dimensional manifold over $\mathbb{R}$.
 While the following results hold for any
 topological space $X \subset M$
 that is a proper deformation retract
 of a closed neighbourhood of a manifold,
-it's enough to think of $X \subset M$ as a
-(possible singular) variety over $\mathbb{C}$.
+for us it's enough to think of $X \subset M$ as a
+(possibly singular) variety over $\mathbb{C}$.
 
+In this work we consider homology and cohomology
+groups with coefficients in $\mathbb{C}$.
 Recall that singular homology is defined
 as the homology of the chain complex of
 finite linear combinations of $i$-simplices in $X$.
-\textit{Borel-Moore homology (BM)} $H_\bullet^{BM}(X)$ 
+\textit{Borel-Moore homology} $H_\bullet^{BM}(X)$ 
 is the homology of the complex of locally finite
 linear combinations of singular simplices in $X$,
 where ``locally finite'' means that every
@@ -508,7 +553,7 @@ point $x \in X$ is in a neighbourhood
 that intersects only finitely many 
 simplices.
 
-Perhaps the most striking 
+A striking 
 difference between singular and BM homology
 is that the latter is not homotopy invariant.
 To see this recall that the homology groups
@@ -525,7 +570,7 @@ Further, notice that $H_0^{BM}(\mathbb{R}^2)=0$
 since a ray of 1-simplices
 is a locally finite chain
 whose boundary is a point;
-thus a point is a boundary and thus
+thus a point is a boundary and 
 has trivial homology class.
 
 \medskip\noindent
@@ -576,8 +621,7 @@ is contained in some triangle.
 \medskip\noindent
 Now we formulate the key properties
 of BM homology needed to define the operators
-of Nakajima's representation of the Heisenberg algebra
-(these are also discussed in \cite[Section 4.2]{Kamnitzer}):
+in Nakajima's representation of the Heisenberg algebra.
 
 \begin{enumerate}
 \item (Pushforward.)
@@ -590,20 +634,21 @@ i.e. preserves compositions.
 Roughly, this works because, by properness, the inverse image of
 a point in $Y$ will be mapped to a compact set of $X$,
 which can intersect only finitely many simplices of a given chain,
-ensuring local finiteness of the image of the chain under $f$.
+ensuring local finiteness of the image under $f$ of the chain.
 
 \item 
 \label{item-pullback}
 (Pullback.) If $f:X \to Y$ 
 is a locally trivial fibration with
 fibre a manifold of dimension $m$ (over $\mathbb{R}$),
-then $f^* :H_i^{BM}(Y)\to H_{i+m}^{BM}(X)$.
+then there is a pullback map
+$f^* :H_i^{BM}(Y)\to H_{i+m}^{BM}(X)$.
 
 \item  
 \label{item-intersection}
 (Intersection pairing.) If $X$ and $Y$ 
-are both nicely embedded in the same
-manifold $M$,
+are both ``nicely embedded'' in the same
+manifold $M$, there is a bilinear graded-commutative map
 $$
 \cap_M:H_i^{BM}(X)\times H_j^{BM}(Y)
 \to H_{i+j-m}^{BM}(X\cap Y).
@@ -613,6 +658,9 @@ via the isomorphism with relative singular cohomology
 (item (\ref{item-isomorphism-relative-cohomology})
 in the previous list),
 and then using usual cap product.
+Again, the term ``nicely embedded'' accounts
+for a transversality condition that we will not
+specify.
 
 \item (Fundamental classes.)
 \label{item-fundamental-class}
@@ -624,16 +672,16 @@ of dimension $d$ over $\mathbb{C}$,
 its {\it fundamental class} $[V]$ is the canonical generator of 
 $H_{2d}^{BM}(V)\cong H^0(V)\cong \mathbb{C}$,
 where the first isomorphism
-is, again, given by the isomorphism of BM homology and
+is given by the isomorphism of BM homology and
 relative singular cohomology taking $V = M$ since it is smooth.
 
-\item If $V$ is an irreducible variety of dimension $d$
-over $\mathbb{C}$, let $[V] \in B_{2d}^{BM}(V)$ 
-be the unique $d$ such that
-$u^* [V]=[V_{\text{reg}}]$. That is,
-$[V]$ is the class corresponding to the
-pullback of $u$ on the open set of regular points of $V$.
-The pullback in this degree is injective
+\item If $V$ is a (possibly singular) irreducible variety of dimension $d$
+over $\mathbb{C}$, its fundamental class $[V] \in B_{2d}^{BM}(V)$
+is the unique class such that
+$u^* [V]=[V_{\text{reg}}]$.
+This is well-defined since
+the pullback in this degree turns
+out to be injective (by further properties of BM homology not discussed here)
 and thus this class is unique.
 
 \item For $V$ not necessarily irreducible
@@ -648,17 +696,18 @@ components, i.e. $[V]=[V_1]+\ldots+[V_k]$.
 \end{enumerate}
 
 \noindent
-Notice that fundamental classes are
-defined in singular homology for compact manifolds. 
-It is special feature of BM homology that we can define
-fundamental classes in the noncompact case.
+As a final remark notice that it is
+as special feature of BM homology
+that we can define fundamental classes for
+noncompact manifolds, as opposed to 
+singular homology.
 
 \section{Correspondences}
 \label{section-correspondences}
 
 \noindent
 In this section we introduce the main tool
-for constructing the operators in our representation
+for constructing the operators in Nakajima's representation
 of the Heisenberg algebra.
 
 \medskip\noindent
@@ -666,8 +715,8 @@ Let $X_1,X_2$ be smooth irreducible varieties
 of dimensions $d_1,d_2$.
 Let $Z$ be a $d$-dimensional 
 closed subvariety of $X_1\times X_2$ 
-such that the projections $p_1$ and $p_2$
-are proper.
+such that the projection onto the first factor
+is proper.
 
 The {\it correspondence} associated to $Z \subset X_1\times X_2$
 is the map
@@ -692,49 +741,11 @@ That is, the correspondence is an operator
 given by pulling back a class by $p_2$,
 intersecting with the fundamental class of $[Z]$,
 and pushing forward by $p_1$.
+This map is well-defined according
+to the key properties of BM homology stated in the previous section;
+the degree of the target homology group is computed according
+to such properties.
 
-\medskip\noindent
-Let us explain with more details why this map is well-defined.
-First we apply the pullback
-$$
-\xymatrix{
-H_i^{BM}(X)\ar[r]^-{p_2^*}&H_{i+2d_1}^{BM}(X_1 \times X_2),
-}
-$$
-which is valid by key property (\ref{item-pullback}) of BM cohomology
-since the projection onto the second factor
-is a locally trivial (in fact trivial) fibration
-with fibres of real dimension $2d_1$ .
-Also by key property (\ref{item-pullback}) we see that the degree of the target is
-$i+2d_1$.
-
-Then we take the intersection pairing
-with the fundamental class of $Z$,
-which lies in the $2d$-th BM homology of $Z$.
-According to key property (\ref{item-intersection})
-this should be a map
-$$
-\xymatrixcolsep{7em}
-\xymatrix{
-H_{i+2d_1}^{BM}(X_1\times X_2)\ar[r]^-{\cap_{X_1 \times X_2}[Z]}
-&  H^{BM}_{i+d_1+2d-(2d_1+2d_2)}(Z),
-}
-$$
-where the degree of the target is given by
-$$
-\underbrace{i+2d_1}
-_{\substack{\text{we are here} \\ 
-\text{from previous step}}}+
-\underbrace{2d}
-_{\substack{\text{real dimension} \\ \text{of }Z}}
--\underbrace{(2d_1+2d_2)}
-_{\substack{\text{real dimension} \\ 
-\text{of ambient space}}},
-$$
-which of course equals $i+2d-2d_2$.
-Finally take the pushforward map
-of $p_1$ using key property (\ref{item-pushforward}),
-since we assumed $p_1$ is proper.
 \begin{remark}
 \label{remark-notes}
 \begin{enumerate}
@@ -743,7 +754,7 @@ since we assumed $p_1$ is proper.
 We can define correspondences more generally
 replacing the fundamental class of $Z$ 
 by any $\alpha \in H_{2d}^{BM}(Z)$.
-In fact, the operators in our Heisenberg represenation
+In fact, the operators in our representation
 shall be of this more general type.
 
 \item If $Z$ is the graph of a proper morphism
@@ -754,23 +765,24 @@ the pushforward in BM homology.
 \item Since $X_1$ and $X_2$ are smooth,
 we may use the isomorphism of BM and relative singular cohomology
 to identify a class in the tensor product with an endomorphism
-as we do in general for $V,W$ vector spaces via the isomorphism
+as we do in general for $V,W$ vector spaces via the usual isomorphism
 $V \otimes W^* \cong \Hom(W,V)$, $v \otimes \varphi \mapsto 
 (w \mapsto \varphi(w)v)$.
-This way, the fundamental class 
+In this way the fundamental class 
 $[Z] \in \bigoplus_{i+j=\dim_\mathbb{R}Z}H_i(X_1)\otimes H_j^{BM}(X_2)$
 immediately gives a map
 $$
 \bigoplus_{n}H_* (X^{[n]}) \to \bigoplus_{n}H_* (X^{[n\mp i]})
 $$
-which, in fact, coincides with Equation \ref{equation-correspondence}.
-This is mentioned in
+which, in fact, coincides with Equation \ref{equation-correspondence}
+(see \cite[Section 8.3]{Nakajima-lectures}).
 
 \end{enumerate}
 \end{remark}
 
 \medskip\noindent
-Next we show how to compose correspondences.
+Now we show how to compose correspondences,
+as we shall do in the proof of the main theorem.
 
 Suppose we are given two subvarieties
 $Z_{12} \subset X_1 \times X_2$ and $Z_{23} \subset X_2 \times X_3$
@@ -788,9 +800,9 @@ $$
 & X_1\times X_3
 }
 $$
-which is well defined since, in fact,
+which is well-defined since, in fact,
 the projection $p_{13}(p_{12}^{-1}Z_{12} \cap p_{23}^{-1} Z_{23})\to X_3$ 
-is proper.
+is proper (see \cite[Section 8.3]{Nakajima-lectures}).
 
 
 
@@ -799,14 +811,10 @@ is proper.
 \label{section-main-construction}
 
 \noindent
-We want to produce a representation
-$\pi$ of the Heisenberg (super)algebra $\mathfrak{h}$
-on $V=H_*(X)$.
-The key idea
-is to consider some subvarieties of direct products 
-and use their fundamental classes
-to produce operators
-on the homology via correspondences.
+In this section we define the
+correspondences used in Nakajima's representation
+of the Heisenberg algebra and formulate
+the theorem which guarantees that it is so.
 
 Let $n\geq i>0$. Define $P[i]$
 as a subset of
@@ -823,19 +831,16 @@ $$
 \noindent
 For $i<0$, we swap $\mathcal{J}_1$ and $\mathcal{J}_2$ 
 in this definition.
-
-\medskip\noindent
-Notice that by the procedure in Section \ref{section-correspondences}
-the submanifold $P[i]$ already defines a correspondence
-by pullback, intersection with the fundamental class of $P[i]$ 
-and then pushing forward. However, this is not quite what we will do:
-we will bring in two other classes. Let
+Now let
 $\alpha \in H_*^{BM}(X)$, $\beta \in H_*(X)$
-and $i>0$. Define
-\begin{align*}
+and suppose that $i>0$. Define the classes
+\begin{equation}
+\label{equation-correspondence-p}
+\begin{aligned}
 P_\alpha[i]&=\varpi_*(\Pi_1^*\alpha \cap [P[i]])\\
 P_\beta[i]&=\varpi_*(\Pi_1^*\beta \cap [P[-i]])
-\end{align*}
+\end{aligned}
+\end{equation}
 according to the projections
 $$
 \xymatrix{
@@ -844,58 +849,21 @@ $$
 X&&\coprod_n X^{[n-i]}\times X^{[n]}.
 }
 $$
-I think the reason for this is that using just $P[i]$ as
-the correspondence could give non-proper projections,
-and the pullback may not be well-defined.
-Also, it's not clear why we have to choose
-$\alpha$ and  $\beta$ in different kinds of homology.
-Of course if we just assume that $X$ 
-is projective then BM homology
-coincides with usual homology.
-
-In conclusion, the classes $P_\alpha[i]$ and $P_\beta[i]$ belong to
-$\prod_nH_*(X^{[n\mp i]})\otimes H_*(X^{[n]})$.
-Here the  $\mp$ means that if  $i>0$ 
-we are substracting, and if $i<0$ we
-are adding.
-
-Now we use Poincaré duality 
-(either in its BM version $H^{BM}_i(M)\cong H^{m-i}(M)$
-or the usual $H_i(M) \cong H^{m-i}(M)$ one assuming $M$ is compact)
-to identify a class in the tensor product with an endomorphism,
-as in $V \otimes W^* \cong \Hom(W,V)$, $v \otimes \varphi \mapsto 
-(w \mapsto \varphi(w)v)$.
-This way $P_\alpha[i]$ and $P_\beta[-i]$ 
-give maps
-$$
-\bigoplus_{n}H_* (X^{[n]}) \to \bigoplus_{n}H_* (X^{[n\mp i]}).
-$$
-It's worth noting that in practice we will use the construction
-in Section \ref{section-correspondences}, specifically
-in Remark \ref{remark-notes}(\ref{item-any-class})
-for the classes $P_\alpha[i]$ and $P_\beta[i]$.
-Namely, for $i>0$ will use the projections $p_1$ and $p_2$
-in
-$$
-\xymatrix{
-&X^{[n-i]}\times X^{[n]}\ar[ld]_{p_1}\ar[rd]^{p_2}\\
-X^{[n-i]}&&X^{[n]}.
-}
-$$
-and the formula
-\begin{equation}
-\label{equation-correspondence-p}
-P_\alpha[i](c)=p_{1,*}(p_2^*c\cap\Pi_1^*\alpha).
-\end{equation}
+These homology classes define the operators
+of the group
+$\bigoplus_{n=0}^{\infty}H_*(X^{[n]})$
+that will be used in the main theorem.
 
 \medskip\noindent
-The following proposition is used to compute the exact degrees
-in the domain and codomain of our correspondences:
+Before we continue, we formulate and
+prove (with the help of other results,
+as explained in \cite[Section 8.3]{Nakajima-lectures})
+a lemma that will be used later.
 
-\begin{proposition}
-\label{proposition-dimension}
+\begin{lemma}
+\label{lemma-dimension}
 $\dim_\mathbb{C}P[i]\cap (X^{[n-i]}\times X^{[n]})=2n-i+1$.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Suppose $i>0$.
@@ -910,38 +878,32 @@ for some $x \in X$.
 The generic case is when 
 $x \in X\setminus\text{supp}(\mathcal{O}_X/\mathcal{J}_1)$
 (this may be accepted under the explanation
-that being  $\mathcal{O}_X/\mathcal{J}_1$ the structure sheaf
-of a variety, it has less dimension than that of $X$,
-i.e. it is generic that $x$ is not in this support;
-a formal proof is provided in \cite[Lemma 8.31]{Nakajima-lectures}
-during the proof 
-of the main theorem).
-In fact, the set of such $\mathcal{J}_2$ may be identified
-with $\pi^{-1}(S^i_{(i)}X)$, where $\pi$ is
+that since $\mathcal{O}_X/\mathcal{J}_1$ is the structure sheaf
+of a subvariety, its support has less dimension than that of $X$;
+a formal proof is provided in \cite[Lemma 8.31]{Nakajima-lectures}).
+In fact, the set of such $\mathcal{J}_2$ is
+$\pi^{-1}(S^i_{(i)}X)$, where $\pi$ is
 the Hilbert-Chow morphism and
-$S^i_{(i)}=\{[i]x \in S^i(X):x \in X\}$.
-It is shown in \cite[Lemma 6.10]{Nakajima-lectures}
-that it must have complex dimension $i+1$.
+$S^i_{(i)}(X)=\{i[x] \in S^i(X):x \in X\}$.
+This notation is used in other parts of \cite{Nakajima-lectures};
+in our case just notice that $S^i_{(i)}(X)$
+is the subset of the symmetric product $S^i(X)$ 
+consisting of cycles of a single point with weight $i$.
+Finally, $\pi^{-1}(S^i_{(i)}(X))$ has complex dimension $i+1$
+as a subvariety of the Hilbert scheme.
 \end{proof}
 
 \medskip\noindent
-Now we are almost ready to formulate the main theorem.
-First notice that this is \cite[Theorem 8.13]{Nakajima-lectures}
-and {\bf not} \cite[Theorem 3.1]{Nakajima-Heis}.
-Now let's clarify what are the main objects involved.
-
-The pairing we use is the graded commutative pairing
-defined by 
-Notice that this pairing is indeed graded commutative
-since the intersection pairing $\cap$ in BM homology 
-is introduced via the usual cup product in relative cohomology
-(see key property (\ref{item-intersection}) of BM homology);
-and of course it is valued in $\mathbb{C}$ 
-since $H_*(\text{pt})=\mathbb{C}$.
-
+Now we state the main theorem,
+\cite[Theorem 8.13]{Nakajima-lectures}.
+Notice that we must add the assumption that
+the homology group of $X$ is concentrated in even degrees.
+The theorem can be stated in a more general form without
+this assumption, but we shall not discuss it in this work.
 \begin{theorem}[Nakajima, Grojnowski]
-\label{theorem-NG}
-Suppose $(\text{deg} \alpha)(\text{deg}\beta)\equiv 0 (\text{mod} 2)$.
+\label{theorem-main}
+Suppose $(\text{deg} \alpha)(\text{deg}\beta)\equiv 0 (\text{mod} 2)$
+for all $\alpha,\beta \in H_*(X)$.
 Then
 \begin{equation}
 \label{equation-main}
@@ -953,15 +915,15 @@ Then
 where $\left<\alpha,\beta\right>=p_*(\alpha \cap \beta)$
 for $p:X \to \text{pt}$ the unique morphism
 from $X$ to the point pt.
- \end{theorem}
+\end{theorem}
 
 \medskip\noindent
 According to our constructions in 
 Section \ref{section-heisenberg},
-this means we have a representation of 
+this means that we have a representation of 
 the Heisenberg algebra $\hat{\mathfrak{h}}$
 associated to the graded vector space $H_*(X)$
-on $\bigoplus_nH_{*}(X^{[n]})$.
+on $\bigoplus_{n=0}^{\infty}H_{*}(X^{[n]})$.
 
 \medskip\noindent
 Notice the factor $(-1)^{i-1}$
@@ -971,11 +933,8 @@ variants of the Heisenberg algebra discussed earlier in this work.
 The reason for including this term in the main theorem 
 is explained in
 \cite[Theorem 9.15]{Nakajima-lectures}.
-
-Having this factor causes no trouble at all:
-the Lie algebras defined using this bracket are isomorphic
-to the Lie algebras we introduced earlier.
-Indeed, we can define a Lie algebra isomorphism
+Moreover, this factor does not modify the Lie algebra structure:
+we can define a Lie algebra isomorphism
 from, say, the most basic version of the Heisenberg algebra
 with bracket given by Equation \ref{equation-bracket-basic},
 to the Lie algebra 
@@ -996,14 +955,12 @@ $$
 
 
 
-
-
 \section{Worked example}
 \label{section-example}
 
 \noindent
 In this section we do a worked example following \cite{Nakajima-lectures}
-and Video 10
+and \cite[Video 10]{videos}
 to illustrate the main idea of the proof.
 
 \medskip\noindent
@@ -1013,17 +970,14 @@ Take a set of distinct $n$ points
 $x_1,\ldots,x_n \in X\setminus\{x\}$ 
 none of which is $x$.
 Identify them with the corresponding
-ideal $\mathcal{J}$. We are going to interchangeably
-refer to those points as points and as the sheaf $\mathcal{J}$.
+ideal $\mathcal{J}$. We refer interchangeably
+to the set of points and the ideal sheaf $\mathcal{J}$.
 
-Let's calculate
+Let's show that
 $$
-[P_\alpha[1],P_\beta[-1]][\mathcal{J}].
+[P_\alpha[1],P_\beta[-1]][\mathcal{J}]=[\mathcal{J}].
 $$
-Looking back at Equation \ref{equation-main},
-it's easy to see that we should obtain just Id.
-
-Let's compute first $P_\beta[-1][\mathcal{J}]$.
+We start by computing $P_\beta[-1][\mathcal{J}]$.
 For this consider
 $$
 \xymatrix{
@@ -1033,9 +987,10 @@ X^{[n+1]}&&X^{[n]}.
 $$
 By definition, $P_{[x]}[-1]$ is given by:
 pull back $\mathcal{J}$ via $p_2$,
-intersect with the class $\varpi_*(\Pi^*\alpha \cap [P[-1]])=P_{[x]}[-1]$ and pushforward
+intersect with the class $\varpi_*(\Pi^*\alpha \cap [P[-1]])=P_{[x]}[-1]$ 
+and push forward
 down to $X^{[n+1]}$. 
-Morally this means that we pushforward the cycle corresponding to
+This means that we push forward the cycle corresponding to
 $$
 \{(\mathcal{J}, \mathcal{J}',x)
 :\mathcal{J}\subseteq \mathcal{J}',\text{supp}(\mathcal{J}'/\mathcal{J})=\{x\}\}
@@ -1050,6 +1005,7 @@ that is,
 $$
 P_{[x]}[-1][\mathcal{J}]=[\{x\}\cup \mathcal{J}].
 $$
+(see figure below).
 
 On the other hand, the correspondence $P_{[X]}[1]$ 
 starts with an ideal $\mathcal{J}'\in X^{[n+1]}$
@@ -1065,34 +1021,19 @@ Then it becomes clear that
 $$
 [P_\alpha[1],P_\beta[-1]][\mathcal{J}]=[\mathcal{J}].
 $$
-The following figure is taken directly from \cite{Nakajima-lectures}):
+The following figure is taken directly from \cite{Nakajima-lectures}:
 
 \includegraphics[width=0.9\textwidth]{fig1.png}
-
-\noindent
-The idea is very simple: it is not the same to add the point $x$ 
-and then remove any point, than removing any point and then
-adding the point $x$. Indeed, in the latter case we are obliged
-to have $x$, while in the former we may or may not.
-Thus the operators do not commute.
-
-The choice of $\alpha$ and $\beta$ is special in this example.
-The annihilating 
-operator being associated to the class of the whole space, $[X]$,
-allows us to remove any point $y \in X$.
-If we chose another class $\beta$
-and the support of the quotient $\mathcal{J}'/\mathcal{J}$
-contained only points that are not in $\beta$,
-the operator would kill the class.
-This means that if we iterate an annihilating operator
-enough times we arrive at the zero class.
+\label{figure-8.1}
 
 
-\section{Proof of the main theorem}
+
+\section{Proof of one case of the main theorem}
 \label{section-proof}
 
 \noindent
-We split the proof in two different cases:
+The proof of Theorem \ref{theorem-main} is split
+in two different cases:
 \begin{enumerate}
 \item $i,j>0$ or $i,j<0$, and
 \label{item-same}
@@ -1101,14 +1042,13 @@ We split the proof in two different cases:
 \end{enumerate}
 
 \noindent
-Only in case (\ref{item-different}) can the commutator be nonzero.
+In this work we explain the proof of case (\ref{item-same}).
 
 \medskip\noindent
-Case (\ref{item-same}). Suppose $i,j>0$.
-Recall our general definition for composition of correspondences, 
-Equation \ref{equation-composition}.
-In view of the particular correspondences we are using, 
-i.e. Equation \ref{equation-correspondence-p}, we see that
+Suppose $i,j>0$ (the case $i,j<0$ is analogous).
+Recalling our general definition for composition of correspondences
+(Equation \ref{equation-composition})
+we see that
 the composition $P_\alpha[i]P_\beta[j]$ is given by
 \begin{equation}
 \label{equation-composition-pij}
@@ -1139,10 +1079,9 @@ $$
 &  X^{[n-i-j]} \times X^{[n-j]} \times X^{[n]}
 \ar[dl]_{p_{12}}\ar[dr]^{p_{23}}\ar[dd]_{p_{13}}\\
 P[j]\subset X^{[n-j]}\times X^{[n]}& & X^{[n-i-j]}\times X^{[n-j]}\supset P[i]\\
-& X^{[n-i-j]}\times X^{[n]}
+& X^{[n-i-j]}\times X^{[n]}.
 }
 $$
-This is to be read as follows.
 By definition, the correspondence $P[j]$ maps the homology of $X^{[n]}$ to the 
 homology of $X^{[n-j]}$. In order to compose this with $P[i]$
 we must regard $P[i]$ as a map from the homology of $X^{[n-j]}$ 
@@ -1155,10 +1094,10 @@ we compute the composition in the opposite order.
 \medskip\noindent
 To recover the correspondence as in 
 Equation \ref{equation-composition-pij}
-from the set $P[i,j]$ it's natural to consider its algebraic closure
-and to it associate a fundamental class.
+from the set $P[i,j]$ it's natural to consider its 
+fundamental class.
 We will do this in the following special way.
-Observe that $P[i,j]$ may be decomposed as disjoint union
+Observe that $P[i,j]$ may be decomposed as a disjoint union
 of the set $\{x \neq y\}$ 
 of ``generic'' cases in which $x$ and $y$ in Equation \ref{equation-cycle-pij}
 are different, and the set $\{x=y\}$ in which they coincide.
@@ -1170,15 +1109,6 @@ $$
 where $R \in H_*^{BM}(P[i,j]\cap \{x=y\})$ corresponds
 to the $\{x=y\}$ part of $P[i,j]$ 
 and $\iota$ is the inclusion.
-
-To arrive at Equation \ref{equation-composition-pij}
-the next step is to intersect with the classes $\Pi_1^*\alpha$ and
-$\Pi_2^*\beta$.
-Observe that these commute with the classes
-$p_{12}^*[P[i]]$ and $p_{23}^*[P[j]]$
-since they correspond to disjoint components of the product
-$X^{[n-j]}\times X^{[n]}\times X$.
-Then it only remains to pushforward by $p_{13}$.
 
 \medskip\noindent
 We can carry out the same construction
@@ -1228,15 +1158,18 @@ p_{13,*}(\Pi_1\beta\cap\Pi_2^*\alpha\cap\iota_*R')=0.
 Indeed, this lemma is all we need since
 \begin{align*}
 P_\alpha[i]P_\beta[j]
-&=p_{13,*}(\overline{P}[i,j]\cap\Pi_1^*\alpha\cap\Pi_2^*\beta)\\
+&=(-1)^{\text{deg}\alpha}p_{13,*}((\overline{P}[i,j]+\iota_*R)\cap\Pi_1^*\alpha\cap\Pi_2^*\beta)\\
 &=(-1)^{\text{deg}\alpha\text{deg}\beta}
-p_{13,*}(\overline{P}[j,i]\cap\Pi_1^*\beta\cap\Pi_2^*\alpha)\\
+p_{13,*}((\overline{P}[j,i]+\iota_*R')\cap\Pi_1^*\beta\cap\Pi_2^*\alpha)\\
 &=P_\beta[j]P_\alpha[i].
 \end{align*}
 
 \begin{proof}[Proof of Lemma \ref{lemma-pij}]
 \begin{enumerate}
-\item First notice that when we say the isomorphism, say $\varphi$, 
+\item In this proof I assume that ``isomorphism'' means bijection, since
+$P[i,j]$ is considered as a set-theoretical intersection.
+
+First notice that when we say that the isomorphism, say $\varphi$, 
 ``exchanges $\Pi_1$ and $\Pi_2$''
 we mean that $\Pi_1|_{X \times X}=\Pi_2|_{X \times X}\circ\varphi$
 according to the diagram
@@ -1271,8 +1204,13 @@ The defining relation is
 \mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_2/\mathcal{J}_3,\qquad 
 \mathcal{J}_2'/\mathcal{J}_3=\mathcal{J}_1/\mathcal{J}_2.
 \end{equation}
-(No further explanation other than a figure 
-is provided in \cite{Nakajima-lectures}.)
+
+\noindent
+The following figure 
+(taken from \cite{Nakajima-lectures})
+shows how this correspondence works.
+
+\includegraphics[width=0.8\textwidth]{fig2.png}
 
 The setting is the following. We have the ideals with contentions
 $\mathcal{J}_1\supset \mathcal{J}_2,\mathcal{J}_2'\supset \mathcal{J}_3$.
@@ -1285,20 +1223,17 @@ we need to show that for every $\mathcal{J}_2$ there is a unique
 $\mathcal{J}_2'$ satisfying Equation \ref{equation-isomorphism}.
 Notice that by definition, $\text{supp}\mathcal{J}_2/\mathcal{J}_3=\{x\}$
 for some $x \in X$ so that, as a scheme, $\{x\}$ has multiplicity $j$.
-We must define
+We define
 $\mathcal{J}_2'=\mathcal{J}_1\cup \{x\}$
 where $x$ has multiplicity $j$.
-(Caveat: how can we make sure that
-indeed there is only one scheme of length $j$ supported
-in the point $x$? 
-Recall that elements in the Hilbert scheme should not be considered
-barely as sets of points with multiplicities!
-Actually, in Proposition \ref{proposition-dimension}
-we used the fact that the space of
-possible choices coincides $\pi^{-1}(S^j_{(j)})$
-and has dimension $j-1$.)
 
+\medskip\noindent
+(Caveat: it looks to me that the choice of $\mathcal{J}_2'$ is not unique.
+Indeed, the space of schemes of length $j$ supported
+in the point $x$ was discussed in the proof of Lemma \ref{lemma-dimension},
+where we used the fact that it has dimension $j-1$.)
 
+\medskip\noindent
 Defining $\mathcal{J}'_2$ this way implies that
 $$
 \mathcal{J}_1/\mathcal{J}_2'=\mathcal{J}_1/(\mathcal{J}_1\cup \{x\})
@@ -1316,9 +1251,6 @@ $$
 as required.
 An inverse function 
 defined similarly shows this is a bijection.
-
-Here I am supposing that ``isomorphism'' means bijection since
-$P[i,j]$ is considered as a set-theoretical intersection.
 
 \item Consider the commutative diagram
 $$
@@ -1338,11 +1270,17 @@ Then
 &=\iota_*(\iota^*(\Pi_1^*\alpha\cap\Pi_2^*\beta)\cap R)\\
 &=\iota_*(\iota^*(\Pi_1\times\Pi_2)^*(\alpha\times\beta)\cap R)\\
 &=\iota_*({\Pi'}^*\Delta^*(\alpha\times\beta)\cap R)\\
-&=\iota_*({\Pi'}^*(\alpha\cap\beta)\cap R).
+&=\iota_*({\Pi'}^*(\alpha\cap\beta)\cap R),
 \end{aligned}
 \end{equation}
 
 \noindent
+where the first equality is due
+to the projection formula
+(see Stacks Project 
+\href{https://stacks.math.columbia.edu/tag/01E8}{01E8})
+and we stick with Nakajima's notation $\alpha \times \beta$ 
+for the tensor product $\alpha \otimes \beta$.
 We also have the commutative diagram
 $$
 \xymatrix{
@@ -1358,20 +1296,29 @@ set $P[i+j]$.
 By Equation \ref{equation-lemma2-1}
 and the commutativity of the second diagram,
 we can express the class of interest as intersection
-of two classes: one pulled back {\bf directly from $X$},
+of two classes: one pulled back directly from $X$,
 and the other one corresponding to $R$.
 That is, we have
 $$
 p_{13,*}\iota_*({\Pi'}^* (\alpha\cap \beta)\cap R)
 ={\Pi''}^* (\alpha \cap \beta)\cap p_{13,*}\iota_*(R).
 $$
-Now, by Proposition \ref{proposition-dimension},
+Now, by Lemma \ref{lemma-dimension},
 we know that
 $$
 \dim_{\mathbb{C}}P[i+j]=2n-i-j+1.
 $$
 On the other hand, the ``expected dimension''
 is $2n-i-j+2$. This obliges $\iota_*R$ to vanish.
+
+\medskip\noindent
+(Caveat: I understand that the ``expected dimension'' 
+means in \cite{Nakajima-lectures} the dimension of
+$P[i,j]\cap \{x\neq y\}$, which is claimed to be
+$2n-i-j+2$.
+It is however not clear to me why this would imply
+that $p_{13,*}\iota_*R$ must vanish.)
+
 \end{enumerate}
 \end{proof}
 
